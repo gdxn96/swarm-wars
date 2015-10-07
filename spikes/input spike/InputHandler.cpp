@@ -15,6 +15,7 @@ InputHandler::InputHandler()
 	wasButtonRightBumpPressed = false;
 	wasButtonStartPressed = false;
 	wasButtonSelectPressed = false;
+	lastDpadState = DPadState::CENTER;
 	debug = true;
 }
 void InputHandler::HandleInput()
@@ -23,6 +24,7 @@ void InputHandler::HandleInput()
 }
 void InputHandler::isButtonPressedOnce(int player)
 {
+	//State.reset();
 	bool isButtonAPressed = sf::Joystick::isButtonPressed(player,buttonA);
 	bool isButtonBPressed = sf::Joystick::isButtonPressed(player,buttonB);
 	bool isButtonXPressed = sf::Joystick::isButtonPressed(player,buttonX);
@@ -172,22 +174,66 @@ void InputHandler::isButtonPressedOnce(int player)
 		releasedButton = BUTTON::NONE;
 	}  
 #pragma endregion
-	float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-	float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
-	//thumbStickDirection = Vector2D(x,y);
-	//LeftThumbStickDirection  = -Vector2D::DirectionVectorBetweenTwoPoints(thumbStickDirection,zero)
-	// Check left thumbStick
 
-	float leftThumbY = controllerState.Gamepad.sThumbLY;
-	if(leftThumbY)
+
+#pragma region thumbstick update
+	LeftThumbStickDirection.x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+	LeftThumbStickDirection.y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+	RightThumStickDirection.x = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
+	RightThumStickDirection.y = sf::Joystick::getAxisPosition(0, sf::Joystick::R);
+
+#pragma endregion
+
+#pragma region Dpad update
+	DPadDirection.x = sf::Joystick::getAxisPosition(0,sf::Joystick::PovX);
+	DPadDirection.y = sf::Joystick::getAxisPosition(0,sf::Joystick::PovY);
+	if(DPadDirection.x == 100 && lastDpadState != DPadState::RIGHT)
 	{
-		State.left_thumbstick.y = leftThumbY;
+		if(debug)
+		{
+			printf("Dpad Right : \n");
+		}
+		dpadState = DPadState::RIGHT;
+		lastDpadState = DPadState::RIGHT;
 	}
-	float leftThumbX = controllerState.Gamepad.sThumbLX;
-	if(leftThumbX)
+	else if(DPadDirection.x == -100 && lastDpadState != DPadState::LEFT)
 	{
-		State.left_thumbstick.x = leftThumbX;
-	}    
+		if(debug)
+		{
+			printf("Dpad left : \n");
+		}
+		dpadState = DPadState::LEFT;
+		lastDpadState = DPadState::LEFT;
+	}
+	else if(DPadDirection.y == 100 && lastDpadState != DPadState::UP)
+	{
+		if(debug)
+		{
+			printf("Dpad up : \n");
+		}
+		dpadState = DPadState::UP;
+		lastDpadState =  DPadState::UP;
+	}
+	else if(DPadDirection.y == -100 && lastDpadState != DPadState::DOWN)
+	{
+		if(debug)
+		{
+			printf("Dpad down : \n");
+		}
+		dpadState = DPadState::DOWN;
+		lastDpadState = DPadState::DOWN;
+	}
+	else if(DPadDirection.x == 0 && DPadDirection.y == 0 && lastDpadState != DPadState::CENTER)
+	{
+		if(debug)
+		{
+			printf("Dpad center : \n");
+		}
+		dpadState = DPadState::CENTER;
+		lastDpadState = DPadState::CENTER;
+	}  
+#pragma endregion
+
 	wasButtonAPressed = isButtonAPressed;
 	wasButtonBPressed = isButtonBPressed;
 	wasButtonXPressed = isButtonXPressed;
@@ -196,8 +242,20 @@ void InputHandler::isButtonPressedOnce(int player)
 	wasButtonRightBumpPressed = isButtonRightBumpPressed;
 	wasButtonSelectPressed = isButtonSelectPressed;
 	wasButtonStartPressed = isButtonStartPressed;
+	
 }
-
+Vector2D InputHandler::getDPadDirection()
+{
+	return DPadDirection.Normalize();
+}
+Vector2D InputHandler::getLeftThumbStick()
+{
+	return LeftThumbStickDirection.Normalize();
+}
+Vector2D InputHandler::getRightThumbStick()
+{
+	return RightThumStickDirection.Normalize();
+}
 InputHandler::BUTTON InputHandler::getPressedButton()
 {
 	return pressedButton;

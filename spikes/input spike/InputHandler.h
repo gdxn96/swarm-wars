@@ -4,33 +4,29 @@
 #include "Vector2D.h"
 #define WIN32_LEAN_AND_MEAN // We don't want the extra stuff like MFC and such
 #include <XInput.h>     // XInput API
-#pragma comment(lib, "XInput.lib")   
+//
+// Constants for gamepad buttons
+//
+
 class InputHandler
 {
-	struct GamePadState 
-	{
-		Vector2D 	left_thumbstick;               // <= I'm using a Vector2 (floats) class but you can replaced it with a float X and Y or whatever your Vector2 class is
-		Vector2D	right_thumbstick;
-		// Just to clear all values to default
-		void reset()
-		{
-			left_thumbstick = Vector2D(0.0f,0.0f);
-			right_thumbstick = Vector2D(0.0f,0.0f);
-		}
-	};
+	
 public:
+	enum DPadState {LEFT,RIGHT,UP,DOWN,CENTER};
 	InputHandler();
 	~InputHandler(void);
-	GamePadState State;
 	void HandleInput();
 	void isButtonPressedOnce(int);
 	enum BUTTON {A,B,X,Y,LeftBumper,RightBumper,Select,Start,NONE};
 	BUTTON getPressedButton();
 	BUTTON getReleasedButton();
 	bool debug;
-	Vector2D LeftThumbStickDirection,RightThumStickDirection;
-	XINPUT_STATE controllerState;
+	Vector2D getLeftThumbStick();
+	Vector2D getRightThumbStick();
+	Vector2D getDPadDirection();
+	DPadState dpadState,lastDpadState;
 private:
+	Vector2D LeftThumbStickDirection,RightThumStickDirection,DPadDirection;
 	BUTTON pressedButton;
 	BUTTON releasedButton;
 	static const int buttonA = 0;

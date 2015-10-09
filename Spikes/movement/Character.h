@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef POINTER_H
-#define POINTER_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 #include "Constants.h"
 #include "SFML/Graphics.hpp" 
@@ -10,24 +10,23 @@
 
 
 
-class Pointer
+class Character
 {
 private:
+	int m_type;
 	sf::Vector2f m_pos;
 	float m_radius;
 	float m_angle;
+	float m_targAngle;		// when moving to location
 	float m_speed;
 	sf::Color m_color;
-	sf::CircleShape m_shape; 
+	sf::CircleShape m_shape;
 
 public:
-	Pointer(float, float, sf::Color);
-	void move(float);
+	Character();
+	Character(int, float);
+	void update();
 	void draw(sf::RenderWindow&);
-	void resetAngle();
-	void updatePos();
-	const sf::Vector2f getPos();
-	void setSpeed(float);
 };
 
 

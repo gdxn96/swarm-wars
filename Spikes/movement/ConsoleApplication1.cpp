@@ -20,11 +20,15 @@
 
 
 #include "Pointer.h"
+#include "Character.h"
+
+#include <iostream> 
+#include <math.h>
+#define _USE_MATH_DEFINES
+
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
-#include <iostream> 
-#define _USE_MATH_DEFINES
-#include <math.h>
+#include "SFML/Window/Keyboard.hpp"
 
 
 
@@ -41,6 +45,11 @@ int main()
 	//create a pointer
 	Pointer pointer(10, 0.0005f, sf::Color(30, 78, 204, 255));
 
+	//create characters
+	Character characters[MAX_CHAR];
+	characters[0] = Character(sergeant, 330);
+	characters[1] = Character(soldier, 300);
+	characters[2] = Character(soldier, 270);
 
 
 	// Start game loop 
@@ -61,14 +70,36 @@ int main()
 
 		}
 
-		//prepare frame
+		// prepare frame
 		window.clear();
 
-		//update objects
-		pointer.update();
 
-		//draw frame items
+
+
+		// Draw and Update stuff
+		//-----------------------
+
+		//POINTER
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			pointer.move(-1);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			pointer.move(1);
+		}
+
 		pointer.draw(window);
+
+
+		//CHARACTERS
+		for (int i = 0; i < MAX_CHAR; i++)
+		{
+			characters[i].update();
+			characters[i].draw(window);
+		}
+
+
 
 
 		// Finally, display rendered frame on screen 

@@ -55,7 +55,7 @@ void SpriteSheetManager::Update()
 		}
 		else
 		{
-			if(isLooping || willDie == false)
+			if(isLooping )
 			{
 				selectedColumn = 0;
 			}

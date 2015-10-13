@@ -45,7 +45,7 @@ public:
 	SpriteSheetManager();
 	//default constructor that need a texture 
 	//column and row Ammount plus a starting pos
-	SpriteSheetManager(const sf::Texture & texture,int columeAmount,int rowAmount, Vector2D & position, Vector2D _scale);
+	SpriteSheetManager(const sf::Texture & texture,int columeAmount,int rowAmount, Vector2D & position, Vector2D _scale = Vector2D(1,1));
 	//destructor method
 	~SpriteSheetManager(void);
 	//the draw method for the spritesheet

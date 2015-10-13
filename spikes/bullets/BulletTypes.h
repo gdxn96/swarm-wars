@@ -1,3 +1,3 @@
 #pragma once
 
-enum class BulletType{ TRIANGLE, CIRCLE };
+enum class BulletType{ SQUARE, CIRCLE };

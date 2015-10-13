@@ -11,7 +11,7 @@ void Weapon::switchWeapon()
 {
 	if (currWeapon == WeaponType::CIRCLE)
 	{
-		currWeapon = WeaponType::TRIANGLE;
+		currWeapon = WeaponType::SQUARE;
 	}
 	else
 	{
@@ -24,10 +24,10 @@ void Weapon::fire(Vector2D direction, Vector2D initPos)
 	switch (currWeapon)
 	{
 	case WeaponType::CIRCLE:
-		BulletManager::getInstance()->addBullet(BulletType::CIRCLE, Vector2D(0,0), Vector2D(1,1));
+		BulletManager::getInstance()->addBullet(BulletType::CIRCLE, initPos, direction);
 		break;
-	case WeaponType::TRIANGLE:
-		BulletManager::getInstance()->addBullet(BulletType::TRIANGLE, Vector2D(0, 0), Vector2D(1, 1));
+	case WeaponType::SQUARE:
+		BulletManager::getInstance()->addBullet(BulletType::SQUARE, initPos, direction);
 		break;
 	default:
 		break;

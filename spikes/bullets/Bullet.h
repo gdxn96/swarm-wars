@@ -5,6 +5,7 @@
 class Bullet
 {
 public:
+	//default
 	Bullet();
 	Bullet(BulletType type, Vector2D initPos, Vector2D direction, float speed);
 	void Update();

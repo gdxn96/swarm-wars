@@ -23,6 +23,8 @@
 #include <iostream> 
 #include "SceneMgr.h"
 #include "GameScene.h"
+#include "MainMenuScene.h"
+#include "SplashScene.h"
 #define _USE_MATH_DEFINES
 
 using namespace sf;
@@ -38,10 +40,17 @@ int main()
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Swarm-wars");
 
-	SceneManager sceneMgr = SceneManager();
+	
 	GameScene game = GameScene();
-	sceneMgr.addScene(&game);
-	sceneMgr.switchTo(Scenes::GAME);
+	SplashScene splash = SplashScene();
+	MainMenuScene menu = MainMenuScene();
+
+	SceneManager::getInstance()->addScene(&game);
+	SceneManager::getInstance()->addScene(&splash);
+	SceneManager::getInstance()->addScene(&menu);
+	SceneManager::getInstance()->switchTo(Scenes::GAME);
+	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
+	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
 
 	// Start game loop 
 	while (window.isOpen())
@@ -58,9 +67,24 @@ int main()
 			if ((Event.type == sf::Event::KeyPressed) && (Event.key.code == sf::Keyboard::Escape))
 				window.close();
 
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+			{
+				SceneManager::getInstance()->switchTo(Scenes::GAME);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+			{
+				SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			{
+				SceneManager::getInstance()->switchTo(Scenes::SPLASH);
+			}
+			/////////////////////////////////////////////////////////////////////////////////////////////////
 
 		}
 
+		SceneManager::getInstance()->Update();
 		//prepare frame
 		window.clear();
 

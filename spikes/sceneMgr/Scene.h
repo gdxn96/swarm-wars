@@ -1,22 +1,29 @@
 #pragma once
-#include "SceneList.h"
+#include "SceneMgr.h"
 #include <iostream>
 using namespace std;
+
 
 class Scene
 {
 public:
+	
 	Scene(Scenes title);
+
+	//called automatically when a scene becomes active, used in sceneMgr
 	virtual void enter();
-	virtual void update() = 0;
+
+	//called automatically when a scene becomes inactive, used in sceneMgr
 	virtual void exit();
-	virtual void pause() = 0;
-	virtual void draw() = 0;
+	
+	//simple method that returns the title of the scene, used in sceneMgr
 	const Scenes getTitle();
+
+	virtual void update() = 0;
+	virtual void draw() = 0;
 
 protected:
 	Scenes m_title;
-	string m_name;
 	bool alive;
 
 };

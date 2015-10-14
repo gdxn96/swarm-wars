@@ -3,9 +3,10 @@
 #ifndef POINTER_H
 #define POINTER_H
 
-#include "Constants.h"
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
+
+using namespace sf;
 
 
 
@@ -13,21 +14,24 @@
 class Pointer
 {
 private:
-	sf::Vector2f m_pos;
+	Vector2f m_centre;
+	Vector2f m_pos;
 	float m_radius;
 	float m_angle;
 	float m_speed;
-	sf::Color m_color;
-	sf::CircleShape m_shape; 
+	Color m_color;
+	CircleShape m_shape; 
 
 public:
-	Pointer(float, float, sf::Color);
-	void move(float);
-	void draw(sf::RenderWindow&);
+	Pointer(float, float, Color, Vector2f);
+	void move();
+	void draw(RenderWindow&);
 	void resetAngle();
 	void updatePos();
-	const sf::Vector2f getPos();
+	const Vector2f getPos();
 	void setSpeed(float);
+
+	float getAngle();
 };
 
 

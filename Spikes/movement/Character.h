@@ -3,30 +3,44 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "Constants.h"
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
 
+using namespace sf;
 
 
 
 class Character
 {
 private:
-	int m_type;
-	sf::Vector2f m_pos;
+	//Character
+	bool m_move;
+	Vector2f m_centre;
+	Vector2f m_pos;
 	float m_radius;
-	float m_angle;
-	float m_targAngle;		// when moving to location
 	float m_speed;
-	sf::Color m_color;
-	sf::CircleShape m_shape;
+	float m_angle;
+	CircleShape m_shape;
+
+	//Target
+	Vector2f m_targetPos; 
+	float m_targetRadius;
+	float m_targetAngle;
+	CircleShape m_target;
 
 public:
 	Character();
-	Character(int, float);
+	Character(float, float, Color, Color, Vector2f);
 	void update();
-	void draw(sf::RenderWindow&);
+	void draw(RenderWindow&);
+	void resetAngles();
+	float findAngleBetween();
+
+	// Get methods
+
+	// Set methods
+	void setTargetAngle(float, float);
+	void setMove(bool);
 };
 
 

@@ -37,67 +37,88 @@
 //////////////////////////////////////////////////////////// 
 
 
+//GLOBAL VARIABLES (FOR TESTING PURPOSES)
+const int PATH_RADIUS = 200;
+const float PI = std::acos(-1);
+
+
 int main()
 {
 	// Create the main window 
-	sf::RenderWindow window(sf::VideoMode(1280, 720, 32), "SFML First Program");
+	RenderWindow window(VideoMode(1280, 720, 32), "SFML First Program");
 
-	//create a pointer
-	Pointer pointer(10, 0.0005f, sf::Color(30, 78, 204, 255));
 
-	//create characters
-	Character characters[MAX_CHAR];
-	characters[0] = Character(sergeant, 330);
-	characters[1] = Character(soldier, 300);
-	characters[2] = Character(soldier, 270);
+	//----------
+	//Variables
+	//----------
+	float charRadius = 25;
+	float ptrRadius = charRadius / 2.5f;
+
+	float ptrSpd = 0.0005f;
+	float charSpd = ptrSpd / 5;
+
+	Color green = Color(50, 76, 24, 255);
+	Color blue = Color(30, 78, 204, 255);
+	Color yellow = Color(255, 255, 51, 255);
+
+	Vector2f windowCentre = Vector2f(window.getSize().x / 2.0f,
+									 window.getSize().y / 2.0f);
+
+
+
+	//create objects
+	Pointer pointer(ptrRadius, ptrSpd, blue, windowCentre);
+	Character character(charRadius, charSpd, green, yellow, windowCentre);
+
+
+
 
 
 	// Start game loop 
 	while (window.isOpen())
 	{
 		// Process events 
-		sf::Event Event;
+		Event Event;
 		while (window.pollEvent(Event))
 		{
 			// Close window : exit 
-			if (Event.type == sf::Event::Closed)
+			if (Event.type == Event::Closed)
+			{
 				window.close();
+			}
 
 			// Escape key : exit 
-			if ((Event.type == sf::Event::KeyPressed) && (Event.key.code == sf::Keyboard::Escape))
+			if ((Event.type == Event::KeyPressed) && 
+				(Event.key.code == Keyboard::Escape))
+			{
 				window.close();
-
-
+			}
 		}
+
 
 		// prepare frame
 		window.clear();
 
 
 
+		//Update stuff
+		//-------------
+		pointer.move();
 
-		// Draw and Update stuff
-		//-----------------------
-
-		//POINTER
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		if (Keyboard::isKeyPressed(Keyboard::Space))
 		{
-			pointer.move(-1);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			pointer.move(1);
+			character.setTargetAngle(pointer.getAngle(), charSpd);
+			character.setMove(true);
 		}
 
+		character.update();
+
+
+
+		//Draw Stuff
+		//-----------
 		pointer.draw(window);
-
-
-		//CHARACTERS
-		for (int i = 0; i < MAX_CHAR; i++)
-		{
-			characters[i].update();
-			characters[i].draw(window);
-		}
+		character.draw(window);
 
 
 

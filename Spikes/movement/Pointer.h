@@ -19,6 +19,9 @@ private:
 	float m_radius;
 	float m_angle;
 	float m_speed;
+	float m_minSpeed;
+	float m_maxSpeed;
+	float m_interval;
 	Color m_color;
 	CircleShape m_shape; 
 

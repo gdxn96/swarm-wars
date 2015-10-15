@@ -17,6 +17,9 @@ Pointer::Pointer(float radius, float speed, Color color, Vector2f centre)
 	m_radius(radius),
 	m_angle(0),
 	m_speed(speed),
+	m_minSpeed(speed),
+	m_maxSpeed(speed * 2),
+	m_interval(speed / 60),
 	m_color(color)
 {
 	//Define shape
@@ -28,6 +31,15 @@ Pointer::Pointer(float radius, float speed, Color color, Vector2f centre)
 
 void Pointer::move()
 {
+	if (Keyboard::isKeyPressed(Keyboard::LShift) && m_speed <= m_maxSpeed)
+	{
+		m_speed += m_interval;
+	}
+	else if (m_speed >= m_minSpeed)
+	{
+		m_speed -= m_interval;
+	}
+
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
 		m_angle -= m_speed;

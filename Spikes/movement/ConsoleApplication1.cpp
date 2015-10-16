@@ -19,7 +19,7 @@
 #pragma comment(lib,"glu32.lib") 
 
 
-#include "Pointer.h"
+#include "OrderPointer.h"
 #include "Character.h"
 
 #include <iostream> 
@@ -39,7 +39,6 @@
 
 //GLOBAL VARIABLES (FOR TESTING PURPOSES)
 const int PATH_RADIUS = 200;
-const float PI = std::acos(-1);
 
 
 int main()
@@ -61,13 +60,13 @@ int main()
 	Color blue = Color(30, 78, 204, 255);
 	Color yellow = Color(255, 255, 51, 255);
 
-	Vector2f windowCentre = Vector2f(window.getSize().x / 2.0f,
+	Vector2D windowCentre = Vector2D(window.getSize().x / 2.0f,
 									 window.getSize().y / 2.0f);
 
 
 
 	//create objects
-	Pointer pointer(ptrRadius, ptrSpd, blue, windowCentre);
+	OrderPointer pointer(ptrRadius, ptrSpd, blue, windowCentre);
 	Character character(charRadius, charSpd, green, yellow, windowCentre);
 
 
@@ -103,7 +102,7 @@ int main()
 
 		//Update stuff
 		//-------------
-		pointer.move();
+		pointer.update();
 
 		if (Keyboard::isKeyPressed(Keyboard::Space))
 		{
@@ -117,8 +116,8 @@ int main()
 
 		//Draw Stuff
 		//-----------
-		pointer.draw(window);
 		character.draw(window);
+		pointer.draw(window);
 
 
 

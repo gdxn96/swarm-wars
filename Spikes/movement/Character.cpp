@@ -3,30 +3,29 @@
 
 
 
-//GLOBAL VARIABLES (FOR TESTING PURPOSES)
+//GLOBAL VARIABLE (FOR TESTING PURPOSES)
 const int PATH_RADIUS = 200;
-const float PI = std::acos(-1);
 
 
 
-Character::Character()
-{
-
-}
-
-Character::Character(float radius, float speed, Color green, 
-					 Color yellow, Vector2f centre) 
-:	m_move(false), 
+Character::Character(float radius, float speed, Color green, Color yellow, 
+					 Vector2D centre) 
+:	M_PI(std::acos(-1)),
+	DEGREES(M_PI / 180.0f),
+	m_move(false), 
 	m_centre(centre),
 	m_radius(radius),
 	m_speed(speed),
-	m_angle(90 * PI / 180.0f),
-	m_targetRadius(radius / 5),
-	m_targetAngle(m_angle)
+	m_angle(90 * DEGREES),
+	m_tRadius(radius / 5),
+	m_tAngle(m_angle)
 {
-	m_pos = Vector2f(m_centre.x + PATH_RADIUS * cos(m_angle),
-					 m_centre.y + PATH_RADIUS * sin(m_angle));
-	m_targetPos = m_pos;
+	Vector2D offset = Vector2D(PATH_RADIUS * cos(m_angle), 
+							   PATH_RADIUS * sin(m_angle));
+
+	//Positions
+	m_pos = Vector2D(m_centre.x + offset.x, m_centre.y + offset.y);
+	m_tPos = m_pos;
 
 	//Character shape
 	m_shape = CircleShape(m_radius);
@@ -34,38 +33,39 @@ Character::Character(float radius, float speed, Color green,
 	m_shape.setPosition(Vector2f(m_pos.x - m_radius, m_pos.y - m_radius));
 
 	//Target shape
-	m_target = CircleShape(m_targetRadius);
+	m_target = CircleShape(m_tRadius);
 	m_target.setFillColor(yellow);
-	m_target.setPosition(Vector2f(m_targetPos.x - m_targetRadius, 
-								  m_targetPos.y - m_targetRadius));
+	m_target.setPosition(Vector2f(m_tPos.x - m_tRadius, 
+								  m_tPos.y - m_tRadius));
 }
 
 
 void Character::update()
 {
-	resetAngles();	//if above 360 or below 0 degrees
-
-
-	// if within 'm_speed' of target, stop moving
-	if (m_move && fabs(m_angle - m_targetAngle) <= fabs(m_speed))
+	// if close to target, snap to it and stop moving
+	if (m_move && fabs(m_angle - m_tAngle) <= fabs(m_speed))
 	{
-		m_angle = m_targetAngle;
+		m_angle = m_tAngle;
 		m_move = false;
+		updatePos();
 	}
-
-
-	if (m_move)
+	else if (m_move)
 	{
 		m_angle += m_speed;
-		m_pos = Vector2f(m_centre.x + PATH_RADIUS * cos(m_angle),
-						 m_centre.y + PATH_RADIUS * sin(m_angle));
+		resetAngle();
+		updatePos();
 	}
+}
 
 
-	//update shape positions
+void Character::updatePos()
+{
+	Vector2D offset = Vector2D(PATH_RADIUS * cos(m_angle), 
+							   PATH_RADIUS * sin(m_angle));
+
+	//Positions
+	m_pos = Vector2D(m_centre.x + offset.x, m_centre.y + offset.y);
 	m_shape.setPosition(Vector2f(m_pos.x - m_radius, m_pos.y - m_radius));
-	m_target.setPosition(Vector2f(m_targetPos.x - m_targetRadius, 
-								  m_targetPos.y - m_targetRadius));
 }
 
 
@@ -76,39 +76,44 @@ void Character::draw(RenderWindow& window)
 }
 
 
-void Character::resetAngles()
+void Character::resetAngle()
 {
 	//angle
-	if (m_angle >= 2 * PI)
+	if (m_angle >= 2 * M_PI)
 	{
-		m_angle -= 2 * PI;
+		m_angle -= 2 * M_PI;
 	}
 	else if (m_angle < 0)
 	{
-		m_angle += 2 * PI;
+		m_angle += 2 * M_PI;
 	}
+}
 
-	//target angle
-	if (m_targetAngle >= 2 * PI)
+
+void Character::findDirectionToTarget(float speed)
+{
+	float angleBetween = findAngleBetween();
+
+	if (angleBetween <= M_PI)
 	{
-		m_targetAngle -= 2 * PI;
+		m_speed = speed;	//clockwise
 	}
-	else if (m_targetAngle < 0)
+	else
 	{
-		m_targetAngle += 2 * PI;
+		m_speed = -speed;	//anti-clockwise
 	}
 }
 
 
 float Character::findAngleBetween()
 {
-	if (m_targetAngle < m_angle)
+	if (m_tAngle < m_angle)
 	{
-		return (m_targetAngle + 2 * PI) - m_angle;
+		return (m_tAngle + 2 * M_PI) - m_angle;
 	}
 	else
 	{
-		return m_targetAngle - m_angle;
+		return m_tAngle - m_angle;
 	}
 }
 
@@ -119,21 +124,16 @@ float Character::findAngleBetween()
 //Set methods
 void Character::setTargetAngle(float angle, float speed)
 {
-	m_targetAngle = angle;
-	m_targetPos = Vector2f(m_centre.x + PATH_RADIUS * cos(m_targetAngle), 
-						   m_centre.y + PATH_RADIUS * sin(m_targetAngle));
+	m_tAngle = angle;
+	Vector2D offset = Vector2D(PATH_RADIUS * cos(angle), 
+							   PATH_RADIUS * sin(angle));
 
+	//Set positions
+	m_tPos = Vector2D(m_centre.x + offset.x, m_centre.y + offset.y);
+	m_target.setPosition(Vector2f(m_tPos.x - m_tRadius,
+								  m_tPos.y - m_tRadius));
 
-	float angleBetween = findAngleBetween();
-
-	if (angleBetween <= PI)
-	{
-		m_speed = speed;
-	}
-	else
-	{
-		m_speed = -speed;
-	}
+	findDirectionToTarget(speed);
 }
 
 

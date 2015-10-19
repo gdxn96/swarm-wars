@@ -43,7 +43,7 @@ public:
 	OrderPointer(float, float, Color, Vector2D);
 	void update();
 	void move();
-	void draw(RenderWindow&);
+	void draw(RenderWindow*);
 	void resetAngle();	//Reset if above 360 or below 0 degrees
 	void updatePos();
 	void changePointerSpeed();

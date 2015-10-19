@@ -82,9 +82,9 @@ void OrderPointer::changePointerSpeed()
 }
 
 
-void OrderPointer::draw(RenderWindow& window)
+void OrderPointer::draw(RenderWindow* window)
 {
-	window.draw(m_shape);
+	window->draw(m_shape);
 }
 
 

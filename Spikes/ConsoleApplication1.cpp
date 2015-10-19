@@ -116,8 +116,8 @@ int main()
 
 		//Draw Stuff
 		//-----------
-		character.draw(window);
-		pointer.draw(window);
+		character.draw(&window);
+		pointer.draw(&window);
 
 
 

@@ -69,10 +69,10 @@ void Character::updatePos()
 }
 
 
-void Character::draw(RenderWindow& window)
+void Character::draw(RenderWindow* window)
 {
-	window.draw(m_target);
-	window.draw(m_shape);
+	window->draw(m_target);
+	window->draw(m_shape);
 }
 
 

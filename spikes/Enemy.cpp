@@ -24,13 +24,11 @@ Enemy::Enemy(sf::Vector2f pos, float speed, sf::Color red)
 
 void Enemy::update()
 {
-	if (!m_atFinalNode)
+	if (!m_atTargetNode)
 	{
-		if (!m_atTargetNode)
-		{
-			updatePos();
-		}
+		updatePos();
 
+		//When close, jump to next node
 		if (fabs(length(m_pos - m_targetNode)) <= m_speed)
 		{
 			m_pos = m_targetNode;
@@ -86,8 +84,10 @@ bool Enemy::atFinalNode()
 void Enemy::setTargetNode(sf::Vector2f target)
 {
 	m_targetNode = target;
-	m_dir = normalise((m_targetNode - m_pos));
 	m_atTargetNode = false;
+
+	//set new direction
+	m_dir = normalise((m_targetNode - m_pos));
 }
 
 void Enemy::setAtFinalNode(bool val)

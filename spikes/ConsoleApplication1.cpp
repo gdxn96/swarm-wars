@@ -39,16 +39,15 @@ int main()
 	window.setFramerateLimit(60);
 
 	//Variables
+	float enemySpd = 3;
+	sf::Color red = sf::Color(255, 0, 0, 255);
 	int index = 0;
 	vector<sf::Vector2f> nodes;
 	nodes.push_back(sf::Vector2f(-60, -60));	// Hard-coded values since unit 
-	nodes.push_back(sf::Vector2f(30, 300));		// manager should be responsible 
-	nodes.push_back(sf::Vector2f(200, 400));	// for creation of nodes
+	nodes.push_back(sf::Vector2f(30, 300));		// manager will be responsible 
+	nodes.push_back(sf::Vector2f(200, 400));	// for creation of nodes later
 	nodes.push_back(sf::Vector2f(400, 300));
 
-
-	float enemySpd = 3;
-	sf::Color red = sf::Color(255, 0, 0, 255);
 	Enemy enemy(nodes.at(index), enemySpd, red);
 
 
@@ -74,22 +73,28 @@ int main()
 		//prepare frame
 		window.clear();
 
-		//update and draw
+		//UPDATE & DRAW
 		if (enemy.atTargetNode())
 		{
-			index++;
+			index++;	//next node
 
-			if (index < nodes.capacity())
+			//If not at final node in path
+			if (!enemy.atFinalNode())
 			{
-				enemy.setTargetNode(nodes.at(index));
+				if (index < nodes.capacity())
+				{
+					enemy.setTargetNode(nodes.at(index));
+					enemy.update();
+				}
+				else 
+				{
+					enemy.setAtFinalNode(true);
+				}
 			}
-			else if (!enemy.atFinalNode())
-			{
-				enemy.setAtFinalNode(true);
-			}
+			
 		}
 
-		enemy.update();
+		
 		enemy.draw(&window);
 
 		// Finally, display rendered frame on screen 

@@ -23,7 +23,7 @@
 #include <iostream> 
 #define _USE_MATH_DEFINES
 
-#include "SpriteSheetManager.h"
+#include "AnimationManager.h"
 #include "Vector2D.h"
 
 using namespace sf;
@@ -39,17 +39,20 @@ int main()
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Swarm-wars");
 	sf::Texture mySpriteSheet;
-
+	//load the spritesheet
 	mySpriteSheet.loadFromFile("assets/dude.png");
-
-	SpriteSheetManager Animation = SpriteSheetManager(mySpriteSheet, 6, 4, Vector2D(150, 150));
-	Animation.setAnimationNameToIndex(0, "blood pop");
-	Animation.setAnimationNameToIndex(1, "running");
-	Animation.setRunningAnimation("running");
-	Animation.setIsLooping(true);
-	Animation.setRotation(70);
-	Animation.setScale(Vector2D(2, 2));
-	Animation.willDie = false;
+	//create the animation manager object(texture , coulmn amount, row amount,position,scale)
+	AnimationManager Animation = AnimationManager(mySpriteSheet, 6, 4, Vector2D(150, 150),Vector2D(1,1));
+	//sets a name to a row to call later. these must be set or the animation
+	//manager wont be able to refrence that row
+	Animation.setAnimationNameToIndex(0, "blood pop");//sets the name "blood pop" to row 0
+	Animation.setAnimationNameToIndex(1, "running");//sets the name "running" to row 1
+	Animation.setRunningAnimation("running");//sets the starting animation to running
+	Animation.setIsLooping(true);//sets if the animation is looping
+	Animation.setRotation(70);//sets the rotation of the object
+	Animation.setScale(Vector2D(2, 2));//set the scale of the object
+	Animation.willDie = false;// sets if the object will die or not
+				  // if its dead dont draw/destroy
 	
 
 	// Start game loop 
@@ -69,13 +72,14 @@ int main()
 
 
 		}
+		//update the animation object
 		Animation.Update();
 		
 
 
 		//prepare frame
 		window.clear();
-
+		//draw the animation object
 		Animation.Draw(window);
 
 		//draw frame items

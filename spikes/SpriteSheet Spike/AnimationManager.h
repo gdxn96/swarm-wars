@@ -14,12 +14,12 @@
 * Animation.setIsLooping(true);
 * Animation.setRotation(70);
 * Animation.setScale(Vector2D(2,2));
-* bloodAnimation.willDie = true;
-* bloodAnimation.Update();
+* Animation.willDie = true;
+* Animation.Update();
 * 
-* bloodAnimation.Draw(window);
+* Animation.Draw(window);
 */
-class SpriteSheetManager
+class AnimationManager
 {
 public:
 	//if true debuging will output on the prompt
@@ -42,12 +42,12 @@ public:
 		std::string name;
 	};
 	//default empty constructor
-	SpriteSheetManager();
+	AnimationManager();
 	//default constructor that need a texture 
 	//column and row Ammount plus a starting pos
-	SpriteSheetManager(const sf::Texture & texture,int columeAmount,int rowAmount, Vector2D & position, Vector2D _scale = Vector2D(1,1));
+	AnimationManager(const sf::Texture & texture,int columeAmount,int rowAmount, Vector2D & position, Vector2D _scale);
 	//destructor method
-	~SpriteSheetManager(void);
+	~AnimationManager(void);
 	//the draw method for the spritesheet
 	//draws the calucutated output sprite
 	//takes a refrence to window to draw
@@ -92,7 +92,7 @@ private:
 	std::vector<animation> animationList;
 	//list of an index and a string name
 	//used to to tie a name to a row
-	std::vector<animationIndex> animationIndixList;
+	std::vector<animationIndex> animationRowList;
 	//texture of the entire spriteSheet used
 	sf::Texture texture;
 	//rotation of the sprite

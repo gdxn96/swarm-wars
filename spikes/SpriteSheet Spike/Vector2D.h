@@ -45,7 +45,10 @@ public:
     Vector2D operator*(const Vector2D&) const;
     Vector2D operator/(const Vector2D&) const;
 	Vector2D operator+=(const Vector2D&) ;
+	// nromalise its self
 	Vector2D Normalize() ;
+	//normalise a value
+	static Vector2D Normalize(Vector2D t) ;
     //Check if the Vectors have the same values.
     bool operator==(const Vector2D&) const;
 
@@ -59,6 +62,7 @@ public:
     //Negate both the x and y values.
     Vector2D operator-() const;
 
+	Vector2D operator=(const sf::Vector2f &);
     //Apply scalar operations.
     Vector2D operator*(const float&) const;
     Vector2D operator/(const float&) const;
@@ -71,7 +75,8 @@ public:
 
     //Returns the length of the vector from the origin.
     static float Magnitude(const Vector2D&);
-
+	//gets the length/mag of its self
+	float Magnitude();
     //Return the unit vector of the input
     static Vector2D Normal(const Vector2D&);
 
@@ -83,6 +88,12 @@ public:
 
     //Return the point where two lines intersect.
     static Vector2D GetIntersect(const Vector2D&, const Vector2D&, const Vector2D&, const Vector2D&);
+	//get the distance between 2 points retuns as float
+	static float Distance(Vector2D & one ,Vector2D &two);
+	//get the angle between 2 points returns as float in degrees
+	static float AngleDeg(Vector2D & one, Vector2D & two);
+	//get the angle between 2 points returns as float in radians
+	static float AngleRad(Vector2D & one, Vector2D & two);
 };
 
 #endif

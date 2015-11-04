@@ -1,13 +1,9 @@
 #include "stdafx.h"
-#include "SpriteSheetManager.h"
+#include "AnimationManager.h"
 #include <iostream>
 using namespace std;
 
-
-SpriteSheetManager::SpriteSheetManager()
-{
-}
-SpriteSheetManager::SpriteSheetManager(const sf::Texture & _texture,int _columnAmount,int _rowAmount,Vector2D &_position, Vector2D _scale)
+AnimationManager::AnimationManager(const sf::Texture & _texture,int _columnAmount,int _rowAmount,Vector2D &_position, Vector2D _scale)
 {
 	debug = false;
 	texture = _texture;
@@ -42,7 +38,7 @@ SpriteSheetManager::SpriteSheetManager(const sf::Texture & _texture,int _columnA
 	outputSprite.setScale(_scale.toSFMLVector());
 }
 
-void SpriteSheetManager::Update()
+void AnimationManager::Update()
 {
 
 	sf::Time elapsedTime = clock.getElapsedTime();
@@ -55,7 +51,7 @@ void SpriteSheetManager::Update()
 		}
 		else
 		{
-			if(isLooping )
+			if(isLooping || willDie == false)
 			{
 				selectedColumn = 0;
 			}
@@ -78,20 +74,20 @@ void SpriteSheetManager::Update()
 	outputSprite.setPosition(position.toSFMLVector());
 }
 
-void SpriteSheetManager::setPosition(Vector2D & _position)
+void AnimationManager::setPosition(Vector2D & _position)
 {
 	position = _position;
 }
-void SpriteSheetManager::Draw(sf::RenderWindow & window)
+void AnimationManager::Draw(sf::RenderWindow & window)
 {
 	if(!isDead)
 	window.draw(outputSprite);
 }
-void SpriteSheetManager::setRunningAnimation(std::string name)
+void AnimationManager::setRunningAnimation(std::string name)
 {
-	for(int i = 0; i < animationIndixList.size();i++)
+	for(int i = 0; i < animationRowList.size();i++)
 	{
-		if(animationIndixList[i].name == name)
+		if(animationRowList[i].name == name)
 		{
 			selectedRow = i;
 		}
@@ -101,29 +97,29 @@ void SpriteSheetManager::setRunningAnimation(std::string name)
 		}
 	}
 }
-void SpriteSheetManager::setRotation(float _rotate)
+void AnimationManager::setRotation(float _rotate)
 {
 	rotation = _rotate;
 }
-void SpriteSheetManager::setAnimationNameToIndex(int index,std::string name)
+void AnimationManager::setAnimationNameToIndex(int index,std::string name)
 {
 	animationIndex temp;
 	temp.index = index;
 	temp.name = name;
-	animationIndixList.push_back(temp);
+	animationRowList.push_back(temp);
 }
-void SpriteSheetManager::setScale(Vector2D _scale)
+void AnimationManager::setScale(Vector2D _scale)
 {
 	scale = _scale;
 }
-void SpriteSheetManager::setIsLooping(bool _isLooping)
+void AnimationManager::setIsLooping(bool _isLooping)
 {
 	isLooping = _isLooping;
 }
-bool SpriteSheetManager::getIfDead()
+bool AnimationManager::getIfDead()
 {
 	return isDead;
 }
-SpriteSheetManager::~SpriteSheetManager(void)
+AnimationManager::~AnimationManager(void)
 {
 }

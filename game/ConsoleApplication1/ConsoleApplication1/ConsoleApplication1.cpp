@@ -21,6 +21,13 @@
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
 #include <iostream> 
+
+#include "SceneMgr.h"
+#include "GameScene.h"
+#include "MainMenuScene.h"
+#include "SplashScene.h"
+#include "GameConstants.h"
+
 #define _USE_MATH_DEFINES
 
 using namespace sf;
@@ -29,12 +36,50 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////
 ///Entrypoint of application 
-//////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////// Don't edit this file, edit the individual scene files (George)
+//   ____          U  ___ u      _   _          _____      
+//  |  _"\          \/"_ \/     | \ |"|        |_ " _|     
+// /| | | |         | | | |    <|  \| |>         | |       
+// U| |_| |\    .-,_| |_| |    U| |\  |u        /| |\      
+//  |____/ u     \_)-\___/      |_| \_|        u |_|U      
+//   |||_             \\        ||   \\,-.     _// \\_     
+//  (__)_)           (__)       (_")  (_/     (__) (__)    
+// U _____ u      ____                          _____      
+// \| ___"|/     |  _"\           ___          |_ " _|     
+//  |  _|"      /| | | |         |_"_|           | |       
+//  | |___      U| |_| |\         | |           /| |\      
+//  |_____|      |____/ u       U/| |\u        u |_|U      
+//  <<   >>       |||_       .-,_|___|_,-.     _// \\_     
+// (__) (__)     (__)_)       \_)-' '-(_/     (__) (__) 
+////////////////////////////////////////////////////////////
+
 
 int main()
 {
 	// Create the main window 
-	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Swarm-wars");
+	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
+
+
+	// create scenes
+	GameScene game = GameScene();
+	SplashScene splash = SplashScene();
+	MainMenuScene menu = MainMenuScene();
+
+	//add scenes to sceneMgr
+	SceneManager::getInstance()->addScene(&game);
+	SceneManager::getInstance()->addScene(&splash);
+	SceneManager::getInstance()->addScene(&menu);
+
+	//below is how to switch to scenes
+	/*SceneManager::getInstance()->switchTo(Scenes::GAME);
+	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
+	SceneManager::getInstance()->switchTo(Scenes::SPLASH);*/
+
+	//splash is first
+	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
+
+	sf::Clock deltaClock; // used to calculate dt
+	float dt = 0; // floating point dt as seconds
 
 	// Start game loop 
 	while (window.isOpen())
@@ -51,17 +96,20 @@ int main()
 			if ((Event.type == sf::Event::KeyPressed) && (Event.key.code == sf::Keyboard::Escape))
 				window.close();
 
-
 		}
 
+		SceneManager::getInstance()->update(dt);
+		
 		//prepare frame
 		window.clear();
 
 		//draw frame items
-		//window.draw(myShape);
+		SceneManager::getInstance()->draw(window);
 
 		// Finally, display rendered frame on screen 
 		window.display();
+
+		dt = deltaClock.restart().asSeconds();
 
 	} //loop back for next frame
 

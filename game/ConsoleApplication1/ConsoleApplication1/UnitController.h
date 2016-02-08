@@ -1,0 +1,25 @@
+#pragma once
+#include "Unit.h"
+#include "OrderPointer.h"
+
+#include <vector>
+using namespace std;
+
+// class that controls the units on screen
+// functions similarly to the order-pointer from previous revisions of the code
+// also monitors controller input to tell the currently selected unit what to do
+
+class UnitController
+{
+public:
+	UnitController();
+	void update(float dt);
+	void draw(sf::RenderWindow & window);
+
+private:
+	vector<Unit*> m_units;
+	Unit * m_currentUnit;
+	OrderPointer m_orderPointer;
+};
+
+

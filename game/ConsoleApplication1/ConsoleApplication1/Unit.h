@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
+#include "Vector2D.h"
 
 enum class UNIT_STATE { MOVING, WAITING };
 class Unit

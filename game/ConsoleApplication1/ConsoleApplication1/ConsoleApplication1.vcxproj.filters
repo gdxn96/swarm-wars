@@ -24,6 +24,9 @@
     <Filter Include="CODE\DEFAULT">
       <UniqueIdentifier>{c54ec031-2440-4b96-bb39-7810718bd72c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CODE\GAME\UI">
+      <UniqueIdentifier>{1008cd62-9d38-42e9-a067-c093ccccd5c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -63,7 +66,10 @@
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
     <ClInclude Include="OrderPointer.h">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="VisionCone.h">
+      <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,7 +107,10 @@
       <Filter>CODE\HELPER</Filter>
     </ClCompile>
     <ClCompile Include="OrderPointer.cpp">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="VisionCone.cpp">
+      <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

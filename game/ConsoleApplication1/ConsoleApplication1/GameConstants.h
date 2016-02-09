@@ -9,6 +9,7 @@ public:
 	//radius in which players can walk about the centre of the map
 	static int const WALK_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
+	static float const PLAYER_SPEED; // defined in GameConstants.cpp
 
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	

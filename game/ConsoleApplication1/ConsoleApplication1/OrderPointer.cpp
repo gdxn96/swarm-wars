@@ -5,6 +5,7 @@ using namespace sf;
 
 OrderPointer::OrderPointer() : m_angle(0), m_radius(GameConstants::POINTER_RADIUS)
 {
+	update(0);
 }
 
 

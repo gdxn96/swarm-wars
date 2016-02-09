@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "UnitController.h"
 
 class GameScene : public Scene
 {
@@ -18,6 +19,9 @@ public:
 	//void enter();
 
 private:
+	UnitController m_unitController;
 
+	sf::View fullView;
+	sf::View zoomView;
 
 };

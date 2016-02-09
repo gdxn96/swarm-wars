@@ -3,6 +3,7 @@
 #include "OrderPointer.h"
 
 #include <vector>
+#include <iostream>
 using namespace std;
 
 // class that controls the units on screen
@@ -15,6 +16,7 @@ public:
 	UnitController();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
+	void switchUnit();
 
 private:
 	vector<Unit*> m_units;

@@ -6,7 +6,18 @@ Vector2D::Vector2D()
 {
 	x = 0.0;
 	y = 0.0;
-}Vector2D::~Vector2D()
+}
+
+Vector2D::Vector2D(float angle)
+{
+	x = std::cos(angle);
+	y = std::sin(angle);
+	Vector2D nVec = this->Normalize();
+	x = nVec.x;
+	y = nVec.y;
+}
+
+Vector2D::~Vector2D()
 {}
 Vector2D::Vector2D(float sourceX, float sourceY)
 {

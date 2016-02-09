@@ -36,6 +36,9 @@ public:
     ~Vector2D(void);
     //Constructor assigns the inputs to x and y.
     Vector2D();
+
+	//creates a unit vector based on a radian angle
+	Vector2D::Vector2D(float angle);
     Vector2D(float, float);
 	sf::Vector2f toSFMLVector();
     /*The following operators simply return Vector2ds that

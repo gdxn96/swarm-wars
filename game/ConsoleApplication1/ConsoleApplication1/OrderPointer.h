@@ -9,9 +9,6 @@ using namespace sf;
 class OrderPointer
 {
 private:
-	//-------------
-	// Pointer 
-	//-------------
 	Vector2D m_position;
 	float m_radius;
 

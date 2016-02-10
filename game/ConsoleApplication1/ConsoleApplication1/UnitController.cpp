@@ -39,6 +39,8 @@ void UnitController::draw(sf::RenderWindow & window)
 			m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
 		else if (Event.key.code == sf::Keyboard::S)
 			switchUnit();
+		else if (Event.key.code == sf::Keyboard::F)
+			m_currentUnit->changeState(UNIT_STATE::FIRING);
 
 	}
 

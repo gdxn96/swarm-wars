@@ -2,6 +2,8 @@
 
 #include "Scene.h"
 #include "UnitController.h"
+#include "BulletFactory.h"
+#include "WeaponFactory.h"
 
 class GameScene : public Scene
 {
@@ -20,8 +22,7 @@ public:
 
 private:
 	UnitController m_unitController;
-
-	sf::View fullView;
-	sf::View zoomView;
+	BulletFactory * m_bulletFactory;
+	
 
 };

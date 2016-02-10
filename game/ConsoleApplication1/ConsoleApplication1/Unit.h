@@ -4,6 +4,7 @@
 #include "Vector2D.h"
 #include "GameConstants.h"
 #include "VisionCone.h"
+#include "WeaponFactory.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
 class Unit
@@ -16,6 +17,10 @@ public:
 	// when the angle gets updated the player position needs to be updated, 
 	// so logic is wrapped in this function
 	void updateAngle(float angle);
+
+	void fireWeapon();
+
+	void changeState(UNIT_STATE);
 
 	//simple setter
 	void setTargetAngle(float targetAngle);
@@ -33,15 +38,16 @@ public:
 	float findAngleBetween(float a, float b);
 
 private:
-	float m_angle;
-	float m_targetAngle;
-	float m_radius;
-	float m_speed;
+	float m_positionAngle; // angle signifying position relative to walk radius
+	float m_targetAngle; // angle signifying target pos relative to walk radius
+	float m_radius; // radius of player
+	float m_speed; // angular speed of player, rads/second
 	const float PI;
 
-	float m_dirAngle;
+	float m_directionAngle; //radian rotation of player "0 rads == (x1, y0)"
 	Vector2D m_position;
 	UNIT_STATE m_state;
+	Weapon m_currentWeapon;
 
 };
 

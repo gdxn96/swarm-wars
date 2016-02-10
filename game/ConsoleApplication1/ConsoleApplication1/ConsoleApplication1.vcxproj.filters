@@ -71,6 +71,18 @@
     <ClInclude Include="VisionCone.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFactory.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletFactory.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -111,6 +123,18 @@
     </ClCompile>
     <ClCompile Include="VisionCone.cpp">
       <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponFactory.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletFactory.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>CODE\GAME</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <iostream>
+#include "WeaponFactory.h"
 using namespace std;
 
 // class that controls the units on screen
@@ -22,6 +23,7 @@ private:
 	vector<Unit*> m_units;
 	Unit * m_currentUnit;
 	OrderPointer m_orderPointer;
+	WeaponFactory * m_weaponFactory;
 };
 
 

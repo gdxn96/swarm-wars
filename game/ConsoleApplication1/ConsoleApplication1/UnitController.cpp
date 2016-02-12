@@ -1,16 +1,18 @@
 #include "stdafx.h"
 #include "UnitController.h"
 
-UnitController::UnitController() : m_orderPointer(OrderPointer())
+UnitController::UnitController()
 {
+}
 
+void UnitController::init()
+{
 	for (int i = 0; i < 3; i++)
 	{
 		m_units.push_back(new Unit());
 	}
 
 	m_currentUnit = m_units[0];
-	
 }
 
 void UnitController::update(float dt)

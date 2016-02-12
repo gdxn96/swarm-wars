@@ -8,10 +8,10 @@ Unit::Unit()
 	m_positionAngle(0),
 	m_targetAngle(0),
 	m_state(UNIT_STATE::WAITING),
-	m_directionAngle(0)
+	m_directionAngle(0),
+	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE))
 {
 	updateAngle(m_positionAngle);
-	m_currentWeapon = WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE);
 }
 
 void Unit::fireWeapon()

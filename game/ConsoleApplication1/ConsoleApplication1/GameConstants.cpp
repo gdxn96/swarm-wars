@@ -7,9 +7,15 @@ float const GameConstants::PLAYER_RADIUS = 5;
 int const GameConstants::WALK_RADIUS = 150;
 float const GameConstants::PLAYER_SPEED = 0.5f; // rads / second
 
-float const GameConstants::PI = std::acos(-1); 
+float const GameConstants::PI = std::acos(-1);
 
-float const GameConstants::POINTER_RADIUS = 25;
+float const GameConstants::ENEMY_RADIUS = 5;
+float const GameConstants::ENEMY_SPEED = 20;
+
+float enemiesPerSecond = 0.2;
+float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
+
+float const GameConstants::POINTER_RADIUS = 7;
 Vector2D const GameConstants::WINDOW_SIZE = Vector2D(1300, 800);
 Vector2D const GameConstants::WINDOW_CENTRE = Vector2D(GameConstants::WINDOW_SIZE.x / 2, GameConstants::WINDOW_SIZE.y / 2);
 

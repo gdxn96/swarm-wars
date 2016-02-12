@@ -15,6 +15,8 @@ class UnitController
 {
 public:
 	UnitController();
+
+	void init();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 	void switchUnit();

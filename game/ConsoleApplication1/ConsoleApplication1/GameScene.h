@@ -4,6 +4,7 @@
 #include "UnitController.h"
 #include "BulletFactory.h"
 #include "WeaponFactory.h"
+#include "EnemyManager.h"
 
 class GameScene : public Scene
 {
@@ -23,6 +24,6 @@ public:
 private:
 	UnitController m_unitController;
 	BulletFactory * m_bulletFactory;
-	
+	EnemyManager m_enemyManager;
 
 };

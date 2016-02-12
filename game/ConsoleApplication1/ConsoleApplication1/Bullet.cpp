@@ -7,7 +7,8 @@ Bullet::Bullet(Vector2D position, Vector2D direction, float speed, float radius,
 	m_range(killDistance),
 	m_speed(speed),
 	m_radius(radius),
-	m_direction(direction)
+	m_direction(direction),
+	m_alive(true)
 {
 }
 

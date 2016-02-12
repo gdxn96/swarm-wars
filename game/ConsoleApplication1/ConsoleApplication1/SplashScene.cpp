@@ -9,7 +9,7 @@ SplashScene::SplashScene() : Scene(Scenes::SPLASH), m_timeToSwitch(3)
 void SplashScene::update(float dt)
 {
 	//switches immediately to game scene, comment out to see demo
-	//SceneManager::getInstance()->switchTo(Scenes::GAME);
+	SceneManager::getInstance()->switchTo(Scenes::GAME);
 
 	//can obviously be deleted once you start working on the scene
 	m_timeToSwitch -= dt;

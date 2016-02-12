@@ -6,12 +6,16 @@ GameScene::GameScene()
 	Scene(Scenes::GAME),
 	m_bulletFactory(new BulletFactory())
 {
+	//create weapon list for easy retrieval
 	WeaponFactory::getInstance()->createWeapons(m_bulletFactory);
-	m_unitController = UnitController();
+
+	//init must be called to avoid players being created without weapons
+	m_unitController.init();
 }
 
 void GameScene::update(float dt)
 {
+	m_enemyManager.update(dt);
 	m_unitController.update(dt);
 	m_bulletFactory->UpdateBullets(dt);
 }
@@ -23,6 +27,7 @@ void GameScene::pause()
 
 void GameScene::draw(sf::RenderWindow &window)
 {
+	m_enemyManager.draw(window);
 	m_unitController.draw(window);
 	m_bulletFactory->drawBullets(window);
 

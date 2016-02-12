@@ -11,6 +11,10 @@ public:
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_SPEED; // defined in GameConstants.cpp
 
+	static float const ENEMY_RADIUS; // defined in GameConstants.cpp
+	static float const ENEMY_SPAWN_INTERVAL; // defined in GameConstants.cpp
+	static float const ENEMY_SPEED; // defined in GameConstants.cpp
+
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	
 

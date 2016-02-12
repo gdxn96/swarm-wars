@@ -27,6 +27,18 @@
     <Filter Include="CODE\GAME\UI">
       <UniqueIdentifier>{1008cd62-9d38-42e9-a067-c093ccccd5c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CODE\GAME\UNIT">
+      <UniqueIdentifier>{d17ed382-c8b6-4cbc-b2be-6ff825234f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\BULLET">
+      <UniqueIdentifier>{9421b291-86c7-4d3b-8796-cae878b003b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\WEAPONS">
+      <UniqueIdentifier>{dd1c1d82-d342-4449-9a59-60a014aedd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\ENEMIES">
+      <UniqueIdentifier>{9be2ea85-2d8f-4bcb-9ef8-17330cdfb4ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -56,12 +68,6 @@
     <ClInclude Include="GameConstants.h">
       <Filter>CODE\GAME</Filter>
     </ClInclude>
-    <ClInclude Include="UnitController.h">
-      <Filter>CODE\GAME</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.h">
-      <Filter>CODE\GAME</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
@@ -71,17 +77,32 @@
     <ClInclude Include="VisionCone.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>CODE\GAME</Filter>
+    <ClInclude Include="Unit.h">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponFactory.h">
-      <Filter>CODE\GAME</Filter>
+    <ClInclude Include="UnitController.h">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClInclude>
     <ClInclude Include="BulletFactory.h">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\BULLET</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFactory.h">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnPointController.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,12 +130,6 @@
     <ClCompile Include="GameConstants.cpp">
       <Filter>CODE\GAME</Filter>
     </ClCompile>
-    <ClCompile Include="UnitController.cpp">
-      <Filter>CODE\GAME</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>CODE\GAME</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2D.cpp">
       <Filter>CODE\HELPER</Filter>
     </ClCompile>
@@ -124,17 +139,32 @@
     <ClCompile Include="VisionCone.cpp">
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>CODE\GAME</Filter>
+    <ClCompile Include="Unit.cpp">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponFactory.cpp">
-      <Filter>CODE\GAME</Filter>
+    <ClCompile Include="UnitController.cpp">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClCompile>
     <ClCompile Include="BulletFactory.cpp">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\BULLET</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>CODE\GAME</Filter>
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponFactory.cpp">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnPointController.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

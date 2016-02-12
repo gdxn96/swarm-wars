@@ -1,19 +1,19 @@
 #include "stdafx.h"
 #include "Weapon.h"
 
-Weapon::Weapon(float fov, float range, float damage, float bulletsPerSecond, BulletType bullet, BulletFactory * bulletFactory) 
-:	m_bulletFactory(bulletFactory), 
-	m_bullet(bullet)
-{
-	m_fov = fov;
-	m_range = range;
-	m_damage = damage;
-	m_position = Vector2D();
-	m_dirAngle = 0;
-	m_fireRate = 1.0f / bulletsPerSecond;
-	m_timeToFire = m_fireRate;
+Weapon::Weapon(float fov, float range, float damage, float bulletsPerSecond, 
+	BulletType bullet, BulletFactory * bulletFactory) 
 
-	m_visionCone = VisionCone();
+:	m_bulletFactory(bulletFactory), 
+	m_bullet(bullet),
+	m_fov(fov),
+	m_range(range),
+	m_damage(damage),
+	m_dirAngle(0),
+	m_fireRate(1.0f / bulletsPerSecond),
+	m_timeToFire(m_fireRate)
+{
+
 	m_visionCone.setRange(m_range);
 }
 

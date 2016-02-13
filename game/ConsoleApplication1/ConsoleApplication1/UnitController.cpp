@@ -25,6 +25,11 @@ void UnitController::update(float dt)
 
 }
 
+vector<Unit*> UnitController::getUnits()
+{
+	return m_units;
+}
+
 void UnitController::draw(sf::RenderWindow & window)
 {
 	// THIS STUFF NEEDS TO BE DONE WITH INPUTHANDLER SOON

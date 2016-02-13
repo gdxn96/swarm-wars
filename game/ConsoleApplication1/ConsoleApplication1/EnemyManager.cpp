@@ -15,6 +15,11 @@ void EnemyManager::spawnEnemy()
 	m_enemies.push_back(new Enemy(spawnPosition, direction));
 }
 
+std::vector<Enemy *> EnemyManager::getEnemies()
+{
+	return m_enemies;
+}
+
 void EnemyManager::update(float dt)
 {
 	m_spawnInterval -= dt;

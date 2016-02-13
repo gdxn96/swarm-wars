@@ -37,6 +37,8 @@ public:
 	//not just a-b as multiple revolutions may mess up results
 	float findAngleBetween(float a, float b);
 
+	Polygon2D& getRangeCone();
+
 private:
 	float m_positionAngle; // angle signifying position relative to walk radius
 	float m_targetAngle; // angle signifying target pos relative to walk radius

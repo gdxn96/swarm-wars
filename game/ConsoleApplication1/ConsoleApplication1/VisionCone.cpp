@@ -17,6 +17,11 @@ void VisionCone::setRange(float range)
 	m_range = range;
 }
 
+Polygon2D& VisionCone::getRange()
+{
+	return m_rangeSize;
+}
+
 void VisionCone::draw(sf::RenderWindow & window)
 {
 	
@@ -27,6 +32,13 @@ void VisionCone::draw(sf::RenderWindow & window)
 	a = m_position;
 	b = m_position + Vector2D(m_minAngle) * m_range;
 	c = m_position + Vector2D(m_maxAngle) * m_range;
+
+	m_rangeSize.clearPoints();
+	m_rangeSize.addPoint(a);
+	m_rangeSize.addPoint(b);
+	m_rangeSize.addPoint(c);
+	
+
 
 	polygon.setPoint(0, a.toSFMLVector());
 	polygon.setPoint(1, b.toSFMLVector());

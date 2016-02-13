@@ -11,6 +11,8 @@ public:
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 
+	std::vector<Enemy *> getEnemies();
+
 
 private:
 	std::vector<Enemy *> m_enemies;

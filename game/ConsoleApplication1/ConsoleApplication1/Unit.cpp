@@ -12,6 +12,7 @@ Unit::Unit()
 	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE))
 {
 	updateAngle(m_positionAngle);
+	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
 }
 
 void Unit::fireWeapon()
@@ -53,6 +54,11 @@ void Unit::update(float dt)
 
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, dt);
 	
+}
+
+Polygon2D& Unit::getRangeCone()
+{
+	return m_currentWeapon.getRange();
 }
 
 void Unit::changeState(UNIT_STATE state)

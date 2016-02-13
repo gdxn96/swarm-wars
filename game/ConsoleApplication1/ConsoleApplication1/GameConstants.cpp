@@ -10,9 +10,9 @@ float const GameConstants::PLAYER_SPEED = 0.5f; // rads / second
 float const GameConstants::PI = std::acos(-1);
 
 float const GameConstants::ENEMY_RADIUS = 5;
-float const GameConstants::ENEMY_SPEED = 20;
+float const GameConstants::ENEMY_SPEED = 50;
 
-float enemiesPerSecond = 0.2;
+float enemiesPerSecond = 5;
 float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
 
 float const GameConstants::POINTER_RADIUS = 7;

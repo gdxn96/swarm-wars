@@ -20,6 +20,7 @@ public:
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 	void switchUnit();
+	vector<Unit*> getUnits();
 
 private:
 	vector<Unit*> m_units;

@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2D.h"
 #include "GameConstants.h"
+#include "Circle.h"
 
 
 enum class ENEMY_STATE {MOVING, ATTACKING, INIFILTRATING};
@@ -12,12 +13,16 @@ public:
 	void draw(sf::RenderWindow& window);
 	void changeState(ENEMY_STATE state);
 
+	Circle& getBounds();
+
 private:
 	Vector2D m_position;
 	Vector2D m_direction;
 	float m_speed;
 	float m_radius;
 	ENEMY_STATE m_currentState;
+	Circle m_bounds;
+
 
 };
 

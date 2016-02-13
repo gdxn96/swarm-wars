@@ -104,6 +104,15 @@
     <ClInclude Include="SpawnPointController.h">
       <Filter>CODE\GAME\ENEMIES</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -165,6 +174,15 @@
     </ClCompile>
     <ClCompile Include="SpawnPointController.cpp">
       <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>CODE\HELPER</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

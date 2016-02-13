@@ -8,15 +8,22 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction)
 	m_currentState(ENEMY_STATE::MOVING),
 	m_position(spawnPosition),
 	m_direction(direction),
-	m_speed(GameConstants::ENEMY_SPEED)
+	m_speed(GameConstants::ENEMY_SPEED),
+	m_bounds(Circle(m_position, m_radius))
 {
 	
 }
 
+Circle& Enemy::getBounds()
+{
+	return m_bounds;
+}
+
+
 void Enemy::update(float dt)
 {
 	m_position += m_direction * dt * m_speed;
-	cout << m_position.y << endl;
+	m_bounds.setCentre(m_position);
 }
 
 void Enemy::draw(sf::RenderWindow& window)

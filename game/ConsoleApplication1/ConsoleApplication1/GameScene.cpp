@@ -18,6 +18,13 @@ void GameScene::update(float dt)
 	m_enemyManager.update(dt);
 	m_unitController.update(dt);
 	m_bulletFactory->UpdateBullets(dt);
+
+	checkCollisions();
+}
+
+void GameScene::checkCollisions()
+{
+	m_collisionMgr.checkEnemyUnitRange(m_enemyManager.getEnemies(), m_unitController.getUnits());
 }
 
 void GameScene::pause()

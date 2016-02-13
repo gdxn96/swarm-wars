@@ -83,12 +83,15 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletFactory.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="OrderPointer.h" />
+    <ClInclude Include="Polygon.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="SpawnPointController.h" />
@@ -105,6 +108,8 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletFactory.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
@@ -112,6 +117,7 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="OrderPointer.cpp" />
+    <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="SpawnPointController.cpp" />

@@ -12,6 +12,7 @@ public:
 	void update(Vector2D position, float dir, float dt);
 	void fire();
 	float RandomFloat(float min, float max);
+	Polygon2D& getRange();
 
 private:
 	float m_range;
@@ -24,8 +25,6 @@ private:
 	VisionCone m_visionCone;
 	BulletType m_bullet;
 	BulletFactory *m_bulletFactory;
-
-
 };
 
 

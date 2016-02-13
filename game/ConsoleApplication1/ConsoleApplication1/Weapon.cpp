@@ -33,6 +33,11 @@ void Weapon::update(Vector2D position, float dir, float dt)
 	m_visionCone.update(m_position, minAngle, maxAngle);
 }
 
+Polygon2D& Weapon::getRange()
+{
+	return m_visionCone.getRange();
+}
+
 void Weapon::fire()
 {
 	if (m_timeToFire < 0)

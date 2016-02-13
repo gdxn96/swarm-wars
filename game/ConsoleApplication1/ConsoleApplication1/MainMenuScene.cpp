@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainMenuScene.h"
+#include "Polygon.h"
 
 MainMenuScene::MainMenuScene() : Scene(Scenes::MAINMENU)
 {
@@ -13,7 +14,6 @@ void MainMenuScene::update(float dt)
 
 void MainMenuScene::draw(sf::RenderWindow &window)
 {
-
 	sf::Event Event;
 	while (window.pollEvent(Event))
 	{

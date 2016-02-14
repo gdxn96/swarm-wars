@@ -3,9 +3,9 @@
 
 //actual static variable values defined here
 
-int const GameConstants::TOWER_RADIUS = 80;
+float const GameConstants::TOWER_RADIUS = 80;
 float const GameConstants::PLAYER_RADIUS = 4;
-int const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 15;
+float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 15;
 float const GameConstants::PLAYER_SPEED = 0.5f; // rads / second
 
 float const GameConstants::PI = std::acos(-1);

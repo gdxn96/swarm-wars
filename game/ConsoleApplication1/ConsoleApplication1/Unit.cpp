@@ -15,6 +15,20 @@ Unit::Unit()
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
 }
 
+Unit::Unit(float startAngle)
+: PI(GameConstants::PI),
+m_speed(GameConstants::PLAYER_SPEED),
+m_radius(GameConstants::PLAYER_RADIUS),
+m_positionAngle(startAngle),
+m_targetAngle(startAngle),
+m_state(UNIT_STATE::WAITING),
+m_directionAngle(0),
+m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE))
+{
+	updateAngle(m_positionAngle);
+	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
+}
+
 void Unit::fireWeapon()
 {
 	m_currentWeapon.fire();
@@ -22,8 +36,6 @@ void Unit::fireWeapon()
 
 void Unit::update(float dt)
 {	
-	m_directionAngle = m_positionAngle;
-
 	//if given a move order
 	if (m_state == UNIT_STATE::MOVING)
 	{
@@ -45,7 +57,7 @@ void Unit::update(float dt)
 	}
 	else if (m_state == UNIT_STATE::WAITING)
 	{ 
-
+		m_directionAngle = m_positionAngle;
 	}
 	else if (m_state == UNIT_STATE::FIRING)
 	{

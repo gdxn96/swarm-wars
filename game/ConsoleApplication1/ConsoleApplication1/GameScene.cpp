@@ -12,7 +12,6 @@ GameScene::GameScene()
 
 	//init must be called to avoid players being created without weapons
 	m_unitController.init();
-	//m_enemyManager.spawnEnemy();
 
 	for (int i = 0; i < m_numBunkers; i++)
 	{

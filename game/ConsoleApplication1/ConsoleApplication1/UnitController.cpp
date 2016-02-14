@@ -7,9 +7,10 @@ UnitController::UnitController()
 
 void UnitController::init()
 {
-	for (int i = 0; i < 3; i++)
+	int numUnits = 10;
+	for (int i = 0; i < numUnits; i++)
 	{
-		m_units.push_back(new Unit());
+		m_units.push_back(new Unit(2 * GameConstants::PI / numUnits * i));
 	}
 
 	m_currentUnit = m_units[0];

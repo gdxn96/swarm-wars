@@ -11,6 +11,8 @@ class Unit
 {
 public:
 	Unit();
+	Unit(float startAngle);
+
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 

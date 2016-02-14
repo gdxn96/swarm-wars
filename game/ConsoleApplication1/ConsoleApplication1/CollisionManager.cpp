@@ -39,7 +39,7 @@ void CollisionManager::checkEnemyUnitRange(vector<Enemy*> enemies, vector<Unit*>
 		{
 			if (Intersects(enemy->getBounds(), unit->getRangeCone()))
 			{
-
+				unit->changeState(UNIT_STATE::FIRING);
 			}
 		}
 	}

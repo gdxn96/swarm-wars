@@ -19,7 +19,6 @@ Circle& Enemy::getBounds()
 	return m_bounds;
 }
 
-
 void Enemy::update(float dt)
 {
 	m_position += m_direction * dt * m_speed;
@@ -28,11 +27,7 @@ void Enemy::update(float dt)
 
 void Enemy::draw(sf::RenderWindow& window)
 {
-	sf::CircleShape enemy = sf::CircleShape(m_radius);
-	enemy.setFillColor(sf::Color::Red);
-	enemy.setOrigin(m_radius, m_radius);
-	enemy.setPosition(m_position.toSFMLVector());
-	window.draw(enemy);
+	m_bounds.draw(window, sf::Color::Red);
 }
 
 void Enemy::changeState(ENEMY_STATE state)

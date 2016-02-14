@@ -7,6 +7,7 @@ public:
 	Circle(Vector2D centre, float radius);
 	void setCentre(Vector2D);
 	void setRadius(float);
+	void draw(sf::RenderWindow & window, sf::Color color);
 	float getRadius();
 	Vector2D getCentre();
 

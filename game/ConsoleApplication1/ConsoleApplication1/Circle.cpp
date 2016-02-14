@@ -24,3 +24,12 @@ Vector2D Circle::getCentre()
 {
 	return m_centre;
 }
+
+void Circle::draw(sf::RenderWindow & window, sf::Color color)
+{
+	sf::CircleShape circle = sf::CircleShape(m_radius);
+	circle.setFillColor(color);
+	circle.setOrigin(m_radius, m_radius);
+	circle.setPosition(m_centre.toSFMLVector());
+	window.draw(circle);
+}

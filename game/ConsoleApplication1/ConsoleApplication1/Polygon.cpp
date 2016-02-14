@@ -22,7 +22,7 @@ std::vector<std::pair<Vector2D, Vector2D>> const Polygon2D::getEdges()
 	return m_edges;
 }
 
-void Polygon2D::draw(sf::RenderWindow & window)
+void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 {
 	sf::ConvexShape polygon;
 	polygon.setPointCount(m_vertices.size());
@@ -31,7 +31,7 @@ void Polygon2D::draw(sf::RenderWindow & window)
 	{
 		polygon.setPoint(i, m_vertices[i].toSFMLVector());
 	}
-
+	polygon.setFillColor(color);
 	window.draw(polygon);
 }
 

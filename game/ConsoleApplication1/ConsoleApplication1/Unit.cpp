@@ -73,14 +73,14 @@ void Unit::draw(sf::RenderWindow & window)
 
 	//draw player
 	sf::CircleShape player = sf::CircleShape(m_radius);
-	player.setFillColor(sf::Color::Red);
+	player.setFillColor(sf::Color::Green);
 	player.setOrigin(m_radius, m_radius);
 	player.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
 	window.draw(player);
 
 	//draw target
 	sf::CircleShape target = sf::CircleShape(m_radius);
-	target.setFillColor(sf::Color::Blue);
+	target.setFillColor(sf::Color::Cyan);
 	target.setOrigin(m_radius, m_radius);
 	target.setPosition(getPositionByAngle(m_targetAngle).toSFMLVector());
 	window.draw(target);

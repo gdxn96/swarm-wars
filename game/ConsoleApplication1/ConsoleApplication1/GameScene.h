@@ -6,6 +6,8 @@
 #include "WeaponFactory.h"
 #include "EnemyManager.h"
 #include "CollisionManager.h"
+#include "Bunker.h"
+#include "Tower.h"
 
 class GameScene : public Scene
 {
@@ -28,6 +30,11 @@ private:
 	BulletFactory * m_bulletFactory;
 	EnemyManager m_enemyManager;
 	CollisionManager m_collisionMgr;
+
+	vector<Bunker> m_bunkers;
+	Tower m_tower;
+
+	int m_numBunkers;
 
 
 };

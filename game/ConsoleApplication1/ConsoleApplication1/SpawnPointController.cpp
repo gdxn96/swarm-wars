@@ -4,7 +4,14 @@
 
 SpawnPointController::SpawnPointController()
 {
-	spawnPoints.push_back(Vector2D(GameConstants::WINDOW_CENTRE.x, -50));
+	float spawnRadius = GameConstants::WINDOW_SIZE.x;
+	int numSpawnPoints = 12;
+
+	for (int i = 0; i < numSpawnPoints; i++)
+	{
+		spawnPoints.push_back(Vector2D(2 * GameConstants::PI / numSpawnPoints * i) * GameConstants::WINDOW_CENTRE);
+	}
+	
 }
 
 Vector2D SpawnPointController::getSpawnPoint()

@@ -54,6 +54,7 @@ void BulletFactory::UpdateBullets(float dt)
 		}
 		else
 		{
+			delete m_bulletList[i];
 			m_bulletList.erase(m_bulletList.begin() + i);
 			std::cout << m_bulletList.size() << std::endl;
 		}

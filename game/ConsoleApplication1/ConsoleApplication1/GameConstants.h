@@ -7,6 +7,8 @@
 class GameConstants {
 public:
 	//radius in which players can walk about the centre of the map
+	static int const TOWER_RADIUS; // defined in GameConstants.cpp	
+
 	static int const WALK_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_SPEED; // defined in GameConstants.cpp
@@ -14,6 +16,11 @@ public:
 	static float const ENEMY_RADIUS; // defined in GameConstants.cpp
 	static float const ENEMY_SPAWN_INTERVAL; // defined in GameConstants.cpp
 	static float const ENEMY_SPEED; // defined in GameConstants.cpp
+
+	static float const BUNKER_SIZE_OUTER; // defined in GameConstants.cpp
+	static float const BUNKER_SIZE_INNER; // defined in GameConstants.cpp
+	static float const BUNKER_SIZE_WIDTH; // defined in GameConstants.cpp
+	static float const BUNKER_SIZE_HEIGHT; // defined in GameConstants.cpp
 
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	

@@ -27,6 +27,7 @@
 #include "MainMenuScene.h"
 #include "SplashScene.h"
 #include "GameConstants.h"
+#include <time.h>
 
 #define _USE_MATH_DEFINES
 
@@ -56,6 +57,7 @@ using namespace std;
 
 int main()
 {
+	srand(time(NULL));
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
 
@@ -101,7 +103,7 @@ int main()
 		SceneManager::getInstance()->update(dt);
 		
 		//prepare frame
-		window.clear();
+		window.clear(sf::Color(230,155,131));
 
 		//draw frame items
 		SceneManager::getInstance()->draw(window);

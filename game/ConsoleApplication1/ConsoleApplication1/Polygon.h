@@ -11,7 +11,7 @@ public:
 	void clearPoints();
 	void addPoint(Vector2D point);
 	bool pointInside(Vector2D point);
-	void draw(sf::RenderWindow & window);
+	void draw(sf::RenderWindow & window, sf::Color color);
 	
 
 private:

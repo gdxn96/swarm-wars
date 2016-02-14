@@ -39,6 +39,9 @@
     <Filter Include="CODE\GAME\ENEMIES">
       <UniqueIdentifier>{9be2ea85-2d8f-4bcb-9ef8-17330cdfb4ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CODE\GAME\DEFENSES">
+      <UniqueIdentifier>{7952bd64-dbfb-4df7-ba92-04bc76b3cffe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -113,6 +116,12 @@
     <ClInclude Include="Circle.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
+    <ClInclude Include="Bunker.h">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -183,6 +192,12 @@
     </ClCompile>
     <ClCompile Include="Circle.cpp">
       <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="Bunker.cpp">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>CODE\GAME\DEFENSES</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

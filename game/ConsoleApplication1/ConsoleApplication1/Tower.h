@@ -13,6 +13,7 @@ public:
 
 private:
 	Circle m_bounds;
+	Circle m_innerBounds;
 };
 
 

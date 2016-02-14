@@ -19,6 +19,8 @@ public:
 	//creates a bullet and places it inside the bulletList to be updated
 	void addBullet(BulletType bullet, Vector2D position, Vector2D direction, float range);
 
+	std::vector<Bullet *> getBullets();
+
 private:
 	std::vector<Bullet *> m_bulletList;
 };

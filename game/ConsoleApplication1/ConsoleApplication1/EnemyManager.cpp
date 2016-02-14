@@ -28,9 +28,17 @@ void EnemyManager::update(float dt)
 		m_spawnInterval = GameConstants::ENEMY_SPAWN_INTERVAL;
 		spawnEnemy();
 	}
-	for (Enemy * enemy : m_enemies)
+	for (int i = 0; i < m_enemies.size(); i++)
 	{
-		enemy->update(dt);
+		if (m_enemies[i]->getAlive())
+		{
+			m_enemies[i]->update(dt);
+		}
+		else
+		{
+			delete m_enemies[i];
+			m_enemies.erase(m_enemies.begin() + i);
+		}
 	}
 }
 

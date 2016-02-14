@@ -9,9 +9,8 @@ SpawnPointController::SpawnPointController()
 
 	for (int i = 0; i < numSpawnPoints; i++)
 	{
-		spawnPoints.push_back(Vector2D(2 * GameConstants::PI / numSpawnPoints * i) * GameConstants::WINDOW_CENTRE);
+		spawnPoints.push_back(Vector2D(2 * GameConstants::PI / numSpawnPoints * i) * spawnRadius + GameConstants::WINDOW_CENTRE);
 	}
-	
 }
 
 Vector2D SpawnPointController::getSpawnPoint()

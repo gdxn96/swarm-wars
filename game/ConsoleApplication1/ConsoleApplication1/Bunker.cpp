@@ -32,7 +32,7 @@ void Bunker::draw(sf::RenderWindow & window)
 	m_bounds.draw(window, sf::Color(128, 64, 128, 255));
 }
 
-Polygon2D& Bunker::getPolygon(sf::RenderWindow & window)
+Polygon2D& Bunker::getBounds()
 {
 	return m_bounds;
 }

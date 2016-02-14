@@ -13,7 +13,7 @@ float const GameConstants::PI = std::acos(-1);
 float const GameConstants::ENEMY_RADIUS = 5;
 float const GameConstants::ENEMY_SPEED = 50;
 
-float enemiesPerSecond = 0.5;
+float enemiesPerSecond = 3;
 float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
 
 float const GameConstants::POINTER_RADIUS = GameConstants::PLAYER_RADIUS + 1;

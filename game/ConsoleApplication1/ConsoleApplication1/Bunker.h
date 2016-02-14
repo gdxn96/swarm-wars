@@ -8,7 +8,7 @@ public:
 	Bunker(float angle);
 	void damageBunker(float damage);
 	void draw(sf::RenderWindow & window);
-	Polygon2D& getPolygon(sf::RenderWindow & window);
+	Polygon2D& getBounds();
 
 
 private:

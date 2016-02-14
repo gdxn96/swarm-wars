@@ -9,7 +9,8 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction)
 	m_position(spawnPosition),
 	m_direction(direction),
 	m_speed(GameConstants::ENEMY_SPEED),
-	m_bounds(Circle(m_position, m_radius))
+	m_bounds(Circle(m_position, m_radius)),
+	m_alive(true)
 {
 	
 }
@@ -19,10 +20,25 @@ Circle& Enemy::getBounds()
 	return m_bounds;
 }
 
+bool Enemy::getAlive()
+{
+	return m_alive;
+}
+
+void Enemy::kill()
+{
+	m_alive = false;
+}
+
 void Enemy::update(float dt)
 {
-	m_position += m_direction * dt * m_speed;
-	m_bounds.setCentre(m_position);
+	if (m_currentState == ENEMY_STATE::MOVING)
+	{
+		m_position += m_direction * dt * m_speed;
+		m_bounds.setCentre(m_position);
+	}
+
+	
 }
 
 void Enemy::draw(sf::RenderWindow& window)

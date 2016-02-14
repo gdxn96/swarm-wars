@@ -8,14 +8,21 @@ Bullet::Bullet(Vector2D position, Vector2D direction, float speed, float radius,
 	m_speed(speed),
 	m_radius(radius),
 	m_direction(direction),
-	m_alive(true)
+	m_alive(true),
+	m_bounds(Circle(position, radius))
 {
+}
+
+void Bullet::kill()
+{
+	m_alive = false;
 }
 
 void Bullet::Update(float dt)
 {
 	m_velocity = m_direction * m_speed * dt;
 	m_position += m_velocity;
+	m_bounds.setCentre(m_position);
 
 	if (Vector2D::Magnitude((m_position - m_initPosition)) > m_range)
 	{
@@ -23,12 +30,14 @@ void Bullet::Update(float dt)
 	}
 }
 
+Circle& Bullet::getBounds()
+{
+	return m_bounds;
+}
+
 void Bullet::Draw(sf::RenderWindow &window)
 {
-	sf::CircleShape myBullet = sf::CircleShape(m_radius);
-	myBullet.setPosition(m_position.toSFMLVector() - Vector2D(m_radius, m_radius).toSFMLVector());
-	myBullet.setFillColor(sf::Color::Green);
-	window.draw(myBullet);
+	m_bounds.draw(window, sf::Color::Green);
 }
 
 bool Bullet::getAlive()

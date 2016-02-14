@@ -14,6 +14,8 @@ public:
 	void changeState(ENEMY_STATE state);
 
 	Circle& getBounds();
+	bool getAlive();
+	void kill();
 
 private:
 	Vector2D m_position;
@@ -22,6 +24,7 @@ private:
 	float m_radius;
 	ENEMY_STATE m_currentState;
 	Circle m_bounds;
+	bool m_alive;
 
 
 };

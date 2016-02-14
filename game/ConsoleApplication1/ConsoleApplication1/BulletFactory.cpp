@@ -35,6 +35,11 @@ void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D dir
 
 }
 
+std::vector<Bullet *> BulletFactory::getBullets()
+{
+	return m_bulletList;
+}
+
 void BulletFactory::drawBullets(sf::RenderWindow& window)
 {
 	for (int i = 0; i < m_bulletList.size(); i++)

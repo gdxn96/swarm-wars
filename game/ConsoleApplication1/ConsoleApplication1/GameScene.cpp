@@ -43,16 +43,18 @@ void GameScene::pause()
 
 void GameScene::draw(sf::RenderWindow &window)
 {
-	m_enemyManager.draw(window);
-	m_unitController.draw(window);
-	m_bulletFactory->drawBullets(window);
-
 	for (Bunker bunker : m_bunkers)
 	{
 		bunker.draw(window);
 	}
 
 	m_tower.draw(window);
+
+	m_enemyManager.draw(window);
+	m_unitController.draw(window);
+	m_bulletFactory->drawBullets(window);
+
+	
 
 	//can obviously be deleted once you start working on the game
 	sf::Text text("Game", font, 50);

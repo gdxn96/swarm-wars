@@ -1,8 +1,24 @@
 #include "stdafx.h"
 #include "Polygon.h"
 
-Polygon2D::Polygon2D()
+Polygon2D::Polygon2D() : m_hasBroudPhaseCircle(false)
 {
+}
+
+void Polygon2D::setBroadPhaseCircle(Vector2D centre, float radius)
+{
+	m_hasBroudPhaseCircle = true;
+	m_broadPhaseCircle = Circle(centre, radius);
+}
+
+Circle& Polygon2D::getBroadPhaseCircle()
+{
+	return m_broadPhaseCircle;
+}
+
+bool Polygon2D::hasBroadPhaseCircle()
+{
+	return m_hasBroudPhaseCircle;
 }
 
 bool Polygon2D::pointInside(Vector2D point)
@@ -24,6 +40,10 @@ std::vector<std::pair<Vector2D, Vector2D>> const Polygon2D::getEdges()
 
 void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 {
+	if (m_hasBroudPhaseCircle)
+	{
+		//m_broadPhaseCircle.draw(window, sf::Color::Blue);
+	}
 	sf::ConvexShape polygon;
 	polygon.setPointCount(m_vertices.size());
 

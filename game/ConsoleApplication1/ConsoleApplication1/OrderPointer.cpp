@@ -43,6 +43,8 @@ void OrderPointer::draw(RenderWindow & window)
 	ptr.setFillColor(Color::Yellow);
 	ptr.setOrigin(m_radius, m_radius);
 	ptr.setPosition(m_position.toSFMLVector());
+
+	if (m_angle != 2 * GameConstants::PI)
 	window.draw(ptr);
 }
 

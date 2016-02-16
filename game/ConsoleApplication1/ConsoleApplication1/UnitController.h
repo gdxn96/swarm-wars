@@ -5,10 +5,10 @@
 #include <vector>
 #include <iostream>
 #include "WeaponFactory.h"
+#include "InputHandler.h"
 using namespace std;
 
 // class that controls the units on screen
-// functions similarly to the order-pointer from previous revisions of the code
 // also monitors controller input to tell the currently selected unit what to do
 
 class UnitController

@@ -27,11 +27,17 @@ public:
 	//simple setter
 	void setTargetAngle(float targetAngle);
 
+	void setDirectionAngle(float angle);
+
 	Vector2D getPositionByAngle(float angle);
 
 	//finds out whether clockwise/anticlockwise is the shortest path 
 	// for two angles to meet, returns either 1 or -1
 	int getDirectionToTarget();
+
+	bool isPlayer();
+
+	void setSelected(bool isSelected);
 
 	float NormalizeAngle(float angle);
 
@@ -40,6 +46,8 @@ public:
 	float findAngleBetween(float a, float b);
 
 	Polygon2D& getRangeCone();
+
+	UNIT_STATE &getPreviousState();
 
 private:
 	float m_positionAngle; // angle signifying position relative to walk radius
@@ -51,7 +59,10 @@ private:
 	float m_directionAngle; //radian rotation of player "0 rads == (x1, y0)"
 	Vector2D m_position;
 	UNIT_STATE m_state;
+	UNIT_STATE m_previousState;
 	Weapon m_currentWeapon;
+	bool m_isPlayer;
+	bool m_isSelected;
 
 };
 

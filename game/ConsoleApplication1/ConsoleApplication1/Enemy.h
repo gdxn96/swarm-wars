@@ -25,6 +25,9 @@ private:
 	ENEMY_STATE m_currentState;
 	Circle m_bounds;
 	bool m_alive;
+	float m_health;
+	float m_damagePerSecond;
+	float m_maxHealth;
 
 
 };

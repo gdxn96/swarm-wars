@@ -15,6 +15,7 @@ Bunker::Bunker(float angle) : m_maxHealth(100), m_health(m_maxHealth)
 	m_bounds.addPoint(GameConstants::WINDOW_CENTRE + topRight);
 	m_bounds.addPoint(GameConstants::WINDOW_CENTRE + bottomRight);
 	m_bounds.addPoint(GameConstants::WINDOW_CENTRE + bottomLeft);
+	m_bounds.setBroadPhaseCircle(GameConstants::WINDOW_CENTRE, GameConstants::BUNKER_SIZE_OUTER);
 
 }
 

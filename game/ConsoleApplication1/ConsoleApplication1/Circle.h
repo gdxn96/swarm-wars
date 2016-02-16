@@ -4,6 +4,7 @@
 class Circle
 {
 public:
+	Circle();
 	Circle(Vector2D centre, float radius);
 	void setCentre(Vector2D);
 	void setRadius(float);

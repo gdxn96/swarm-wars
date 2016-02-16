@@ -5,11 +5,14 @@ Unit::Unit()
 :	PI(GameConstants::PI), 
 	m_speed(GameConstants::PLAYER_SPEED), 
 	m_radius(GameConstants::PLAYER_RADIUS),
-	m_positionAngle(0),
+	m_positionAngle(2 * GameConstants::PI * 0.75f),
 	m_targetAngle(0),
 	m_state(UNIT_STATE::WAITING),
-	m_directionAngle(0),
-	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE))
+	m_directionAngle(m_positionAngle),
+	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE)),
+	m_isPlayer(true),
+	m_isSelected(true),
+	m_previousState(UNIT_STATE::WAITING)
 {
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
@@ -22,11 +25,25 @@ m_radius(GameConstants::PLAYER_RADIUS),
 m_positionAngle(startAngle),
 m_targetAngle(startAngle),
 m_state(UNIT_STATE::WAITING),
-m_directionAngle(0),
-m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE))
+m_directionAngle(startAngle),
+m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE)),
+m_isPlayer(false),
+m_isSelected(false),
+m_previousState(UNIT_STATE::WAITING)
 {
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
+}
+
+bool Unit::isPlayer()
+{
+	return m_isPlayer;
+}
+
+void Unit::setDirectionAngle(float angle)
+{
+	if (angle != 0)
+	m_directionAngle = angle;
 }
 
 void Unit::fireWeapon()
@@ -57,7 +74,7 @@ void Unit::update(float dt)
 	}
 	else if (m_state == UNIT_STATE::WAITING)
 	{ 
-		m_directionAngle = m_positionAngle;
+		
 	}
 	else if (m_state == UNIT_STATE::FIRING)
 	{
@@ -75,7 +92,30 @@ Polygon2D& Unit::getRangeCone()
 
 void Unit::changeState(UNIT_STATE state)
 {
-	m_state = state;
+	if ((m_isPlayer && !m_isSelected && m_state == UNIT_STATE::WAITING))
+	{
+		return;
+	}
+	if (m_state != state)
+	{
+		if (!m_isSelected || (m_isSelected && !m_isPlayer && m_state == UNIT_STATE::WAITING) || (!m_isPlayer && m_state == UNIT_STATE::FIRING))
+		{
+			cout << "ijbnisdfnubui" << endl;
+			m_previousState = m_state;
+			m_state = state;
+		}
+	}
+		
+}
+
+void Unit::setSelected(bool isSelected)
+{
+	m_isSelected = isSelected;
+}
+
+UNIT_STATE &Unit::getPreviousState()
+{
+	return m_previousState;
 }
 
 void Unit::draw(sf::RenderWindow & window)
@@ -83,18 +123,26 @@ void Unit::draw(sf::RenderWindow & window)
 	//draw weapon
 	m_currentWeapon.draw(window);
 
-	//draw player
-	sf::CircleShape player = sf::CircleShape(m_radius);
-	player.setFillColor(sf::Color::Green);
-	player.setOrigin(m_radius, m_radius);
-	player.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
-	window.draw(player);
+	////draw player
+	//sf::CircleShape player = sf::CircleShape(m_radius);
+	//player.setFillColor(sf::Color::Green);
+	//if (m_isPlayer)
+	//{
+	//	player.setFillColor(sf::Color::Red);
+	//}
+	//
+	//player.setOrigin(m_radius, m_radius);
+	//player.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
+	
 
 	//draw target
 	sf::CircleShape target = sf::CircleShape(m_radius);
 	target.setFillColor(sf::Color::Cyan);
 	target.setOrigin(m_radius, m_radius);
 	target.setPosition(getPositionByAngle(m_targetAngle).toSFMLVector());
+	window.draw(target);
+	target.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
+	target.setFillColor(sf::Color::Red);
 	window.draw(target);
 }
 
@@ -122,8 +170,12 @@ void Unit::updateAngle(float angle)
 
 void Unit::setTargetAngle(float targetAngle)
 {
-	m_targetAngle = NormalizeAngle(targetAngle);
-	m_state = UNIT_STATE::MOVING;
+	if (targetAngle != 2 * PI && targetAngle != m_targetAngle)
+	{
+		m_targetAngle = NormalizeAngle(targetAngle);
+		m_state = UNIT_STATE::MOVING;
+	}
+	
 }
 
 float Unit::NormalizeAngle(float angle)

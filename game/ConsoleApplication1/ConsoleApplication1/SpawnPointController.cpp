@@ -5,7 +5,7 @@
 SpawnPointController::SpawnPointController()
 {
 	float spawnRadius = GameConstants::WINDOW_SIZE.x;
-	int numSpawnPoints = 30;
+	int numSpawnPoints = 10;
 
 	for (int i = 0; i < numSpawnPoints; i++)
 	{

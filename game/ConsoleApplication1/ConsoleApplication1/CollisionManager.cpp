@@ -33,14 +33,22 @@ void CollisionManager::checkEnemyTower(vector<Enemy*> enemies, Tower& tower)
 
 void CollisionManager::checkEnemyUnitRange(vector<Enemy*> enemies, vector<Unit*> units)
 {
-	for (Enemy * enemy : enemies)
+	for (Unit * unit : units)
 	{
-		for (Unit * unit : units)
+		bool seesEnemy = false;
+		for (Enemy * enemy : enemies)
 		{
 			if (Intersects(enemy->getBounds(), unit->getRangeCone()))
 			{
+				seesEnemy = true;
 				unit->changeState(UNIT_STATE::FIRING);
+				break;
 			}
+			
+		}
+		if (!seesEnemy && unit->getPreviousState() != UNIT_STATE::FIRING)
+		{
+			unit->changeState(unit->getPreviousState());
 		}
 	}
 }
@@ -76,6 +84,15 @@ float CollisionManager::distFromLineToPoint(Vector2D start, Vector2D end, Vector
 
 bool const CollisionManager::Intersects(Circle & circle, Polygon2D& polygon)
 {
+	//check broad phase
+	if (polygon.hasBroadPhaseCircle())
+	{
+		if (!Intersects(polygon.getBroadPhaseCircle(), circle))
+		{
+			return false;
+		}
+	}
+
 	//finds if the centre point of the circle is inside the poly first
 	if (polygon.pointInside(circle.getCentre()))
 	{
@@ -98,6 +115,15 @@ bool const CollisionManager::Intersects(Circle & circle, Polygon2D& polygon)
 
 bool const CollisionManager::Intersects(Polygon2D& polygon, Circle & circle)
 {
+	//check broad phase
+	if (polygon.hasBroadPhaseCircle())
+	{
+		if (!Intersects(polygon.getBroadPhaseCircle(), circle))
+		{
+			return false;
+		}
+	}
+
 	//finds if the centre point of the circle is inside the poly first
 	if (polygon.pointInside(circle.getCentre()))
 	{

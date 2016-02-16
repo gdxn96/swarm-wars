@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Circle.h"
 
+Circle::Circle()
+{
+
+}
+
 Circle::Circle(Vector2D centre, float radius) : m_radius(radius), m_centre(centre)
 {
 }

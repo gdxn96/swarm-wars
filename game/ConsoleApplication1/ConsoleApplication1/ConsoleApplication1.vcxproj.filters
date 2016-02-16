@@ -122,6 +122,9 @@
     <ClInclude Include="Tower.h">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -198,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="Tower.cpp">
       <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>CODE\HELPER</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

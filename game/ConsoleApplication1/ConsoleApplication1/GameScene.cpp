@@ -53,6 +53,7 @@ void GameScene::checkBunkers()
 
 void GameScene::checkCollisions(float dt)
 {
+	m_collisionMgr.checkBulletsTower(m_bulletFactory->getBullets(), m_tower);
 	m_collisionMgr.checkEnemyUnitRange(m_enemyManager.getEnemies(), m_unitController.getUnits());
 	m_collisionMgr.checkEnemyTower(m_enemyManager.getEnemies(), m_tower);
 	m_collisionMgr.checkEnemyBullets(m_enemyManager.getEnemies(), m_bulletFactory->getBullets());

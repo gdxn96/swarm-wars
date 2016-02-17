@@ -9,7 +9,7 @@ Unit::Unit()
 	m_targetAngle(0),
 	m_state(UNIT_STATE::WAITING),
 	m_directionAngle(m_positionAngle),
-	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE)),
+	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
 	m_isPlayer(true),
 	m_isSelected(true),
 	m_previousState(UNIT_STATE::WAITING)
@@ -26,7 +26,7 @@ m_positionAngle(startAngle),
 m_targetAngle(startAngle),
 m_state(UNIT_STATE::WAITING),
 m_directionAngle(startAngle),
-m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::ASSAULT_RIFLE)),
+m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
 m_isPlayer(false),
 m_isSelected(false),
 m_previousState(UNIT_STATE::WAITING)
@@ -44,6 +44,7 @@ void Unit::setDirectionAngle(float angle)
 {
 	if (angle != 0)
 	m_directionAngle = angle;
+	
 }
 
 void Unit::fireWeapon()
@@ -94,7 +95,7 @@ void Unit::changeState(UNIT_STATE state)
 {
 	if ((m_isPlayer && !m_isSelected && m_state == UNIT_STATE::WAITING))
 	{
-		return;
+		//return;
 	}
 	if (m_state != state)
 	{
@@ -174,6 +175,11 @@ void Unit::setTargetAngle(float targetAngle)
 	{
 		m_targetAngle = NormalizeAngle(targetAngle);
 		m_state = UNIT_STATE::MOVING;
+	}
+	else if (m_isPlayer && targetAngle != m_targetAngle)
+	{
+		m_targetAngle = m_positionAngle;
+		m_state = UNIT_STATE::WAITING;
 	}
 	
 }

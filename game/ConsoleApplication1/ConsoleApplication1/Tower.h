@@ -9,12 +9,13 @@ class Tower
 public:
 	Tower();
 	void draw(sf::RenderWindow & window);
-	Circle& getBounds();
+	Circle& getInnerBounds();
+	Circle& getOuterBounds();
 	void damage(float damage);
 	bool getAlive();
 
 private:
-	Circle m_bounds;
+	Circle m_outerBounds;
 	Circle m_innerBounds;
 	float m_health;
 	const float m_maxHealth;

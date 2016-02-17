@@ -42,7 +42,7 @@ void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 {
 	if (m_hasBroudPhaseCircle)
 	{
-		//m_broadPhaseCircle.draw(window, sf::Color::Blue);
+		//m_broadPhaseCircle.draw(window, sf::Color(0,0,255,128));
 	}
 	sf::ConvexShape polygon;
 	polygon.setPointCount(m_vertices.size());

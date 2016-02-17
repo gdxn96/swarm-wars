@@ -8,6 +8,7 @@ class GameConstants {
 public:
 	//radius in which players can walk about the centre of the map
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	
+	static float const TOWER_HEALTH; // defined in GameConstants.cpp
 
 	static float const WALK_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
@@ -48,10 +49,45 @@ class WeaponStats
 {
 public:
 	//AK Stuff
-	static int const AK_DMG;// defined in GameConstants.cpp	
-	static int const AK_RANGE;// defined in GameConstants.cpp	
+	static float const AK_DMG;// defined in GameConstants.cpp	
+	static float const AK_RANGE;// defined in GameConstants.cpp	
+	static float const AK_FOV;// defined in GameConstants.cpp	
+	static float const AK_FIRE_RATE;// defined in GameConstants.cpp
+
 
 	//Plasma gun stuff
-	static int const PLASMA_DMG;// defined in GameConstants.cpp	
-	static int const PLASMA_RANGE;// defined in GameConstants.cpp	
+	static float const PLASMA_DMG;// defined in GameConstants.cpp	
+	static float const PLASMA_RANGE;// defined in GameConstants.cpp	
+	static float const PLASMA_FOV;// defined in GameConstants.cpp	
+	static float const PLASMA_FIRE_RATE;// defined in GameConstants.cpp
+
+	//sniper
+	static float const SNIPER_DMG;// defined in GameConstants.cpp	
+	static float const SNIPER_RANGE;// defined in GameConstants.cpp	
+	static float const SNIPER_FOV;// defined in GameConstants.cpp	
+	static float const SNIPER_FIRE_RATE;// defined in GameConstants.cpp
+
+	//shotgun
+	static float const SHOTGUN_DMG;// defined in GameConstants.cpp	
+	static float const SHOTGUN_RANGE;// defined in GameConstants.cpp	
+	static float const SHOTGUN_FOV;// defined in GameConstants.cpp	
+	static float const SHOTGUN_FIRE_RATE;// defined in GameConstants.cpp
+
+	//LMG
+	static float const LMG_DMG;// defined in GameConstants.cpp	
+	static float const LMG_RANGE;// defined in GameConstants.cpp	
+	static float const LMG_FOV;// defined in GameConstants.cpp	
+	static float const LMG_FIRE_RATE;// defined in GameConstants.cpp
+
+	//SMG
+	static float const SMG_DMG;// defined in GameConstants.cpp	
+	static float const SMG_RANGE;// defined in GameConstants.cpp	
+	static float const SMG_FOV;// defined in GameConstants.cpp	
+	static float const SMG_FIRE_RATE;// defined in GameConstants.cpp
+
+	//pistol
+	static float const PISTOL_DMG;// defined in GameConstants.cpp	
+	static float const PISTOL_RANGE;// defined in GameConstants.cpp	
+	static float const PISTOL_FOV;// defined in GameConstants.cpp	
+	static float const PISTOL_FIRE_RATE;// defined in GameConstants.cpp
 };

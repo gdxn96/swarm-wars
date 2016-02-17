@@ -7,15 +7,27 @@ CollisionManager::CollisionManager()
 
 void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*> bullets)
 {
-	for (Enemy * enemy : enemies)
+	for (Bullet * bullet : bullets)
 	{
-		for (Bullet * bullet : bullets)
+		for (Enemy * enemy : enemies)
 		{
 			if (Intersects(bullet->getBounds(), enemy->getBounds()))
 			{
 				bullet->kill();
 				enemy->damage(bullet->getDamage());
+				break;
 			}
+		}
+	}
+}
+
+void CollisionManager::checkBulletsTower(vector<Bullet*> bullets, Tower& tower)
+{
+	for (Bullet * bullet : bullets)
+	{
+		if (Intersects(bullet->getBounds(), tower.getOuterBounds()))
+		{
+			bullet->kill();
 		}
 	}
 }
@@ -24,7 +36,7 @@ void CollisionManager::checkEnemyTower(vector<Enemy*> enemies, Tower& tower)
 {
 	for (Enemy * enemy : enemies)
 	{
-		if (Intersects(enemy->getBounds(), tower.getBounds()))
+		if (Intersects(enemy->getBounds(), tower.getInnerBounds()))
 		{
 			enemy->kill();
 			tower.damage(enemy->getDamage());
@@ -94,6 +106,7 @@ float CollisionManager::distFromLineToPoint(Vector2D start, Vector2D end, Vector
 
 bool const CollisionManager::Intersects(Circle & circle, Polygon2D& polygon)
 {
+
 	//check broad phase
 	if (polygon.hasBroadPhaseCircle())
 	{

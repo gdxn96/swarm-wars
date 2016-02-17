@@ -34,7 +34,7 @@ void UnitController::update(float dt)
 	{
 		switchUnit();
 	}
-	if (input->isHeld(InputHandler::A))
+	if (input->isPressed(InputHandler::A))
 	{
 		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
 	}

@@ -1,36 +1,209 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="CODE">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="CODE\GAME">
+      <UniqueIdentifier>{6e4920af-1715-4d25-aa13-60ab0d2d0bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\SCENE_STUFF">
+      <UniqueIdentifier>{0cf2678f-d612-4123-b960-ee5c4d35f648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES">
+      <UniqueIdentifier>{eb977295-83fd-4cdf-821d-b6c8d0d8aaa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\HELPER">
+      <UniqueIdentifier>{5576b4d8-f2a2-4157-bef3-0b5d89a8ddae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\DEFAULT">
+      <UniqueIdentifier>{c54ec031-2440-4b96-bb39-7810718bd72c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\UI">
+      <UniqueIdentifier>{1008cd62-9d38-42e9-a067-c093ccccd5c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\UNIT">
+      <UniqueIdentifier>{d17ed382-c8b6-4cbc-b2be-6ff825234f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\BULLET">
+      <UniqueIdentifier>{9421b291-86c7-4d3b-8796-cae878b003b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\WEAPONS">
+      <UniqueIdentifier>{dd1c1d82-d342-4449-9a59-60a014aedd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\ENEMIES">
+      <UniqueIdentifier>{9be2ea85-2d8f-4bcb-9ef8-17330cdfb4ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CODE\GAME\DEFENSES">
+      <UniqueIdentifier>{7952bd64-dbfb-4df7-ba92-04bc76b3cffe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
+      <Filter>CODE\DEFAULT</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>CODE\DEFAULT</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstants.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderPointer.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="VisionCone.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>CODE\GAME\UNIT</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitController.h">
+      <Filter>CODE\GAME\UNIT</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletFactory.h">
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFactory.h">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnPointController.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>CODE\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>CODE\HELPER</Filter>
+    </ClInclude>
+    <ClInclude Include="Bunker.h">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>CODE\HELPER</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>CODE\DEFAULT</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleApplication1.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>CODE\DEFAULT</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClCompile>
+    <ClCompile Include="GameConstants.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderPointer.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="VisionCone.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>CODE\GAME\UNIT</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitController.cpp">
+      <Filter>CODE\GAME\UNIT</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletFactory.cpp">
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>CODE\GAME\BULLET</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponFactory.cpp">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>CODE\GAME\WEAPONS</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnPointController.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>CODE\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="Bunker.cpp">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>CODE\HELPER</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

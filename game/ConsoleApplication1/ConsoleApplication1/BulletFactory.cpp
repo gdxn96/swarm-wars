@@ -3,7 +3,7 @@
 #include "Bullet.h"
 #include <iostream>
 
-void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D direction, float range)
+void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D direction, float range, float damage)
 {
 	float bulletSpeed = 0;
 	float radius = 1;
@@ -16,7 +16,7 @@ void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D dir
 		bulletSpeed = 150;
 		radius = 2;
 
-		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range));
+		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range, damage));
 
 		break;
 
@@ -24,7 +24,7 @@ void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D dir
 		bulletSpeed = 150;
 		radius = 2;
 
-		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range));
+		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range, damage));
 
 		break;
 

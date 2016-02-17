@@ -14,7 +14,7 @@ void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*>
 			if (Intersects(bullet->getBounds(), enemy->getBounds()))
 			{
 				bullet->kill();
-				enemy->kill();
+				enemy->damage(bullet->getDamage());
 			}
 		}
 	}
@@ -27,6 +27,7 @@ void CollisionManager::checkEnemyTower(vector<Enemy*> enemies, Tower& tower)
 		if (Intersects(enemy->getBounds(), tower.getBounds()))
 		{
 			enemy->kill();
+			tower.damage(enemy->getDamage());
 		}
 	}
 }
@@ -53,17 +54,26 @@ void CollisionManager::checkEnemyUnitRange(vector<Enemy*> enemies, vector<Unit*>
 	}
 }
 
-void CollisionManager::checkEnemyBunker(vector<Enemy*> enemies, vector<Bunker> bunkers)
+void CollisionManager::checkEnemyBunker(vector<Enemy*> enemies, vector<Bunker*> bunkers, float dt)
 {
 	for (Enemy * enemy : enemies)
 	{
-		for (Bunker& bunker : bunkers)
+		bool collidesBunker = false;
+		for (Bunker* bunker : bunkers)
 		{
-			if (Intersects(enemy->getBounds(), bunker.getBounds()))
+			if (Intersects(enemy->getBounds(), bunker->getBounds()))
 			{
+				cout << "collide" << endl;
 				enemy->changeState(ENEMY_STATE::ATTACKING);
-				bunker.damageBunker(1);
+				bunker->damageBunker(enemy->getDamage() * dt);
+				collidesBunker = true;
+				break;
 			}
+		}
+
+		if (!collidesBunker)
+		{
+			enemy->changeState(ENEMY_STATE::MOVING);
 		}
 	}
 }

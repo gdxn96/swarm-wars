@@ -13,14 +13,28 @@ public:
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_SPEED; // defined in GameConstants.cpp
 
-	static float const ENEMY_RADIUS; // defined in GameConstants.cpp
+	static float const ENEMY1_RADIUS; // defined in GameConstants.cpp
 	static float const ENEMY_SPAWN_INTERVAL; // defined in GameConstants.cpp
-	static float const ENEMY_SPEED; // defined in GameConstants.cpp
+	static float const ENEMY1_SPEED; // defined in GameConstants.cpp
+	static float const ENEMY1_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const ENEMY1_HEALTH; // defined in GameConstants.cpp
+
+	static float const ENEMY2_RADIUS; // defined in GameConstants.cpp
+	static float const ENEMY2_SPEED; // defined in GameConstants.cpp
+	static float const ENEMY2_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const ENEMY2_HEALTH; // defined in GameConstants.cpp
+
+	static float const BOSS_RADIUS; // defined in GameConstants.cpp
+	static float const BOSS_SPEED; // defined in GameConstants.cpp
+	static float const BOSS_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const BOSS_HEALTH; // defined in GameConstants.cpp
 
 	static float const BUNKER_SIZE_OUTER; // defined in GameConstants.cpp
 	static float const BUNKER_SIZE_INNER; // defined in GameConstants.cpp
 	static float const BUNKER_SIZE_WIDTH; // defined in GameConstants.cpp
 	static float const BUNKER_SIZE_HEIGHT; // defined in GameConstants.cpp
+
+	static float const BUNKER_HEALTH; // defined in GameConstants.cpp
 
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	

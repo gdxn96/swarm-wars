@@ -4,18 +4,20 @@
 #include "Circle.h"
 
 
-enum class ENEMY_STATE {MOVING, ATTACKING, INIFILTRATING};
+enum class ENEMY_STATE {MOVING, ATTACKING};
 class Enemy
 {
 public:
-	Enemy(Vector2D spawnPosition, Vector2D direction);
+	Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius);
 	void update(float dt);
 	void draw(sf::RenderWindow& window);
 	void changeState(ENEMY_STATE state);
 
 	Circle& getBounds();
 	bool getAlive();
+	float getDamage();
 	void kill();
+	void damage(float dmg);
 
 private:
 	Vector2D m_position;
@@ -27,7 +29,8 @@ private:
 	bool m_alive;
 	float m_health;
 	float m_damagePerSecond;
-	float m_maxHealth;
+	const float m_maxHealth;
+
 
 
 };

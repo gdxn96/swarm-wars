@@ -9,10 +9,12 @@ public:
 	void damageBunker(float damage);
 	void draw(sf::RenderWindow & window);
 	Polygon2D& getBounds();
+	bool isAlive();
 
 
 private:
 	float m_health;
+	float m_alive;
 	float m_maxHealth;
 	Polygon2D m_bounds;
 };

@@ -14,8 +14,9 @@ class GameScene : public Scene
 public:
 	GameScene();
 	void update(float dt) override;
-	void checkCollisions();
+	void checkCollisions(float dt);
 	void draw(sf::RenderWindow &window) override;
+	void checkBunkers();
 
 	//local method to game scene that needs to be addressed, no implementation
 	void pause();
@@ -31,10 +32,11 @@ private:
 	EnemyManager m_enemyManager;
 	CollisionManager m_collisionMgr;
 
-	vector<Bunker> m_bunkers;
+	vector<Bunker * > m_bunkers;
 	Tower m_tower;
 
 	int m_numBunkers;
+	bool m_paused;
 
 
 };

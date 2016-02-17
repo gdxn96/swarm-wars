@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Bunker.h"
 
-Bunker::Bunker(float angle) : m_maxHealth(100), m_health(m_maxHealth)
+Bunker::Bunker(float angle) : m_maxHealth(GameConstants::BUNKER_HEALTH), m_health(GameConstants::BUNKER_HEALTH), m_alive(true)
 {
 	float minAngle = angle - GameConstants::BUNKER_SIZE_WIDTH / 2;
 	float maxAngle = angle + GameConstants::BUNKER_SIZE_WIDTH / 2;
@@ -22,6 +22,15 @@ Bunker::Bunker(float angle) : m_maxHealth(100), m_health(m_maxHealth)
 void Bunker::damageBunker(float damage)
 {
 	m_health -= damage;
+	if (m_health <= 0)
+	{
+		m_alive = false;
+	}
+}
+
+bool Bunker::isAlive()
+{
+	return m_alive;
 }
 
 

@@ -48,7 +48,7 @@ void Weapon::fire()
 		Vector2D fireDirection = Vector2D(RandomFloat(minAngle, maxAngle));
 
 		//fire
-		m_bulletFactory->addBullet(m_bullet, m_position, fireDirection, m_range);
+		m_bulletFactory->addBullet(m_bullet, m_position, fireDirection, m_range, m_damage);
 
 	}
 }

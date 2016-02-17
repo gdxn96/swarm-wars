@@ -13,7 +13,11 @@ void EnemyManager::spawnEnemy()
 {
 	Vector2D spawnPosition = m_spawnPointController.getSpawnPoint();
 	Vector2D direction = (GameConstants::WINDOW_CENTRE - spawnPosition).Normalize();
-	m_enemies.push_back(new Enemy(spawnPosition, direction));
+	m_enemies.push_back(new Enemy(	spawnPosition, direction, 
+									GameConstants::ENEMY1_HEALTH, 
+									GameConstants::ENEMY1_DAMAGE_PER_SECOND, 
+									GameConstants::ENEMY1_SPEED, 
+									GameConstants::ENEMY1_RADIUS));
 }
 
 std::vector<Enemy *> EnemyManager::getEnemies()
@@ -27,7 +31,7 @@ void EnemyManager::update(float dt)
 	if (m_spawnInterval <= 0)
 	{
 		m_spawnInterval = GameConstants::ENEMY_SPAWN_INTERVAL;
-		if (m_enemies.size() < 80)
+		if (m_enemies.size() < 60)
 		{
 			spawnEnemy();
 		}

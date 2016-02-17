@@ -3,16 +3,33 @@
 #include <iostream>
 
 using namespace std;
-Enemy::Enemy(Vector2D spawnPosition, Vector2D direction) 
-:   m_radius(GameConstants::ENEMY_RADIUS), 
+Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius)
+:	m_radius(radius),
 	m_currentState(ENEMY_STATE::MOVING),
 	m_position(spawnPosition),
 	m_direction(direction),
-	m_speed(GameConstants::ENEMY_SPEED),
-	m_bounds(Circle(m_position, m_radius)),
-	m_alive(true)
+	m_speed(speed),
+	m_bounds(Circle(spawnPosition, radius)),
+	m_alive(true),
+	m_health(maxHealth),
+	m_maxHealth(maxHealth),
+	m_damagePerSecond(damagePerSecond)
 {
-	
+
+}
+
+float Enemy::getDamage()
+{
+	return m_damagePerSecond;
+}
+
+void Enemy::damage(float dmg)
+{
+	m_health -= dmg;
+	if (m_health <= 0)
+	{
+		kill();
+	}
 }
 
 Circle& Enemy::getBounds()
@@ -48,5 +65,9 @@ void Enemy::draw(sf::RenderWindow& window)
 
 void Enemy::changeState(ENEMY_STATE state)
 {
-	m_currentState = state;
+	if (m_currentState != state)
+	{
+		m_currentState = state;
+	}
+	
 }

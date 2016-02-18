@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "PhysicsObject.h"
 
 class SplashScene : public Scene
 {
@@ -15,5 +16,5 @@ public:
 
 private:
 	float m_timeToSwitch;
-
+	PhysicsObject object;
 };

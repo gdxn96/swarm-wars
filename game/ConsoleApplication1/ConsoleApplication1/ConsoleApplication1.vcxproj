@@ -95,6 +95,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="OrderPointer.h" />
+    <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
@@ -124,6 +125,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="OrderPointer.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />

@@ -1,5 +1,39 @@
-﻿Build started 17/02/2016 20:40:27.
+﻿Build started 18/02/2016 20:38:44.
+     1>Project "C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\CodingShiz\SFML-2.3.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ConsoleApplication1.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt PhysicsObject.cpp
+         PhysicsObject.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\CodingShiz\SFML-2.3.2\lib" kernel32.lib XINPUT9_1_0.LIB user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.lib" /MACHINE:X86 Debug\Bullet.obj
+         Debug\BulletFactory.obj
+         Debug\Bunker.obj
+         Debug\Circle.obj
+         Debug\CollisionManager.obj
+         Debug\ConsoleApplication1.obj
+         Debug\Enemy.obj
+         Debug\EnemyManager.obj
+         Debug\GameConstants.obj
+         Debug\GameScene.obj
+         Debug\InputHandler.obj
+         Debug\MainMenuScene.obj
+         Debug\OrderPointer.obj
+         Debug\PhysicsObject.obj
+         Debug\Polygon.obj
+         Debug\Scene.obj
+         Debug\SceneMgr.obj
+         Debug\SpawnPointController.obj
+         Debug\SplashScene.obj
+         Debug\stdafx.obj
+         Debug\Tower.obj
+         Debug\Unit.obj
+         Debug\UnitController.obj
+         Debug\Vector2D.obj
+         Debug\VisionCone.obj
+         Debug\Weapon.obj
+         Debug\WeaponFactory.obj
+         ConsoleApplication1.vcxproj -> C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.exe
+     1>Done Building Project "C:\Users\Shane\My Projects\Project\Git\Physics\swarm-wars\game\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.04
+Time Elapsed 00:00:01.43

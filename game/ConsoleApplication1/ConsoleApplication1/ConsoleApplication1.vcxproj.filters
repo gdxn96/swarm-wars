@@ -42,6 +42,9 @@
     <Filter Include="CODE\GAME\DEFENSES">
       <UniqueIdentifier>{7952bd64-dbfb-4df7-ba92-04bc76b3cffe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE">
+      <UniqueIdentifier>{b7f0126e-fdda-4c58-b6ab-af8f15b183e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,9 +60,6 @@
       <Filter>CODE\GAME</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
-    </ClInclude>
-    <ClInclude Include="SplashScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
@@ -125,12 +125,15 @@
     <ClInclude Include="InputHandler.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
+    <ClInclude Include="SplashScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
-    </ClCompile>
-    <ClCompile Include="SplashScene.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -204,6 +207,12 @@
     </ClCompile>
     <ClCompile Include="InputHandler.cpp">
       <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

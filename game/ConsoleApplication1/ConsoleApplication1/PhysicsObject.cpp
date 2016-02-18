@@ -61,7 +61,7 @@ void PhysicsObject::bounce()
 	if (m_pos.x - m_radius <= 0)
 	{
 		m_pos.x = m_radius;
-		m_direction.x *= -1 * m_restitution;		// 4. Elastic Collisions
+		m_direction.x *= -1 * m_restitution;		
 	}
 	else if (m_pos.x + m_radius >= m_bounds.x)
 	{

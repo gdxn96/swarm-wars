@@ -3,7 +3,7 @@
 
 SplashScene::SplashScene() : 
 	Scene(Scenes::SPLASH), 
-	m_timeToSwitch(3),
+	m_timeToSwitch(6.5f),
 	object(PhysicsObject(Vector2D(-100, 500), -45, 3000))
 {
 
@@ -11,16 +11,15 @@ SplashScene::SplashScene() :
 
 void SplashScene::update(float dt)
 {
-	//can obviously be deleted once you start working on the scene
-	//m_timeToSwitch -= dt;
+	//keeping time in for the moment
+	m_timeToSwitch -= dt;
 
 	object.update(dt);
 
-	/*if (m_timeToSwitch <= 0)
+	if (m_timeToSwitch <= 0)
 	{
-		m_timeToSwitch = 3;
 		SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
-	}*/
+	}
 }
 
 void SplashScene::draw(sf::RenderWindow &window)

@@ -105,6 +105,8 @@
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="UnitController.h" />
+    <ClInclude Include="UpgradeElement.h" />
+    <ClInclude Include="UpgradeManager.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="VisionCone.h" />
     <ClInclude Include="Weapon.h" />
@@ -136,6 +138,8 @@
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UnitController.cpp" />
+    <ClCompile Include="UpgradeElement.cpp" />
+    <ClCompile Include="UpgradeManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="VisionCone.cpp" />
     <ClCompile Include="Weapon.cpp" />

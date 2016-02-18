@@ -4,6 +4,8 @@
 
 // will be used for static game constants
 // NO MAGIC NUMBERS, use this
+
+enum class UNIT_RANK { A = 100, B = 200, C = 200 };
 class GameConstants {
 public:
 	//radius in which players can walk about the centre of the map
@@ -91,3 +93,4 @@ public:
 	static float const PISTOL_FOV;// defined in GameConstants.cpp	
 	static float const PISTOL_FIRE_RATE;// defined in GameConstants.cpp
 };
+

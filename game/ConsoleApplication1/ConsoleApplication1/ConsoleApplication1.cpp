@@ -85,6 +85,8 @@ int main()
 	sf::Clock deltaClock; // used to calculate dt
 	float dt = 0; // floating point dt as seconds
 
+	
+
 	// Start game loop 
 	while (window.isOpen())
 	{
@@ -101,6 +103,7 @@ int main()
 				window.close();
 
 		}
+		InputHandler::getInstance()->update();
 
 		SceneManager::getInstance()->update(dt);
 		
@@ -115,7 +118,7 @@ int main()
 
 		dt = deltaClock.restart().asSeconds();
 
-		InputHandler::getInstance()->update();
+		
 
 	} //loop back for next frame
 

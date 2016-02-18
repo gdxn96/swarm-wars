@@ -125,6 +125,12 @@
     <ClInclude Include="InputHandler.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
+    <ClInclude Include="UpgradeManager.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeElement.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -204,6 +210,12 @@
     </ClCompile>
     <ClCompile Include="InputHandler.cpp">
       <Filter>CODE\HELPER</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeManager.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeElement.cpp">
+      <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

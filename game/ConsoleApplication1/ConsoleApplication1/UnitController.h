@@ -10,7 +10,6 @@ using namespace std;
 
 // class that controls the units on screen
 // also monitors controller input to tell the currently selected unit what to do
-
 class UnitController
 {
 public:
@@ -21,6 +20,9 @@ public:
 	void draw(sf::RenderWindow & window);
 	void switchUnit();
 	vector<Unit*> getUnits();
+
+	void updateRanks();
+	bool checkExperienceRankMatch(UNIT_RANK rank, float experience);
 
 private:
 	vector<Unit*> m_units;

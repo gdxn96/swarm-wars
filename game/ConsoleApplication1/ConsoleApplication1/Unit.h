@@ -7,6 +7,7 @@
 #include "WeaponFactory.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
+
 class Unit
 {
 public:
@@ -23,6 +24,14 @@ public:
 	void fireWeapon();
 
 	void changeState(UNIT_STATE);
+
+	float getExperience();
+	void addExperience(float experience);
+
+	void setWeapon(Weapon* weapon);
+
+	UNIT_RANK& getRank();
+	void setRank(UNIT_RANK rank);
 
 	//simple setter
 	void setTargetAngle(float targetAngle);
@@ -63,6 +72,5 @@ private:
 	Weapon m_currentWeapon;
 	bool m_isPlayer;
 	bool m_isSelected;
-
 };
 

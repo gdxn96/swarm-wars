@@ -1,7 +1,7 @@
 #pragma once 
 
 #include "Enemy.h"
-#include "Unit.h"
+#include "UnitController.h"
 #include "Bullet.h"
 #include "Circle.h"
 #include "Polygon.h"
@@ -11,7 +11,7 @@
 class CollisionManager
 {
 public:
-	CollisionManager();
+	CollisionManager(UnitController* unitController);
 
 	void checkBulletsTower(vector<Bullet*> bullets, Tower& tower);
 	void checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*> bullets);
@@ -25,5 +25,7 @@ private:
 	bool const Intersects(Circle& circle, Polygon2D& polygon);
 	bool const Intersects(Polygon2D& polygon, Circle& circle);
 	bool const Intersects(Circle& circle1, Circle& circle2);
+
+	UnitController* m_unitController;
 };
 

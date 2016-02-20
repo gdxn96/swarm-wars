@@ -25,7 +25,7 @@ void MainMenuScene::draw(sf::RenderWindow &window)
 
 	
 	//can obviously be deleted once you start working on the scene
-	sf::Text text("MainMenu \n\n\nPress Space to Continue", font, 50);
+	sf::Text text("MainMenu \n\n\nPress Space to Continue", GameConstants::font, 50);
 	text.setColor(sf::Color::Red);
 	window.draw(text);
 }

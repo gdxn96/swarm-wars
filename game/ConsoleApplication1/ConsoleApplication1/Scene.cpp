@@ -6,10 +6,6 @@ using namespace std;
 
 Scene::Scene(Scenes title) : m_title(title)
 {
-	if (!font.loadFromFile("arial.ttf"))
-	{
-		cout << "err loading font" << endl;
-	}
 }
 
 void Scene::enter()

@@ -1,24 +1,7 @@
 #include "stdafx.h"
 #include "Unit.h"
 
-Unit::Unit() 
-:	PI(GameConstants::PI), 
-	m_speed(GameConstants::PLAYER_SPEED), 
-	m_radius(GameConstants::PLAYER_RADIUS),
-	m_positionAngle(2 * GameConstants::PI * 0.75f),
-	m_targetAngle(0),
-	m_state(UNIT_STATE::WAITING),
-	m_directionAngle(m_positionAngle),
-	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
-	m_isPlayer(true),
-	m_isSelected(true),
-	m_previousState(UNIT_STATE::WAITING)
-{
-	updateAngle(m_positionAngle);
-	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
-}
-
-Unit::Unit(float startAngle)
+Unit::Unit(float startAngle, string id)
 : PI(GameConstants::PI),
 m_speed(GameConstants::PLAYER_SPEED),
 m_radius(GameConstants::PLAYER_RADIUS),
@@ -29,10 +12,19 @@ m_directionAngle(startAngle),
 m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
 m_isPlayer(false),
 m_isSelected(false),
-m_previousState(UNIT_STATE::WAITING)
+m_previousState(UNIT_STATE::WAITING),
+m_rank(UNIT_RANK::A),
+m_experience(0),
+m_id(id)
 {
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
+	m_currentWeapon.setParentId(m_id);
+}
+
+void Unit::setIsPlayer(bool isPlayer)
+{
+	m_isPlayer = isPlayer;
 }
 
 bool Unit::isPlayer()
@@ -119,6 +111,12 @@ UNIT_STATE &Unit::getPreviousState()
 	return m_previousState;
 }
 
+void Unit::setWeapon(Weapon weapon)
+{
+	m_currentWeapon = weapon;
+	m_currentWeapon.setParentId(m_id);
+}
+
 void Unit::draw(sf::RenderWindow & window)
 {
 	//draw weapon
@@ -145,6 +143,26 @@ void Unit::draw(sf::RenderWindow & window)
 	target.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
 	target.setFillColor(sf::Color::Red);
 	window.draw(target);
+}
+
+float Unit::getExperience()
+{
+	return m_experience;
+}
+
+void Unit::addExperience(float experience)
+{
+	m_experience += experience;
+}
+
+UNIT_RANK& Unit::getRank()
+{
+	return m_rank;
+}
+
+void Unit::setRank(UNIT_RANK rank)
+{
+	m_rank = rank;
 }
 
 Vector2D Unit::getPositionByAngle(float angle)
@@ -219,4 +237,9 @@ float Unit::findAngleBetween(float b, float a)
 	{
 		return a - b;
 	}
+}
+
+string Unit::getId()
+{
+	return m_id;
 }

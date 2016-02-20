@@ -4,6 +4,7 @@
 using namespace std;
 #include "SFML/Graphics.hpp" 
 #include "SFML/OpenGL.hpp" 
+#include "GameConstants.h"
 
 
 class Scene
@@ -26,7 +27,6 @@ public:
 
 protected:
 	Scenes m_title;
-	sf::Font font;
 
 };
 

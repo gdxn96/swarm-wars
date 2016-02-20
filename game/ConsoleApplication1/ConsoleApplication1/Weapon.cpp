@@ -48,9 +48,14 @@ void Weapon::fire()
 		Vector2D fireDirection = Vector2D(RandomFloat(minAngle, maxAngle));
 
 		//fire
-		m_bulletFactory->addBullet(m_bullet, m_position, fireDirection, m_range, m_damage);
+		m_bulletFactory->addBullet(m_parentId, m_bullet, m_position, fireDirection, m_range, m_damage);
 
 	}
+}
+
+void Weapon::setParentId(std::string parent)
+{
+	m_parentId = parent;
 }
 
 float Weapon::RandomFloat(float min, float max)

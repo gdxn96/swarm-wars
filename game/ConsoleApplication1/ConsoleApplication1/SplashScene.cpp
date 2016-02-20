@@ -24,7 +24,7 @@ void SplashScene::update(float dt)
 void SplashScene::draw(sf::RenderWindow &window)
 {
 	//can obviously be deleted once you start working on the scene
-	sf::Text text("Splash \n\n\n\nDone in " + to_string(m_timeToSwitch) + " seconds", font, 50);
+	sf::Text text("Splash \n\n\n\nDone in " + to_string(m_timeToSwitch) + " seconds", GameConstants::font, 50);
 	text.setColor(sf::Color::Red);
 	window.draw(text);
 }

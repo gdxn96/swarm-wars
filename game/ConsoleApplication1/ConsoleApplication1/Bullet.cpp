@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Bullet.h"
 
-Bullet::Bullet(Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage)
+Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage)
 :	m_position(position),
 	m_initPosition(position),
 	m_range(killDistance),
@@ -10,8 +10,14 @@ Bullet::Bullet(Vector2D position, Vector2D direction, float speed, float radius,
 	m_direction(direction),
 	m_alive(true),
 	m_bounds(Circle(position, radius)),
-	m_damage(damage)
+	m_damage(damage),
+	m_parentId(parentId)
 {
+}
+
+std::string Bullet::getParentId()
+{
+	return m_parentId;
 }
 
 float Bullet::getDamage()

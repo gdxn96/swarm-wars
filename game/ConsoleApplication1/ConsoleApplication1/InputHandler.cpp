@@ -45,14 +45,21 @@ void InputHandler::update()
 		for (int i = 0; i < m_buttonsPressed[j].size(); i++)
 		{
 			t_buttonNum button = m_buttonsPressed[j][i].first;
-			m_buttonsPressed[j][i] = std::pair<t_buttonNum, bool>(button, isHeld(button, j));
+			bool isHeldB = isHeld(button, j);
+			if (!isHeldB)
+			{
+				//cout << "kjdsh'vi" << endl;
+			}
+
+			m_buttonsPressed[j][i] = std::pair<t_buttonNum, bool>(button, isHeldB);
 		}
 	}
 }
 bool InputHandler::isPressed(InputHandler::t_buttonNum button, t_joyNum joyNum)
 {
-	if (isHeld(button, joyNum) && !wasPressed(button, joyNum))
+	if (!wasPressed(button, joyNum) && isHeld(button, joyNum))
 	{
+		cout << "button pressed" << endl;
 		return true;
 	}
 	else
@@ -61,13 +68,25 @@ bool InputHandler::isPressed(InputHandler::t_buttonNum button, t_joyNum joyNum)
 
 bool InputHandler::wasPressed(t_buttonNum button, t_joyNum joyNum)
 {
+	bool wasPressed = true;
 	for (int i = 0; i < m_buttonsPressed[joyNum].size(); i++)
 	{
 		if (m_buttonsPressed[joyNum][i].first == button)
 		{
-			return m_buttonsPressed[joyNum][i].second;
+			wasPressed = m_buttonsPressed[joyNum][i].second;
 		}
 	}
+	
+
+	if (wasPressed)
+	{
+		//cout << "button not found" << endl;
+	}
+	else
+	{
+		//cout << "not pressed" << endl;
+	}
+	return wasPressed;
 }
 
 

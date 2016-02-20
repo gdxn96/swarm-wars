@@ -5,13 +5,14 @@
 class Bullet
 {
 public:
-	Bullet(Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage);
+	Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage);
 	void Update(float dt);
 	void Draw(sf::RenderWindow &window);
 	bool getAlive();
 	Circle& getBounds();
 	void kill();
 	float getDamage();
+	std::string getParentId();
 
 private:
 	Vector2D m_initPosition;
@@ -26,5 +27,7 @@ private:
 	float m_range;
 	bool m_alive;
 	Circle m_bounds;
+
+	std::string m_parentId;
 	
 };

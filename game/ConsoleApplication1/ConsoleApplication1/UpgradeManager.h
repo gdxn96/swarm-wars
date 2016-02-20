@@ -8,13 +8,18 @@ class UpgradeManager
 {
 public:
 	UpgradeManager();
+	void NotifyNewUnit(Unit * unit);
 	void NotifyLevelUp(Unit* unit);
+	void removeDuplicateUpgrades(Unit* unit);
+	UpgradeElement * getUpgradeByUnit(Unit * unit);
 	void update(float dt, Unit* currentUnit);
 	void draw(sf::RenderWindow &window);
-	void getWeaponType(UNIT_RANK);
+	WeaponType& getWeaponType(UNIT_RANK);
+	std::string& getWeaponKey(WeaponType);
 
 private:
-	std::vector<std::pair<UNIT_RANK,WeaponType>> m_unitRanks;
+	std::vector<std::pair<UNIT_RANK,WeaponType>> m_weaponRanks;
+	std::vector<std::pair<WeaponType, std::string>> m_weaponTextures;
 	std::vector<UpgradeElement*> m_upgrades;
 	UpgradeElement * m_currentUpgrade;
 

@@ -14,6 +14,8 @@ public:
 	float RandomFloat(float min, float max);
 	Polygon2D& getRange();
 
+	void setParentId(std::string parentId);
+
 private:
 	float m_range;
 	float m_timeToFire;
@@ -25,6 +27,8 @@ private:
 	VisionCone m_visionCone;
 	BulletType m_bullet;
 	BulletFactory *m_bulletFactory;
+
+	std::string m_parentId;
 };
 
 

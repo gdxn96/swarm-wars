@@ -2,9 +2,8 @@
 #include "GameConstants.h"
 
 //actual static variable values defined here
-
 float const GameConstants::TOWER_RADIUS = 80;
-float const GameConstants::TOWER_HEALTH = 100;
+float const GameConstants::TOWER_HEALTH = 100000;
 float const GameConstants::PLAYER_RADIUS = 4;
 float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 15;
 float const GameConstants::PLAYER_SPEED = 0.15f; // rads / second
@@ -27,7 +26,7 @@ float const GameConstants::ENEMY2_HEALTH = 200;
  float const GameConstants::BOSS_DAMAGE_PER_SECOND = 100; 
  float const GameConstants::BOSS_HEALTH = 5000; 
 
-float enemiesPerSecond = 0.5f;
+float enemiesPerSecond = 50;
 float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
 
 float const GameConstants::POINTER_RADIUS = GameConstants::PLAYER_RADIUS + 1;
@@ -47,7 +46,7 @@ float const GameConstants::BUNKER_HEALTH = 100;
 //AK Stuff
 float const WeaponStats::AK_DMG = 300;
 float const WeaponStats::AK_RANGE = 500;
-float const WeaponStats::AK_FOV = GameConstants::PI / 4;
+float const WeaponStats::AK_FOV = GameConstants::PI / 360;
 float const WeaponStats::AK_FIRE_RATE = 50;
 
 
@@ -86,3 +85,17 @@ float const WeaponStats::PISTOL_DMG = 300;
 float const WeaponStats::PISTOL_RANGE = 300;
 float const WeaponStats::PISTOL_FOV = GameConstants::PI / 4;
 float const WeaponStats::PISTOL_FIRE_RATE = 20;
+
+//Simple
+float const BULLET_STATS::SIMPLE_SPEED = 20;// 	
+std::string const BULLET_STATS::SIMPLE_TEXTURE_KEY = "";// 	
+float const BULLET_STATS::SIMPLE_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::SIMPLE_RADIUS = 10;// 
+				   
+//PLASMA		   
+float const BULLET_STATS::PLASMA_SPEED = 20;// 	
+std::string const BULLET_STATS::PLASMA_TEXTURE_KEY = "";// 	
+float const BULLET_STATS::PLASMA_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::PLASMA_RADIUS = 5;// 
+
+sf::Font GameConstants::font = sf::Font();

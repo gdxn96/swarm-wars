@@ -6,7 +6,8 @@ GameScene::GameScene()
 	Scene(Scenes::GAME),
 	m_bulletFactory(new BulletFactory()),
 	m_numBunkers(10),
-	m_paused(false)
+	m_paused(false),
+	m_collisionMgr(&m_unitController)
 {
 	//create weapon list for easy retrieval
 	WeaponFactory::getInstance()->createWeapons(m_bulletFactory);
@@ -83,13 +84,13 @@ void GameScene::draw(sf::RenderWindow &window)
 	//can obviously be deleted once you start working on the game
 	if (!m_paused)
 	{
-		sf::Text text("Game", font, 50);
+		sf::Text text("Game", GameConstants::font, 50);
 		text.setColor(sf::Color::Red);
 		window.draw(text);
 	}
 	else
 	{
-		sf::Text text("GameOver", font, 50);
+		sf::Text text("GameOver", GameConstants::font, 50);
 		text.setColor(sf::Color::Red);
 		window.draw(text);
 	}

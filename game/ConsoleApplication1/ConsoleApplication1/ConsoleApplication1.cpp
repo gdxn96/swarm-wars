@@ -55,9 +55,14 @@ using namespace std;
 // (__) (__)     (__)_)       \_)-' '-(_/     (__) (__) 
 ////////////////////////////////////////////////////////////
 
-
 int main()
 {
+	
+	if (!GameConstants::font.loadFromFile("arial.ttf"))
+	{
+		cout << "err loading font" << endl;
+	}
+
 	srand(time(NULL));
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
@@ -74,18 +79,11 @@ int main()
 	SceneManager::getInstance()->addScene(&splash);
 	SceneManager::getInstance()->addScene(&menu);
 
-	//below is how to switch to scenes
-	/*SceneManager::getInstance()->switchTo(Scenes::GAME);
-	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
-	SceneManager::getInstance()->switchTo(Scenes::SPLASH);*/
-
 	//splash is first
 	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
 	
 	sf::Clock deltaClock; // used to calculate dt
 	float dt = 0; // floating point dt as seconds
-
-	
 
 	// Start game loop 
 	while (window.isOpen())
@@ -103,8 +101,7 @@ int main()
 				window.close();
 
 		}
-		InputHandler::getInstance()->update();
-
+		
 		SceneManager::getInstance()->update(dt);
 		
 		//prepare frame
@@ -117,8 +114,6 @@ int main()
 		window.display();
 
 		dt = deltaClock.restart().asSeconds();
-
-		
 
 	} //loop back for next frame
 

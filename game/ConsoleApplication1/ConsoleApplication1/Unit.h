@@ -11,8 +11,7 @@ enum class UNIT_STATE { MOVING, WAITING, FIRING };
 class Unit
 {
 public:
-	Unit();
-	Unit(float startAngle);
+	Unit(float startAngle, string id);
 
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
@@ -28,7 +27,7 @@ public:
 	float getExperience();
 	void addExperience(float experience);
 
-	void setWeapon(Weapon* weapon);
+	void setWeapon(Weapon weapon);
 
 	UNIT_RANK& getRank();
 	void setRank(UNIT_RANK rank);
@@ -46,6 +45,8 @@ public:
 
 	bool isPlayer();
 
+	void setIsPlayer(bool isPlayer);
+
 	void setSelected(bool isSelected);
 
 	float NormalizeAngle(float angle);
@@ -57,6 +58,8 @@ public:
 	Polygon2D& getRangeCone();
 
 	UNIT_STATE &getPreviousState();
+
+	string getId();
 
 private:
 	float m_positionAngle; // angle signifying position relative to walk radius
@@ -72,5 +75,9 @@ private:
 	Weapon m_currentWeapon;
 	bool m_isPlayer;
 	bool m_isSelected;
+
+	UNIT_RANK m_rank;
+	float m_experience;
+	string m_id;
 };
 

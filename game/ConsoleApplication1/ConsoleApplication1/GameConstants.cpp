@@ -3,19 +3,19 @@
 
 //actual static variable values defined here
 
-float const GameConstants::TOWER_RADIUS = 80;
+float const GameConstants::TOWER_RADIUS = 110;
 float const GameConstants::TOWER_HEALTH = 100;
 float const GameConstants::PLAYER_RADIUS = 4;
-float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 15;
-float const GameConstants::PLAYER_SPEED = 0.15f; // rads / second
+float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 25;
+float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
 
 
 float const GameConstants::PI = std::acos(-1);
 
-float const GameConstants::ENEMY1_RADIUS = 5; 
+float const GameConstants::ENEMY1_RADIUS = 18; 
 float const GameConstants::ENEMY1_SPEED = 50; 
 float const GameConstants::ENEMY1_DAMAGE_PER_SECOND = 5; 
-float const GameConstants::ENEMY1_HEALTH = 100; 
+float const GameConstants::ENEMY1_HEALTH = 80; 
 
 float const GameConstants::ENEMY2_RADIUS = 10; 
 float const GameConstants::ENEMY2_SPEED = 30; 
@@ -27,7 +27,7 @@ float const GameConstants::ENEMY2_HEALTH = 200;
  float const GameConstants::BOSS_DAMAGE_PER_SECOND = 100; 
  float const GameConstants::BOSS_HEALTH = 5000; 
 
-float enemiesPerSecond = 0.5f;
+float enemiesPerSecond = 5.5f;
 float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
 
 float const GameConstants::POINTER_RADIUS = GameConstants::PLAYER_RADIUS + 1;
@@ -36,8 +36,8 @@ Vector2D const GameConstants::WINDOW_CENTRE = Vector2D(GameConstants::WINDOW_SIZ
 
 
 float const GameConstants::BUNKER_SIZE_WIDTH = GameConstants::PI / 8; //width in radians, defined by angle
-float const GameConstants::BUNKER_SIZE_HEIGHT = 10; 
-float const GameConstants::BUNKER_SIZE_INNER = GameConstants::WALK_RADIUS + GameConstants::PLAYER_RADIUS + 15;
+float const GameConstants::BUNKER_SIZE_HEIGHT = 25; 
+float const GameConstants::BUNKER_SIZE_INNER = GameConstants::WALK_RADIUS + GameConstants::PLAYER_RADIUS + 25;
 float const GameConstants::BUNKER_SIZE_OUTER = GameConstants::BUNKER_SIZE_INNER + GameConstants::BUNKER_SIZE_HEIGHT;
 float const GameConstants::BUNKER_HEALTH = 100;
 
@@ -45,10 +45,10 @@ float const GameConstants::BUNKER_HEALTH = 100;
 // weapon stuff
 
 //AK Stuff
-float const WeaponStats::AK_DMG = 300;
+float const WeaponStats::AK_DMG = 50;
 float const WeaponStats::AK_RANGE = 500;
-float const WeaponStats::AK_FOV = GameConstants::PI / 4;
-float const WeaponStats::AK_FIRE_RATE = 50;
+float const WeaponStats::AK_FOV = GameConstants::PI / 8;
+float const WeaponStats::AK_FIRE_RATE = 10;
 
 
 //Plasma gun stuff

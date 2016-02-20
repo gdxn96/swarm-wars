@@ -5,6 +5,8 @@
 #include "GameConstants.h"
 #include "VisionCone.h"
 #include "WeaponFactory.h"
+#include "Animation.h"
+#include "AssetLoader.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
 class Unit
@@ -49,13 +51,16 @@ public:
 
 	UNIT_STATE &getPreviousState();
 
+	bool getSelected();
+	Vector2D getPosition();
 private:
 	float m_positionAngle; // angle signifying position relative to walk radius
 	float m_targetAngle; // angle signifying target pos relative to walk radius
 	float m_radius; // radius of player
 	float m_speed; // angular speed of player, rads/second
 	const float PI;
-
+	Animation m_anim;
+	Animation m_selectAnimation;
 	float m_directionAngle; //radian rotation of player "0 rads == (x1, y0)"
 	Vector2D m_position;
 	UNIT_STATE m_state;

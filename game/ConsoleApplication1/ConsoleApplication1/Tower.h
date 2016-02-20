@@ -3,7 +3,7 @@
 #include "SFML/OpenGL.hpp"
 #include "Circle.h"
 #include "GameConstants.h"
-
+#include "Animation.h"
 class Tower
 {
 public:
@@ -19,6 +19,7 @@ private:
 	Circle m_innerBounds;
 	float m_health;
 	const float m_maxHealth;
+	Animation m_anim;
 };
 
 

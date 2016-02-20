@@ -39,5 +39,6 @@ Polygon2D& VisionCone::getRange()
 
 void VisionCone::draw(sf::RenderWindow & window)
 {
-	m_rangeSize.draw(window, sf::Color(255, 255, 255, 64));
+	
+	m_rangeSize.draw(window, sf::Color(255, 255, 255, 12));
 }

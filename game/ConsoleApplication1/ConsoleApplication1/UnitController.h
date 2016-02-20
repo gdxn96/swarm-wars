@@ -6,6 +6,7 @@
 #include <iostream>
 #include "WeaponFactory.h"
 #include "InputHandler.h"
+#include "Animation.h"
 using namespace std;
 
 // class that controls the units on screen
@@ -27,6 +28,7 @@ private:
 	Unit * m_currentUnit;
 	OrderPointer m_orderPointer;
 	WeaponFactory * m_weaponFactory;
+	Animation m_anim;
 };
 
 

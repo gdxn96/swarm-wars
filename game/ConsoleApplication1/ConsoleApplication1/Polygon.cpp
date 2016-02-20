@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Polygon.h"
-
+#include "AssetLoader.h"
 Polygon2D::Polygon2D() : m_hasBroudPhaseCircle(false)
 {
 }
@@ -46,12 +46,15 @@ void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 	}
 	sf::ConvexShape polygon;
 	polygon.setPointCount(m_vertices.size());
-
+	
 	for (int i = 0; i < m_vertices.size(); i++)
 	{
 		polygon.setPoint(i, m_vertices[i].toSFMLVector());
 	}
 	polygon.setFillColor(color);
+	polygon.setOutlineColor(sf::Color(135, 206, 250, 255));
+	polygon.setOutlineThickness(2);
+	//polygon.setTexture(AssetLoader::getInstance()->findTextureByKey("bunker"));
 	window.draw(polygon);
 }
 

@@ -75,7 +75,7 @@ void CollisionManager::checkEnemyBunker(vector<Enemy*> enemies, vector<Bunker*> 
 		{
 			if (Intersects(enemy->getBounds(), bunker->getBounds()))
 			{
-				cout << "collide" << endl;
+				//cout << "collide" << endl;
 				enemy->changeState(ENEMY_STATE::ATTACKING);
 				bunker->damageBunker(enemy->getDamage() * dt);
 				collidesBunker = true;

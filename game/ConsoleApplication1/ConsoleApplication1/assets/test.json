@@ -1,0 +1,52 @@
+{  
+	"running": [
+			{"x":50,"y":0,"width":42,"height":38},
+			{"x":97,"y":0,"width":43,"height":39},
+			{"x":146,"y":0,"width":42,"height":38},
+			{"x":291,"y":0,"width":43,"height":42},
+			{"x":3,"y":3,"width":42,"height":29},
+			{"x":243,"y":3,"width":42,"height":38},
+			{"x":339,"y":3,"width":42,"height":38},
+			{"x":194,"y":6,"width":42,"height":29}
+			],
+	"attack": [
+			{"x":51,"y":0,"width":42,"height":38},
+			{"x":97,"y":0,"width":43,"height":39},
+			{"x":146,"y":0,"width":42,"height":38},
+			{"x":291,"y":0,"width":43,"height":42},
+			{"x":3,"y":3,"width":42,"height":29},
+			{"x":243,"y":3,"width":42,"height":38},
+			{"x":339,"y":3,"width":42,"height":38},
+			{"x":194,"y":6,"width":42,"height":29}
+			],
+	"shooting" :[
+			{"x":0,"y":732,"width":171,"height":255},
+			{"x":172,"y":732,"width":170,"height":254},
+			{"x":844,"y":255,"width":170,"height":252},
+			{"x":675,"y":0,"width":168,"height":252},
+			{"x":675,"y":253,"width":168,"height":251},
+			{"x":337,"y":229,"width":168,"height":249},
+			{"x":1015,"y":0,"width":166,"height":248},
+			{"x":167,"y":484,"width":165,"height":245},
+			{"x":510,"y":0,"width":164,"height":244},
+			{"x":173,"y":243,"width":163,"height":240},
+			{"x":1015,"y":497,"width":163,"height":239},
+			{"x":512,"y":732,"width":163,"height":235},
+			{"x":844,"y":751,"width":164,"height":233},
+			{"x":337,"y":0,"width":172,"height":228},
+			{"x":676,"y":732,"width":165,"height":228},
+			{"x":0,"y":0,"width":167,"height":225},
+			{"x":0,"y":226,"width":172,"height":257},
+			{"x":844,"y":0,"width":170,"height":254},
+			{"x":343,"y":732,"width":168,"height":251},
+			{"x":0,"y":484,"width":166,"height":247},
+			{"x":1015,"y":249,"width":166,"height":247},
+			{"x":844,"y":508,"width":163,"height":242},
+			{"x":173,"y":0,"width":163,"height":242},
+			{"x":1015,"y":737,"width":162,"height":237},
+			{"x":510,"y":245,"width":162,"height":237},
+			{"x":333,"y":484,"width":164,"height":231},
+			{"x":498,"y":484,"width":164,"height":231},
+			{"x":675,"y":505,"width":167,"height":222}
+			]
+}

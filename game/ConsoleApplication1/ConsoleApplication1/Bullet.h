@@ -1,6 +1,8 @@
 #pragma once
 #include "Vector2D.h"
 #include "Circle.h"
+#include "Animation.h"
+#include "GameConstants.h"
 
 class Bullet
 {
@@ -24,7 +26,7 @@ private:
 
 	float m_speed;
 	float m_range;
-	bool m_alive;
+	bool  m_alive ;
 	Circle m_bounds;
-	
+	Animation m_anim;
 };

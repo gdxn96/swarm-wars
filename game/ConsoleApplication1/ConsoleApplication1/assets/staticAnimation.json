@@ -1,0 +1,19 @@
+{	
+	"staticAnimation" :[
+			{"x":0,"y": 0 ,"width":299,"height":168},
+ 			{"x":0  ,"y": 169 ,"width":299,"height":168},
+			{"x":600   ,"y": 169 ,"width":299,"height":168},
+			{"x": 600  ,"y": 338 ,"width":299,"height":168},
+			{"x": 0  ,"y": 507 ,"width":299,"height":168},
+			{"x": 0   ,"y": 676,"width":299,"height":168},
+			{"x": 300  ,"y": 507 ,"width":299,"height":168},
+			{"x": 300  ,"y": 676 ,"width":299,"height":168},
+			{"x": 600  ,"y": 507 ,"width":299,"height":168},
+			{"x": 600  ,"y": 676 ,"width":299,"height":168},
+			{"x":0,"y": 338 ,"width":299,"height":168},
+ 			{"x":300  ,"y": 0,"width":299,"height":168},
+ 			{"x":300  ,"y": 169,"width":299,"height":168},
+ 			{"x":600  ,"y": 0,"width":299,"height":168},
+ 			{"x":300  ,"y": 471,"width":299,"height":168}
+			]
+ }

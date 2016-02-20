@@ -4,7 +4,7 @@ using namespace std;
 
 //to add a scene, simply add a new enum to this list and create a new object 
 //inheriting from "Scene", examples of this are given as the GameScene, SplashScene, and MainMenuScene
-enum class Scenes { SPLASH, MAINMENU, GAME };
+enum class Scenes { SPLASH, MAINMENU, GAME, LOAD};
 #include "Scene.h"
 #include <vector>
 #include "SFML/Graphics.hpp" 

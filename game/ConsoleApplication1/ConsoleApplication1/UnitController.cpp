@@ -16,6 +16,7 @@ void UnitController::init()
 
 	m_currentUnit = m_units[0];
 	m_currentUnit->setSelected(true);
+
 }
 
 void UnitController::update(float dt)
@@ -30,15 +31,16 @@ void UnitController::update(float dt)
 	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
 	m_currentUnit->setDirectionAngle(leftStickAngle);
 
-	if (input->isPressed(InputHandler::RB))
+	if (input->isPressed(InputHandler::B))
 	{
+		cout << "pressedfsdf unit" << endl;
 		switchUnit();
 	}
 	if (input->isPressed(InputHandler::A))
 	{
 		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
 	}
-
+	
 	if (m_currentUnit->isPlayer())
 	{
 		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
@@ -56,7 +58,7 @@ void UnitController::update(float dt)
 		m_units[i]->update(dt);
 	}
 
-
+	
 }
 
 vector<Unit*> UnitController::getUnits()

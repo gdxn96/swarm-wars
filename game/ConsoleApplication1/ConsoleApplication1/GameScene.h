@@ -8,7 +8,8 @@
 #include "CollisionManager.h"
 #include "Bunker.h"
 #include "Tower.h"
-
+#include "UnitSelector.h"
+#include "Animation.h"
 class GameScene : public Scene
 {
 public:
@@ -28,15 +29,20 @@ public:
 
 private:
 	UnitController m_unitController;
+	UnitSelector m_UnitSelector;
 	BulletFactory * m_bulletFactory;
 	EnemyManager m_enemyManager;
 	CollisionManager m_collisionMgr;
-
+	
 	vector<Bunker * > m_bunkers;
 	Tower m_tower;
-
+	sf::Texture floor;
+	sf::Sprite floorSprite;
 	int m_numBunkers;
 	bool m_paused;
 
 
+	//camera test
+	sf::View miniMapView, gameView;
+	Animation m_anim;
 };

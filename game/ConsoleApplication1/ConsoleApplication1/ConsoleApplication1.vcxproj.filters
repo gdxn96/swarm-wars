@@ -45,6 +45,9 @@
     <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE">
       <UniqueIdentifier>{b7f0126e-fdda-4c58-b6ab-af8f15b183e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{bc40ca4e-d23e-45a5-9a46-01faf72dea93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -131,6 +134,28 @@
     <ClInclude Include="PhysicsObject.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetLoader.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioMgr.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="bar.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitSelector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -213,6 +238,30 @@
     </ClCompile>
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetLoader.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioMgr.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="bar.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitSelector.cpp">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

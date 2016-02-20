@@ -13,9 +13,13 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float 
 	m_alive(true),
 	m_health(maxHealth),
 	m_maxHealth(maxHealth),
-	m_damagePerSecond(damagePerSecond)
+	m_damagePerSecond(damagePerSecond),
+	m_healthBar(m_position + Vector2D(-m_radius,0), Vector2D(0.4f,0.7f),m_maxHealth),
+	m_anim("bugAnimation", Vector2D(-100, -100))
 {
-
+	m_anim.setFramesPerSecond(60);
+	m_anim.SetLooping(true);
+	m_anim.setRadius(m_radius + 140);
 }
 
 float Enemy::getDamage()
@@ -25,6 +29,7 @@ float Enemy::getDamage()
 
 void Enemy::damage(float dmg)
 {
+	m_healthBar.setBarAmount(dmg);
 	m_health -= dmg;
 	if (m_health <= 0)
 	{
@@ -45,6 +50,7 @@ bool Enemy::getAlive()
 void Enemy::kill()
 {
 	m_alive = false;
+	m_anim.setIsAlive(m_alive);
 }
 
 void Enemy::update(float dt)
@@ -54,13 +60,19 @@ void Enemy::update(float dt)
 		m_position += m_direction * dt * m_speed;
 		m_bounds.setCentre(m_position);
 	}
-
-	
+	m_healthBar.update();
+	m_healthBar.setPosition(m_position + Vector2D(-20, 0));
+	//m_healthBar.setBarAmount(m_health);
+	m_anim.update();
+	m_anim.setRotation(90 + (std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+	m_anim.setPosition(m_position);
 }
 
 void Enemy::draw(sf::RenderWindow& window)
 {
-	m_bounds.draw(window, sf::Color::Red);
+	//m_bounds.draw(window, sf::Color::Red);
+	m_anim.draw(window);
+	m_healthBar.draw(window);
 }
 
 void Enemy::changeState(ENEMY_STATE state)

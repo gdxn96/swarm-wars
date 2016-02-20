@@ -12,10 +12,17 @@ Unit::Unit()
 	m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
 	m_isPlayer(true),
 	m_isSelected(true),
-	m_previousState(UNIT_STATE::WAITING)
+	m_previousState(UNIT_STATE::WAITING),
+	m_anim("walingAssaltAnimation", Vector2D(400, 300)),
+	m_selectAnimation("selectorAnimation", Vector2D(-100, -100))
 {
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
+	m_anim.setFramesPerSecond(60);
+	m_anim.setRadius(m_radius + 50);
+	m_selectAnimation.setFramesPerSecond(60);
+	m_selectAnimation.setRadius(m_radius + 90);
+	m_selectAnimation.SetLooping(false);
 }
 
 Unit::Unit(float startAngle)
@@ -29,10 +36,19 @@ m_directionAngle(startAngle),
 m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
 m_isPlayer(false),
 m_isSelected(false),
-m_previousState(UNIT_STATE::WAITING)
+m_previousState(UNIT_STATE::WAITING),
+m_anim("walingAssaltAnimation", Vector2D(-100, -100)),
+m_selectAnimation("selectorAnimation", Vector2D(-100, -100))
 {
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
+	m_anim.setFramesPerSecond(60);
+	m_anim.setRadius(m_radius + 50);
+	m_anim.SetLooping(false);
+	m_selectAnimation.setFramesPerSecond(60);
+	m_selectAnimation.setRadius(m_radius + 90);
+	m_selectAnimation.SetLooping(false);
+	//m_selectAnimation = Animation("")
 }
 
 bool Unit::isPlayer()
@@ -40,6 +56,10 @@ bool Unit::isPlayer()
 	return m_isPlayer;
 }
 
+bool Unit::getSelected()
+{
+	return m_isSelected;
+}
 void Unit::setDirectionAngle(float angle)
 {
 	if (angle != 0)
@@ -54,9 +74,19 @@ void Unit::fireWeapon()
 
 void Unit::update(float dt)
 {	
+	
+	m_anim.update();
+	m_anim.setRotation((m_directionAngle - (PI )) * 180 / PI);
+	m_anim.setPosition(m_position);
+
+	m_selectAnimation.update();
+	m_selectAnimation.setPosition(m_position);
 	//if given a move order
 	if (m_state == UNIT_STATE::MOVING)
 	{
+		//m_anim.setFramesPerSecond(45);
+		m_anim.SetLooping(true);
+		m_anim.changeAnimation("walingAssaltAnimation");
 		//find direction to target
 		int direction = getDirectionToTarget();
 
@@ -75,15 +105,30 @@ void Unit::update(float dt)
 	}
 	else if (m_state == UNIT_STATE::WAITING)
 	{ 
-		
+		m_anim.changeAnimation("walingAssaltAnimation");
+		m_anim.SetLooping(false);
+
 	}
 	else if (m_state == UNIT_STATE::FIRING)
 	{
 		fireWeapon();
+		m_anim.SetLooping(true);
+		m_anim.setFramesPerSecond(500);
+		m_anim.changeAnimation("shootingAssaltAnimation");
 	}
 
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, dt);
-	
+
+	if (m_isSelected)
+	{
+		m_selectAnimation.SetLooping(true);
+		m_selectAnimation.setDoOnce(true);
+	}
+	else
+	{
+		m_selectAnimation.SetLooping(false);
+		m_selectAnimation.reset();
+	}
 }
 
 Polygon2D& Unit::getRangeCone()
@@ -101,7 +146,7 @@ void Unit::changeState(UNIT_STATE state)
 	{
 		if (!m_isSelected || (m_isSelected && !m_isPlayer && m_state == UNIT_STATE::WAITING) || (!m_isPlayer && m_state == UNIT_STATE::FIRING))
 		{
-			cout << "ijbnisdfnubui" << endl;
+			//cout << "ijbnisdfnubui" << endl;
 			m_previousState = m_state;
 			m_state = state;
 		}
@@ -145,6 +190,8 @@ void Unit::draw(sf::RenderWindow & window)
 	target.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
 	target.setFillColor(sf::Color::Red);
 	window.draw(target);
+	m_anim.draw(window);
+	m_selectAnimation.draw(window);
 }
 
 Vector2D Unit::getPositionByAngle(float angle)
@@ -182,6 +229,11 @@ void Unit::setTargetAngle(float targetAngle)
 		m_state = UNIT_STATE::WAITING;
 	}
 	
+}
+
+Vector2D Unit::getPosition()
+{
+	return m_position;
 }
 
 float Unit::NormalizeAngle(float angle)

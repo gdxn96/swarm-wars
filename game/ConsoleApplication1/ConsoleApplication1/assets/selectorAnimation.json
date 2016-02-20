@@ -1,0 +1,18 @@
+{	
+	"selectorAnimation" :[
+ 			{"x":0  ,"y": 0 ,"width":431,"height":434},
+			{"x":432    ,"y": 0 ,"width":431,"height":434},
+			{"x": 1296   ,"y": 435  ,"width":431,"height":434},
+			{"x": 0   ,"y": 870  ,"width":431,"height":434},
+			{"x": 432    ,"y": 870 ,"width":431,"height":434},
+			{"x": 0   ,"y": 1305  ,"width":431,"height":434},
+			{"x": 864   ,"y": 870  ,"width":431,"height":434},
+			{"x": 432   ,"y": 1305  ,"width":431,"height":434},
+			{"x": 1296   ,"y": 870  ,"width":431,"height":434},
+			{"x":864 ,"y": 1305  ,"width":431,"height":434},
+ 			{"x":0   ,"y": 435 ,"width":431,"height":434},
+ 			{"x":432 ,"y": 435 ,"width":431,"height":434},
+ 			{"x":1296   ,"y": 0,"width":431,"height":434},
+ 			{"x":864   ,"y": 435 ,"width":431,"height":434}
+			]
+ }

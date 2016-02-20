@@ -2,8 +2,8 @@
 #include "Vector2D.h"
 #include "GameConstants.h"
 #include "Circle.h"
-
-
+#include "bar.h"
+#include "Animation.h"
 enum class ENEMY_STATE {MOVING, ATTACKING};
 class Enemy
 {
@@ -30,8 +30,8 @@ private:
 	float m_health;
 	float m_damagePerSecond;
 	const float m_maxHealth;
-
-
+	bar m_healthBar;
+	Animation m_anim;
 
 };
 

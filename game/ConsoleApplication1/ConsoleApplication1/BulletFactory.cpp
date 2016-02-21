@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "BulletFactory.h"
 #include "Bullet.h"
+#include "GameConstants.h"
 #include <iostream>
 
-void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D direction, float range, float damage)
+void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D position, Vector2D direction, float range, float damage)
 {
 	float bulletSpeed = 0;
 	float radius = 1;
@@ -13,18 +14,18 @@ void BulletFactory::addBullet(BulletType bullet, Vector2D position, Vector2D dir
 	switch (bullet)
 	{
 	case BulletType::PLASMA:
-		bulletSpeed = 150;
-		radius = 2;
+		bulletSpeed = BULLET_STATS::PLASMA_SPEED;
+		radius = BULLET_STATS::PLASMA_RADIUS;
 
-		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range, damage));
+		m_bulletList.push_back(new Bullet(parentId, position, direction, bulletSpeed, radius, range, damage));
 
 		break;
 
 	case BulletType::SIMPLE:
-		bulletSpeed = 150;
-		radius = 2;
+		bulletSpeed = BULLET_STATS::SIMPLE_SPEED;
+		radius = BULLET_STATS::SIMPLE_RADIUS;
 
-		m_bulletList.push_back(new Bullet(position, direction, bulletSpeed, radius, range, damage));
+		m_bulletList.push_back(new Bullet(parentId, position, direction, bulletSpeed, radius, range, damage));
 
 		break;
 

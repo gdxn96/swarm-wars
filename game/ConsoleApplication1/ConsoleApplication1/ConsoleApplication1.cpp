@@ -58,6 +58,7 @@ using namespace std;
 // (__) (__)     (__)_)       \_)-' '-(_/     (__) (__) 
 ////////////////////////////////////////////////////////////
 
+
 void loadAssets()
 {
 	AssetLoader::getInstance()->addAnimationToCache("enemyAnimation", "assets/alien_sheet.png", "assets/test.json");
@@ -93,6 +94,11 @@ void loadAssets()
 int main()
 {
 	loadAssets();
+	if (!GameConstants::font.loadFromFile("arial.ttf"))
+	{
+		cout << "err loading font" << endl;
+	}
+
 	srand(time(NULL));
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
@@ -110,11 +116,6 @@ int main()
 	SceneManager::getInstance()->addScene(&game);
 	SceneManager::getInstance()->addScene(&splash);
 	SceneManager::getInstance()->addScene(&menu);
-	
-	//below is how to switch to scenes
-	/*SceneManager::getInstance()->switchTo(Scenes::GAME);
-	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
-	SceneManager::getInstance()->switchTo(Scenes::SPLASH);*/
 
 	//splash is first
 	SceneManager::getInstance()->switchTo(Scenes::GAME);
@@ -155,7 +156,6 @@ int main()
 
 		dt = deltaClock.restart().asSeconds();
 
-		
 
 	} //loop back for next frame
 

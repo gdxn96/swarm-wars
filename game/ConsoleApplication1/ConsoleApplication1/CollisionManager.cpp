@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "CollisionManager.h"
 
-CollisionManager::CollisionManager()
+CollisionManager::CollisionManager(UnitController* unitController)
+	:
+	m_unitController(unitController)
 {
 }
 
@@ -15,6 +17,10 @@ void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*>
 			{
 				bullet->kill();
 				enemy->damage(bullet->getDamage());
+				if (!enemy->getAlive())
+				{
+					m_unitController->getUnitById(bullet->getParentId())->addExperience(3.4f);
+				}
 				break;
 			}
 		}

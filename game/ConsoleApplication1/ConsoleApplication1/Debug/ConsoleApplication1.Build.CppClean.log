@@ -1,47 +1,49 @@
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consoleapplication1.pch
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\vc120.pdb
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\vc120.idb
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\stdafx.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\inputhandler.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\light.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\lightmanager.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\loadscene.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\mainmenuscene.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\orderpointer.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\physicsobject.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\polygon.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\scene.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\scenemgr.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\spawnpointcontroller.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\splashscene.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\tower.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\unit.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\unitcontroller.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\unitselector.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\vector2d.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\visioncone.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\weapon.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\weaponfactory.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\animation.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\assetloader.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\audiomgr.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\bar.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\bullet.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\bulletfactory.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\bunker.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\circle.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\collisionmanager.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consoleapplication1.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\enemy.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\enemymanager.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\gameconstants.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\gamescene.obj
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\debug\consoleapplication1.ilk
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\debug\consoleapplication1.exe
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\debug\consoleapplication1.pdb
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\cl.command.1.tlog
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\cl.read.1.tlog
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\cl.write.1.tlog
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\link.command.1.tlog
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\link.read.1.tlog
-c:\users\lanc3\desktop\git\swarm-wars\game\consoleapplication1\consoleapplication1\debug\consolea.40daceb2.tlog\link.write.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consoleapplication1.pch
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\vc120.pdb
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\vc120.idb
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\stdafx.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\lightmanager.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\loadscene.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\mainmenuscene.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\orderpointer.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\physicsobject.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\polygon.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\scene.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\scenemgr.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\spawnpointcontroller.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\splashscene.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\tower.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\unit.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\unitcontroller.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\unitselector.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\upgradeelement.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\upgrademanager.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\vector2d.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\visioncone.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\weapon.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\weaponfactory.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\animation.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\assetloader.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\audiomgr.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\bar.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\bullet.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\bulletfactory.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\bunker.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\circle.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\collisionmanager.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consoleapplication1.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\enemy.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\enemymanager.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\gameconstants.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\gamescene.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\inputhandler.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\light.obj
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\debug\consoleapplication1.ilk
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\debug\consoleapplication1.exe
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\debug\consoleapplication1.pdb
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\cl.command.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\cl.read.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\cl.write.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\link.command.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\link.read.1.tlog
+c:\users\lanc3\desktop\swarm-wars-master\game\consoleapplication1\new test\consoleapplication1\debug\consolea.40daceb2.tlog\link.write.1.tlog

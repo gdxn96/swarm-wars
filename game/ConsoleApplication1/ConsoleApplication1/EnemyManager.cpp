@@ -35,8 +35,6 @@ void EnemyManager::update(float dt)
 		{
 			spawnEnemy();
 		}
-		
-		//std::cout << "Enemies: " << m_enemies.size() << std::endl;
 	}
 	for (int i = 0; i < m_enemies.size(); i++)
 	{

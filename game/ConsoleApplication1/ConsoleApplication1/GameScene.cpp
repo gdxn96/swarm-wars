@@ -8,7 +8,9 @@ GameScene::GameScene()
 	m_bulletFactory(new BulletFactory()),
 	m_numBunkers(15),
 	m_paused(false),
-	m_anim("staticAnimation",Vector2D (-100,-100))
+	m_anim("staticAnimation",Vector2D (-100,-100)),
+	m_collisionMgr(&m_unitController)
+
 {
 	m_anim.setFramesPerSecond(10);
 	m_anim.SetLooping(true);
@@ -99,13 +101,15 @@ void GameScene::draw(sf::RenderWindow &window)
 	m_bulletFactory->drawBullets(window);
 	m_UnitSelector.draw(window);
 	//miniMapView.setCenter();
-	
+	m_unitController.drawUI(window);
 	for (int i = 0; i < m_unitController.getUnits().size(); i++)
 	{
+
 		if (m_unitController.getUnits()[i]->getSelected())
 		{
 			miniMapView.setCenter(m_unitController.getUnits()[i]->getPosition().toSFMLVector());
 		}
+
 	}
 	LightManager::getInstance()->draw(window);
 	// mini map draw ----------------------------------
@@ -114,6 +118,7 @@ void GameScene::draw(sf::RenderWindow &window)
 	for (Bunker* bunker : m_bunkers)
 	{
 		bunker->draw(window);
+
 	}
 
 	m_tower.draw(window);
@@ -125,18 +130,5 @@ void GameScene::draw(sf::RenderWindow &window)
 	m_anim.draw(window);
 	LightManager::getInstance()->draw(window);
 	sf::RectangleShape cover;
-	////can obviously be deleted once you start working on the game
-	//if (!m_paused)
-	//{
-	//	sf::Text text("Game", font, 50);
-	//	text.setColor(sf::Color::Red);
-	//	window.draw(text);
-	//}
-	//else
-	//{
-	//	sf::Text text("GameOver", font, 50);
-	//	text.setColor(sf::Color::Red);
-	//	window.draw(text);
-	//}
 	
 }

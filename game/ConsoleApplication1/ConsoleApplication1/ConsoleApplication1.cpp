@@ -115,9 +115,9 @@ int main()
 	//splash is first
 	SceneManager::getInstance()->switchTo(Scenes::LOAD);
 
-	sf::Thread thread(&loadAssets);
-	thread.launch();
-	//loadAssets();
+	/*sf::Thread thread(&loadAssets);
+	thread.launch();*/
+	loadAssets();
 
 	srand(time(NULL));
 	// Create the main window 

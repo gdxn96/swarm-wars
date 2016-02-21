@@ -18,7 +18,7 @@ void EnemyManager::spawnEnemy()
 									GameConstants::ENEMY1_DAMAGE_PER_SECOND, 
 									GameConstants::ENEMY1_SPEED, 
 									GameConstants::ENEMY1_RADIUS,
-									3));
+									m_pylonMgr.getOpenSpawnPoints().size()));
 }
 
 std::vector<Enemy *> EnemyManager::getEnemies()

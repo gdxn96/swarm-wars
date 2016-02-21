@@ -130,5 +130,4 @@ void GameScene::draw(sf::RenderWindow &window)
 	m_anim.draw(window);
 	LightManager::getInstance()->draw(window);
 	sf::RectangleShape cover;
-	
 }

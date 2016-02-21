@@ -44,6 +44,8 @@ public:
 	static float const BUNKER_SIZE_HEIGHT; // defined in GameConstants.cpp
 
 	static float const BUNKER_HEALTH; // defined in GameConstants.cpp
+	static int const NUMBER_OF_PYLONS; // defined in GameConstants.cpp
+	static float const PYLON_KILL_INTERVAL; // defined in GameConstants.cpp
 
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	

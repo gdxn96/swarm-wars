@@ -59,7 +59,7 @@ void UnitController::update(float dt)
 	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
 	m_currentUnit->setDirectionAngle(leftStickAngle);
 
-	if (input->isPressed(InputHandler::B))
+	if (input->isPressed(InputHandler::RB))
 	{
 		cout << "pressedfsdf unit" << endl;
 		switchUnit();
@@ -87,7 +87,7 @@ void UnitController::update(float dt)
 	{
 		m_units[i]->update(dt);
 	}
-	updateRanks();
+	//updateRanks();
 	m_upgradeMgr.update(dt, m_currentUnit);
 	InputHandler::getInstance()->update();
 }
@@ -145,7 +145,7 @@ void UnitController::draw(sf::RenderWindow & window)
 }
 void UnitController::drawUI(sf::RenderWindow & window)
 {
-	m_upgradeMgr.draw(window);
+	//m_upgradeMgr.draw(window);
 }
 void UnitController::switchUnit()
 {

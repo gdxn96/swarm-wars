@@ -89,15 +89,35 @@ void loadAssets()
 	AssetLoader::getInstance()->addTextureToCache("UnitControllerUI", "assets/UnitControllerUI.png");
 	AssetLoader::getInstance()->addAnimationToCache("staticAnimation", "assets/staticAnimation.png", "assets/staticAnimation.json");
 	AssetLoader::getInstance()->addAnimationToCache("selectorAnimation", "assets/selectorAnimation.png", "assets/selectorAnimation.json");
+
+	SceneManager::getInstance()->addScene(new GameScene());
+	SceneManager::getInstance()->addScene(new SplashScene());
+	SceneManager::getInstance()->addScene(new MainMenuScene());
+
+	SceneManager::getInstance()->switchTo(Scenes::GAME);
+	
 }
 
 int main()
 {
-	loadAssets();
+	
 	if (!GameConstants::font.loadFromFile("arial.ttf"))
 	{
 		cout << "err loading font" << endl;
 	}
+
+	// create scenes
+	LoadScene load = LoadScene();
+
+	//add scenes to sceneMgr
+	SceneManager::getInstance()->addScene(&load);
+
+	//splash is first
+	SceneManager::getInstance()->switchTo(Scenes::LOAD);
+
+	sf::Thread thread(&loadAssets);
+	thread.launch();
+	//loadAssets();
 
 	srand(time(NULL));
 	// Create the main window 
@@ -105,21 +125,6 @@ int main()
 	window.setFramerateLimit(30);
 
 
-	// create scenes
-	LoadScene load = LoadScene();
-	GameScene game = GameScene();
-	SplashScene splash = SplashScene();
-	MainMenuScene menu = MainMenuScene();
-	
-	//add scenes to sceneMgr
-	SceneManager::getInstance()->addScene(&load);
-	SceneManager::getInstance()->addScene(&game);
-	SceneManager::getInstance()->addScene(&splash);
-	SceneManager::getInstance()->addScene(&menu);
-
-	//splash is first
-	SceneManager::getInstance()->switchTo(Scenes::GAME);
-	
 	sf::Clock deltaClock; // used to calculate dt
 	float dt = 0; // floating point dt as seconds
 
@@ -149,7 +154,7 @@ int main()
 		//draw frame items
 		SceneManager::getInstance()->draw(window);
 
-		// Finally, display rendered frame on screen 
+		// Finally, display rendered frame on screen
 		LightManager::getInstance()->Update(window, dt);
 		window.display();
 

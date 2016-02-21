@@ -17,7 +17,8 @@ void EnemyManager::spawnEnemy()
 									GameConstants::ENEMY1_HEALTH, 
 									GameConstants::ENEMY1_DAMAGE_PER_SECOND, 
 									GameConstants::ENEMY1_SPEED, 
-									GameConstants::ENEMY1_RADIUS));
+									GameConstants::ENEMY1_RADIUS,
+									m_spawnPointController.getNumDeadPylons()));
 }
 
 std::vector<Enemy *> EnemyManager::getEnemies()
@@ -31,7 +32,7 @@ void EnemyManager::update(float dt)
 	if (m_spawnInterval <= 0)
 	{
 		m_spawnInterval = GameConstants::ENEMY_SPAWN_INTERVAL;
-		if (m_enemies.size() < 60)
+		if (m_enemies.size() < 150)
 		{
 			spawnEnemy();
 		}

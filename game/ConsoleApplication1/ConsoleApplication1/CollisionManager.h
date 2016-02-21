@@ -13,6 +13,7 @@ class CollisionManager
 public:
 	CollisionManager(UnitController* unitController);
 
+	void updateEnemyNeighbours(vector<Enemy*> enemies);
 	void checkBulletsTower(vector<Bullet*> bullets, Tower& tower);
 	void checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*> bullets);
 	void checkEnemyTower(vector<Enemy*> enemies, Tower& tower);

@@ -18,6 +18,8 @@ public:
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	
 	static float const TOWER_HEALTH; // defined in GameConstants.cpp
 
+	static int const NUMBER_PYLONS; // defined in GameConstants.cpp
+
 	static float const WALK_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_SPEED; // defined in GameConstants.cpp

@@ -78,6 +78,7 @@ void GameScene::checkCollisions(float dt)
 	m_collisionMgr.checkEnemyTower(m_enemyManager.getEnemies(), m_tower);
 	m_collisionMgr.checkEnemyBullets(m_enemyManager.getEnemies(), m_bulletFactory->getBullets());
 	m_collisionMgr.checkEnemyBunker(m_enemyManager.getEnemies(), m_bunkers, dt);
+	m_collisionMgr.updateEnemyNeighbours(m_enemyManager.getEnemies());
 }
 
 void GameScene::pause()
@@ -130,5 +131,4 @@ void GameScene::draw(sf::RenderWindow &window)
 	m_anim.draw(window);
 	LightManager::getInstance()->draw(window);
 	sf::RectangleShape cover;
-	
 }

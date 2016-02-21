@@ -11,17 +11,15 @@ Scene(Scenes::LOAD)
 
 void LoadScene::update(float dt)
 {
-	if (loadAssets() == 1)
-	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
-	
+		
 }
 
-int LoadScene::loadAssets()
-{
-	return 1;
-}
 
 void LoadScene::draw(sf::RenderWindow &window)
 {
+	sf::Text text;
+	text.setFont(GameConstants::font);
+	text.setString("Loading...");
 
+	window.draw(text);
 }

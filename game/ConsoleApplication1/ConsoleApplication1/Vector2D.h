@@ -93,6 +93,9 @@ public:
     static Vector2D GetIntersect(const Vector2D&, const Vector2D&, const Vector2D&, const Vector2D&);
 	//get the distance between 2 points retuns as float
 	static float Distance(Vector2D & one ,Vector2D &two);
+
+	static float DistanceSq(Vector2D & one, Vector2D & two);
+
 	//get the angle between 2 points returns as float in degrees
 	static float AngleDeg(Vector2D & one, Vector2D & two);
 	//get the angle between 2 points returns as float in radians

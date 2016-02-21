@@ -27,6 +27,21 @@ void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*>
 	}
 }
 
+void CollisionManager::updateEnemyNeighbours(vector<Enemy*> enemies)
+{
+	for (int a = 0; a < enemies.size(); a++)
+	{
+		enemies[a]->resetNeighbours();
+		for (int b = a + 1; b < enemies.size(); b++)
+		{
+			if (Intersects(enemies[b]->getBounds(), enemies[a]->getNeighbourBounds()))
+			{
+				enemies[a]->addNeighbour(enemies[b]);
+			}
+		}
+	}
+}
+
 void CollisionManager::checkBulletsTower(vector<Bullet*> bullets, Tower& tower)
 {
 	for (Bullet * bullet : bullets)

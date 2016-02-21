@@ -8,6 +8,7 @@ class SpawnPointController
 public:
 	SpawnPointController();
 	Vector2D getSpawnPoint();
+	int getNumDeadPylons();
 
 private:
 	std::vector<Vector2D> spawnPoints;

@@ -3,7 +3,7 @@
 
 //actual static variable values defined here
 float const GameConstants::TOWER_RADIUS = 110;
-float const GameConstants::TOWER_HEALTH = 100;
+float const GameConstants::TOWER_HEALTH = 10000;
 float const GameConstants::PLAYER_RADIUS = 4;
 float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 25;
 float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
@@ -11,8 +11,8 @@ float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
 
 float const GameConstants::PI = std::acos(-1);
 
-float const GameConstants::ENEMY1_RADIUS = 18; 
-float const GameConstants::ENEMY1_SPEED = 50; 
+float const GameConstants::ENEMY1_RADIUS = 5; 
+float const GameConstants::ENEMY1_SPEED = 150; 
 float const GameConstants::ENEMY1_DAMAGE_PER_SECOND = 5; 
 float const GameConstants::ENEMY1_HEALTH = 80; 
 
@@ -26,7 +26,8 @@ float const GameConstants::ENEMY2_HEALTH = 200;
  float const GameConstants::BOSS_DAMAGE_PER_SECOND = 100; 
  float const GameConstants::BOSS_HEALTH = 5000; 
 
-float enemiesPerSecond = 1.5f;
+float enemiesPerSecond = 5.5f;
+int const GameConstants::NUMBER_PYLONS = 10;
 
 float const GameConstants::ENEMY_SPAWN_INTERVAL = 1.0f / enemiesPerSecond; 
 

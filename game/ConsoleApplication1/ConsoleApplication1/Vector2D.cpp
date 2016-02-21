@@ -199,6 +199,11 @@ float Vector2D::Distance(Vector2D & one,Vector2D & two)
 	return sqrt((two.x -one.x)*(two.x - one.x) + (two.y - one.y)*(two.y - one.y));
 }
 
+float Vector2D::DistanceSq(Vector2D & one, Vector2D & two)
+{
+	return (two.x - one.x)*(two.x - one.x) + (two.y - one.y)*(two.y - one.y);
+}
+
 float Vector2D::AngleRad(Vector2D & one, Vector2D & two)
 {
 	return atan2(one.y - two.y, one.x - two.x);

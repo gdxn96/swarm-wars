@@ -91,6 +91,7 @@
     <ClInclude Include="AssetLoader.h" />
     <ClInclude Include="AudioMgr.h" />
     <ClInclude Include="bar.h" />
+    <ClInclude Include="Bolt.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Bunker.h" />
@@ -108,9 +109,11 @@
     <ClInclude Include="OrderPointer.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Polygon.h" />
+    <ClInclude Include="Pylon.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
-    <ClInclude Include="SpawnPointController.h" />
+    <ClInclude Include="SpawnPoint.h" />
+    <ClInclude Include="PylonManager.h" />
     <ClInclude Include="SplashScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -130,6 +133,7 @@
     <ClCompile Include="AssetLoader.cpp" />
     <ClCompile Include="AudioMgr.cpp" />
     <ClCompile Include="bar.cpp" />
+    <ClCompile Include="Bolt.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Bunker.cpp" />
@@ -148,9 +152,11 @@
     <ClCompile Include="OrderPointer.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="Pylon.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
-    <ClCompile Include="SpawnPointController.cpp" />
+    <ClCompile Include="SpawnPoint.cpp" />
+    <ClCompile Include="PylonManager.cpp" />
     <ClCompile Include="SplashScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

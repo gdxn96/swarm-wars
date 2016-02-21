@@ -107,9 +107,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>CODE\GAME\ENEMIES</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnPointController.h">
-      <Filter>CODE\GAME\ENEMIES</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>CODE\GAME</Filter>
     </ClInclude>
@@ -160,6 +157,18 @@
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
     <ClInclude Include="UpgradeManager.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Pylon.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnPoint.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="PylonManager.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClInclude>
+    <ClInclude Include="Bolt.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -218,9 +227,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>CODE\GAME\ENEMIES</Filter>
     </ClCompile>
-    <ClCompile Include="SpawnPointController.cpp">
-      <Filter>CODE\GAME\ENEMIES</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>CODE\GAME</Filter>
     </ClCompile>
@@ -273,6 +279,18 @@
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
     <ClCompile Include="UpgradeManager.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Pylon.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnPoint.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="PylonManager.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
+    </ClCompile>
+    <ClCompile Include="Bolt.cpp">
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
   </ItemGroup>

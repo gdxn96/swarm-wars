@@ -17,7 +17,7 @@ public:
 	//radius in which players can walk about the centre of the map
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	
 	static float const TOWER_HEALTH; // defined in GameConstants.cpp
-
+	static float const PYLON_KILL_INTERVAL; // defined in GameConstants.cpp
 	static int const NUMBER_PYLONS; // defined in GameConstants.cpp
 
 	static float const WALK_RADIUS; // defined in GameConstants.cpp	
@@ -46,6 +46,7 @@ public:
 	static float const BUNKER_SIZE_HEIGHT; // defined in GameConstants.cpp
 
 	static float const BUNKER_HEALTH; // defined in GameConstants.cpp
+	
 
 	static float const PI; // defined in GameConstants.cpp	
 	static float const POINTER_RADIUS;// defined in GameConstants.cpp	

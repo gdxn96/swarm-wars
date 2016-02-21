@@ -11,14 +11,14 @@ EnemyManager::EnemyManager()
 
 void EnemyManager::spawnEnemy()
 {
-	Vector2D spawnPosition = m_spawnPointController.getSpawnPoint();
+	Vector2D spawnPosition = m_pylonMgr.getSpawnPoint();
 	Vector2D direction = (GameConstants::WINDOW_CENTRE - spawnPosition).Normalize();
 	m_enemies.push_back(new Enemy(	spawnPosition, direction, 
 									GameConstants::ENEMY1_HEALTH, 
 									GameConstants::ENEMY1_DAMAGE_PER_SECOND, 
 									GameConstants::ENEMY1_SPEED, 
 									GameConstants::ENEMY1_RADIUS,
-									m_spawnPointController.getNumDeadPylons()));
+									3));
 }
 
 std::vector<Enemy *> EnemyManager::getEnemies()
@@ -29,14 +29,18 @@ std::vector<Enemy *> EnemyManager::getEnemies()
 void EnemyManager::update(float dt)
 {
 	m_spawnInterval -= dt;
+	m_pylonKillInterval -= dt;
+
 	if (m_spawnInterval <= 0)
 	{
 		m_spawnInterval = GameConstants::ENEMY_SPAWN_INTERVAL;
-		if (m_enemies.size() < 150)
+
+		if (m_enemies.size() < 60 && m_pylonMgr.getOpenSpawnPoints().size() > 0)
 		{
 			spawnEnemy();
 		}
 	}
+
 	for (int i = 0; i < m_enemies.size(); i++)
 	{
 		if (m_enemies[i]->getAlive())
@@ -49,6 +53,7 @@ void EnemyManager::update(float dt)
 			m_enemies.erase(m_enemies.begin() + i);
 		}
 	}
+	m_pylonMgr.update(dt);
 }
 
 void EnemyManager::draw(sf::RenderWindow & window)
@@ -57,4 +62,7 @@ void EnemyManager::draw(sf::RenderWindow & window)
 	{
 		enemy->draw(window);
 	}
+
+	m_pylonMgr.draw(window);
 }
+

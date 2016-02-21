@@ -19,7 +19,8 @@ void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*>
 				enemy->damage(bullet->getDamage());
 				if (!enemy->getAlive())
 				{
-					m_unitController->getUnitById(bullet->getParentId())->addExperience(3.4f);
+					m_unitController->getUnitById(bullet->getParentId())->addExperience(GameConstants::EXPERENCE_AMOUNT);
+					m_unitController->getUnitById(bullet->getParentId())->addCredits(GameConstants::CREDIT_AMOUNT);
 				}
 				break;
 			}
@@ -31,7 +32,7 @@ void CollisionManager::checkBulletsTower(vector<Bullet*> bullets, Tower& tower)
 {
 	for (Bullet * bullet : bullets)
 	{
-		if (Intersects(bullet->getBounds(), tower.getOuterBounds()))
+		if (Intersects(bullet->getBounds(), tower.getInnerBounds()))
 		{
 			bullet->kill();
 		}

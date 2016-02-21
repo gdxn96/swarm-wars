@@ -7,13 +7,14 @@
 #include "WeaponFactory.h"
 #include "Animation.h"
 #include "AssetLoader.h"
+#include "bar.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
 
 class Unit
 {
 public:
-	Unit(float startAngle, string id);
+	Unit(float startAngle, std::string id);
 
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
@@ -65,9 +66,11 @@ public:
 	bool getSelected();
 	Vector2D getPosition();
 
-	string getId();
-
-
+	std::string getId();
+	void setXPBar(float);
+	int maxRank = 100;
+	void addCredits(int);
+	int getCredits();
 private:
 	float m_positionAngle; // angle signifying position relative to walk radius
 	float m_targetAngle; // angle signifying target pos relative to walk radius
@@ -83,9 +86,11 @@ private:
 	Weapon m_currentWeapon;
 	bool m_isPlayer;
 	bool m_isSelected;
-
+	bar m_xpBar;
 	UNIT_RANK m_rank;
 	float m_experience;
-	string m_id;
+	std::string m_id;
+	sf::RectangleShape rankImg;
+	int credits;
 };
 

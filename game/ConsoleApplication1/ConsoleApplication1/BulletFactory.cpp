@@ -8,6 +8,8 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 {
 	float bulletSpeed = 0;
 	float radius = 1;
+	sf::Color color;
+	std::string animName,audioName;
 
 	//use this switch statement to pass in different spritesheets/other 
 	//vars to different bullets depending on type
@@ -16,23 +18,64 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 	case BulletType::PLASMA:
 		bulletSpeed = BULLET_STATS::PLASMA_SPEED;
 		radius = BULLET_STATS::PLASMA_RADIUS;
-
-		m_bulletList.push_back(new Bullet(parentId, position, direction, bulletSpeed, radius, range, damage));
-
+		color = BULLET_STATS::PLASMA_COLOR;
+		animName = BULLET_STATS::PLASMA_TEXTURE_KEY;
+		audioName = BULLET_STATS::PLASMA_AUDIO_NAME;
 		break;
 
-	case BulletType::SIMPLE:
+	case BulletType::AK:
 		bulletSpeed = BULLET_STATS::SIMPLE_SPEED;
 		radius = BULLET_STATS::SIMPLE_RADIUS;
+		color = BULLET_STATS::SIMPLE_COLOR;
+		animName = BULLET_STATS::SIMPLE_TEXTURE_KEY;
+		audioName = BULLET_STATS::SIMPLE_AUDIO_NAME;
+		break;
 
-		m_bulletList.push_back(new Bullet(parentId, position, direction, bulletSpeed, radius, range, damage));
+	case BulletType::LMG:
+		bulletSpeed = BULLET_STATS::LMG_SPEED;
+		radius = BULLET_STATS::LMG_RADIUS;
+		color = BULLET_STATS::LMG_COLOR;
+		animName = BULLET_STATS::LMG_TEXTURE_KEY;
+		audioName = BULLET_STATS::LMG_AUDIO_NAME;
+		break;
 
+	case BulletType::SMG:
+		bulletSpeed = BULLET_STATS::SMG_SPEED;
+		radius = BULLET_STATS::SMG_RADIUS;
+		color = BULLET_STATS::SMG_COLOR;
+		animName = BULLET_STATS::SMG_TEXTURE_KEY;
+		audioName = BULLET_STATS::SMG_AUDIO_NAME;
+		break;
+
+	case BulletType::SNIPER:
+		bulletSpeed = BULLET_STATS::SNIPER_SPEED;
+		radius = BULLET_STATS::SNIPER_RADIUS;
+		color = BULLET_STATS::SNIPER_COLOR;
+		animName = BULLET_STATS::SNIPER_TEXTURE_KEY;
+		audioName = BULLET_STATS::SNIPER_AUDIO_NAME;
+		break;
+
+	case BulletType::PISTOL:
+		bulletSpeed = BULLET_STATS::PISTOL_SPEED;
+		radius = BULLET_STATS::PISTOL_RADIUS;
+		color = BULLET_STATS::PISTOL_COLOR;
+		animName = BULLET_STATS::PISTOL_TEXTURE_KEY;
+		audioName = BULLET_STATS::PISTOL_AUDIO_NAME;
+		break;
+
+	case BulletType::SHOTGUN:
+		bulletSpeed = BULLET_STATS::SHOTGUN_SPEED;
+		radius = BULLET_STATS::SHOTGUN_RADIUS;
+		color = BULLET_STATS::SHOTGUN_COLOR;
+		animName = BULLET_STATS::SHOTGUN_TEXTURE_KEY;
+		audioName = BULLET_STATS::SHOTGUN_AUDIO_NAME;
 		break;
 
 	default:
 		return;
 	}
 
+	m_bulletList.push_back(new Bullet(parentId, position, direction, bulletSpeed, radius, range, damage, color, animName,audioName));
 
 }
 

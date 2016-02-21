@@ -7,7 +7,7 @@
 class Bullet
 {
 public:
-	Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage);
+	Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage,sf::Color color,std::string animName,std::string audioName);
 	void Update(float dt);
 	void Draw(sf::RenderWindow &window);
 	bool getAlive();

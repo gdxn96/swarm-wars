@@ -75,8 +75,16 @@ void loadAssets()
 	AssetLoader::getInstance()->addSoundToCache("background", "./GameSounds/loop.wav", AudioManager::instance()->FMODsys, true);
 	AssetLoader::getInstance()->addSoundToCache("plasma", "./GameSounds/plasma.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("zum", "./GameSounds/zum.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("zun", "./GameSounds/zun.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("miss", "./GameSounds/miss.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("oof", "./GameSounds/off.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("yes", "./GameSounds/yes.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("lmg", "./GameSounds/lmg.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("pistol", "./GameSounds/pistol.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("sniper", "./GameSounds/sniper.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("shell", "./GameSounds/shell.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("Ok3", "./GameSounds/Ok3.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("Ok4", "./GameSounds/Ok4.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addTextureToCache("spotLight", "assets/biglight.png");
 	AssetLoader::getInstance()->addTextureToCache("starLight", "assets/starLight.png");
 	AssetLoader::getInstance()->addTextureToCache("pointLight", "assets/spotLight.png");
@@ -89,6 +97,16 @@ void loadAssets()
 	AssetLoader::getInstance()->addTextureToCache("UnitControllerUI", "assets/UnitControllerUI.png");
 	AssetLoader::getInstance()->addAnimationToCache("staticAnimation", "assets/staticAnimation.png", "assets/staticAnimation.json");
 	AssetLoader::getInstance()->addAnimationToCache("selectorAnimation", "assets/selectorAnimation.png", "assets/selectorAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("greenWeaponAnimation", "assets/greenWeaponAnimation.png", "assets/greenWeaponAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("blueWeaponAnimation", "assets/blueWeaponAnimation.png", "assets/blueWeaponAnimation.json");
+	AssetLoader::getInstance()->addTextureToCache("RankA", "assets/rank/a.png");
+	AssetLoader::getInstance()->addTextureToCache("RankB", "assets/rank/b.png");
+	AssetLoader::getInstance()->addTextureToCache("RankC", "assets/rank/c.png");
+	AssetLoader::getInstance()->addTextureToCache("RankD", "assets/rank/d.png");
+	AssetLoader::getInstance()->addTextureToCache("RankE", "assets/rank/e.png");
+	AssetLoader::getInstance()->addTextureToCache("RankF", "assets/rank/f.png");
+	AssetLoader::getInstance()->addTextureToCache("RankG", "assets/rank/g.png");
+	AssetLoader::getInstance()->addAnimationToCache("UiSolderAnimation", "assets/UiSolderAnimation.png", "assets/UiSolderAnimation.json");
 }
 
 int main()
@@ -103,7 +121,6 @@ int main()
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
 	window.setFramerateLimit(30);
-
 
 	// create scenes
 	LoadScene load = LoadScene();

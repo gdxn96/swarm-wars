@@ -5,6 +5,8 @@
 #include "SFML/OpenGL.hpp" 
 #include "WeaponFactory.h"
 #include "InputHandler.h"
+#include "Animation.h"
+#include "PulsingText.h"
 
 class UpgradeElement
 {
@@ -22,13 +24,17 @@ public:
 
 private:
 	Polygon2D m_icon;
-
+	void changeUI(string name,Vector2D position,Vector2D size);
 	Unit* m_parentUnit;
 	bool m_alive;
 	WeaponType m_weaponType;
 	string m_key;
-	
+	void animationInit();
+	Animation m_anim,m_bgAnim;
+	sf::RectangleShape bg;
+	PulsingText UIText, dmg, fireRate, Name;
+	template <class T>
+	std::string numberToString(const T& t);
 
-	
 };
 

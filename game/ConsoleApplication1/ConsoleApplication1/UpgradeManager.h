@@ -22,5 +22,5 @@ private:
 	std::vector<std::pair<WeaponType, std::string>> m_weaponTextures;
 	std::vector<UpgradeElement*> m_upgrades;
 	UpgradeElement * m_currentUpgrade;
-
+	
 };

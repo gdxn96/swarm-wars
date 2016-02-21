@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Unit.h"
+#include "LightManager.h"
+
 
 Unit::Unit(float startAngle, string id)
 : PI(GameConstants::PI),
@@ -9,7 +11,7 @@ m_positionAngle(startAngle),
 m_targetAngle(startAngle),
 m_state(UNIT_STATE::WAITING),
 m_directionAngle(startAngle),
-m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK)),
+m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::PISTOL)),
 m_isPlayer(false),
 m_isSelected(false),
 m_previousState(UNIT_STATE::WAITING),
@@ -17,18 +19,22 @@ m_rank(UNIT_RANK::A),
 m_experience(0),
 m_id(id),
 m_anim("walingAssaltAnimation", Vector2D(-100, -100)),
-m_selectAnimation("selectorAnimation", Vector2D(-100, -100))
+m_selectAnimation("selectorAnimation", Vector2D(-100, -100)),
+m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100)
 {
 	m_anim.setFramesPerSecond(60);
-	m_anim.setRadius(m_radius + 50);
+	m_anim.setRadius(m_radius + 40);
 	m_anim.SetLooping(false);
 	m_selectAnimation.setFramesPerSecond(60);
 	m_selectAnimation.setRadius(m_radius + 90);
 	m_selectAnimation.SetLooping(false);
-	//m_selectAnimation = Animation("")
 	updateAngle(m_positionAngle);
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, 0);
 	m_currentWeapon.setParentId(m_id);
+	rankImg.setPosition(Vector2D(m_position + Vector2D(-m_radius + 30, 20)).toSFMLVector());
+	rankImg.setSize(sf::Vector2f(12, 12));
+	rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankA"));
+	LightManager::getInstance()->AddLight(m_id, m_position.toSFMLVector(), sf::Vector2f(0.19f, 0.19f), sf::Color(255,205,180,185),Vector2D(0,0), 0,nullptr, "bumpLight");
 }
 
 void Unit::setIsPlayer(bool isPlayer)
@@ -55,23 +61,23 @@ void Unit::setDirectionAngle(float angle)
 void Unit::fireWeapon()
 {
 	m_currentWeapon.fire();
+	
 }
 
 void Unit::update(float dt)
 {	
-	
+	LightManager::getInstance()->updateLightByID(m_id, m_position, Vector2D(0.19f, 0.19f), sf::Color(255, 205, 180, 185));
+	m_xpBar.update();
+	m_xpBar.setPosition(m_position + Vector2D(-20, 20));
 	m_anim.update();
 	m_anim.setRotation((m_directionAngle - (PI )) * 180 / PI);
 	m_anim.setPosition(m_position);
-
+	rankImg.setPosition(Vector2D(m_position + Vector2D(-m_radius + 30, 20)).toSFMLVector());
 	m_selectAnimation.update();
 	m_selectAnimation.setPosition(m_position);
 	//if given a move order
 	if (m_state == UNIT_STATE::MOVING)
 	{
-		//m_anim.setFramesPerSecond(45);
-		m_anim.SetLooping(true);
-		m_anim.changeAnimation("walingAssaltAnimation");
 		//find direction to target
 		int direction = getDirectionToTarget();
 
@@ -90,16 +96,55 @@ void Unit::update(float dt)
 	}
 	else if (m_state == UNIT_STATE::WAITING)
 	{ 
-		m_anim.changeAnimation("walingAssaltAnimation");
-		m_anim.SetLooping(false);
+		
 
 	}
 	else if (m_state == UNIT_STATE::FIRING)
 	{
 		fireWeapon();
-		m_anim.SetLooping(true);
-		m_anim.setFramesPerSecond(500);
-		m_anim.changeAnimation("shootingAssaltAnimation");
+	}
+
+	if (m_isPlayer)
+	{
+		if (m_state == UNIT_STATE::MOVING)
+		{
+			m_anim.setFramesPerSecond(120);
+			m_anim.changeAnimation("walingAssaltAnimation");
+			m_anim.SetLooping(true);
+		}
+		else if (m_state == UNIT_STATE::WAITING)
+		{
+			m_anim.changeAnimation("walingAssaltAnimation");
+			m_anim.SetLooping(false);
+
+		}
+		else if (m_state == UNIT_STATE::FIRING)
+		{
+			m_anim.SetLooping(true);
+			m_anim.setFramesPerSecond(500);
+			m_anim.changeAnimation("shootingAssaltAnimation");
+		}
+	}
+	else
+	{
+		if (m_state == UNIT_STATE::MOVING)
+		{
+			m_anim.setFramesPerSecond(120);
+			m_anim.changeAnimation("walingAssaltAnimation");
+			m_anim.SetLooping(true);
+		}
+		else if (m_state == UNIT_STATE::WAITING)
+		{
+			m_anim.changeAnimation("walingAssaltAnimation");
+			m_anim.SetLooping(false);
+
+		}
+		else if (m_state == UNIT_STATE::FIRING)
+		{
+			m_anim.SetLooping(true);
+			m_anim.setFramesPerSecond(1000);
+			m_anim.changeAnimation("shootingAssaltAnimation");
+		}
 	}
 
 	m_currentWeapon.update(getPositionByAngle(m_positionAngle), m_directionAngle, dt);
@@ -114,8 +159,46 @@ void Unit::update(float dt)
 		m_selectAnimation.SetLooping(false);
 		m_selectAnimation.reset();
 	}
+
+	if (m_experience > 600)
+	{
+		m_xpBar.setColor(sf::Color(255, 215, 0, 255));
+	}
+	
+    if (m_rank == UNIT_RANK::A)
+	{
+
+	}
+	else if (m_rank == UNIT_RANK::B)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankB"));
+	}
+	else if (m_rank == UNIT_RANK::C)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankC"));
+	}
+	else if (m_rank == UNIT_RANK::D)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankD"));
+	}
+	else if (m_rank == UNIT_RANK::E)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankE"));
+	}
+	else if (m_rank == UNIT_RANK::F)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankF"));
+	}
+	else if (m_rank == UNIT_RANK::G)
+	{
+		rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankG"));
+	}
 }
 
+void Unit::setXPBar(float amount)
+{
+	m_xpBar.setPercentAmount(amount);
+}
 Polygon2D& Unit::getRangeCone()
 {
 	return m_currentWeapon.getRange();
@@ -159,30 +242,15 @@ void Unit::draw(sf::RenderWindow & window)
 {
 	//draw weapon
 	m_currentWeapon.draw(window);
-
-	////draw player
-	//sf::CircleShape player = sf::CircleShape(m_radius);
-	//player.setFillColor(sf::Color::Green);
-	//if (m_isPlayer)
-	//{
-	//	player.setFillColor(sf::Color::Red);
-	//}
-	//
-	//player.setOrigin(m_radius, m_radius);
-	//player.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
-	
-
-	//draw target
 	sf::CircleShape target = sf::CircleShape(m_radius);
 	target.setFillColor(sf::Color::Cyan);
 	target.setOrigin(m_radius, m_radius);
 	target.setPosition(getPositionByAngle(m_targetAngle).toSFMLVector());
 	window.draw(target);
-	target.setPosition(getPositionByAngle(m_positionAngle).toSFMLVector());
-	target.setFillColor(sf::Color::Red);
-	window.draw(target);
-	m_anim.draw(window);
 	m_selectAnimation.draw(window);
+	m_anim.draw(window);
+	m_xpBar.draw(window);
+	window.draw(rankImg);
 }
 
 float Unit::getExperience()
@@ -282,6 +350,14 @@ float Unit::findAngleBetween(float b, float a)
 	{
 		return a - b;
 	}
+}
+void Unit::addCredits(int amount)
+{
+	credits += amount;
+}
+int Unit::getCredits()
+{
+	return credits;
 }
 
 string Unit::getId()

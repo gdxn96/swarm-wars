@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "UnitController.h"
+#include "AudioMgr.h"
 
 UnitController::UnitController() : 
 EXP_RANKS(vector<std::pair<UNIT_RANK, int>>({
@@ -22,11 +23,10 @@ void UnitController::init()
 	addUnit(0, true);
 	for (int i = 0; i < numUnits; i++)
 	{
-		addUnit(2 * GameConstants::PI / numUnits * i);
+		addUnit(2 * GameConstants::PI / (numUnits + 1) * (i + 1));
 	}
 	m_currentUnit = m_units[0];
 	m_currentUnit->setSelected(true);
-
 }
 
 void UnitController::addUnit(float startAngle, bool isPlayer)
@@ -59,14 +59,20 @@ void UnitController::update(float dt)
 	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
 	m_currentUnit->setDirectionAngle(leftStickAngle);
 
-	if (input->isPressed(InputHandler::B))
+	if (input->isPressed(InputHandler::LB))
 	{
-		cout << "pressedfsdf unit" << endl;
-		switchUnit();
+		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
+		switchUnit(true);
+	}
+	if (input->isPressed(InputHandler::RB))
+	{
+		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
+		switchUnit(false);
 	}
 	if (input->isPressed(InputHandler::A))
 	{
 		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
+		AudioManager::instance()->PlayGameSound("Ok3", false, 0.1f, m_currentUnit->getPosition(), 0);
 	}
 	
 	if (m_currentUnit->isPlayer())
@@ -110,23 +116,40 @@ bool UnitController::checkExperienceRankMatch(UNIT_RANK _rank, float experience)
 
 void UnitController::updateRanks()
 {
+	int temp = 0;
 	for (Unit * unit : m_units)
 	{
 		if (!checkExperienceRankMatch(unit->getRank(), unit->getExperience()))
 		{
 			UNIT_RANK prevRank = EXP_RANKS[EXP_RANKS.size() - 1].first;
+			
 			for (auto& rank : EXP_RANKS)
 			{
 				if (prevRank == unit->getRank())
 				{
 					unit->setRank(rank.first);
 					m_upgradeMgr.NotifyLevelUp(unit);
+					//call upgrade UI draw animation
+
+					unit->maxRank = rank.second;
 					break;
 				}
 				prevRank = rank.first;
 			}
 		}
+		if (unit->getExperience() < 600)
+		{
+			float percentLeft = std::abs(unit->maxRank - unit->getExperience() - 100);
+			unit->setXPBar(percentLeft);
+		}
+		temp += unit->getCredits();
 	}
+	m_totalUnitsCredit = temp;
+}
+
+int UnitController::getTotalCreditAmount()
+{
+	return m_totalUnitsCredit;
 }
 
 vector<Unit*> UnitController::getUnits()
@@ -147,26 +170,52 @@ void UnitController::drawUI(sf::RenderWindow & window)
 {
 	m_upgradeMgr.draw(window);
 }
-void UnitController::switchUnit()
+void UnitController::switchUnit(bool left)
 {
-	cout << "switch unit" << endl;
-	m_currentUnit->setSelected(false);
-	int lastIndex = -1;
-	for (int i = 0; i < m_units.size(); i++)
+	if (!left)
 	{
-		if (m_currentUnit == m_units[i])
+		m_currentUnit->setSelected(false);
+		int lastIndex = -1;
+		for (int i = 0; i < m_units.size(); i++)
 		{
-			lastIndex = i;
+			if (m_currentUnit == m_units[i])
+			{
+				lastIndex = i;
+			}
 		}
-	}
 
-	if (lastIndex == m_units.size() - 1)
-	{
-		m_currentUnit = m_units[0];
+		if (lastIndex == m_units.size() - 1)
+		{
+			m_currentUnit = m_units[0];
+		}
+		else
+		{
+			m_currentUnit = m_units[lastIndex + 1];
+		}
+		m_currentUnit->setSelected(true);
+		cout << lastIndex << endl;
 	}
 	else
 	{
-		m_currentUnit = m_units[lastIndex + 1];
+		m_currentUnit->setSelected(false);
+		int lastIndex = -1;
+		for (int i = m_units.size() - 1; i != -1; i--)
+		{
+			if (m_currentUnit == m_units[i])
+			{
+				lastIndex = i;
+				cout << i << endl;
+			}
+		}
+		if (lastIndex == 0)
+		{
+			m_currentUnit = m_units[m_units.size() - 1];
+		}
+		else
+		{
+			m_currentUnit = m_units[lastIndex - 1];
+		}
+		m_currentUnit->setSelected(true);
+		cout << lastIndex << endl;
 	}
-	m_currentUnit->setSelected(true);
 }

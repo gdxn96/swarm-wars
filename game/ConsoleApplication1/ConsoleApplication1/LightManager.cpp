@@ -46,7 +46,7 @@ void LightManager::Update(sf::RenderWindow & window,float dt)
 	{
 		lights[i]->Update(dt);
 	}
-	lightMapTexture.clear(sf::Color(170, 170, 170));
+	lightMapTexture.clear(sf::Color(80, 80, 80));
 	for (std::size_t i = 0; i < lights.size(); ++i)
 	{
 		

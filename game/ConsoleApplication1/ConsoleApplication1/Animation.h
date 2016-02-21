@@ -25,6 +25,9 @@ public:
 	void setIsAlive(bool);
 	void reset();
 	void setDoOnce(bool doOnce);
+	void setSize(float, float);
+	void setSize(Vector2D);
+	std::string getName();
 private:
 	vector<pair <string, vector<sf::IntRect>>>  animationList;
 	Texture *texture;
@@ -38,7 +41,7 @@ private:
 	int selectedColumn = 0;
 	bool isLooping = true;
 	bool isAlive = true;
-	
+	std::string name;
 	bool doOnce = false;
 };
 

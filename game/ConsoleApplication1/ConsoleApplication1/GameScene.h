@@ -10,6 +10,7 @@
 #include "Tower.h"
 #include "UnitSelector.h"
 #include "Animation.h"
+#include "PulsingText.h"
 class GameScene : public Scene
 {
 public:
@@ -45,4 +46,10 @@ private:
 	//camera test
 	sf::View miniMapView, gameView;
 	Animation m_anim;
+
+	PulsingText m_creditsScoreText;
+
+	template <class T>
+	std::string numberToString(const T& t);
+
 };

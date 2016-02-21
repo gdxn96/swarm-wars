@@ -3,7 +3,7 @@
 #include <vector>
 #include "Bullet.h"
 
-enum class BulletType{ PLASMA, SIMPLE };
+enum class BulletType{ PLASMA, AK,SNIPER,LMG,SMG,PISTOL,SHOTGUN };
 
 
 

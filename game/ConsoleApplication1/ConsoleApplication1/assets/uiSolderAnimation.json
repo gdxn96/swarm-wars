@@ -1,0 +1,12 @@
+{	
+	"UiSolderAnimation" :[
+			{"x":0,"y":0,"width":784, "height":665},
+ 			{"x":785   ,"y":0 ,"width":784, "height":665},
+			{"x": 0   ,"y":666   ,"width":784 ,"height":665},
+			{"x": 0  ,"y": 1332  ,"width":784 ,"height":665},
+			{"x": 785  ,"y": 666   ,"width":784 ,"height":665},
+			{"x": 785   ,"y":1332  ,"width":784 ,"height":665},
+			{"x": 1570  ,"y": 0  ,"width":784 ,"height":665},
+			{"x": 1570  ,"y": 666   ,"width":784 ,"height":665}
+			]
+ }

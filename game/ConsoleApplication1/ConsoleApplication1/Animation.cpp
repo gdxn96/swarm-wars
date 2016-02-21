@@ -27,23 +27,16 @@ Animation::Animation(string _animationName, Vector2D _position)
 	outputSprite.setTexture(*texture, true);
 	outputSprite.setPosition(position.toSFMLVector());
 	outputSprite.setScale(Vector2f(1, 1));
-	
+	name = _animationName;
 }
 
 void Animation::update()
 {
-	int max;
 	sf::Time elapsedTime = clock.getElapsedTime();
-	if (animationList[selectedAnimationIndex].second.size() != 0)
-	{
-		max = animationList[selectedAnimationIndex].second.size();
-	}
-	else
-		max = 0;
 	
 	if (elapsedTime > sf::seconds(FPS) && isLooping)
 	{
-		if (selectedColumn < max - 1 )
+		if (selectedColumn < animationList[selectedAnimationIndex].second.size() - 1)
 		{
 			selectedColumn++;
 		}
@@ -118,6 +111,20 @@ void Animation::setRadius(float _radius)
 	width = _radius / maxCellWidth;
 	height = _radius / maxCellHeight;
 	outputSprite.setScale(width, height);
+}
+
+void Animation::setSize(float w, float h)
+{
+	outputSprite.setScale(w / maxCellWidth, h / maxCellHeight);
+}
+void Animation::setSize(Vector2D size)
+{
+	outputSprite.setScale(sf::Vector2f(size.x / maxCellWidth, size.y / maxCellHeight));
+}
+
+std::string Animation::getName()
+{
+	return name;
 }
 Animation::~Animation()
 {

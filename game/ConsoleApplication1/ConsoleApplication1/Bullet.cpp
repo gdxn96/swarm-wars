@@ -4,7 +4,7 @@
 #include "LightManager.h"
 #include "AudioMgr.h"
 
-Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage)
+Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, float speed, float radius, float killDistance, float damage, sf::Color color, string animName, std::string audioName)
 :	m_position(position),
 	m_initPosition(position),
 	m_range(killDistance),
@@ -14,7 +14,7 @@ Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, floa
 	m_bounds(Circle(position, radius)),
 	m_alive(true),
 	m_damage(damage),
-	m_anim("bulletAnimation", Vector2D(0, 0)),
+	m_anim(animName, Vector2D(-1110, -1110)),
 	m_parentId(parentId)
 {
 	m_anim.setFramesPerSecond(60);
@@ -22,8 +22,12 @@ Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, floa
 	m_anim.setRadius(m_radius + 50);
 	//names plasmaAnimation//bulletAnimation//blueBulletAnimation
 	//rgb(238,130,238)plasma// norma gold rgb(255,215,0)// blue rgb(0,191,255)
-	LightManager::getInstance()->AddLight("bullet", m_position.toSFMLVector(), sf::Vector2f(0.19f, 0.19f), sf::Color(255, 215, 0, 205), m_direction * m_speed,0, this,"starLight");
-	AudioManager::instance()->PlayGameSound("zum", false, 0.1f, m_position, 0);
+	LightManager::getInstance()->AddLight("bullet", m_position.toSFMLVector(), sf::Vector2f(0.19f, 0.19f), color, m_direction * m_speed,0, this,"starLight");
+	AudioManager::instance()->PlayGameSound(audioName, false, 0.1f, m_position, 0);
+	if (audioName == "pistol")
+	{
+		AudioManager::instance()->PlayGameSound("shell", false, 0.1f, m_position, 0);
+	}
 }
 
 std::string Bullet::getParentId()

@@ -13,6 +13,8 @@ enum class UNIT_RANK { A, B, C, D, E, F, G };
 class GameConstants {
 public:
 	static sf::Font font;
+	static float const EXPERENCE_AMOUNT;
+	static int const CREDIT_AMOUNT;
 
 	//radius in which players can walk about the centre of the map
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	
@@ -110,10 +112,56 @@ public:
 	static std::string const SIMPLE_TEXTURE_KEY;// defined in GameConstants.cpp	
 	static float const SIMPLE_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const SIMPLE_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SIMPLE_COLOR;// defined in GameConstants.cpp
+	static const std::string SIMPLE_AUDIO_NAME;// defined in GameConstants.cpp
 
 	//PLASMA
 	static float const PLASMA_SPEED;// defined in GameConstants.cpp	
 	static std::string const PLASMA_TEXTURE_KEY;// defined in GameConstants.cpp	
 	static float const PLASMA_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const PLASMA_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color PLASMA_COLOR;// defined in GameConstants.cpp
+	static const std::string PLASMA_AUDIO_NAME;// defined in GameConstants.cpp
+
+	//sniper
+	static float const SNIPER_SPEED;// defined in GameConstants.cpp	
+	static std::string const SNIPER_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static float const SNIPER_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SNIPER_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SNIPER_COLOR;// defined in GameConstants.cpp
+	static const std::string SNIPER_AUDIO_NAME;// defined in GameConstants.cpp
+
+	//lmg
+	static float const LMG_SPEED;// defined in GameConstants.cpp	
+	static std::string const LMG_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static float const LMG_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const LMG_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color LMG_COLOR;// defined in GameConstants.cpp
+	static const std::string LMG_AUDIO_NAME;// defined in GameConstants.cpp
+
+	//smg
+	static float const SMG_SPEED;// defined in GameConstants.cpp	
+	static std::string const SMG_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static float const SMG_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SMG_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SMG_COLOR;// defined in GameConstants.cpp
+	static const std::string SMG_AUDIO_NAME;// defined in GameConstants.cpp
+
+	//pistol
+	static float const PISTOL_SPEED;// defined in GameConstants.cpp	
+	static std::string const PISTOL_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static float const PISTOL_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const PISTOL_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color PISTOL_COLOR;// defined in GameConstants.cpp
+	static const std::string PISTOL_AUDIO_NAME;// defined in GameConstants.cpp
+
+	//shotgun
+	static float const SHOTGUN_SPEED;// defined in GameConstants.cpp	
+	static std::string const SHOTGUN_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static float const SHOTGUN_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SHOTGUN_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SHOTGUN_COLOR;// defined in GameConstants.cpp
+	static const std::string SHOTGUN_AUDIO_NAME;// defined in GameConstants.cpp
+
+
 };

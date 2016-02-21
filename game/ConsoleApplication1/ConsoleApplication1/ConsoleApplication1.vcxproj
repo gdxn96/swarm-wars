@@ -108,6 +108,7 @@
     <ClInclude Include="OrderPointer.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Polygon.h" />
+    <ClInclude Include="PulsingText.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="SpawnPointController.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="OrderPointer.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="PulsingText.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="SpawnPointController.cpp" />

@@ -155,12 +155,17 @@
     <ClInclude Include="bar.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
-    <ClInclude Include="UnitSelector.h" />
     <ClInclude Include="UpgradeElement.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
     <ClInclude Include="UpgradeManager.h">
       <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PulsingText.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitSelector.h">
+      <Filter>CODE\GAME\UNIT</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +278,9 @@
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
     <ClCompile Include="UpgradeManager.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PulsingText.cpp">
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
   </ItemGroup>

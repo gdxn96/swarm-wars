@@ -4,20 +4,20 @@
 UpgradeManager::UpgradeManager() : 
 m_weaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
 {
-	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::AK),
-	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::LMG),
-	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::C, WeaponType::PISTOL),
-	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::D, WeaponType::PLASMA),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::PISTOL),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::PLASMA),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::C, WeaponType::LMG),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::D, WeaponType::AK),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::E, WeaponType::SHOTGUN),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::F, WeaponType::SMG),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::G, WeaponType::SNIPER)
 })),
 m_weaponTextures(vector<std::pair<WeaponType, std::string>>(
 {
+	std::pair<WeaponType, std::string>(WeaponType::PLASMA, "plasma"),
 	std::pair<WeaponType, std::string>(WeaponType::AK, "ak"),
 	std::pair<WeaponType, std::string>(WeaponType::LMG, "lmg"),
 	std::pair<WeaponType, std::string>(WeaponType::PISTOL, "pistol"),
-	std::pair<WeaponType, std::string>(WeaponType::PLASMA, "plasma"),
 	std::pair<WeaponType, std::string>(WeaponType::SHOTGUN, "shotgun"),
 	std::pair<WeaponType, std::string>(WeaponType::SMG, "smg"),
 	std::pair<WeaponType, std::string>(WeaponType::SNIPER, "sniper")

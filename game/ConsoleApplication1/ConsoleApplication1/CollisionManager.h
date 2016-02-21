@@ -18,7 +18,6 @@ public:
 	void checkEnemyTower(vector<Enemy*> enemies, Tower& tower);
 	void checkEnemyUnitRange(vector<Enemy*> enemies, vector<Unit*> units);
 	void checkEnemyBunker(vector<Enemy*> enemies, vector<Bunker*> bunkers, float dt);
-
 private:
 	float distFromLineToPoint(Vector2D start, Vector2D end, Vector2D point);
 

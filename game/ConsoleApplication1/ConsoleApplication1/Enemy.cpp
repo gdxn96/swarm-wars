@@ -19,7 +19,7 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float 
 {
 	m_anim.setFramesPerSecond(60);
 	m_anim.SetLooping(true);
-	m_anim.setRadius(m_radius + 140);
+	m_anim.setRadius(m_radius + 80);
 }
 
 float Enemy::getDamage()

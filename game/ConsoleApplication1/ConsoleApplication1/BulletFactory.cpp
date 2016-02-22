@@ -19,7 +19,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::PLASMA_SPEED;
 		radius = BULLET_STATS::PLASMA_RADIUS;
 		color = BULLET_STATS::PLASMA_COLOR;
-		animName = BULLET_STATS::PLASMA_TEXTURE_KEY;
+		animName = BULLET_STATS::PLASMA_ANIMATION_KEY;
 		audioName = BULLET_STATS::PLASMA_AUDIO_NAME;
 		break;
 
@@ -27,7 +27,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::SIMPLE_SPEED;
 		radius = BULLET_STATS::SIMPLE_RADIUS;
 		color = BULLET_STATS::SIMPLE_COLOR;
-		animName = BULLET_STATS::SIMPLE_TEXTURE_KEY;
+		animName = BULLET_STATS::SIMPLE_ANIMATION_KEY;
 		audioName = BULLET_STATS::SIMPLE_AUDIO_NAME;
 		break;
 
@@ -35,7 +35,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::LMG_SPEED;
 		radius = BULLET_STATS::LMG_RADIUS;
 		color = BULLET_STATS::LMG_COLOR;
-		animName = BULLET_STATS::LMG_TEXTURE_KEY;
+		animName = BULLET_STATS::LMG_ANIMATION_KEY;
 		audioName = BULLET_STATS::LMG_AUDIO_NAME;
 		break;
 
@@ -43,7 +43,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::SMG_SPEED;
 		radius = BULLET_STATS::SMG_RADIUS;
 		color = BULLET_STATS::SMG_COLOR;
-		animName = BULLET_STATS::SMG_TEXTURE_KEY;
+		animName = BULLET_STATS::SMG_ANIMATION_KEY;
 		audioName = BULLET_STATS::SMG_AUDIO_NAME;
 		break;
 
@@ -51,7 +51,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::SNIPER_SPEED;
 		radius = BULLET_STATS::SNIPER_RADIUS;
 		color = BULLET_STATS::SNIPER_COLOR;
-		animName = BULLET_STATS::SNIPER_TEXTURE_KEY;
+		animName = BULLET_STATS::SNIPER_ANIMATION_KEY;
 		audioName = BULLET_STATS::SNIPER_AUDIO_NAME;
 		break;
 
@@ -59,7 +59,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::PISTOL_SPEED;
 		radius = BULLET_STATS::PISTOL_RADIUS;
 		color = BULLET_STATS::PISTOL_COLOR;
-		animName = BULLET_STATS::PISTOL_TEXTURE_KEY;
+		animName = BULLET_STATS::PISTOL_ANIMATION_KEY;
 		audioName = BULLET_STATS::PISTOL_AUDIO_NAME;
 		break;
 
@@ -67,7 +67,7 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		bulletSpeed = BULLET_STATS::SHOTGUN_SPEED;
 		radius = BULLET_STATS::SHOTGUN_RADIUS;
 		color = BULLET_STATS::SHOTGUN_COLOR;
-		animName = BULLET_STATS::SHOTGUN_TEXTURE_KEY;
+		animName = BULLET_STATS::SHOTGUN_ANIMATION_KEY;
 		audioName = BULLET_STATS::SHOTGUN_AUDIO_NAME;
 		break;
 

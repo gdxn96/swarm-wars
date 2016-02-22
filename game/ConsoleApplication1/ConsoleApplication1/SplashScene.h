@@ -9,6 +9,7 @@ public:
 	SplashScene();
 	void update(float dt);
 	void draw(sf::RenderWindow &window);
+	void updateInput() override;
 
 	//can be overrided
 	//void exit();

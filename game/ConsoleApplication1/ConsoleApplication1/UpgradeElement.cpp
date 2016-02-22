@@ -86,6 +86,16 @@ bool UpgradeElement::isAlive()
 
 void UpgradeElement::update(float dt)
 {
+	m_anim.update();
+	m_bgAnim.update();
+	UIText.update(dt);
+	dmg.update(dt);
+	fireRate.update(dt);
+	Name.update(dt);
+}
+
+void UpgradeElement::updateInput()
+{
 	if (m_key != "default")
 	{
 		InputHandler* input = InputHandler::getInstance();
@@ -98,12 +108,6 @@ void UpgradeElement::update(float dt)
 			accept();
 		}
 	}
-	m_anim.update();
-	m_bgAnim.update();
-	UIText.update(dt);
-	dmg.update(dt);
-	fireRate.update(dt);
-	Name.update(dt);
 }
 
 

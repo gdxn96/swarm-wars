@@ -13,6 +13,7 @@ public:
 	void removeDuplicateUpgrades(Unit* unit);
 	UpgradeElement * getUpgradeByUnit(Unit * unit);
 	void update(float dt, Unit* currentUnit);
+	void updateInput();
 	void draw(sf::RenderWindow &window);
 	WeaponType& getWeaponType(UNIT_RANK);
 	std::string& getWeaponKey(WeaponType);

@@ -26,6 +26,12 @@ m_weaponTextures(vector<std::pair<WeaponType, std::string>>(
 {
 }
 
+void UpgradeManager::updateInput()
+{
+	m_currentUpgrade->updateInput();
+}
+
+
 std::string& UpgradeManager::getWeaponKey(WeaponType weapon)
 {
 	for (auto& weaponTexture : m_weaponTextures)

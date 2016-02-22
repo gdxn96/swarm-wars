@@ -9,14 +9,17 @@ OptionsScene::OptionsScene() : Scene(Scenes::OPTIONS)
 	createUIElements();
 }
 
-
+void OptionsScene::updateInput()
+{
+	m_menu.input();
+}
 
 
 
 void OptionsScene::update(float dt)
 {
 	m_menu.update(dt);
-	m_menu.input();
+	
 }
 
 void OptionsScene::draw(sf::RenderWindow &window)

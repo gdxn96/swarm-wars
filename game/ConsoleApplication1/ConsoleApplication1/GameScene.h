@@ -4,7 +4,7 @@
 #include "UnitController.h"
 #include "BulletFactory.h"
 #include "WeaponFactory.h"
-#include "EnemyManager.h"
+#include "WaveManager.h"
 #include "CollisionManager.h"
 #include "Bunker.h"
 #include "Tower.h"
@@ -18,6 +18,7 @@ public:
 	void update(float dt) override;
 	void checkCollisions(float dt);
 	void draw(sf::RenderWindow &window) override;
+	void updateInput() override;
 	void checkBunkers();
 
 	//local method to game scene that needs to be addressed, no implementation
@@ -32,7 +33,7 @@ private:
 	UnitController m_unitController;
 	UnitSelector m_UnitSelector;
 	BulletFactory * m_bulletFactory;
-	EnemyManager m_enemyManager;
+	WaveManager m_waveManager;
 	CollisionManager m_collisionMgr;
 	
 	vector<Bunker * > m_bunkers;

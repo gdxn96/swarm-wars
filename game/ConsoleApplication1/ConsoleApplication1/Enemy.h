@@ -8,7 +8,10 @@ enum class ENEMY_STATE {MOVING, ATTACKING};
 class Enemy
 {
 public:
-	Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius, int numberDeadPylons);
+	Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, 
+		float damagePerSecond, float speed, float radius, 
+		int numberDeadPylons, std::string animKey);
+
 	void update(float dt);
 	void draw(sf::RenderWindow& window);
 	void changeState(ENEMY_STATE state);

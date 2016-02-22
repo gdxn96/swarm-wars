@@ -3,13 +3,14 @@
 #include "Circle.h"
 #include "GameConstants.h"
 #include <math.h>
+#include "AssetLoader.h"
 
 
 class PhysicsObject
 {
 private:
 	//Object
-	Circle m_circle;
+	sf::CircleShape m_circle;
 	Vector2D m_pos;
 	Vector2D m_direction;
 	sf::Color m_color;
@@ -19,6 +20,9 @@ private:
 	float m_mass;
 	float m_size;
 	bool m_onScreen;
+	float m_rotationDegrees;
+	const float DEGREE;
+	bool m_rotationDirection;
 
 	//Physics
 	float m_gravity;
@@ -34,4 +38,5 @@ public:
 	void update(float dt);
 	void draw(sf::RenderWindow& window);
 	void bounce();
+	void changeRotation();
 };

@@ -14,6 +14,11 @@ void LoadScene::update(float dt)
 		
 }
 
+void LoadScene::updateInput()
+{
+
+}
+
 
 void LoadScene::draw(sf::RenderWindow &window)
 {

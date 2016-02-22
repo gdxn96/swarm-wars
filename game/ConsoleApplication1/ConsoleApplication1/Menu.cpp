@@ -109,8 +109,6 @@ void Menu::input()
 			}
 		}
 	}
-
-	input->update();
 }
 
 void Menu::draw(sf::RenderWindow& window)

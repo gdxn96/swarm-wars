@@ -98,7 +98,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputHandler.h" />
@@ -130,6 +130,7 @@
     <ClInclude Include="UpgradeManager.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="VisionCone.h" />
+    <ClInclude Include="Wave.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponFactory.h" />
   </ItemGroup>
@@ -146,7 +147,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="GameConstants.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="UpgradeManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="VisionCone.cpp" />
+    <ClCompile Include="Wave.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponFactory.cpp" />
   </ItemGroup>

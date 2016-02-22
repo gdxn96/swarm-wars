@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius, int numberDeadPylons)
+Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius, int numberDeadPylons, std::string animKey)
 :	m_radius(radius),
 	m_currentState(ENEMY_STATE::MOVING),
 	m_position(spawnPosition),
@@ -15,7 +15,7 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float 
 	m_maxHealth(maxHealth),
 	m_damagePerSecond(damagePerSecond),
 	m_healthBar(m_position + Vector2D(-m_radius,0), Vector2D(0.4f,0.7f),m_maxHealth),
-	m_anim("bugAnimation", Vector2D(-100, -100)),
+	m_anim(animKey, Vector2D(-100, -100)),
 	m_neighbourCircle(m_position, 400),
 	m_initHeading(direction),
 	m_seperationWeighting(1 - (0.5f * numberDeadPylons / static_cast<float>(GameConstants::NUMBER_PYLONS)))

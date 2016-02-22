@@ -1,25 +1,22 @@
 #pragma once
 #include "Vector2D.h"
 #include "PylonManager.h"
-#include "Enemy.h"
+#include "Wave.h"
 
-class EnemyManager
+class WaveManager
 {
 public:
-	EnemyManager();
-	void destroyPylon();
-	void spawnEnemy();
+	WaveManager();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
-
 	std::vector<Enemy *> getEnemies();
-
-
+	bool isGameOver();
 private:
-	std::vector<Enemy *> m_enemies;
 	PylonManager m_pylonMgr;
-	float m_pylonKillInterval;
-	float m_spawnInterval;
+	std::vector<Wave*> m_waves;
+	Wave* m_currentWave;
+
+	bool m_gameOver;
 };
 
 

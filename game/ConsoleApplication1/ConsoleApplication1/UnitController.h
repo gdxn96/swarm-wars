@@ -23,6 +23,7 @@ public:
 	void draw(sf::RenderWindow & window);
 	void switchUnit(bool);
 	vector<Unit*> getUnits();
+	void updateInput();
 
 	void updateRanks();
 	bool checkExperienceRankMatch(UNIT_RANK rank, float experience);

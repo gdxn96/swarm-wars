@@ -7,8 +7,9 @@ class LoadScene : public Scene
 {
 public:
 	LoadScene();
-	void update(float dt);
-	void draw(sf::RenderWindow &window);
+	void update(float dt) override;
+	void draw(sf::RenderWindow &window) override;
+	void updateInput() override;
 
 	//can be overrided
 	//void exit();

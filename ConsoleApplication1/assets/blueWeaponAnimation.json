@@ -1,0 +1,32 @@
+{
+	"blueWeaponAnimation" :[
+ 			{"x":0  ,"y": 0 ,"width":472,"height":216},
+			{"x":0    ,"y": 217   ,"width":472,"height":216},
+			{"x": 946     ,"y": 651    ,"width":472,"height":216},
+			{"x": 473      ,"y": 1302   ,"width":472,"height":216},
+			{"x": 946      ,"y": 868   ,"width":472,"height":216},
+			{"x": 946     ,"y": 1085    ,"width":472,"height":216},
+			{"x": 946     ,"y": 1302    ,"width":472,"height":216},
+			{"x": 1419     ,"y": 868    ,"width":472,"height":216},
+			{"x": 1419     ,"y": 1085    ,"width":472,"height":216},
+			{"x":1419  ,"y": 1302    ,"width":472,"height":216},
+ 			{"x":473     ,"y": 0 ,"width":472,"height":216},
+ 			{"x":473   ,"y": 217   ,"width":472,"height":216},
+ 			{"x":0   ,"y": 434  ,"width":472,"height":216},
+			{"x":0   ,"y": 651  ,"width":472,"height":216},
+			{"x":473     ,"y": 434  ,"width":472,"height":216},
+			{"x":473     ,"y": 651  ,"width":472,"height":216},
+			{"x":946     ,"y": 0,"width":472,"height":216},
+			{"x":946     ,"y": 217  ,"width":472,"height":216},
+			{"x":946     ,"y": 434 ,"width":472,"height":216},
+			{"x":1419     ,"y": 0 ,"width":472,"height":216},
+			{"x":1419     ,"y": 217  ,"width":472,"height":216},
+			{"x":1419     ,"y": 434  ,"width":472,"height":216},
+			{"x":1419     ,"y": 651  ,"width":472,"height":216},
+			{"x":0    ,"y": 868  ,"width":472,"height":216},
+			{"x":0    ,"y": 1085  ,"width":472,"height":216},
+			{"x":0     ,"y": 1302  ,"width":472,"height":216},
+			{"x":473     ,"y": 868  ,"width":472,"height":216},
+ 			{"x":473     ,"y": 1085   ,"width":472,"height":216}
+			]
+ }

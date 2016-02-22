@@ -26,6 +26,7 @@
 #include "GameScene.h"
 #include "MainMenuScene.h"
 #include "SplashScene.h"
+#include "OptionsScene.h"
 #include "GameConstants.h"
 #include "LoadScene.h"
 #include <time.h>
@@ -111,8 +112,9 @@ void loadAssets()
 	SceneManager::getInstance()->addScene(new GameScene());
 	SceneManager::getInstance()->addScene(new SplashScene());
 	SceneManager::getInstance()->addScene(new MainMenuScene());
+	SceneManager::getInstance()->addScene(new OptionsScene());
 
-	SceneManager::getInstance()->switchTo(Scenes::GAME);
+	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
 }
 
 int main()
@@ -139,7 +141,7 @@ int main()
 
 	/*sf::Thread thread(&loadAssets);
 	thread.launch();*/
-	loadAssets();
+	loadAssets();	
 
 
 	sf::Clock deltaClock; // used to calculate dt
@@ -177,7 +179,6 @@ int main()
 
 
 		dt = deltaClock.restart().asSeconds();
-
 
 	} //loop back for next frame
 

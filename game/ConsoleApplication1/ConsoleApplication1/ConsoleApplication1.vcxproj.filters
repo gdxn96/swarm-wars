@@ -164,20 +164,29 @@
     <ClInclude Include="UnitSelector.h">
       <Filter>CODE\GAME\UNIT</Filter>
     </ClInclude>
+    <ClInclude Include="Bolt.h">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClInclude>
     <ClInclude Include="Pylon.h">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClInclude>
     <ClInclude Include="PylonManager.h">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnPoint.h">
-      <Filter>CODE\GAME\DEFENSES</Filter>
+    <ClInclude Include="OptionsScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClInclude>
-    <ClInclude Include="Bolt.h">
-      <Filter>Animation</Filter>
+    <ClInclude Include="Menu.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnPoint.h">
+      <Filter>CODE\GAME\ENEMIES</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Animation</Filter>
+      <Filter>CODE\HELPER</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -292,20 +301,29 @@
     <ClCompile Include="PulsingText.cpp">
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Bolt.cpp">
+      <Filter>CODE\GAME\DEFENSES</Filter>
+    </ClCompile>
     <ClCompile Include="Pylon.cpp">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClCompile>
     <ClCompile Include="PylonManager.cpp">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClCompile>
-    <ClCompile Include="SpawnPoint.cpp">
-      <Filter>CODE\GAME\DEFENSES</Filter>
+    <ClCompile Include="OptionsScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClCompile>
-    <ClCompile Include="Bolt.cpp">
-      <Filter>Animation</Filter>
+    <ClCompile Include="Menu.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnPoint.cpp">
+      <Filter>CODE\GAME\ENEMIES</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
-      <Filter>Animation</Filter>
+      <Filter>CODE\HELPER</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

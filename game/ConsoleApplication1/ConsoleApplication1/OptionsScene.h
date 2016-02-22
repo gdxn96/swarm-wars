@@ -4,10 +4,10 @@
 
 using namespace std;
 
-class MainMenuScene : public Scene
+class OptionsScene : public Scene
 {
 public:
-	MainMenuScene();
+	OptionsScene();
 	void createUIElements();
 	void update(float dt) override;
 	void draw(sf::RenderWindow &window) override;

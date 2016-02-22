@@ -23,6 +23,7 @@ public:
 	const Scenes getTitle();
 
 	virtual void update(float dt) = 0;
+	virtual void updateInput() = 0;
 	virtual void draw(sf::RenderWindow &window) = 0;
 
 protected:

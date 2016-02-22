@@ -8,6 +8,15 @@ SceneManager::SceneManager() : m_currScene(nullptr)
 
 }
 
+void SceneManager::updateInput()
+{
+	//dynamic typing
+	if (m_currScene != nullptr)
+	{
+		m_currScene->updateInput();
+	}
+}
+
 void SceneManager::update(float dt)
 {
 	//dynamic typing

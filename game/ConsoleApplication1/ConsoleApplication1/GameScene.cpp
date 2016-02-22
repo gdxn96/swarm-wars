@@ -41,24 +41,33 @@ GameScene::GameScene()
 	miniMapView.zoom(0.11f);
 }
 
+void GameScene::updateInput()
+{
+	if (!m_paused)
+	{
+		m_unitController.updateInput();
+	}
+}
+
 void GameScene::update(float dt)
 {
 	if (!m_paused)
 	{
-		m_enemyManager.update(dt);
-		m_unitController.update(dt);
-		m_bulletFactory->UpdateBullets(dt);
-		
 		checkCollisions(dt);
 		checkBunkers();
+		m_waveManager.update(dt);
+		m_unitController.update(dt);
+		m_bulletFactory->UpdateBullets(dt);
+		m_UnitSelector.updateUnits(m_unitController.getUnits());
+		m_UnitSelector.update(dt);
+		m_anim.update();
+		m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
+		m_creditsScoreText.update(dt);
+		
 
-		m_paused = !m_tower.getAlive();
+		m_paused = !m_tower.getAlive() || m_waveManager.isGameOver();
 	}
-	m_UnitSelector.updateUnits(m_unitController.getUnits());
-	m_UnitSelector.update(dt);
-	m_anim.update();
-	m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
-	m_creditsScoreText.update(dt);
+	
 }
 
 
@@ -86,11 +95,11 @@ void GameScene::checkBunkers()
 void GameScene::checkCollisions(float dt)
 {
 	m_collisionMgr.checkBulletsTower(m_bulletFactory->getBullets(), m_tower);
-	m_collisionMgr.checkEnemyUnitRange(m_enemyManager.getEnemies(), m_unitController.getUnits());
-	m_collisionMgr.checkEnemyTower(m_enemyManager.getEnemies(), m_tower);
-	m_collisionMgr.checkEnemyBullets(m_enemyManager.getEnemies(), m_bulletFactory->getBullets());
-	m_collisionMgr.checkEnemyBunker(m_enemyManager.getEnemies(), m_bunkers, dt);
-	m_collisionMgr.updateEnemyNeighbours(m_enemyManager.getEnemies());
+	m_collisionMgr.checkEnemyUnitRange(m_waveManager.getEnemies(), m_unitController.getUnits());
+	m_collisionMgr.checkEnemyTower(m_waveManager.getEnemies(), m_tower);
+	m_collisionMgr.checkEnemyBullets(m_waveManager.getEnemies(), m_bulletFactory->getBullets());
+	m_collisionMgr.checkEnemyBunker(m_waveManager.getEnemies(), m_bunkers, dt);
+	m_collisionMgr.updateEnemyNeighbours(m_waveManager.getEnemies());
 }
 
 void GameScene::pause()
@@ -109,7 +118,7 @@ void GameScene::draw(sf::RenderWindow &window)
 
 	m_tower.draw(window);
 
-	m_enemyManager.draw(window);
+	m_waveManager.draw(window);
 	m_unitController.draw(window);
 	m_bulletFactory->drawBullets(window);
 	m_UnitSelector.draw(window);
@@ -124,7 +133,7 @@ void GameScene::draw(sf::RenderWindow &window)
 			miniMapView.setCenter(m_unitController.getUnits()[i]->getPosition().toSFMLVector());
 			m_anim.setPosition(m_unitController.getUnits()[i]->getPosition());
 		}
-		
+
 	}
 	LightManager::getInstance()->draw(window);
 	// mini map draw ----------------------------------
@@ -138,10 +147,10 @@ void GameScene::draw(sf::RenderWindow &window)
 
 	m_tower.draw(window);
 
-	m_enemyManager.draw(window);
+	m_waveManager.draw(window);
 	m_unitController.draw(window);
 	m_bulletFactory->drawBullets(window);
-	//m_UnitSelector.draw(window);
+	m_UnitSelector.draw(window);
 	m_anim.draw(window);
 	LightManager::getInstance()->draw(window);
 	sf::RectangleShape cover;

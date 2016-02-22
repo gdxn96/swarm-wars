@@ -14,6 +14,7 @@ public:
 	UpgradeElement(Unit * unit); // default no upgrade
 	UpgradeElement(Unit* unit, WeaponType weapon, string uiElementKey); // regular upgrade, show weapon, don't dissapear until killed or new upgrade is selected
 	void update(float dt);
+	void updateInput();
 	void draw(sf::RenderWindow& window);
 	Unit* getParentUnit();
 	void accept();

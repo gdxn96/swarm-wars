@@ -7,8 +7,57 @@
 // NO MAGIC NUMBERS, use this
 
 enum class UNIT_RANK { A, B, C, D, E, F, G };
+enum class ENEMY {ENEMY1, ENEMY2, BOSS};
 
+class WAVE_CONSTANTS
+{
+public :
+	static float const WAVE1_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE1_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE1_BOSS_SPAWN_INTERVAL;
+	static float const WAVE1_NUMBER_ENEMIES;
+	static float const WAVE1_PYLONS_TO_KILL;
 
+	static float const WAVE2_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE2_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE2_BOSS_SPAWN_INTERVAL;
+	static float const WAVE2_NUMBER_ENEMIES;
+	static float const WAVE2_PYLONS_TO_KILL;
+
+	static float const WAVE3_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE3_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE3_BOSS_SPAWN_INTERVAL;
+	static float const WAVE3_NUMBER_ENEMIES;
+	static float const WAVE3_PYLONS_TO_KILL;
+
+	static float const WAVE4_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE4_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE4_BOSS_SPAWN_INTERVAL;
+	static float const WAVE4_NUMBER_ENEMIES;
+	static float const WAVE4_PYLONS_TO_KILL;
+};
+
+class ENEMY_STATS
+{
+public:
+	static float const ENEMY1_RADIUS; // defined in GameConstants.cpp
+	static float const ENEMY1_SPEED; // defined in GameConstants.cpp
+	static float const ENEMY1_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const ENEMY1_HEALTH; // defined in GameConstants.cpp
+	static std::string const ENEMY1_ANIMATION_KEY; // defined in GameConstants.cpp
+
+	static float const ENEMY2_RADIUS; // defined in GameConstants.cpp
+	static float const ENEMY2_SPEED; // defined in GameConstants.cpp
+	static float const ENEMY2_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const ENEMY2_HEALTH; // defined in GameConstants.cpp
+	static std::string const ENEMY2_ANIMATION_KEY; // defined in GameConstants.cpp
+
+	static float const BOSS_RADIUS; // defined in GameConstants.cpp
+	static float const BOSS_SPEED; // defined in GameConstants.cpp
+	static float const BOSS_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
+	static float const BOSS_HEALTH; // defined in GameConstants.cpp
+	static std::string const BOSS_ANIMATION_KEY; // defined in GameConstants.cpp
+};
 
 class GameConstants {
 public:
@@ -25,21 +74,7 @@ public:
 	static float const PLAYER_RADIUS; // defined in GameConstants.cpp	
 	static float const PLAYER_SPEED; // defined in GameConstants.cpp
 
-	static float const ENEMY1_RADIUS; // defined in GameConstants.cpp
-	static float const ENEMY_SPAWN_INTERVAL; // defined in GameConstants.cpp
-	static float const ENEMY1_SPEED; // defined in GameConstants.cpp
-	static float const ENEMY1_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
-	static float const ENEMY1_HEALTH; // defined in GameConstants.cpp
-
-	static float const ENEMY2_RADIUS; // defined in GameConstants.cpp
-	static float const ENEMY2_SPEED; // defined in GameConstants.cpp
-	static float const ENEMY2_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
-	static float const ENEMY2_HEALTH; // defined in GameConstants.cpp
-
-	static float const BOSS_RADIUS; // defined in GameConstants.cpp
-	static float const BOSS_SPEED; // defined in GameConstants.cpp
-	static float const BOSS_DAMAGE_PER_SECOND; // defined in GameConstants.cpp
-	static float const BOSS_HEALTH; // defined in GameConstants.cpp
+	
 
 	static float const BUNKER_SIZE_OUTER; // defined in GameConstants.cpp
 	static float const BUNKER_SIZE_INNER; // defined in GameConstants.cpp
@@ -111,7 +146,7 @@ class BULLET_STATS
 public:
 	//Simple
 	static float const SIMPLE_SPEED;// defined in GameConstants.cpp	
-	static std::string const SIMPLE_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const SIMPLE_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const SIMPLE_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const SIMPLE_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color SIMPLE_COLOR;// defined in GameConstants.cpp
@@ -119,7 +154,7 @@ public:
 
 	//PLASMA
 	static float const PLASMA_SPEED;// defined in GameConstants.cpp	
-	static std::string const PLASMA_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const PLASMA_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const PLASMA_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const PLASMA_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color PLASMA_COLOR;// defined in GameConstants.cpp
@@ -127,7 +162,7 @@ public:
 
 	//sniper
 	static float const SNIPER_SPEED;// defined in GameConstants.cpp	
-	static std::string const SNIPER_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const SNIPER_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const SNIPER_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const SNIPER_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color SNIPER_COLOR;// defined in GameConstants.cpp
@@ -135,7 +170,7 @@ public:
 
 	//lmg
 	static float const LMG_SPEED;// defined in GameConstants.cpp	
-	static std::string const LMG_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const LMG_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const LMG_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const LMG_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color LMG_COLOR;// defined in GameConstants.cpp
@@ -143,7 +178,7 @@ public:
 
 	//smg
 	static float const SMG_SPEED;// defined in GameConstants.cpp	
-	static std::string const SMG_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const SMG_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const SMG_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const SMG_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color SMG_COLOR;// defined in GameConstants.cpp
@@ -151,7 +186,7 @@ public:
 
 	//pistol
 	static float const PISTOL_SPEED;// defined in GameConstants.cpp	
-	static std::string const PISTOL_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const PISTOL_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const PISTOL_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const PISTOL_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color PISTOL_COLOR;// defined in GameConstants.cpp
@@ -159,7 +194,7 @@ public:
 
 	//shotgun
 	static float const SHOTGUN_SPEED;// defined in GameConstants.cpp	
-	static std::string const SHOTGUN_TEXTURE_KEY;// defined in GameConstants.cpp	
+	static std::string const SHOTGUN_ANIMATION_KEY;// defined in GameConstants.cpp	
 	static float const SHOTGUN_ANIMATION_SPEED;// defined in GameConstants.cpp
 	static float const SHOTGUN_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color SHOTGUN_COLOR;// defined in GameConstants.cpp

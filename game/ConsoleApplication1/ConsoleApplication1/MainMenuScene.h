@@ -11,6 +11,7 @@ public:
 	void createUIElements();
 	void update(float dt) override;
 	void draw(sf::RenderWindow &window) override;
+	void updateInput() override;
 
 	//can be overrided
 	//void exit();
@@ -18,7 +19,4 @@ public:
 
 private:
 	Menu m_menu;
-	//std::function<void()> func;
-	/*UIElement element*/;
-
 };

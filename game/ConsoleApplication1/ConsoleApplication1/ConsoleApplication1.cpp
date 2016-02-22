@@ -164,9 +164,11 @@ int main()
 				window.close();
 
 		}
-		
-		SceneManager::getInstance()->update(dt);
+		SceneManager::getInstance()->updateInput();
 		InputHandler::getInstance()->update();
+
+		SceneManager::getInstance()->update(dt);
+		
 		//prepare frame
 		window.clear(sf::Color(230,155,131));
 

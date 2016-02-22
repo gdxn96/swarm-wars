@@ -17,8 +17,14 @@ MainMenuScene::MainMenuScene() : Scene(Scenes::MAINMENU)
 void MainMenuScene::update(float dt)
 {
 	m_menu.update(dt);
+	
+}
+
+void MainMenuScene::updateInput()
+{
 	m_menu.input();
 }
+
 
 void MainMenuScene::draw(sf::RenderWindow &window)
 {

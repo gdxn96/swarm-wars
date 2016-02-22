@@ -3,10 +3,14 @@
 
 SplashScene::SplashScene() : 
 	Scene(Scenes::SPLASH), 
-	m_timeToSwitch(6.5f),
-	object(PhysicsObject(Vector2D(-100, 500), -45, 3000))
+	m_timeToSwitch(1000.0f),
+	object(PhysicsObject(Vector2D(-100, 500), -45, 6000))
 {
 
+}
+
+void SplashScene::updateInput()
+{
 }
 
 void SplashScene::update(float dt)

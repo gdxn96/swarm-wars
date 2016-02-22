@@ -41,11 +41,7 @@ PylonManager::PylonManager()
 	{
 		m_pylons[i + 1]->addSpawnPoint(spawnPoints[i]);
 		m_bolts.push_back(new Bolt(m_pylons[i], m_pylons[i + 1]));
-		//killPylon();
 	}
-
-	//killPylon();
-	killPylon();
 }
 
 std::vector<Pylon *> PylonManager::getOpenSpawnPoints()

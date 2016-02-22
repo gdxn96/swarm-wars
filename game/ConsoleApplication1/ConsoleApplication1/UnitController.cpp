@@ -16,6 +16,51 @@ m_incrementingId(0)
 {
 }
 
+void UnitController::updateInput()
+{
+	InputHandler * input = InputHandler::getInstance();
+
+	float rightStickAngle = 0, leftStickAngle = 0;
+	leftStickAngle = input->getThumbByRadian(InputHandler::LEFT_STICK);
+	m_orderPointer.update(leftStickAngle);
+
+	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
+	m_currentUnit->setDirectionAngle(leftStickAngle);
+
+	if (input->isPressed(InputHandler::LB))
+	{
+		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
+		switchUnit(true);
+	}
+
+	if (input->isPressed(InputHandler::RB))
+	{
+		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
+		switchUnit(false);
+	}
+	if (input->isPressed(InputHandler::A))
+	{
+		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
+		AudioManager::instance()->PlayGameSound("Ok3", false, 0.1f, m_currentUnit->getPosition(), 0);
+	}
+
+	if (m_currentUnit->isPlayer())
+	{
+		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
+	}
+
+	float rightTriggerAmount;
+	if (InputHandler::getInstance()->getTriggerPressed(InputHandler::RIGHT_TRIGGER, rightTriggerAmount))
+	{
+		if (rightTriggerAmount > 0.5f && m_currentUnit->isPlayer())
+		{
+			m_currentUnit->fireWeapon();
+		}
+	}
+
+	m_upgradeMgr.updateInput();
+}
+
 void UnitController::init()
 {
 	int numUnits = 2;
@@ -50,53 +95,12 @@ Unit* UnitController::getUnitById(string id)
 
 void UnitController::update(float dt)
 {
-	InputHandler * input = InputHandler::getInstance();
-
-	float rightStickAngle = 0, leftStickAngle = 0;
-	leftStickAngle = input->getThumbByRadian(InputHandler::LEFT_STICK);
-	m_orderPointer.update(leftStickAngle);
-
-	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
-	m_currentUnit->setDirectionAngle(leftStickAngle);
-
-	if (input->isPressed(InputHandler::LB))
-	{
-		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
-		switchUnit(true);
-	}
-
-	if (input->isPressed(InputHandler::RB))
-	{
-		AudioManager::instance()->PlayGameSound("yes", false, 0.1f, m_currentUnit->getPosition(), 0);
-		switchUnit(false);
-	}
-	if (input->isPressed(InputHandler::A))
-	{
-		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
-		AudioManager::instance()->PlayGameSound("Ok3", false, 0.1f, m_currentUnit->getPosition(), 0);
-	}
-	
-	if (m_currentUnit->isPlayer())
-	{
-		m_currentUnit->setTargetAngle(m_orderPointer.getAngle());
-	}
-
-	float rightTriggerAmount;
-	if (InputHandler::getInstance()->getTriggerPressed(InputHandler::RIGHT_TRIGGER, rightTriggerAmount) )
-	{
-		if (rightTriggerAmount > 0.5f && m_currentUnit->isPlayer())
-		{
-			m_currentUnit->fireWeapon();
-		}
-	}
-
 	for (int i = 0; i < m_units.size(); i++)
 	{
 		m_units[i]->update(dt);
 	}
 	updateRanks();
 	m_upgradeMgr.update(dt, m_currentUnit);
-	InputHandler::getInstance()->update();
 }
 
 bool UnitController::checkExperienceRankMatch(UNIT_RANK _rank, float experience)

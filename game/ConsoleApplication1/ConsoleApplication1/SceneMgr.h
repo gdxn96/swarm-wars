@@ -35,6 +35,8 @@ public:
 	//adds a scene object to the scene list
 	void addScene(Scene* newScene);
 
+	void updateInput();
+
 private:
 	Scene* m_currScene;
 	vector<Scene*> m_scenes;

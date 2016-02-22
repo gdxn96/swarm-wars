@@ -16,6 +16,11 @@ void Scene::exit()
 {
 }
 
+void Scene::updateInput()
+{
+
+}
+
 const Scenes Scene::getTitle()
 {
 	return m_title;

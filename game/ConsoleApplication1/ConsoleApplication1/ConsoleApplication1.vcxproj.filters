@@ -193,6 +193,9 @@
     <ClInclude Include="UIElement.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
+    <ClInclude Include="PauseScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -338,6 +341,9 @@
     </ClCompile>
     <ClCompile Include="UIElement.cpp">
       <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

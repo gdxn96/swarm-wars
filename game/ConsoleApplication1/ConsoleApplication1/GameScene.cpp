@@ -53,8 +53,7 @@ void GameScene::update(float dt)
 {
 	if (!m_paused)
 	{
-		
-		
+		i = SceneManager::getInstance()->playerColorIndex;
 		m_waveManager.update(dt);
 		m_unitController.update(dt);
 		m_bulletFactory->UpdateBullets(dt);

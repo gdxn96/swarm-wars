@@ -17,7 +17,7 @@ class UnitController
 {
 public:
 	UnitController();
-
+	int playerColorIndex = 0;
 	void init();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);

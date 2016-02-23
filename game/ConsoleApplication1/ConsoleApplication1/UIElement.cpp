@@ -163,6 +163,11 @@ void UIElement::setDisappear(std::function<void(float dt)> function)
 	m_disappear = function;
 }
 
+int UIElement::getIndex()
+{
+	return index;
+}
+
 void UIElement::setDisappearCondition(std::function<bool(float dt)> condition)
 {
 	m_disappearedCondition = condition;
@@ -213,6 +218,34 @@ void UIElement::setVolume(float f,float  current,string text)
 		AudioManager::instance()->resetVolume();
 	}
 	m_image = temp;
+}
+void UIElement::toggleColor(string text)
+{
+	std::string red = text + ": RED<";
+	std::string green = text + ": GREEN<";
+	std::string yellow = text + ": YELLOW<";
+	std::string white = text + ": WHITE<";
+	index++;
+	if (index > 3)
+	{
+		index = 0;
+	}
+	if (index == 0)
+	{
+		m_image = red;
+	}
+	else if (index == 1)
+	{
+		m_image = green;
+	}
+	else if (index == 2)
+	{
+		m_image = yellow;
+	}
+	else if (index ==3)
+	{
+		m_image = white;
+	}
 }
 
 template <class T>

@@ -36,7 +36,7 @@ public:
 	void addScene(Scene* newScene);
 
 	void updateInput();
-
+	int playerColorIndex = 0;
 private:
 	Scene* m_currScene;
 	vector<Scene*> m_scenes;

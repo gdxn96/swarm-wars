@@ -1,0 +1,19 @@
+{	
+	"redWalking" :[
+			{"x":0,"y":0,"width":235, "height":278},
+			{"x":236 ,"y":0,"width":235, "height":278},
+ 			{"x":472  ,"y":279  ,"width":235, "height":278},
+			{"x": 236  ,"y":558  ,"width":235 ,"height":278},
+			{"x": 708 ,"y": 279  ,"width":235 ,"height":278},
+			{"x": 472 ,"y": 558  ,"width":235 ,"height":278},
+			{"x": 708  ,"y":558  ,"width":235 ,"height":278},
+			{"x": 944 ,"y": 0 ,"width":235 ,"height":278},
+			{"x": 1180 ,"y": 0 ,"width":235 ,"height":278},
+			{"x": 944  ,"y":279  ,"width":235,"height":278},
+			{"x": 472  ,"y":0 ,"width":235 ,"height":278},
+			{"x":708  ,"y":0 ,"width":235 ,"height":278},
+ 			{"x":0 ,"y":279  ,"width":235 ,"height":278},
+ 			{"x":236 ,"y": 279  ,"width":235, "height":278},
+ 			{"x":0,"y": 558  ,"width":235 ,"height":278}
+			]
+ }

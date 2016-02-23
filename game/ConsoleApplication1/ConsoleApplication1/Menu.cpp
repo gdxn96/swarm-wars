@@ -106,14 +106,24 @@ void Menu::input()
 			previousElement();
 			
 		}
+		else if (input->isPressed(InputHandler::DPAD_RIGHT))
+		{
+			AudioManager::instance()->PlayGameSound("select", false, 0.3f, m_curr->getPosition(), 1);
+			previousElement();
+
+		}
+		else if (input->isPressed(InputHandler::DPAD_LEFT))
+		{
+			AudioManager::instance()->PlayGameSound("select", false, 0.3f, m_curr->getPosition(), 1);
+			previousElement();
+
+		}
 		else if (input->isPressed(InputHandler::A))
 		{
 			AudioManager::instance()->PlayGameSound("click", false, 0.3f, m_curr->getPosition(), 1);
 			m_curr->invoke();
 		}
 	}
-
-	input->update();
 }
 
 void Menu::draw(sf::RenderWindow& window)

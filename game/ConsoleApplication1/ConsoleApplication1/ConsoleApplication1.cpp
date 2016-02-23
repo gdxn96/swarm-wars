@@ -64,6 +64,9 @@ using namespace std;
 
 void loadAssets()
 {
+	AssetLoader::getInstance()->addAnimationToCache("red", "assets/red.png", "assets/red.json");
+	AssetLoader::getInstance()->addAnimationToCache("yellow", "assets/yellow.png", "assets/yellow.json");
+	AssetLoader::getInstance()->addAnimationToCache("white", "assets/white.png", "assets/white.json");
 	AssetLoader::getInstance()->addAnimationToCache("enemyAnimation", "assets/alien_sheet.png", "assets/test.json");
 	AssetLoader::getInstance()->addAnimationToCache("shootingAssaltAnimation", "assets/ShootingAssaultAnimation.png", "assets/assalt.json");
 	AssetLoader::getInstance()->addAnimationToCache("walingAssaltAnimation", "assets/WalkingAssaultAnimation.png", "assets/assaultWalking.json");
@@ -116,8 +119,10 @@ void loadAssets()
 	AssetLoader::getInstance()->addTextureToCache("RankG", "assets/rank/g.png");
 	AssetLoader::getInstance()->addTextureToCache("button", "assets/button.png");
 	AssetLoader::getInstance()->addTextureToCache("bgMenu", "assets/bgMenu.png");
+	AssetLoader::getInstance()->addTextureToCache("help", "assets/help.png");
 	AssetLoader::getInstance()->addTextureToCache("buttonClick", "assets/button Click.png");
 	AssetLoader::getInstance()->addAnimationToCache("UiSolderAnimation", "assets/UiSolderAnimation.png", "assets/UiSolderAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("arrows", "assets/arrows.png", "assets/arrows.json");
 
 	
 
@@ -192,10 +197,11 @@ int main()
 		window.clear(sf::Color(0,0,0));
 
 		//draw frame items
+		LightManager::getInstance()->Update(window, dt);
 		SceneManager::getInstance()->draw(window);
 
 		// Finally, display rendered frame on screen
-		LightManager::getInstance()->Update(window, dt);
+		
 		window.display();
 
 

@@ -1,0 +1,19 @@
+{	
+	"YellowWalking" :[
+			{"x":0,"y":0,"width":212, "height":227},
+			{"x":213  ,"y":0,"width":212, "height":227},
+ 			{"x":639   ,"y":228   ,"width":212, "height":227},
+			{"x": 0  ,"y":456   ,"width":212 ,"height":227},
+			{"x": 213 ,"y": 456   ,"width":212 ,"height":227},
+			{"x": 0  ,"y": 684   ,"width":212 ,"height":227},
+			{"x": 426   ,"y":456   ,"width":212 ,"height":227},
+			{"x": 213  ,"y": 684  ,"width":212 ,"height":227},
+			{"x": 639   ,"y": 456  ,"width":212 ,"height":227},
+			{"x": 426   ,"y":684  ,"width":212,"height":227},
+			{"x": 0   ,"y":228  ,"width":212 ,"height":227},
+			{"x":213   ,"y":228  ,"width":212 ,"height":227},
+ 			{"x":426  ,"y":0  ,"width":212 ,"height":227},
+ 			{"x":639  ,"y": 0  ,"width":212, "height":227},
+ 			{"x":426 ,"y": 228   ,"width":212 ,"height":227}
+			]
+ }

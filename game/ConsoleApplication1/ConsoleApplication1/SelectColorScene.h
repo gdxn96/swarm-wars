@@ -5,6 +5,7 @@
 #include "Polygon.h"
 #include "AssetLoader.h"
 #include <functional>
+#include "Animation.h"
 
 using namespace std;
 
@@ -19,11 +20,15 @@ public:
 	//can be overrided
 	//void exit();
 	//void enter();
-
+	void setIndex(int);
 private:
 	Menu m_menu;
+	Animation m_anim;
+	enum PLAYER_COLOR{ RED, WHITE, GREEN, YELLOW };
+	int m_current;
 	//std::function<void()> func;
 	/*UIElement element*/;
 	sf::Texture * bgTexture;
 	sf::RectangleShape bgSprite;
+	int colorIndex = 0;
 };

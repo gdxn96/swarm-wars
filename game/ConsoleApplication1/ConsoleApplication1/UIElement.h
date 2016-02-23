@@ -40,6 +40,7 @@ private:
 	Animation m_anim;
 	sf::Text text;
 	sf::Color c;
+	int index = 0;
 public:
 	void setAnimation(string);
 	Animation * getAnimation();
@@ -62,10 +63,11 @@ public:
 	Vector2D getPosition();
 	void isTextLeft(bool isLeft);
 	void setTextColor(sf::Color);
-
+	int getIndex();
 	void setTexture(sf::Texture * texture);
 	void setAlpha(float val);
 	void setVolume(float, float ,string);
+	void toggleColor(std::string);
 	template <class T>
 	std::string numberToString(const T& t);
 

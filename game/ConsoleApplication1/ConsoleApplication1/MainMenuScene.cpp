@@ -67,7 +67,7 @@ void MainMenuScene::draw(sf::RenderWindow &window)
 void MainMenuScene::createUIElements()
 {
 	UIElement* element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, 150), Vector2D(50, 50), ">PLAY<", "play2");
-	element->setFunctionality([&](){ SceneManager::getInstance()->switchTo(Scenes::GAME); });						// set functionality for element click
+	element->setFunctionality([&](){ SceneManager::getInstance()->switchTo(Scenes::SELECT); });						// set functionality for element click
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });										// set how element appears on screen
 	element->setAppearCondition([element](float dt)->bool{ return element->testAlpha(255, 255 * dt); });			// set the condition that must be met when button is fully on screen

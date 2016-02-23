@@ -63,15 +63,8 @@ void UnitController::updateInput()
 
 void UnitController::init()
 {
-	int numUnits = 2;
-
 	addUnit(0, true);
-	for (int i = 0; i < numUnits; i++)
-	{
-		addUnit(2 * GameConstants::PI / (numUnits + 1) * (i + 1));
-	}
 	m_currentUnit = m_units[0];
-	m_currentUnit->setSelected(true);
 }
 
 void UnitController::addUnit(float startAngle, bool isPlayer)
@@ -80,6 +73,20 @@ void UnitController::addUnit(float startAngle, bool isPlayer)
 	newUnit->setIsPlayer(isPlayer);
 	m_units.push_back(newUnit);
 	m_upgradeMgr.NotifyNewUnit(newUnit);
+}
+
+void UnitController::checkCanByUnit()
+{
+	if (getTotalCreditAmount() > GameConstants::UNIT_COST && m_units.size() < 4)
+	{
+		buyUnit();
+	}
+}
+
+void UnitController::buyUnit()
+{
+	addUnit(); 
+	m_units[0]->addCredits(-GameConstants::UNIT_COST);
 }
 
 Unit* UnitController::getUnitById(string id)
@@ -101,6 +108,11 @@ void UnitController::update(float dt)
 	}
 	updateRanks();
 	m_upgradeMgr.update(dt, m_currentUnit);
+}
+
+Unit * UnitController::getCurrentUnit()
+{
+	return m_currentUnit;
 }
 
 bool UnitController::checkExperienceRankMatch(UNIT_RANK _rank, float experience)
@@ -171,10 +183,12 @@ void UnitController::draw(sf::RenderWindow & window)
 	m_orderPointer.draw(window);
 	
 }
+
 void UnitController::drawUI(sf::RenderWindow & window)
 {
 	m_upgradeMgr.draw(window);
 }
+
 void UnitController::switchUnit(bool left)
 {
 	if (!left)

@@ -11,6 +11,9 @@
 #include "UnitSelector.h"
 #include "Animation.h"
 #include "PulsingText.h"
+#include "PauseScene.h"
+
+enum class GAME_STATE {PAUSED, GAME, GAME_LOSE};
 class GameScene : public Scene
 {
 public:
@@ -20,9 +23,8 @@ public:
 	void draw(sf::RenderWindow &window) override;
 	void updateInput() override;
 	void checkBunkers();
-
-	//local method to game scene that needs to be addressed, no implementation
-	void pause();
+	void checkGameState();
+	void togglePause();
 	
 	int i = 0;
 	//can be overrided
@@ -35,6 +37,9 @@ private:
 	BulletFactory * m_bulletFactory;
 	WaveManager m_waveManager;
 	CollisionManager m_collisionMgr;
+	GAME_STATE m_currentState;
+
+	PauseScene m_pauseScene;
 	
 	vector<Bunker * > m_bunkers;
 	Tower m_tower;
@@ -42,6 +47,7 @@ private:
 	sf::Sprite floorSprite;
 	int m_numBunkers;
 	bool m_paused;
+
 
 
 	//camera test

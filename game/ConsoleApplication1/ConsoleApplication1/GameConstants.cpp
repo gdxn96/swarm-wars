@@ -11,6 +11,7 @@ float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
 
 float const GameConstants::EXPERENCE_AMOUNT = 10;
 int const GameConstants::CREDIT_AMOUNT = 10;
+int const GameConstants::UNIT_COST = 100;
 
 float const GameConstants::PI = std::acos(-1);
 

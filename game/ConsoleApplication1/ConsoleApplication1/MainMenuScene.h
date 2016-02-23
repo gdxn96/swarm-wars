@@ -11,12 +11,17 @@ public:
 	void createUIElements();
 	void update(float dt) override;
 	void draw(sf::RenderWindow &window) override;
+	void setRenderWindow(sf::RenderWindow *);
 	void updateInput() override;
-
 	//can be overrided
 	//void exit();
 	//void enter();
 
 private:
 	Menu m_menu;
+	//std::function<void()> func;
+	/*UIElement element*/;
+	sf::RenderWindow * window;
+	sf::Texture * bgTexture;
+	sf::RectangleShape bgSprite;
 };

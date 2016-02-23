@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "UIElement.h"
-
+#include <iostream>
+#include <sstream>
 
 
 UIElement::UIElement()
@@ -16,12 +17,20 @@ UIElement::UIElement(UI_TYPE type, Vector2D pos, Vector2D dimensions, string img
 	m_alive(false),
 	m_alpha(255),
 	m_type(type),
-	m_func(nullptr)
+	m_func(nullptr),
+	m_anim("buttonStill", Vector2D(-1000,-1000))
 {
 	m_circle = Circle(m_pos, m_dimensions.x);
+	m_anim.setFramesPerSecond(30);
+	m_anim.SetLooping(true);
+	m_anim.setRadius(dimensions.x);
+	m_anim.setPosition(pos);
 }
 
-
+void UIElement::setTexture(sf::Texture * _texture)
+{
+	m_circle.setTexture(_texture);
+}
 
 void UIElement::appear(float dt)
 {
@@ -53,17 +62,30 @@ void UIElement::disappear(float dt)
 		m_alive = false;
 }
 
-void UIElement::draw(sf::RenderWindow& window, sf::Color color)
+void UIElement::draw(sf::RenderWindow& window)
 {
-	m_circle.draw(window, color + sf::Color(0, 0, 0, m_alpha));
-
+	m_anim.update();
+	
+	//m_circle.setAlpha(m_alpha);
+	//m_circle.draw(window);
+	
 	//Temporary Stuff
 	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	sf::Text text(m_image.c_str(), font, 38);
-	text.setColor(sf::Color(255,0,0,m_alpha));
-	text.setPosition(m_pos.toSFMLVector() + sf::Vector2f(60, -20));
+	font.loadFromFile("stoNe.ttf");
+	text = sf::Text(m_image.c_str(), font, 38);
+	
+	text.setColor(c+ sf::Color(0, 0, 0, m_alpha));
+	if (!m_isLeft)
+	{
+		text.setPosition(m_pos.toSFMLVector() + sf::Vector2f(m_dimensions.x + 100, -20));
+	}
+	else
+	{
+		int i = std::strlen(m_image.c_str());
+		text.setPosition(m_pos.toSFMLVector() + sf::Vector2f(-m_dimensions.x - (std::strlen(m_image.c_str())*25) - 100, -20));
+	}
 	window.draw(text);
+	m_anim.draw(window);
 }
 
 
@@ -73,6 +95,10 @@ void UIElement::invoke()
 	m_func();
 }
 
+void UIElement::isTextLeft(bool isTextLeft)
+{
+	m_isLeft = isTextLeft;
+}
 
 
 bool UIElement::isAlive()
@@ -112,7 +138,10 @@ void UIElement::setAlpha(float val)
 	m_alpha = val;
 }
 
-
+void UIElement::setAnimation(string name)
+{
+	m_anim.changeAnimation(name);
+}
 
 void UIElement::setFunctionality(std::function<void()> function)		
 {
@@ -138,22 +167,60 @@ void UIElement::setDisappearCondition(std::function<bool(float dt)> condition)
 {
 	m_disappearedCondition = condition;
 }
+void UIElement::setPosition(Vector2D position)
+{
+	m_pos = position;
+	m_anim.setPosition(position);
+}
+
+void UIElement::setSize(float radius)
+{
+	m_circle.setRadius(radius);
+	m_anim.setRadius(radius);
+}
 
 
+Vector2D UIElement::getPosition()
+{
+	return m_pos;
+}
 
+Animation * UIElement::getAnimation()
+{
+	return & m_anim;
+}
 
 
 // Test method
-void UIElement::changeText()
+void UIElement::changeText(string text)
 {
-	if (m_image != "Checkbox on")
+	std::string on = text + ": ON<";
+	std::string off = text + ": OFF<";
+	if (m_image.compare(off) != 0)
 	{
-		m_image = "Checkbox on";
+		m_image = off;
 	}
-	else
+	else if (m_image.compare(on) != 0)
 	{
-		m_image = "Checkbox off";
+		m_image = on;
 	}
+}
+void UIElement::setVolume(float f,float  current,string text)
+{
+	std::string temp = text + " " + numberToString(current*100) +"%";
+	if (current >= 1)
+	{
+		AudioManager::instance()->resetVolume();
+	}
+	m_image = temp;
+}
+
+template <class T>
+std::string UIElement::numberToString(const T& t) {
+
+	std::stringstream ss;
+	ss << t;
+	return ss.str();
 }
 
 // APPEAR/DISAPPEAR SEQUENCES
@@ -176,4 +243,9 @@ bool UIElement::testAlpha(float alphaVal, float increment)
 	}
 
 	return false;
+}
+
+void UIElement::setTextColor(sf::Color _c)
+{
+	c = _c;
 }

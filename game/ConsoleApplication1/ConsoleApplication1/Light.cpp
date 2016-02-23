@@ -61,6 +61,9 @@ void Light::Update(float dt)
 	temp.a = alpha;
 	sprite.setColor(temp);
 }
+Bullet * Light::getParent(){
+	return parent;
+}
 
 void Light::setIsAlive(bool _isAlive)
 {

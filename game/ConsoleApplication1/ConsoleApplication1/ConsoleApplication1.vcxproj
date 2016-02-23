@@ -74,6 +74,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SFML_SDK)\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,6 +82,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>kernel32.lib;XINPUT9_1_0.LIB;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -98,9 +100,9 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="HelpScene.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="LightManager.h" />
@@ -117,6 +119,7 @@
     <ClInclude Include="PylonManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="SelectColorScene.h" />
     <ClInclude Include="SpawnPoint.h" />
     <ClInclude Include="SplashScene.h" />
     <ClInclude Include="stdafx.h" />
@@ -131,6 +134,7 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="VisionCone.h" />
     <ClInclude Include="Wave.h" />
+    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponFactory.h" />
   </ItemGroup>
@@ -147,9 +151,9 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="GameConstants.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="HelpScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="LightManager.cpp" />
@@ -166,6 +170,7 @@
     <ClCompile Include="PylonManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
+    <ClCompile Include="SelectColorScene.cpp" />
     <ClCompile Include="SpawnPoint.cpp" />
     <ClCompile Include="SplashScene.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -182,6 +187,7 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="VisionCone.cpp" />
     <ClCompile Include="Wave.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponFactory.cpp" />
   </ItemGroup>

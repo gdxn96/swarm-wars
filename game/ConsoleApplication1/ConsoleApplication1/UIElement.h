@@ -5,6 +5,9 @@
 #include "Circle.h"
 #include <functional>
 #include <cmath>
+#include "SFML/Graphics.hpp"
+#include "Animation.h"
+#include "AudioMgr.h"
 
 using namespace std;
 
@@ -21,7 +24,6 @@ private:
 	string m_image_selected;														// placeholder 
 	bool m_alive;
 	float m_alpha;
-
 	UIElement* m_prev;
 	UIElement* m_next;
 
@@ -34,14 +36,18 @@ private:
 
 	//temporary
 	Circle m_circle;						
-
-
+	bool m_isLeft;
+	Animation m_anim;
+	sf::Text text;
+	sf::Color c;
 public:
+	void setAnimation(string);
+	Animation * getAnimation();
 	UIElement();
 	UIElement(UI_TYPE type, Vector2D pos, Vector2D dimensions, string img1, string img2);
 	void appear(float dt);
 	void disappear(float dt);
-	void draw(sf::RenderWindow& window, sf::Color color);
+	void draw(sf::RenderWindow& window);
 	void invoke();
 	bool isAlive();
 	UI_TYPE getType();
@@ -51,7 +57,18 @@ public:
 	void setNext(UIElement* nextElement);
 	void setEnd();
 
+	void setPosition(Vector2D position);
+	void setSize(float size);
+	Vector2D getPosition();
+	void isTextLeft(bool isLeft);
+	void setTextColor(sf::Color);
+
+	void setTexture(sf::Texture * texture);
 	void setAlpha(float val);
+	void setVolume(float, float ,string);
+	template <class T>
+	std::string numberToString(const T& t);
+
 	void setFunctionality(std::function<void()> function);
 	void setAppear(std::function<void(float dt)> function);
 	void setDisappear(std::function<void(float dt)> function);
@@ -60,5 +77,5 @@ public:
 
 	void changeAlpha(float alphaVal);
 	bool testAlpha(float alphaVal, float increment);
-	void changeText();	//test function
+	void changeText(string);	//test function
 };

@@ -26,16 +26,23 @@ private:
 	FMOD::Channel * channel3D;
 	bool playFX;
 	AudioManager();
-
+	float volume;
+	bool playMusic;
 public:
 	FMOD::System *FMODsys;
 	static AudioManager *  instance();
-	void Update(Vector2D playerPos, Vector2D playerVel);
+	void Update();
 	void PlayGameSound(std::string _soundName, bool _startPaused, float _volume, Vector2D sourcePos,int loopAmount);
 	void toggleFX()
 	{
 		playFX = !playFX;
 	}
-
+	void setVolume(float);
+	float getVolume();
+	void resetVolume();
+	void toggleMusic()
+	{
+		playMusic = !playMusic;
+	}
 };
 

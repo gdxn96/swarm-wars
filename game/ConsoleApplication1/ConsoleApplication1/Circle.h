@@ -8,12 +8,14 @@ public:
 	Circle(Vector2D centre, float radius);
 	void setCentre(Vector2D);
 	void setRadius(float);
-	void draw(sf::RenderWindow & window, sf::Color color);
+	void draw(sf::RenderWindow & window);
 	float getRadius();
 	Vector2D getCentre();
-
+	void setTexture(sf::Texture *);
+	void setAlpha(float);
 private:
 	Vector2D m_centre;
 	float m_radius;
+	sf::CircleShape circle;
 };
 

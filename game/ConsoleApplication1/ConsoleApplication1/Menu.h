@@ -17,7 +17,7 @@ private:
 	UIElement* m_temp;
 	short m_numElements;
 	MENUSTATE m_state;
-
+	bool once = false;
 
 public:
 	Menu();

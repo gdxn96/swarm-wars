@@ -17,6 +17,7 @@ public:
 	std::string id;
 	void setIsAlive(bool);
 	bool getAlive();
+	Bullet * getParent();
 private:
 	sf::Texture lightTexture;
 	sf::Sprite sprite;

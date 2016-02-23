@@ -28,6 +28,8 @@
 #include "SplashScene.h"
 #include "OptionsScene.h"
 #include "GameConstants.h"
+#include "HelpScene.h"
+#include "SelectColorScene.h"
 #include "LoadScene.h"
 #include <time.h>
 #include "AssetLoader.h"
@@ -73,6 +75,8 @@ void loadAssets()
 	AssetLoader::getInstance()->addAnimationToCache("plasmaAnimation", "assets/plasma.png", "assets/bullet.json");
 	AssetLoader::getInstance()->addAnimationToCache("towerAnimation", "assets/towerAnimation.png", "assets/tower.json");
 	AssetLoader::getInstance()->addAnimationToCache("bugAnimation", "assets/bugAnimation.png", "assets/bugAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("buttonActive", "assets/buttonActive.png", "assets/buttonActive.json");
+	AssetLoader::getInstance()->addAnimationToCache("buttonStill", "assets/buttonStill.png", "assets/buttonActive.json");
 	AssetLoader::getInstance()->addSoundToCache("background", "./GameSounds/loop.wav", AudioManager::instance()->FMODsys, true);
 	AssetLoader::getInstance()->addSoundToCache("plasma", "./GameSounds/plasma.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("zum", "./GameSounds/zum.wav", AudioManager::instance()->FMODsys, false);
@@ -86,6 +90,9 @@ void loadAssets()
 	AssetLoader::getInstance()->addSoundToCache("shell", "./GameSounds/shell.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("Ok3", "./GameSounds/Ok3.wav", AudioManager::instance()->FMODsys, false);
 	AssetLoader::getInstance()->addSoundToCache("Ok4", "./GameSounds/Ok4.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("select", "./GameSounds/select.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("click", "./GameSounds/click.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("menuSong", "./GameSounds/menuSong.wav", AudioManager::instance()->FMODsys, true);
 	AssetLoader::getInstance()->addTextureToCache("spotLight", "assets/biglight.png");
 	AssetLoader::getInstance()->addTextureToCache("starLight", "assets/starLight.png");
 	AssetLoader::getInstance()->addTextureToCache("pointLight", "assets/spotLight.png");
@@ -107,15 +114,16 @@ void loadAssets()
 	AssetLoader::getInstance()->addTextureToCache("RankE", "assets/rank/e.png");
 	AssetLoader::getInstance()->addTextureToCache("RankF", "assets/rank/f.png");
 	AssetLoader::getInstance()->addTextureToCache("RankG", "assets/rank/g.png");
+	AssetLoader::getInstance()->addTextureToCache("button", "assets/button.png");
+	AssetLoader::getInstance()->addTextureToCache("bgMenu", "assets/bgMenu.png");
+	AssetLoader::getInstance()->addTextureToCache("buttonClick", "assets/button Click.png");
 	AssetLoader::getInstance()->addAnimationToCache("UiSolderAnimation", "assets/UiSolderAnimation.png", "assets/UiSolderAnimation.json");
 
-	SceneManager::getInstance()->addScene(new GameScene());
-	SceneManager::getInstance()->addScene(new SplashScene());
-	SceneManager::getInstance()->addScene(new MainMenuScene());
-	SceneManager::getInstance()->addScene(new OptionsScene());
+	
 
-	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
 }
+
+
 
 int main()
 {
@@ -129,7 +137,16 @@ int main()
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
 	window.setFramerateLimit(30);
-
+	loadAssets();
+	MainMenuScene * main = new MainMenuScene();
+	main->setRenderWindow(&window);
+	SceneManager::getInstance()->addScene(main);
+	SceneManager::getInstance()->addScene(new GameScene());
+	SceneManager::getInstance()->addScene(new SplashScene());
+	SceneManager::getInstance()->addScene(new OptionsScene());
+	SceneManager::getInstance()->addScene(new HelpScene());
+	SceneManager::getInstance()->addScene(new SelectColorScene());
+	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
 	// create scenes
 	LoadScene load = LoadScene();
 
@@ -137,11 +154,14 @@ int main()
 	SceneManager::getInstance()->addScene(&load);
 
 	//splash is first
-	SceneManager::getInstance()->switchTo(Scenes::LOAD);
+	
 
 	/*sf::Thread thread(&loadAssets);
 	thread.launch();*/
-	loadAssets();	
+	AudioManager::instance()->Update();
+	
+	
+	
 
 
 	sf::Clock deltaClock; // used to calculate dt
@@ -164,13 +184,12 @@ int main()
 				window.close();
 
 		}
+		
+		SceneManager::getInstance()->update(dt);
 		SceneManager::getInstance()->updateInput();
 		InputHandler::getInstance()->update();
-
-		SceneManager::getInstance()->update(dt);
-		
 		//prepare frame
-		window.clear(sf::Color(230,155,131));
+		window.clear(sf::Color(0,0,0));
 
 		//draw frame items
 		SceneManager::getInstance()->draw(window);

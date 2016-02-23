@@ -45,7 +45,7 @@
     <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE">
       <UniqueIdentifier>{b7f0126e-fdda-4c58-b6ab-af8f15b183e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CODE\Animation">
+    <Filter Include="Animation">
       <UniqueIdentifier>{bc40ca4e-d23e-45a5-9a46-01faf72dea93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -58,9 +58,6 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>CODE\DEFAULT</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>CODE\GAME</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
@@ -129,19 +126,19 @@
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="AssetLoader.h">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="AudioMgr.h">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="LightManager.h">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="LoadScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
@@ -170,9 +167,6 @@
     <ClInclude Include="PylonManager.h">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClInclude>
-    <ClInclude Include="OptionsScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
@@ -185,11 +179,19 @@
     <ClInclude Include="Line.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
-    <ClInclude Include="Wave.h">
-      <Filter>CODE\GAME\ENEMIES</Filter>
+    <ClInclude Include="Wave.h" />
+    <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="GameScene.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
     </ClInclude>
-    <ClInclude Include="WaveManager.h">
-      <Filter>CODE\GAME\ENEMIES</Filter>
+    <ClInclude Include="HelpScene.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectColorScene.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -201,9 +203,6 @@
     </ClCompile>
     <ClCompile Include="ConsoleApplication1.cpp">
       <Filter>CODE\DEFAULT</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>CODE\GAME</Filter>
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
       <Filter>CODE\SCENE_STUFF</Filter>
@@ -269,19 +268,19 @@
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="AssetLoader.cpp">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="AudioMgr.cpp">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="LightManager.cpp">
-      <Filter>CODE\Animation</Filter>
+      <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="LoadScene.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
@@ -310,9 +309,6 @@
     <ClCompile Include="PylonManager.cpp">
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClCompile>
-    <ClCompile Include="OptionsScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
@@ -326,10 +322,22 @@
       <Filter>CODE\HELPER</Filter>
     </ClCompile>
     <ClCompile Include="Wave.cpp">
-      <Filter>CODE\GAME\ENEMIES</Filter>
+      <Filter>CODE</Filter>
     </ClCompile>
     <ClCompile Include="WaveManager.cpp">
-      <Filter>CODE\GAME\ENEMIES</Filter>
+      <Filter>CODE</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpScene.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectColorScene.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

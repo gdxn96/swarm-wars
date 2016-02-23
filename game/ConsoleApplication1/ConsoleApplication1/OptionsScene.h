@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Menu.h"
+#include "AudioMgr.h"
+#include "Polygon.h"
+#include "AssetLoader.h"
+#include <functional>
 
 using namespace std;
 
@@ -21,5 +25,6 @@ private:
 	Menu m_menu;
 	//std::function<void()> func;
 	/*UIElement element*/;
-
+	sf::Texture * bgTexture;
+	sf::RectangleShape bgSprite;
 };

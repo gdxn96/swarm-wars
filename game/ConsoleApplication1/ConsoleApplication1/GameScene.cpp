@@ -53,8 +53,8 @@ void GameScene::update(float dt)
 {
 	if (!m_paused)
 	{
-		checkCollisions(dt);
-		checkBunkers();
+		
+		
 		m_waveManager.update(dt);
 		m_unitController.update(dt);
 		m_bulletFactory->UpdateBullets(dt);
@@ -63,8 +63,8 @@ void GameScene::update(float dt)
 		m_anim.update();
 		m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
 		m_creditsScoreText.update(dt);
-		
-
+		checkCollisions(dt);
+		checkBunkers();
 		m_paused = !m_tower.getAlive() || m_waveManager.isGameOver();
 	}
 	

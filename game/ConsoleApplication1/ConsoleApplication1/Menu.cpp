@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Menu.h"
-
-
+#include "AssetLoader.h"
+#include "AudioMgr.h"
 
 Menu::Menu() :
 	m_head(nullptr),
@@ -10,7 +10,7 @@ Menu::Menu() :
 	m_numElements(0),
 	m_state(MENUSTATE::LOADING)
 {
-
+	//
 }
 
 
@@ -86,43 +86,62 @@ void Menu::update(float dt)
 void Menu::input()
 {
 	InputHandler* input = InputHandler::getInstance();
-
+	if (!once){
+		//AudioManager::instance()->PlayGameSound("menuSong", false, 1, Vector2D(0, 0), 1);
+		once = true;
+	}
+	
+	
 	if (m_state == MENUSTATE::READY)
 	{
 		if (input->isPressed(InputHandler::DPAD_DOWN))
 		{
+			AudioManager::instance()->PlayGameSound("select", false, 0.3f, m_curr->getPosition(), 1);
 			nextElement();
+			
 		}
 		else if (input->isPressed(InputHandler::DPAD_UP))
 		{
+			AudioManager::instance()->PlayGameSound("select", false, 0.3f, m_curr->getPosition(), 1);
 			previousElement();
+			
 		}
-		else if (input->isPressed(InputHandler::Y))
+		else if (input->isPressed(InputHandler::A))
 		{
-			if (m_curr->getType() == UI_TYPE::CHECKBOX)
-			{
-				m_curr->invoke();
-			}
-			else
-			{
-				m_state = MENUSTATE::DISAPPEARING;
-			}
+			AudioManager::instance()->PlayGameSound("click", false, 0.3f, m_curr->getPosition(), 1);
+			m_curr->invoke();
 		}
 	}
+
+	input->update();
 }
 
 void Menu::draw(sf::RenderWindow& window)
 {
+	m_curr->setTexture(AssetLoader::getInstance()->findTextureByKey("button"));
 	if (m_numElements > 0)
 	{
 		m_temp = m_head;
-
+		
 		for (int i = 0; i < m_numElements; i++)
 		{
 			if (m_temp == m_curr)
-				m_temp->draw(window, sf::Color(9, 9, 99, 0));
+			{
+				m_temp->setAnimation("buttonActive");
+				m_temp->getAnimation()->setFramesPerSecond(21);
+				m_temp->setTextColor(sf::Color(255, 215, 0, 255));
+				m_temp->draw(window);
+				
+					//rgb(238,130,238)plasma// norma gold rgb(255,215,0)// blue rgb(0,191,255)
+			}
 			else
-				m_temp->draw(window, sf::Color(0, 0, 0, 0));
+			{
+				m_temp->setAnimation("buttonStill");
+				m_temp->getAnimation()->setFramesPerSecond(10);
+				m_temp->setTextColor(sf::Color(20, 191, 255, 255));
+				m_temp->draw(window);
+
+			}
 
 			m_temp = m_temp->getNext();
 		}

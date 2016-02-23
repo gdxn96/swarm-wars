@@ -8,6 +8,8 @@ Circle::Circle()
 
 Circle::Circle(Vector2D centre, float radius) : m_radius(radius), m_centre(centre)
 {
+	circle = sf::CircleShape(m_radius);
+	circle.setPosition(centre.toSFMLVector());
 }
 
 void Circle::setCentre(Vector2D centre)
@@ -18,6 +20,7 @@ void Circle::setCentre(Vector2D centre)
 void Circle::setRadius(float radius)
 {
 	m_radius = radius;
+	circle.setRadius(radius);
 }
 
 float Circle::getRadius()
@@ -30,11 +33,20 @@ Vector2D Circle::getCentre()
 	return m_centre;
 }
 
-void Circle::draw(sf::RenderWindow & window, sf::Color color)
+void Circle::setTexture(sf::Texture * _texture)
 {
-	sf::CircleShape circle = sf::CircleShape(m_radius);
-	circle.setFillColor(color);
+	circle.setTexture(_texture);
+}
+
+void Circle::draw(sf::RenderWindow & window)
+{
 	circle.setOrigin(m_radius, m_radius);
-	circle.setPosition(m_centre.toSFMLVector());
 	window.draw(circle);
+}
+
+void Circle::setAlpha(float a)
+{
+	sf::Color temp = circle.getFillColor();
+	temp.a = a;
+	circle.setFillColor(temp);
 }

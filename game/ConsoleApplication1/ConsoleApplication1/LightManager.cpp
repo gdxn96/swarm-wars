@@ -47,7 +47,7 @@ void LightManager::Update(sf::RenderWindow & window,float dt)
 		lights[i]->Update(dt);
 	}
 	lightMapTexture.clear(sf::Color(80, 80, 80));
-	for (std::size_t i = 0; i < lights.size(); ++i)
+	for (int i = 0; i < lights.size(); ++i)
 	{
 		
 		if (lights[i]->getAlive())
@@ -56,6 +56,14 @@ void LightManager::Update(sf::RenderWindow & window,float dt)
 			 // This blendmode is used so the black in our lightimage won't be drawn to the lightmap
 		}
 		else
+		{
+			delete lights[i];
+			lights.erase(lights.begin() + i);
+		}
+	}
+	for (int i = 0; i < lights.size(); ++i)
+	{
+		if (lights[i]->getParent() != nullptr && lights[i]->getParent()->getAlive() == false)
 		{
 			delete lights[i];
 			lights.erase(lights.begin() + i);

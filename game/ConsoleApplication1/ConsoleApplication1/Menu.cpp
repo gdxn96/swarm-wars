@@ -112,8 +112,6 @@ void Menu::input()
 			m_curr->invoke();
 		}
 	}
-
-	input->update();
 }
 
 void Menu::draw(sf::RenderWindow& window)

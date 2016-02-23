@@ -65,6 +65,8 @@ public:
 	static float const EXPERENCE_AMOUNT;
 	static int const CREDIT_AMOUNT;
 
+	static int const UNIT_COST;
+
 	//radius in which players can walk about the centre of the map
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	
 	static float const TOWER_HEALTH; // defined in GameConstants.cpp

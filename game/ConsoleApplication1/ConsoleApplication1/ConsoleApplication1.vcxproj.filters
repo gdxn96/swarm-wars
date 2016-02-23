@@ -179,8 +179,6 @@
     <ClInclude Include="Line.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
-    <ClInclude Include="Wave.h" />
-    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="GameScene.h">
       <Filter>CODE\SCENE_STUFF</Filter>
     </ClInclude>
@@ -192,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="OptionsScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
+      <Filter>CODE\SCENE_STUFF</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>CODE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +345,9 @@
     </ClCompile>
     <ClCompile Include="OptionsScene.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>CODE\SCENE_STUFF</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

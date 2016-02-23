@@ -7,11 +7,13 @@ GameScene::GameScene()
 	Scene(Scenes::GAME),
 	m_bulletFactory(new BulletFactory()),
 	m_numBunkers(15),
-	m_paused(false),
 	m_anim("staticAnimation",Vector2D (-100,-100)),
 	m_collisionMgr(&m_unitController),
 	m_creditsScoreText("text", Vector2D(GameConstants::WINDOW_CENTRE.x-100, 0),80,6, "stoNe.ttf"),
-	m_UnitSelector(m_unitController.getUnits())
+	m_UnitSelector(m_unitController.getUnits()),
+	m_currentState(GAME_STATE::GAME),
+	m_paused(false),
+	m_pauseScene([&](){ togglePause(); })
 {
 	m_anim.setFramesPerSecond(10);
 	m_anim.SetLooping(true);
@@ -22,6 +24,7 @@ GameScene::GameScene()
 	m_creditsScoreText.setColor(sf::Color(255, 215, 0, 255));
 	//init must be called to avoid players being created without weapons
 	m_unitController.init();
+	
 	//m_UnitSelector = UnitSelector(m_unitController.getUnits());
 	for (int i = 0; i < m_numBunkers; i++)
 	{
@@ -39,6 +42,7 @@ GameScene::GameScene()
 	// mini-map (upper-right corner)
 	miniMapView.setViewport(sf::FloatRect(0.75f, 0.0f, 0.25f, 0.25f));
 	miniMapView.zoom(0.11f);
+	miniMapView.setCenter(m_unitController.getCurrentUnit()->getPosition().toSFMLVector());
 }
 
 void GameScene::updateInput()
@@ -46,15 +50,22 @@ void GameScene::updateInput()
 	if (!m_paused)
 	{
 		m_unitController.updateInput();
+		if (InputHandler::getInstance()->isPressed(InputHandler::START))
+		{
+			togglePause();
+		}
+	}
+	else
+	{
+		m_pauseScene.updateInput();
 	}
 }
 
 void GameScene::update(float dt)
 {
-	if (!m_paused)
+	if (m_currentState == GAME_STATE::GAME)
 	{
-		
-		
+		m_tower.update(dt);
 		m_waveManager.update(dt);
 		m_unitController.update(dt);
 		m_bulletFactory->UpdateBullets(dt);
@@ -65,12 +76,36 @@ void GameScene::update(float dt)
 		m_creditsScoreText.update(dt);
 		checkCollisions(dt);
 		checkBunkers();
-		m_paused = !m_tower.getAlive() || m_waveManager.isGameOver();
+
+		if (m_waveManager.isNewWave())
+		{
+			m_waveManager.setNewWave(false);
+			m_unitController.checkCanByUnit();
+		}
+		
 	}
-	
+	else if (m_currentState == GAME_STATE::PAUSED)
+	{
+		m_pauseScene.update(dt);
+	}
+	checkGameState();
 }
 
-
+void GameScene::checkGameState()
+{
+	if (m_tower.getAlive())
+	{
+		m_currentState = GAME_STATE::GAME;
+	}
+	else if (m_waveManager.isGameOver() || !m_tower.getAlive())
+	{
+		m_currentState = GAME_STATE::GAME_LOSE;
+	}
+	if (m_paused)
+	{
+		m_currentState = GAME_STATE::PAUSED;
+	}
+}
 template <class T>
 std::string GameScene::numberToString(const T& t) {
 
@@ -102,56 +137,56 @@ void GameScene::checkCollisions(float dt)
 	m_collisionMgr.updateEnemyNeighbours(m_waveManager.getEnemies());
 }
 
-void GameScene::pause()
+void GameScene::togglePause()
 {
-
+	m_paused = !m_paused;
 }
 
 void GameScene::draw(sf::RenderWindow &window)
 {
 	window.setView(gameView);
-	window.draw(floorSprite);
-	for (Bunker* bunker : m_bunkers)
+	if (m_currentState == GAME_STATE::PAUSED)
 	{
-		bunker->draw(window);
+		m_pauseScene.draw(window);
 	}
-
-	m_tower.draw(window);
-
-	m_waveManager.draw(window);
-	m_unitController.draw(window);
-	m_bulletFactory->drawBullets(window);
-	m_UnitSelector.draw(window);
-	//miniMapView.setCenter();
-	m_unitController.drawUI(window);
-	m_creditsScoreText.draw(window);
-	for (int i = 0; i < m_unitController.getUnits().size(); i++)
+	else
 	{
-
-		if (m_unitController.getUnits()[i]->getSelected())
+		
+		window.draw(floorSprite);
+		for (Bunker* bunker : m_bunkers)
 		{
-			miniMapView.setCenter(m_unitController.getUnits()[i]->getPosition().toSFMLVector());
-			m_anim.setPosition(m_unitController.getUnits()[i]->getPosition());
+			bunker->draw(window);
 		}
 
+		m_tower.draw(window);
+
+		m_waveManager.draw(window);
+		m_unitController.draw(window);
+		m_bulletFactory->drawBullets(window);
+		m_UnitSelector.draw(window);
+		//miniMapView.setCenter();
+		m_unitController.drawUI(window);
+		m_creditsScoreText.draw(window);
+		miniMapView.setCenter(m_unitController.getCurrentUnit()->getPosition().toSFMLVector());
+		LightManager::getInstance()->draw(window);
+		// mini map draw ----------------------------------
+		window.setView(miniMapView);
+		window.draw(floorSprite);
+		for (Bunker* bunker : m_bunkers)
+		{
+			bunker->draw(window);
+
+		}
+
+		m_tower.draw(window);
+
+		m_waveManager.draw(window);
+		m_unitController.draw(window);
+		m_bulletFactory->drawBullets(window);
+		m_UnitSelector.draw(window);
+		m_anim.draw(window);
+		LightManager::getInstance()->draw(window);
+		sf::RectangleShape cover;
 	}
-	LightManager::getInstance()->draw(window);
-	// mini map draw ----------------------------------
-	window.setView(miniMapView);
-	window.draw(floorSprite);
-	for (Bunker* bunker : m_bunkers)
-	{
-		bunker->draw(window);
-
-	}
-
-	m_tower.draw(window);
-
-	m_waveManager.draw(window);
-	m_unitController.draw(window);
-	m_bulletFactory->drawBullets(window);
-	m_UnitSelector.draw(window);
-	m_anim.draw(window);
-	LightManager::getInstance()->draw(window);
-	sf::RectangleShape cover;
+	
 }

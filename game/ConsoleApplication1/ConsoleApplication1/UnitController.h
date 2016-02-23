@@ -31,6 +31,11 @@ public:
 	int getTotalCreditAmount();
 	Unit* getUnitById(string id);
 	void drawUI(RenderWindow &);
+
+	void checkCanByUnit();
+	void buyUnit();
+
+	Unit * getCurrentUnit();
 private:
 	vector<Unit*> m_units;
 	Unit * m_currentUnit;

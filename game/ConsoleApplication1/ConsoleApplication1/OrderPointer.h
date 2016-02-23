@@ -4,6 +4,7 @@
 #include "SFML/OpenGL.hpp" 
 #include "Vector2D.h"
 #include "GameConstants.h"
+#include "Animation.h"
 using namespace sf;
 
 class OrderPointer
@@ -14,7 +15,7 @@ private:
 
 	//angle from centre
 	float m_angle;
-
+	Animation m_anim;
 public:
 	OrderPointer();
 

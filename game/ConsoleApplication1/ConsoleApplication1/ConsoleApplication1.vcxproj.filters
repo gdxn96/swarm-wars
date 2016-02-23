@@ -170,9 +170,6 @@
     <ClInclude Include="Menu.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
-    <ClInclude Include="UIElement.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
-    </ClInclude>
     <ClInclude Include="SpawnPoint.h">
       <Filter>CODE\GAME\ENEMIES</Filter>
     </ClInclude>
@@ -181,16 +178,22 @@
     </ClInclude>
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="OptionsScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
     <ClInclude Include="HelpScene.h">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
     <ClInclude Include="SelectColorScene.h">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
-    <ClInclude Include="OptionsScene.h">
+    <ClInclude Include="UIElement.h">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
   </ItemGroup>
@@ -205,9 +208,6 @@
       <Filter>CODE\DEFAULT</Filter>
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
-      <Filter>CODE\SCENE_STUFF</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
       <Filter>CODE\SCENE_STUFF</Filter>
     </ClCompile>
     <ClCompile Include="GameConstants.cpp">
@@ -312,9 +312,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
-    <ClCompile Include="UIElement.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
-    </ClCompile>
     <ClCompile Include="SpawnPoint.cpp">
       <Filter>CODE\GAME\ENEMIES</Filter>
     </ClCompile>
@@ -327,16 +324,25 @@
     <ClCompile Include="WaveManager.cpp">
       <Filter>CODE</Filter>
     </ClCompile>
+    <ClCompile Include="OptionsScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
     <ClCompile Include="HelpScene.cpp">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
     <ClCompile Include="SelectColorScene.cpp">
-      <Filter>CODE\SCENE_STUFF</Filter>
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
-    <ClCompile Include="OptionsScene.cpp">
+    <ClCompile Include="UIElement.cpp">
+      <Filter>CODE\GAME\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClCompile>
   </ItemGroup>

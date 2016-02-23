@@ -112,6 +112,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="OptionsScene.h" />
     <ClInclude Include="OrderPointer.h" />
+    <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="PulsingText.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="OptionsScene.cpp" />
     <ClCompile Include="OrderPointer.cpp" />
+    <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="PulsingText.cpp" />

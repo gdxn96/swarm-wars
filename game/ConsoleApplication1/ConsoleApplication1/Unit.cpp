@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Unit.h"
 #include "LightManager.h"
+#include "SceneMgr.h"
 
 
 Unit::Unit(float startAngle, string id)
@@ -108,21 +109,85 @@ void Unit::update(float dt)
 	{
 		if (m_state == UNIT_STATE::MOVING)
 		{
-			m_anim.setFramesPerSecond(120);
-			m_anim.changeAnimation("walingAssaltAnimation");
-			m_anim.SetLooping(true);
+			if (SceneManager::getInstance()->playerColorIndex == 0)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("red");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 1)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("walingAssaltAnimation");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 2)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("yellow");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 3)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("white");
+				m_anim.SetLooping(true);
+			}
 		}
 		else if (m_state == UNIT_STATE::WAITING)
 		{
-			m_anim.changeAnimation("walingAssaltAnimation");
-			m_anim.SetLooping(false);
+			if (SceneManager::getInstance()->playerColorIndex == 0)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("red");
+				m_anim.SetLooping(false);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 1)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("walingAssaltAnimation");
+				m_anim.SetLooping(false);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 2)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("yellow");
+				m_anim.SetLooping(false);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 3)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("white");
+				m_anim.SetLooping(false);
+			}
 
 		}
 		else if (m_state == UNIT_STATE::FIRING)
 		{
-			m_anim.SetLooping(true);
-			m_anim.setFramesPerSecond(500);
-			m_anim.changeAnimation("shootingAssaltAnimation");
+			if (SceneManager::getInstance()->playerColorIndex == 0)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("red");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 1)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("walingAssaltAnimation");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 2)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("yellow");
+				m_anim.SetLooping(true);
+			}
+			else if (SceneManager::getInstance()->playerColorIndex == 3)
+			{
+				m_anim.setFramesPerSecond(30);
+				m_anim.changeAnimation("white");
+				m_anim.SetLooping(true);
+			}
 		}
 	}
 	else

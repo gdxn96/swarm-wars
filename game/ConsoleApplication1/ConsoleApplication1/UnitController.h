@@ -17,7 +17,7 @@ class UnitController
 {
 public:
 	UnitController();
-
+	int playerColorIndex = 0;
 	void init();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
@@ -31,6 +31,11 @@ public:
 	int getTotalCreditAmount();
 	Unit* getUnitById(string id);
 	void drawUI(RenderWindow &);
+
+	void checkCanByUnit();
+	void buyUnit();
+
+	Unit * getCurrentUnit();
 private:
 	vector<Unit*> m_units;
 	Unit * m_currentUnit;

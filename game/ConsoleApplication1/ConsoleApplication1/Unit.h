@@ -15,7 +15,7 @@ class Unit
 {
 public:
 	Unit(float startAngle, std::string id);
-
+	int playerColorIndex = 0;
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 

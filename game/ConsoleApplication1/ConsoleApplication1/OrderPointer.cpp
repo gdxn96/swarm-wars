@@ -3,9 +3,13 @@
 
 using namespace sf;
 
-OrderPointer::OrderPointer() : m_angle(0), m_radius(GameConstants::POINTER_RADIUS)
+OrderPointer::OrderPointer() : m_angle(0), m_radius(GameConstants::POINTER_RADIUS), m_anim("arrows", Vector2D(-111,-111))
 {
 	update(0);
+	m_anim.setFramesPerSecond(20);
+	m_anim.SetLooping(true);
+	m_anim.setRadius(m_radius * 30);
+	m_anim.setPosition(m_position);
 }
 
 
@@ -23,6 +27,8 @@ void OrderPointer::update(float rad)
 
 	//add the window centre and the offset to create the real position
 	m_position = window_centre + offset;
+	m_anim.setPosition(m_position);
+	m_anim.update();
 }
 
 float OrderPointer::NormalizeAngle(float angle)
@@ -40,12 +46,13 @@ void OrderPointer::draw(RenderWindow & window)
 	// thats why all of the draw code is located here,
 	// for easy modification/scrapping
 	sf::CircleShape ptr = sf::CircleShape(m_radius);
-	ptr.setFillColor(Color::Yellow);
+	ptr.setFillColor(Color::Red);
 	ptr.setOrigin(m_radius, m_radius);
 	ptr.setPosition(m_position.toSFMLVector());
 
 	if (m_angle != 2 * GameConstants::PI)
 	window.draw(ptr);
+	m_anim.draw(window); 
 }
 
 // Get methods

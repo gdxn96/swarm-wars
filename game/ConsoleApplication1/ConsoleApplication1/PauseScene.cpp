@@ -65,10 +65,9 @@ void PauseScene::createUIElements()
 
 	
 
-	element = new UIElement(UI_TYPE::CHECKBOX, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, 320), Vector2D(50, 50), ">TOGGLE EFFECT<", "options2");
-	element->setFunctionality([&, element](){
-	AudioManager::instance()->toggleFX();
-	element->changeText(">TOGGLE EFFECT :"); });
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, 320), Vector2D(50, 50), ">RESET<", "options2");
+	element->setFunctionality([&](){
+		SceneManager::getInstance()->switchTo(Scenes::MAINMENU); SceneManager::getInstance()->switchTo(Scenes::GAME); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });
 	element->setAppearCondition([element](float dt)->bool{ return element->testAlpha(255, 255 * dt); });
@@ -77,9 +76,8 @@ void PauseScene::createUIElements()
 	element->setSize(150);
 	m_menu.addElement(element);
 
-	element = new UIElement(UI_TYPE::CHECKBOX, Vector2D(GameConstants::WINDOW_CENTRE.x, 490), Vector2D(50, 50), ">TOGGLE MUSIC<", "help2");
-	element->setFunctionality([element](){ element->changeText(">TOGGLE MUSIC<"); 
-	AudioManager::instance()->toggleMusic(); });
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, 490), Vector2D(50, 50), ">EXIT<", "help2");
+	element->setFunctionality([element](){ SceneManager::getInstance()->switchTo(Scenes::MAINMENU); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });
 	element->setAppearCondition([element](float dt)->bool{ return element->testAlpha(255, 255 * dt); });

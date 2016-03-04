@@ -5,7 +5,7 @@ using namespace sf;
 
 OrderPointer::OrderPointer() : m_angle(0), m_radius(GameConstants::POINTER_RADIUS), m_anim("arrows", Vector2D(-111,-111))
 {
-	update(0);
+	update(0,0);
 	m_anim.setFramesPerSecond(20);
 	m_anim.SetLooping(true);
 	m_anim.setRadius(m_radius * 30);
@@ -13,7 +13,7 @@ OrderPointer::OrderPointer() : m_angle(0), m_radius(GameConstants::POINTER_RADIU
 }
 
 
-void OrderPointer::update(float rad)
+void OrderPointer::update(float rad,float dt)
 {
 	//normalize the angle passed in
 	m_angle = NormalizeAngle(rad);
@@ -28,7 +28,11 @@ void OrderPointer::update(float rad)
 	//add the window centre and the offset to create the real position
 	m_position = window_centre + offset;
 	m_anim.setPosition(m_position);
-	m_anim.update();
+	
+}
+void OrderPointer::update( float dt)
+{
+	m_anim.update(dt);
 }
 
 float OrderPointer::NormalizeAngle(float angle)

@@ -72,6 +72,11 @@ UpgradeElement * UpgradeManager::getUpgradeByUnit(Unit * unit)
 	return pUpgrade;
 }
 
+UpgradeElement * UpgradeManager::getCurrentUpgrade()
+{
+	return m_currentUpgrade;
+}
+
 void UpgradeManager::NotifyNewUnit(Unit * unit)
 {
 	UpgradeElement * newUpgrade = new UpgradeElement(unit);

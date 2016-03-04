@@ -3,18 +3,16 @@
 #include "AssetLoader.h"
 LightManager * LightManager::instance = nullptr;
 
-LightManager::LightManager()
+LightManager::LightManager() :
+TIME_UNTIL_CHANGE(0.005f)
 {
+	timeUntillChange = TIME_UNTIL_CHANGE;
 	lightMapTexture.create(1920, 1080); // Make a lightmap that can cover our screen
 	lightmap.setTexture(lightMapTexture.getTexture());
 	lightmap.setTextureRect(sf::IntRect(0, 0, 1920, 1080)); // What from the lightmap we will draw
 	lightmap.setPosition(0, 0);
 	// Make our lightmap sprite use the correct texture
-	lightTexture = AssetLoader::getInstance()->findTextureByKey("spotLight"); // Load in our light 
-	lightTexture->setSmooth(true); // (Optional) It just smoothes the light out a bit
-	light.setTexture(*lightTexture); // Make our lightsprite use our loaded image
-	light.setTextureRect(sf::IntRect(0, 0, 512, 512)); // Set where on the image we will take the sprite (X position, Y position, Width, Height)
-	light.setOrigin(256.f, 256.f); // This will offset where we draw our ligts so the center of the light is right over where we want our light to be
+
 }
 
 LightManager * LightManager::getInstance()
@@ -26,6 +24,10 @@ LightManager * LightManager::getInstance()
 	}
 	return instance;
 }
+void LightManager::clear()
+{
+	lights.clear();
+}
 
 void LightManager::updateLightByID(std::string name, Vector2D _position, Vector2D _scale, sf::Color _color)
 {
@@ -33,7 +35,7 @@ void LightManager::updateLightByID(std::string name, Vector2D _position, Vector2
 	{
 		if (lights[i]->id == name)
 		{
-			lights[i]->position = _position.toSFMLVector();
+			//lights[i]->position = _position.toSFMLVector();
 			lights[i]->scale = _scale.toSFMLVector();
 			lights[i]->color = _color;
 			
@@ -42,6 +44,7 @@ void LightManager::updateLightByID(std::string name, Vector2D _position, Vector2
 }
 void LightManager::Update(sf::RenderWindow & window,float dt)
 {
+	timeUntillChange -= dt;
 	for (int i = 0; i < lights.size(); i++)
 	{
 		lights[i]->Update(dt);
@@ -67,6 +70,33 @@ void LightManager::Update(sf::RenderWindow & window,float dt)
 		{
 			delete lights[i];
 			lights.erase(lights.begin() + i);
+		}
+	}
+
+	
+	if (timeUntillChange <= 0)
+	{
+		alpha -= 12;
+		for (int i = 0; i < lights.size(); ++i)
+		{
+			if (lights[i]->id == "line")
+			{
+				lights[i]->color.a = alpha;
+			}
+		}
+		timeUntillChange = TIME_UNTIL_CHANGE;
+	}
+
+	if (alpha <= 0)
+	{
+		alpha = 255;
+		for (int i = 0; i < lights.size(); ++i)
+		{
+			if (lights[i]->id == "line")
+			{
+				delete lights[i];
+				lights.erase(lights.begin() + i);
+			}
 		}
 	}
 	 // Where on the backbuffer we will draw

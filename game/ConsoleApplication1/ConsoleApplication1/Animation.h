@@ -12,7 +12,7 @@ class Animation
 public:
 	Animation();
 	~Animation();
-	void update();
+	void update(float dt);
 	void draw(RenderWindow & _window);
 	void setFramesPerSecond(float _framesPerSecond);
 	void setRotation(float _rotationInDegrees);
@@ -28,6 +28,7 @@ public:
 	void setSize(float, float);
 	void setSize(Vector2D);
 	std::string getName();
+	void setAlpha(float);
 private:
 	vector<pair <string, vector<sf::IntRect>>>  animationList;
 	Texture *texture;
@@ -43,5 +44,9 @@ private:
 	bool isAlive = true;
 	std::string name;
 	bool doOnce = false;
+	float alpha = 255;
+	float amount;
+
+
 };
 

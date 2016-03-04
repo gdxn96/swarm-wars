@@ -13,7 +13,7 @@
 #include "PulsingText.h"
 #include "PauseScene.h"
 
-enum class GAME_STATE {PAUSED, GAME, GAME_LOSE};
+enum class GAME_STATE {PAUSED, GAME, GAME_LOSE, GAME_WIN};
 class GameScene : public Scene
 {
 public:
@@ -25,11 +25,11 @@ public:
 	void checkBunkers();
 	void checkGameState();
 	void togglePause();
-	
+	void toggleDrawMode();
 	int i = 0;
 	//can be overrided
+	void enter();
 	//void exit();
-	//void enter();
 
 private:
 	UnitController m_unitController;
@@ -38,20 +38,21 @@ private:
 	WaveManager m_waveManager;
 	CollisionManager m_collisionMgr;
 	GAME_STATE m_currentState;
-
+	void drawZoomed(sf::RenderWindow & window);
+	void drawWholeView(sf::RenderWindow & window);
 	PauseScene m_pauseScene;
 	
 	vector<Bunker * > m_bunkers;
-	Tower m_tower;
+	Tower * m_tower;
 	sf::Texture floor;
 	sf::Sprite floorSprite;
 	int m_numBunkers;
 	bool m_paused;
-
-
+	bool m_drawMode;
+	float zoom = 0.51f;
 
 	//camera test
-	sf::View miniMapView, gameView;
+	sf::View miniMapView, gameView,otherMiniMapView,otherGameView;
 	Animation m_anim;
 
 	PulsingText m_creditsScoreText;

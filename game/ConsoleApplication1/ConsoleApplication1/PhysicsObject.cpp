@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PhysicsObject.h"
-
+#include "AssetLoader.h"
 //////////////////
 // PHYSICS USED
 /////////////////
@@ -18,15 +18,22 @@ PhysicsObject::PhysicsObject(Vector2D position, float angle, float speed) :
 	m_radius(20),
 	m_mass(1.15f),
 	m_onScreen(false),
-	m_gravity(1.5f),
+	m_gravity(0.5f),
 	m_restitution(0.75f),
-	m_airMass(0.207f)
+	m_airMass(0.207f),
+	m_anim("exp", Vector2D(-1100,-1000))
 {
 	m_bounds = Vector2D(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y / 3 * 2);
 
 	m_circle = Circle(m_pos, m_radius);
 	m_size = (GameConstants::PI * m_radius * m_radius) / 8000.0f;
 	m_drag = pow((m_mass / (m_mass + m_airMass)), m_size);
+	c.setTexture(AssetLoader::getInstance()->findTextureByKey("grenade"));
+	c.setRadius(m_radius);
+	c.setPosition(m_pos.toSFMLVector());
+	m_anim.setFramesPerSecond(30);
+	m_anim.SetLooping(true);
+	m_anim.setDoOnce(true);
 }
 
 void PhysicsObject::update(float dt)
@@ -46,13 +53,34 @@ void PhysicsObject::update(float dt)
 		if (m_onScreen)
 		{
 			this->bounce();
+			c.rotate(m_direction.Magnitude()*dt*150);
+			
 		}
+		one = true;
 	}
+	else
+	{
+		one = false;
+		m_anim.setPosition(m_pos);
+		m_anim.update(dt);
+		
+	}
+	c.setPosition(m_pos.toSFMLVector());
+	
+	cout << "speed" << m_direction.x << endl;
 }
 
 void PhysicsObject::draw(sf::RenderWindow& window)
 {
 	m_circle.draw(window);
+	if (one)
+	{
+		window.draw(c);
+	}
+	else
+	{
+		m_anim.draw(window);
+	}
 }
 
 

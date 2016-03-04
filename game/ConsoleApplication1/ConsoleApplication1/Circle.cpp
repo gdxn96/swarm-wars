@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Circle.h"
+#include "AssetLoader.h"
 
 Circle::Circle()
 {
@@ -41,6 +42,7 @@ void Circle::setTexture(sf::Texture * _texture)
 void Circle::draw(sf::RenderWindow & window)
 {
 	circle.setOrigin(m_radius, m_radius);
+	circle.setTexture(AssetLoader::getInstance()->findTextureByKey("grenade"));
 	window.draw(circle);
 }
 

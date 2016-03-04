@@ -16,7 +16,7 @@ Wave::Wave(float enemy1SpawnInterval, float enemy2SpawnInterval,
 	m_pylonMgr(pylonMgr),
 	m_alive(true)
 {
-	
+	//do min max
 }
 
 void Wave::init()

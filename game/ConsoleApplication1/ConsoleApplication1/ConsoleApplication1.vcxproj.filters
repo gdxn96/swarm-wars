@@ -48,6 +48,9 @@
     <Filter Include="Animation">
       <UniqueIdentifier>{bc40ca4e-d23e-45a5-9a46-01faf72dea93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AssetLoading">
+      <UniqueIdentifier>{62cc9f6d-70ac-46c0-a1db-4ae6781e2f93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -128,9 +131,6 @@
     <ClInclude Include="Animation.h">
       <Filter>Animation</Filter>
     </ClInclude>
-    <ClInclude Include="AssetLoader.h">
-      <Filter>Animation</Filter>
-    </ClInclude>
     <ClInclude Include="AudioMgr.h">
       <Filter>Animation</Filter>
     </ClInclude>
@@ -176,8 +176,6 @@
     <ClInclude Include="Line.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
-    <ClInclude Include="Wave.h" />
-    <ClInclude Include="WaveManager.h" />
     <ClInclude Include="OptionsScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
     </ClInclude>
@@ -195,6 +193,27 @@
     </ClInclude>
     <ClInclude Include="PauseScene.h">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWinScene.h">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponUpgrade.h">
+      <Filter>CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetLoader.h">
+      <Filter>AssetLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>AssetLoading</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -270,9 +289,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
-    <ClCompile Include="AssetLoader.cpp">
-      <Filter>Animation</Filter>
-    </ClCompile>
     <ClCompile Include="AudioMgr.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
@@ -344,6 +360,18 @@
     </ClCompile>
     <ClCompile Include="PauseScene.cpp">
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWinScene.cpp">
+      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponUpgrade.cpp">
+      <Filter>CODE</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetLoader.cpp">
+      <Filter>AssetLoading</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

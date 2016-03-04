@@ -10,7 +10,7 @@
 class UnitSelector
 {
 public:
-	UnitSelector(vector<Unit *> m_currentUnits);
+	UnitSelector();
 	~UnitSelector();
 	void update(float dt);
 	void draw(sf::RenderWindow &);

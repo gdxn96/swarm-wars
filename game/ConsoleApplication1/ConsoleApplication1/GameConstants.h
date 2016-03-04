@@ -141,6 +141,9 @@ public:
 	static float const PISTOL_RANGE;// defined in GameConstants.cpp	
 	static float const PISTOL_FOV;// defined in GameConstants.cpp	
 	static float const PISTOL_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const WEAPON_MAX_DMG;// defined in GameConstants.cpp	
+	static float const WEAPON_MAX_RoF;// defined in GameConstants.cpp	
 };
 
 class BULLET_STATS

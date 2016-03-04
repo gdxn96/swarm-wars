@@ -22,7 +22,7 @@ Bullet::Bullet(std::string parentId, Vector2D position, Vector2D direction, floa
 	m_anim.setRadius(m_radius + 50);
 	//names plasmaAnimation//bulletAnimation//blueBulletAnimation
 	//rgb(238,130,238)plasma// norma gold rgb(255,215,0)// blue rgb(0,191,255)
-	LightManager::getInstance()->AddLight("bullet", m_position.toSFMLVector(), sf::Vector2f(0.19f, 0.19f), color, m_direction * m_speed,0, this,"starLight");
+	LightManager::getInstance()->AddLight("bullet", m_position.toSFMLVector(), sf::Vector2f(0.29f, 0.29f), color, m_direction * m_speed,0, this,"spotLight");
 	AudioManager::instance()->PlayGameSound(audioName, false, 0.1f, m_position, 0);
 	if (audioName == "pistol")
 	{
@@ -51,7 +51,7 @@ void Bullet::Update(float dt)
 	m_position += m_velocity;
 	m_bounds.setCentre(m_position);
 
-	m_anim.update();
+	m_anim.update(dt);
 	m_anim.setRotation((std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
 	m_anim.setPosition(m_position);
 	if (Vector2D::Magnitude((m_position - m_initPosition)) > m_range)

@@ -5,6 +5,8 @@
 #include "GameConstants.h"
 #include "Animation.h"
 #include "AudioMgr.h"
+#include "bar.h"
+#include "PulsingText.h"
 class Tower
 {
 public:
@@ -15,18 +17,20 @@ public:
 	void damage(float damage);
 	bool getAlive();
 	void update(float dt);
-	void playMoraleIndicator();
 
 private:
+	void playMoraleIndicator();
 	Circle m_outerBounds;
 	Circle m_innerBounds;
 	float m_health;
 	const float m_maxHealth;
 	Animation m_anim;
-	vector<vector<std::string>> m_moraleSounds;
+	const vector<vector<char *>> m_moraleSounds;
 
 	float const SOUND_TRIGGER_INTERVAL;
 	float m_soundTriggerInterval;
+	bar moraleBar;
+	PulsingText moraleText;
 };
 
 

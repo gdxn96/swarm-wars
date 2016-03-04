@@ -65,7 +65,7 @@ void AudioManager::PlayGameSound(string _soundName, bool _startPaused, float _vo
 				&channel);
 			channel->set3DAttributes(&sourcePos, 0);
 			channel->set3DMinMaxDistance(15000, 30000);
-			channel->setVolume(volume);
+			channel->setVolume(volume+_volume);
 		}
 	}
 	else
@@ -82,7 +82,7 @@ void AudioManager::PlayGameSound(string _soundName, bool _startPaused, float _vo
 				&channel);
 			channel->set3DAttributes(&sourcePos, 0);
 			channel->set3DMinMaxDistance(15000, 30000);
-			channel->setVolume(volume);
+			channel->setVolume(_volume);
 		}
 	}
 	

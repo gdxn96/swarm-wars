@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UnitSelector.h"
 
-UnitSelector::UnitSelector(vector<Unit *> _m_currentUnits) :
+UnitSelector::UnitSelector() :
 UnitSizeSmall(70, 60),
 UnitSizeLarge(140, 120),
 DisplaySize(250, 170),
@@ -11,8 +11,7 @@ UnitTwo(UnitSizeSmall.toSFMLVector()),
 UnitThree(UnitSizeSmall.toSFMLVector()),
 UnitFour(UnitSizeSmall.toSFMLVector()),
 Display(DisplaySize.toSFMLVector()),
-number(">UNIT<", Vector2D(250, 210), 255, 0, "stoNe.tff"),
-m_currentUnits(_m_currentUnits)
+number(">UNIT<", Vector2D(250, 210), 255, 0, "stoNe.tff")
 {
 	/*f::RectangleShape UnitOne, UnitTwo, UnitThree, UnitFour, Display;
 	int m_currentSelected;

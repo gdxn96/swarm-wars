@@ -32,7 +32,7 @@ void bar::update()
 		fgRect.setSize(sf::Vector2f(0, height*scale.y));
 	}
 }
-void bar::setBarAmount(float _amount)
+void bar::setBarAmount(float _amount)//change name of method
 {
 	m_current -= _amount;
 	percentAmount = ( m_current/m_max) * 100;
@@ -46,6 +46,15 @@ void bar::setBarAmount(float _amount)
 void bar::setPercentAmount(float _amount)
 {
 	fgRect.setSize(sf::Vector2f((width*scale.x)*(_amount / 100), height*scale.y));
+	if (fgRect.getSize().x < 0)
+	{
+		fgRect.setSize(sf::Vector2f(0, height*scale.y));
+	}
+}
+void bar::setCurrentAmount(float _amount)
+{
+	percentAmount = (_amount / m_max) * 100;
+	fgRect.setSize(sf::Vector2f((width*scale.x)*(percentAmount / 100), height*scale.y));
 	if (fgRect.getSize().x < 0)
 	{
 		fgRect.setSize(sf::Vector2f(0, height*scale.y));

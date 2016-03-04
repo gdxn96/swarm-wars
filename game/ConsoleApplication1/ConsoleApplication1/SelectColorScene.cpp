@@ -7,11 +7,11 @@ SelectColorScene::SelectColorScene() : Scene(Scenes::SELECT), m_anim("red", Vect
 	m_menu = Menu();
 	createUIElements();
 	bgTexture = AssetLoader::getInstance()->findTextureByKey("bgMenu");
-	m_anim.setFramesPerSecond(20);
+	
 	m_anim.SetLooping(true);
 	m_anim.setRadius(400);
 	bgSprite.setTexture(bgTexture);
-	m_anim.setPosition(Vector2D(GameConstants::WINDOW_CENTRE.x, 490));
+	
 	bgSprite.setPosition(0, 0);
 	bgSprite.setSize(Vector2D(GameConstants::WINDOW_SIZE).toSFMLVector());
 }
@@ -22,25 +22,31 @@ SelectColorScene::SelectColorScene() : Scene(Scenes::SELECT), m_anim("red", Vect
 
 void SelectColorScene::update(float dt)
 {
+	m_anim.setPosition(Vector2D(GameConstants::WINDOW_CENTRE.x, 490));
 	m_menu.update(dt);
 	if (colorIndex == 0)
 	{
+		m_anim.setFramesPerSecond(20);
 		m_anim.changeAnimation("red");
 	}
 	else if (colorIndex == 1)
 	{
+		m_anim.setFramesPerSecond(20);
 		m_anim.changeAnimation("walingAssaltAnimation");//green
 	}
 	else if (colorIndex == 2)
 	{
+		m_anim.setFramesPerSecond(20);
 		m_anim.changeAnimation("yellow");
 	}
 	else if (colorIndex == 3)
 	{
+		m_anim.setFramesPerSecond(20);
 		m_anim.changeAnimation("white");
+		
 	}
 	
-	m_anim.update();
+	m_anim.update(dt);
 }
 
 void SelectColorScene::draw(sf::RenderWindow &window)

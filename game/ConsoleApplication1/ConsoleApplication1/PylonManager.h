@@ -14,6 +14,7 @@ public:
 	void update(float dt);
 	std::vector<Pylon *> getOpenSpawnPoints();
 	void killPylon();
+	void reset();
 
 private:
 	std::vector<Pylon * > m_pylons;

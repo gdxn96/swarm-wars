@@ -19,7 +19,9 @@ private:
 public:
 	OrderPointer();
 
-	void update(float rad);
+	void update(float rad,float dt);
+
+	void update(float dt);
 
 	void draw(RenderWindow & window);
 

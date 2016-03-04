@@ -86,8 +86,8 @@ bool UpgradeElement::isAlive()
 
 void UpgradeElement::update(float dt)
 {
-	m_anim.update();
-	m_bgAnim.update();
+	m_anim.update(dt);
+	m_bgAnim.update(dt);
 	UIText.update(dt);
 	dmg.update(dt);
 	fireRate.update(dt);
@@ -99,7 +99,7 @@ void UpgradeElement::updateInput()
 	if (m_key != "default")
 	{
 		InputHandler* input = InputHandler::getInstance();
-		if (input->isPressed(InputHandler::B))
+		if (input->isPressed(InputHandler::Y))
 		{
 			kill();
 		}

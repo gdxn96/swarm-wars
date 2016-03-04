@@ -8,6 +8,7 @@
 #include "Animation.h"
 #include "AssetLoader.h"
 #include "bar.h"
+#include "WeaponUpgrade.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
 
@@ -71,7 +72,10 @@ public:
 	int maxRank = 100;
 	void addCredits(int);
 	int getCredits();
+	void setWeaponActiveUI(bool _isActive);
+	WeaponUpgrade * getWeaponUpgrade();
 private:
+	WeaponUpgrade m_weaponUpgradeUI;
 	float m_positionAngle; // angle signifying position relative to walk radius
 	float m_targetAngle; // angle signifying target pos relative to walk radius
 	float m_radius; // radius of player

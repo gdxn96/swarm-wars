@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "PhysicsObject.h"
+#include "AssetLoader.h"
 
 class LoadScene : public Scene
 {

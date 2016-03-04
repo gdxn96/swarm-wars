@@ -67,8 +67,16 @@ void Enemy::update(float dt)
 	m_healthBar.update();
 	m_healthBar.setPosition(m_position + Vector2D(-20, 0));
 	//m_healthBar.setBarAmount(m_health);
-	m_anim.update();
-	m_anim.setRotation(90 + (std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+	m_anim.update(dt);
+	if (m_maxHealth == ENEMY_STATS::BOSS_HEALTH)
+	{
+		m_anim.setRotation((std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+	}
+	else
+	{
+		m_anim.setRotation(90 + (std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+	}
+	
 	m_anim.setPosition(m_position);
 
 	m_direction = ((getSeperationHeading() + getAlignmentHeading() + getCohesionHeading()) / 3).Normalize();

@@ -11,6 +11,7 @@ public:
 	void draw(sf::RenderWindow & window);
 	std::vector<Enemy *> getEnemies();
 	bool isGameOver();
+	void reset();
 
 	bool isNewWave();
 	void setNewWave(bool newWave);

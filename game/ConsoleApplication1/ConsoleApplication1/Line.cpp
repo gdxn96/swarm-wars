@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Line.h"
+#include "LightManager.h"
 
 Line::Line(void)
 {}
@@ -16,9 +17,11 @@ Line::Line(Vector2D & _start, Vector2D & _end, float _thickness)
 	line = sf::RectangleShape(sf::Vector2f(distance,thickness));
 	line.setPosition(_start.toSFMLVector());
 	line.setRotation(angle);
-	line.setFillColor(sf::Color(0,0,255,alpha));
+	line.setFillColor(sf::Color(255, 0, 255, alpha));
 	//line.setTexture(& texture);
-	
+	LightManager::getInstance()->AddLight("line", start.toSFMLVector(), sf::Vector2f(0.039f, 0.039f), sf::Color(255, 0, 255, alpha), Vector2D(0, 0), 0, nullptr, "spotLight");
+
+
 }
 void Line::Update()
 {
@@ -27,7 +30,8 @@ void Line::Update()
 	line = sf::RectangleShape(sf::Vector2f(distance, thickness));
 	line.setPosition(start.toSFMLVector());
 	line.setRotation(angle);
-	line.setFillColor(sf::Color(0,0,255,alpha));
+	line.setFillColor(sf::Color(255,0,255,alpha));
+	//LightManager::getInstance()->updateLightByID("line", start, Vector2D(0.19f, 0.19f), sf::Color(0, 0, 255, alpha));
 }
 void Line::setAlpha(float & _alpha)
 {

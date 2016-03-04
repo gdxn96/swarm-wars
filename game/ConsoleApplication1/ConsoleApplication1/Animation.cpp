@@ -28,17 +28,23 @@ Animation::Animation(string _animationName, Vector2D _position)
 	outputSprite.setPosition(position.toSFMLVector());
 	outputSprite.setScale(Vector2f(1, 1));
 	name = _animationName;
+	amount = 1;
 }
 
-void Animation::update()
+void Animation::setAlpha(float a)
+{
+	alpha = a;
+}
+
+void Animation::update(float dt)
 {
 	sf::Time elapsedTime = clock.getElapsedTime();
 	
-	if (elapsedTime > sf::seconds(FPS) && isLooping)
+	if (elapsedTime > sf::milliseconds(FPS) && isLooping)
 	{
 		if (selectedColumn < animationList[selectedAnimationIndex].second.size() - 1)
 		{
-			selectedColumn++;
+			selectedColumn += amount;
 		}
 		else
 		{
@@ -54,6 +60,7 @@ void Animation::update()
 		outputSprite.setTextureRect(animationList[selectedAnimationIndex].second[selectedColumn]);
 	}
 	outputSprite.setPosition(position.toSFMLVector());
+	outputSprite.setColor(sf::Color(255, 255, 255, alpha));
 }
 void Animation::changeAnimation(string _animationName)
 {
@@ -68,6 +75,14 @@ void Animation::SetLooping(bool _isLooping)
 void Animation::setFramesPerSecond(float _framesPerSecond)
 {
 	FPS = 1 / _framesPerSecond;
+	if (_framesPerSecond > 60)
+	{
+		amount = 3;
+	}
+	else
+	{
+		amount = 1;
+	}
 }
 void Animation::setRotation(float _rotationInDegrees)
 {

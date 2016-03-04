@@ -16,6 +16,25 @@ m_newWave(true)
 	m_currentWave->init();
 }
 
+void WaveManager::reset()
+{
+	m_pylonMgr.reset();
+	m_waves.clear();
+	m_waves = vector<Wave*>({
+	new Wave(WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_ENEMY2_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_BOSS_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES, WAVE_CONSTANTS::WAVE1_PYLONS_TO_KILL, &m_pylonMgr),
+	new Wave(WAVE_CONSTANTS::WAVE2_ENEMY1_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE2_ENEMY2_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE2_BOSS_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE2_NUMBER_ENEMIES, WAVE_CONSTANTS::WAVE2_PYLONS_TO_KILL, &m_pylonMgr),
+	new Wave(WAVE_CONSTANTS::WAVE3_ENEMY1_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE3_ENEMY2_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE3_BOSS_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE3_NUMBER_ENEMIES, WAVE_CONSTANTS::WAVE3_PYLONS_TO_KILL, &m_pylonMgr),
+	new Wave(WAVE_CONSTANTS::WAVE4_ENEMY1_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE4_ENEMY2_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE4_BOSS_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE4_NUMBER_ENEMIES, WAVE_CONSTANTS::WAVE4_PYLONS_TO_KILL, &m_pylonMgr)
+	});
+
+	m_currentWave = m_waves[0];
+	m_currentWave->init();
+	m_newWave = true;
+	m_gameOver = false;
+
+	
+}
+
 std::vector<Enemy *> WaveManager::getEnemies()
 {
 	if (m_currentWave!= nullptr)
@@ -24,6 +43,7 @@ std::vector<Enemy *> WaveManager::getEnemies()
 	{
 		return vector<Enemy*>();
 	}
+	m_gameOver = false;
 }
 
 void WaveManager::update(float dt)

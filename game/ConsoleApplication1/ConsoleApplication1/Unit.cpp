@@ -21,7 +21,8 @@ m_experience(0),
 m_id(id),
 m_anim("walingAssaltAnimation", Vector2D(-100, -100)),
 m_selectAnimation("selectorAnimation", Vector2D(-100, -100)),
-m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100)
+m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100),
+m_weaponUpgradeUI(m_position, Vector2D(100,100))
 {
 	m_anim.setFramesPerSecond(60);
 	m_anim.setRadius(m_radius + 40);
@@ -67,14 +68,20 @@ void Unit::fireWeapon()
 
 void Unit::update(float dt)
 {	
+	m_weaponUpgradeUI.setPosition(m_position);
+	m_weaponUpgradeUI.update(dt);
+	m_weaponUpgradeUI.setCurrentWeapon(& m_currentWeapon);
+	m_weaponUpgradeUI.setRank(m_rank);
+
+
 	LightManager::getInstance()->updateLightByID(m_id, m_position, Vector2D(0.19f, 0.19f), sf::Color(255, 205, 180, 185));
 	m_xpBar.update();
 	m_xpBar.setPosition(m_position + Vector2D(-20, 20));
-	m_anim.update();
+	m_anim.update(dt);
 	m_anim.setRotation((m_directionAngle - (PI )) * 180 / PI);
 	m_anim.setPosition(m_position);
 	rankImg.setPosition(Vector2D(m_position + Vector2D(-m_radius + 30, 20)).toSFMLVector());
-	m_selectAnimation.update();
+	m_selectAnimation.update(dt);
 	m_selectAnimation.setPosition(m_position);
 	//if given a move order
 	if (m_state == UNIT_STATE::MOVING)
@@ -316,8 +323,16 @@ void Unit::draw(sf::RenderWindow & window)
 	m_anim.draw(window);
 	m_xpBar.draw(window);
 	window.draw(rankImg);
+	if (m_isSelected)
+	{
+		m_weaponUpgradeUI.draw(window);
+	}
 }
 
+WeaponUpgrade * Unit::getWeaponUpgrade()
+{
+	return & m_weaponUpgradeUI;
+}
 float Unit::getExperience()
 {
 	return m_experience;
@@ -378,6 +393,10 @@ void Unit::setTargetAngle(float targetAngle)
 Vector2D Unit::getPosition()
 {
 	return m_position;
+}
+void Unit::setWeaponActiveUI(bool _isActive)
+{
+	m_weaponUpgradeUI.setIsActive(_isActive);
 }
 
 float Unit::NormalizeAngle(float angle)

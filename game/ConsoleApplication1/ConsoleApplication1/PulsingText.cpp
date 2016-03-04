@@ -23,7 +23,7 @@ m_currentAlpha(255)
 {
 	font.loadFromFile("stoNe.ttf");
 	m_text.setFont(font);
-	m_text.setString("");
+	m_text.setString(_text);
 	m_text.setPosition(_position.toSFMLVector());
 	c.r = 135;
 	c.g = 206;

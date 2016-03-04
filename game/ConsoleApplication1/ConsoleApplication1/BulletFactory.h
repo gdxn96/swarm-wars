@@ -11,6 +11,7 @@ class BulletFactory
 {
 public:
 	BulletFactory(){};
+
 	
 	//updates all the bullets in the list
 	void UpdateBullets(float dt);

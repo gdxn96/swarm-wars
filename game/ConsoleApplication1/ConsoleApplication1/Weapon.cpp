@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Weapon.h"
 
-Weapon::Weapon(float fov, float range, float damage, float bulletsPerSecond, 
+Weapon::Weapon(std::string _name, float fov, float range, float damage, float bulletsPerSecond, 
 	BulletType bullet, BulletFactory * bulletFactory) 
 
 :	m_bulletFactory(bulletFactory), 
@@ -11,7 +11,9 @@ Weapon::Weapon(float fov, float range, float damage, float bulletsPerSecond,
 	m_damage(damage),
 	m_dirAngle(0),
 	m_fireRate(1.0f / bulletsPerSecond),
-	m_timeToFire(m_fireRate)
+	m_timeToFire(m_fireRate),
+	name(_name),
+	m_bulletsPerSecond(bulletsPerSecond)
 {
 
 	m_visionCone.setRange(m_range);
@@ -37,7 +39,18 @@ Polygon2D& Weapon::getRange()
 {
 	return m_visionCone.getRange();
 }
-
+float Weapon::getRoF()
+{
+	return m_bulletsPerSecond;
+}
+float Weapon::getDamage()
+{
+	return m_damage;
+}
+string Weapon::getName()
+{
+	return name;
+}
 void Weapon::fire()
 {
 	if (m_timeToFire < 0)

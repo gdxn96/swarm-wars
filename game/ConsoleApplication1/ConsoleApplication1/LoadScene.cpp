@@ -22,9 +22,10 @@ void LoadScene::updateInput()
 
 void LoadScene::draw(sf::RenderWindow &window)
 {
+	AssetLoader* a = AssetLoader::getInstance();
 	sf::Text text;
 	text.setFont(GameConstants::font);
-	text.setString("Loading...");
+	text.setString("Loading..." + to_string(a->getNumLoaded()) + "/" + to_string(a->getNumToLoad()) + " Loaded \n loading: " + a->getLoadingAsset());
 
 	window.draw(text);
 }

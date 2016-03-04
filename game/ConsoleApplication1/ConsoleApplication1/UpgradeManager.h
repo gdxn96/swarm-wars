@@ -17,7 +17,7 @@ public:
 	void draw(sf::RenderWindow &window);
 	WeaponType& getWeaponType(UNIT_RANK);
 	std::string& getWeaponKey(WeaponType);
-
+	UpgradeElement * getCurrentUpgrade();
 private:
 	std::vector<std::pair<UNIT_RANK,WeaponType>> m_weaponRanks;
 	std::vector<std::pair<WeaponType, std::string>> m_weaponTextures;

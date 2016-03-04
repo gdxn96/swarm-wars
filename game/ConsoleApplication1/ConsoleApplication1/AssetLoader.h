@@ -6,6 +6,12 @@
 #include <iostream>
 #include "fmod.hpp"
 #include "fmod_errors.h"
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <string>
+#include <utility>
+#include <vector>
 
 using namespace std;
 using namespace sf;

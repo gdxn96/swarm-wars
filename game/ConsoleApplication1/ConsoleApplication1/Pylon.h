@@ -23,4 +23,5 @@ public:
 	void kill();
 	bool getAlive();
 	Animation m_anim;
+	void update(float dt);
 };

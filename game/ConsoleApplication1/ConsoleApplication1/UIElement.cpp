@@ -64,7 +64,7 @@ void UIElement::disappear(float dt)
 
 void UIElement::draw(sf::RenderWindow& window)
 {
-	m_anim.update();
+	m_anim.update(0);
 	
 	//m_circle.setAlpha(m_alpha);
 	//m_circle.draw(window);

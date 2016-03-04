@@ -3,14 +3,14 @@
 
 //actual static variable values defined here
 float const GameConstants::TOWER_RADIUS = 110;
-float const GameConstants::TOWER_HEALTH = 100000000;
+float const GameConstants::TOWER_HEALTH = 1000;
 
 float const GameConstants::PLAYER_RADIUS = 4;
 float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 25;
 float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
 
 float const GameConstants::EXPERENCE_AMOUNT = 10;
-int const GameConstants::CREDIT_AMOUNT = 10;
+int const GameConstants::CREDIT_AMOUNT = 15;
 int const GameConstants::UNIT_COST = 100;
 
 float const GameConstants::PI = std::acos(-1);
@@ -18,7 +18,7 @@ float const GameConstants::PI = std::acos(-1);
 int const GameConstants::NUMBER_PYLONS = 20;
 
 float const GameConstants::POINTER_RADIUS = GameConstants::PLAYER_RADIUS + 1;
-Vector2D const GameConstants::WINDOW_SIZE = Vector2D(1600, 900);
+Vector2D const GameConstants::WINDOW_SIZE = Vector2D(1920, 1080);
 Vector2D const GameConstants::WINDOW_CENTRE = Vector2D(GameConstants::WINDOW_SIZE.x / 2, GameConstants::WINDOW_SIZE.y / 2);
 
 
@@ -74,6 +74,9 @@ float const WeaponStats::PISTOL_DMG = 70;
 float const WeaponStats::PISTOL_RANGE = 400;
 float const WeaponStats::PISTOL_FOV = GameConstants::PI / 18;
 float const WeaponStats::PISTOL_FIRE_RATE = 5;
+
+float const WeaponStats::WEAPON_MAX_DMG = 300;
+float const WeaponStats::WEAPON_MAX_RoF = 25;
 
 //Simple
 float const BULLET_STATS::SIMPLE_SPEED = 250;// 	
@@ -133,7 +136,7 @@ const std::string BULLET_STATS::SHOTGUN_AUDIO_NAME = "zum";
 
 //ENEMY_STATS
 float const ENEMY_STATS::ENEMY1_RADIUS = 5;
-float const ENEMY_STATS::ENEMY1_SPEED = 150;
+float const ENEMY_STATS::ENEMY1_SPEED = 40;
 float const ENEMY_STATS::ENEMY1_DAMAGE_PER_SECOND = 5;
 float const ENEMY_STATS::ENEMY1_HEALTH = 100;
 std::string const ENEMY_STATS::ENEMY1_ANIMATION_KEY = "bugAnimation";
@@ -142,22 +145,22 @@ float const ENEMY_STATS::ENEMY2_RADIUS = 10;
 float const ENEMY_STATS::ENEMY2_SPEED = 30;
 float const ENEMY_STATS::ENEMY2_DAMAGE_PER_SECOND = 2.5;
 float const ENEMY_STATS::ENEMY2_HEALTH = 200;
-std::string const ENEMY_STATS::ENEMY2_ANIMATION_KEY = "bugAnimation";
+std::string const ENEMY_STATS::ENEMY2_ANIMATION_KEY = "bugAnimation2";
 
 float const ENEMY_STATS::BOSS_RADIUS = 100;
 float const ENEMY_STATS::BOSS_SPEED = 50;
-float const ENEMY_STATS::BOSS_DAMAGE_PER_SECOND = 100;
+float const ENEMY_STATS::BOSS_DAMAGE_PER_SECOND = 1000;
 float const ENEMY_STATS::BOSS_HEALTH = 5000;
-std::string const ENEMY_STATS::BOSS_ANIMATION_KEY = "bugAnimation";
+std::string const ENEMY_STATS::BOSS_ANIMATION_KEY = "boss";
 
 
 //WAVE_STATS
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
 // if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
-float const WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL = 1.0f / 5.5f;
+float const WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL = 0;
 float const WAVE_CONSTANTS::WAVE1_ENEMY2_SPAWN_INTERVAL = std::numeric_limits<float>::max();
 float const WAVE_CONSTANTS::WAVE1_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
-float const WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES = 20;
+float const WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES = 60;
 float const WAVE_CONSTANTS::WAVE1_PYLONS_TO_KILL = 2;
 
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)

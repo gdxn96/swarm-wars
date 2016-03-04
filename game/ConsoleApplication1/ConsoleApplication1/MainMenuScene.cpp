@@ -16,7 +16,7 @@ MainMenuScene::MainMenuScene() : Scene(Scenes::MAINMENU)
 	
 	bgSprite.setPosition(0,0);
 	bgSprite.setSize(Vector2D(GameConstants::WINDOW_SIZE).toSFMLVector());
-	AudioManager::instance()->PlayGameSound("menuSong", false, 1, Vector2D(0, 0), 0);
+	
 }
 
 
@@ -32,12 +32,6 @@ void MainMenuScene::update(float dt)
 	
 }
 
-void MainMenuScene::setRenderWindow(sf::RenderWindow *_window)
-{
-	window = _window;
-	
-}
-
 void MainMenuScene::draw(sf::RenderWindow &window)
 {
 	InputHandler * input = InputHandler::getInstance();
@@ -50,15 +44,6 @@ void MainMenuScene::draw(sf::RenderWindow &window)
 			SceneManager::getInstance()->switchTo(Scenes::GAME);
 		
 	}
-
-	
-	//can obviously be deleted once you start working on the scene
-
-
-	//sf::Text text("MainMenu \n\n\nPress A to Continue", GameConstants::font, 50);
-
-	//text.setColor(sf::Color::Red);
-	//window.draw(text);
 	window.draw(bgSprite);
 	m_menu.draw(window);
 }
@@ -66,7 +51,7 @@ void MainMenuScene::draw(sf::RenderWindow &window)
 
 void MainMenuScene::createUIElements()
 {
-	UIElement* element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, 150), Vector2D(50, 50), ">PLAY<", "play2");
+	UIElement* element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, GameConstants::WINDOW_CENTRE.y/3.6f), Vector2D(50, 50), ">PLAY<", "play2");
 	element->setFunctionality([&](){ SceneManager::getInstance()->switchTo(Scenes::SELECT); });						// set functionality for element click
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });										// set how element appears on screen
@@ -77,7 +62,7 @@ void MainMenuScene::createUIElements()
 	element->isTextLeft(false);
 	m_menu.addElement(element);
 
-	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, 320), Vector2D(50, 50), ">OPTIONS<", "options2");
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, GameConstants::WINDOW_CENTRE.y / 1.68f), Vector2D(50, 50), ">OPTIONS<", "options2");
 	element->setFunctionality([&](){ SceneManager::getInstance()->switchTo(Scenes::OPTIONS); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });								
@@ -88,7 +73,7 @@ void MainMenuScene::createUIElements()
 	element->isTextLeft(true);
 	m_menu.addElement(element);
 
-	element = new UIElement(UI_TYPE::BUTTON,  Vector2D(GameConstants::WINDOW_CENTRE.x, 490), Vector2D(50, 50), ">HELP<", "help2");
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, GameConstants::WINDOW_CENTRE.y / 1.1f), Vector2D(50, 50), ">HELP<", "help2");
 	element->setFunctionality([](){SceneManager::getInstance()->switchTo(Scenes::HELP); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });
@@ -99,8 +84,8 @@ void MainMenuScene::createUIElements()
 	element->isTextLeft(false);
 	m_menu.addElement(element);
 	
-	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, 660), Vector2D(50, 50), ">EXIT<", "exit2");
-	element->setFunctionality([&](){ window->close(); });
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x - 170, GameConstants::WINDOW_CENTRE.y / 0.8f), Vector2D(50, 50), ">EXIT<", "exit2");
+	element->setFunctionality([&](){ std::exit(EXIT_SUCCESS); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });
 	element->setAppearCondition([element](float dt)->bool{ return element->testAlpha(255, 255 * dt); });		

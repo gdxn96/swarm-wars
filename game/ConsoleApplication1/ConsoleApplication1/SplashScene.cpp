@@ -3,7 +3,7 @@
 
 SplashScene::SplashScene() : 
 	Scene(Scenes::SPLASH), 
-	m_timeToSwitch(1000.0f),
+	m_timeToSwitch(5),
 	object(PhysicsObject(Vector2D(-100, 500), -45, 6000))
 {
 

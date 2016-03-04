@@ -22,7 +22,7 @@ void UnitController::updateInput()
 
 	float rightStickAngle = 0, leftStickAngle = 0;
 	leftStickAngle = input->getThumbByRadian(InputHandler::LEFT_STICK);
-	m_orderPointer.update(leftStickAngle);
+	m_orderPointer.update(leftStickAngle,0);
 
 	leftStickAngle = input->getThumbByRadian(InputHandler::RIGHT_STICK);
 	m_currentUnit->setDirectionAngle(leftStickAngle);
@@ -57,14 +57,24 @@ void UnitController::updateInput()
 			m_currentUnit->fireWeapon();
 		}
 	}
-
+	if (InputHandler::getInstance()->isPressed(InputHandler::Y))
+	{
+		m_currentUnit->getWeaponUpgrade()->setIsActive(false);
+	}
+	else if (InputHandler::getInstance()->isPressed(InputHandler::X))
+	{
+		m_currentUnit->getWeaponUpgrade()->setIsActive(false);
+	}
 	m_upgradeMgr.updateInput();
+
 }
 
 void UnitController::init()
 {
+	m_units.clear();
 	addUnit(0, true);
 	m_currentUnit = m_units[0];
+	m_currentUnit->setSelected(true);
 }
 
 void UnitController::addUnit(float startAngle, bool isPlayer)
@@ -87,6 +97,7 @@ void UnitController::buyUnit()
 {
 	addUnit(); 
 	m_units[0]->addCredits(-GameConstants::UNIT_COST);
+	AudioManager::instance()->PlayGameSound("Awesome", false, 1, m_units[0]->getPosition(), 0);
 }
 
 Unit* UnitController::getUnitById(string id)
@@ -108,6 +119,7 @@ void UnitController::update(float dt)
 	}
 	updateRanks();
 	m_upgradeMgr.update(dt, m_currentUnit);
+	m_orderPointer.update(dt);
 }
 
 Unit * UnitController::getCurrentUnit()
@@ -149,6 +161,8 @@ void UnitController::updateRanks()
 					//call upgrade UI draw animation
 
 					unit->maxRank = rank.second;
+					unit->setWeaponActiveUI(true);
+					AudioManager::instance()->PlayGameSound("upgrades", false, 0.8f, unit->getPosition(), 0);
 					break;
 				}
 				prevRank = rank.first;

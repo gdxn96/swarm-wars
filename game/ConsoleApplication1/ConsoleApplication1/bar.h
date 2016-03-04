@@ -19,6 +19,7 @@ public:
 	void setPosition(Vector2D);
 	void setBarAmount(float);
 	void setPercentAmount(float);
+	void setCurrentAmount(float);
 	void update();
 	sf::Texture * bgTexture, * fgTexture;
 	void setColor(sf::Color);

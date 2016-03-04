@@ -138,7 +138,7 @@ FMOD::Sound * AssetLoader::findSoundByKey(string key)
 	}
 	else
 	{
-		printf("error finding value, not in the map, sound error");
+		cout << "key not in map, sound key : " << key << endl;
 	}
 }
 

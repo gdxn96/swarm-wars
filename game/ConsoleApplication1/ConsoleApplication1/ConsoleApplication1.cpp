@@ -35,6 +35,8 @@
 #include "AssetLoader.h"
 #include "AudioMgr.h"
 #include "LightManager.h"
+#include "GameOverScene.h"
+#include "GameWinScene.h"
 
 #define _USE_MATH_DEFINES
 
@@ -64,6 +66,45 @@ using namespace std;
 
 void loadAssets()
 {
+	AssetLoader::getInstance()->addSoundToCache("gettobase", "./GameSounds/gettobase.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("pitchblack", "./GameSounds/pitchblack.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("holyshitambush", "./GameSounds/holyshitambush.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("lookoutbehind", "./GameSounds/lookoutbehind.wav", AudioManager::instance()->FMODsys, false);
+
+	AssetLoader::getInstance()->addSoundToCache("fireatwill", "./GameSounds/fireatwill.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("gettingslaughtered", "./GameSounds/gettingslaughtered.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("outnumbered", "./GameSounds/outnumbered.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("scream", "./GameSounds/scream.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("warcry", "./GameSounds/warcry.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("what", "./GameSounds/what.wav", AudioManager::instance()->FMODsys, false);
+
+	AssetLoader::getInstance()->addSoundToCache("bugscrawlinaround", "./GameSounds/bugscrawlinaround.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("keepeyesopen", "./GameSounds/keepeyesopen.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("sodark", "./GameSounds/sodark.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("unreliablearachnids", "./GameSounds/unreliablearachnids.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("unreliablearachnids2", "./GameSounds/unreliablearachnids2.wav", AudioManager::instance()->FMODsys, false);
+
+
+	AssetLoader::getInstance()->addSoundToCache("wherethehellbugs", "./GameSounds/wherethehellbugs.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("itsDark", "./GameSounds/itsDark.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("drop2", "./GameSounds/drop2.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("drop", "./GameSounds/drop.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("unreliablearachnids2", "./GameSounds/unreliablearachnids2.wav", AudioManager::instance()->FMODsys, false);
+
+
+	AssetLoader::getInstance()->addSoundToCache("Awesome", "./GameSounds/Awesome.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("Hmmm", "./GameSounds/Hmmm.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("Sweet", "./GameSounds/Sweet.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("Whooey", "./GameSounds/Whooey.wav", AudioManager::instance()->FMODsys, false);
+
+	AssetLoader::getInstance()->addSoundToCache("warning", "./GameSounds/warning.wav", AudioManager::instance()->FMODsys, false);
+	AssetLoader::getInstance()->addSoundToCache("upgrades", "./GameSounds/upgrades.wav", AudioManager::instance()->FMODsys, false);
+
+
+	AssetLoader::getInstance()->addSoundToCache("track", "./GameSounds/track.wav", AudioManager::instance()->FMODsys, true);
+
+	AssetLoader::getInstance()->addAnimationToCache("YButtonAnimation", "assets/YButtonAnimation.png", "assets/YButtonAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("AButtonAnimation", "assets/AButtonAnimation.png", "assets/AButtonAnimation.json");
 	AssetLoader::getInstance()->addAnimationToCache("red", "assets/red.png", "assets/red.json");
 	AssetLoader::getInstance()->addAnimationToCache("yellow", "assets/yellow.png", "assets/yellow.json");
 	AssetLoader::getInstance()->addAnimationToCache("white", "assets/white.png", "assets/white.json");
@@ -78,6 +119,7 @@ void loadAssets()
 	AssetLoader::getInstance()->addAnimationToCache("plasmaAnimation", "assets/plasma.png", "assets/bullet.json");
 	AssetLoader::getInstance()->addAnimationToCache("towerAnimation", "assets/towerAnimation.png", "assets/tower.json");
 	AssetLoader::getInstance()->addAnimationToCache("bugAnimation", "assets/bugAnimation.png", "assets/bugAnimation.json");
+	AssetLoader::getInstance()->addAnimationToCache("bugAnimation2", "assets/bugAnimation2.png", "assets/bugAnimation.json");
 	AssetLoader::getInstance()->addAnimationToCache("buttonActive", "assets/buttonActive.png", "assets/buttonActive.json");
 	AssetLoader::getInstance()->addAnimationToCache("buttonStill", "assets/buttonStill.png", "assets/buttonActive.json");
 	AssetLoader::getInstance()->addSoundToCache("background", "./GameSounds/loop.wav", AudioManager::instance()->FMODsys, true);
@@ -123,9 +165,19 @@ void loadAssets()
 	AssetLoader::getInstance()->addTextureToCache("buttonClick", "assets/button Click.png");
 	AssetLoader::getInstance()->addAnimationToCache("UiSolderAnimation", "assets/UiSolderAnimation.png", "assets/UiSolderAnimation.json");
 	AssetLoader::getInstance()->addAnimationToCache("arrows", "assets/arrows.png", "assets/arrows.json");
-
+	AssetLoader::getInstance()->addAnimationToCache("boss", "assets/boss.png", "assets/boss.json");
+	AssetLoader::getInstance()->addTextureToCache("grenade", "assets/grenade.png");
+	AssetLoader::getInstance()->addAnimationToCache("exp", "assets/exp.png", "assets/exp.json");
 	
-
+	SceneManager::getInstance()->addScene(new GameScene());
+	SceneManager::getInstance()->addScene(new GameOverScene());
+	SceneManager::getInstance()->addScene(new GameWinScene());
+	SceneManager::getInstance()->addScene(new SplashScene());
+	SceneManager::getInstance()->addScene(new OptionsScene());
+	SceneManager::getInstance()->addScene(new HelpScene());
+	SceneManager::getInstance()->addScene(new SelectColorScene());
+	SceneManager::getInstance()->addScene(new MainMenuScene());
+	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
 }
 
 
@@ -141,28 +193,26 @@ int main()
 	srand(time(NULL));
 	// Create the main window 
 	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
-	window.setFramerateLimit(30);
-	loadAssets();
-	MainMenuScene * main = new MainMenuScene();
-	main->setRenderWindow(&window);
-	SceneManager::getInstance()->addScene(main);
-	SceneManager::getInstance()->addScene(new GameScene());
-	SceneManager::getInstance()->addScene(new SplashScene());
-	SceneManager::getInstance()->addScene(new OptionsScene());
-	SceneManager::getInstance()->addScene(new HelpScene());
-	SceneManager::getInstance()->addScene(new SelectColorScene());
-	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
+	//window.setFramerateLimit(120);
+	//loadAssets();
+	
+	
 	// create scenes
 	LoadScene load = LoadScene();
 
 	//add scenes to sceneMgr
 	SceneManager::getInstance()->addScene(&load);
 
+	SceneManager::getInstance()->switchTo(Scenes::LOAD);
+	
 	//splash is first
 	
 
-	/*sf::Thread thread(&loadAssets);
-	thread.launch();*/
+	sf::Thread thread(&loadAssets);
+	thread.launch();
+	//MainMenuScene * main = new MainMenuScene();
+	//main->setRenderWindow(&window);
+	
 	AudioManager::instance()->Update();
 	
 	

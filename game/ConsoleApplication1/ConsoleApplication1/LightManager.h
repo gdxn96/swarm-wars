@@ -13,6 +13,7 @@ public:
 	void updateLightByID(std::string name, Vector2D position, Vector2D scale , sf::Color);
 	void draw(sf::RenderWindow &);
 	std::vector<Light *> lights;
+	void clear();
 private:
 	LightManager();
 	static LightManager * instance;
@@ -20,5 +21,8 @@ private:
 	sf::Sprite light;
 	sf::RenderTexture lightMapTexture;
 	sf::Sprite lightmap;
+	float timeUntillChange;
+	float const TIME_UNTIL_CHANGE;
+	float alpha = 255;
 };
 

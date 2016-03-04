@@ -51,7 +51,6 @@ void Bolt::draw(sf::RenderWindow& window)
 		for (int i = 0; i < listOfLines.size(); i++)
 		{
 			listOfLines[i].Draw(window);
-			
 		}
 	}
 	
@@ -106,9 +105,8 @@ std::vector<Line> Bolt::CreateArk(Vector2D & start, Vector2D & end, float thickn
 		previousPoint = p;
 		previousDisplacment = displacment;
 	}
-
+	
 	results.push_back(Line(previousPoint, end, thickness));
-
 	return results;
 }
 

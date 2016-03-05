@@ -3,11 +3,10 @@
 #include <iostream>
 
 using namespace std;
-Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float damagePerSecond, float speed, float radius, int numberDeadPylons, std::string animKey)
+Enemy::Enemy(Vector2D spawnPosition, std::vector<Node *> _nodes, float maxHealth, float damagePerSecond, float speed, float radius, int numberDeadPylons, std::string animKey)
 :	m_radius(radius),
 	m_currentState(ENEMY_STATE::MOVING),
 	m_position(spawnPosition),
-	m_direction(direction),
 	m_speed(speed),
 	m_bounds(Circle(spawnPosition, radius)),
 	m_alive(true),
@@ -17,12 +16,15 @@ Enemy::Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, float 
 	m_healthBar(m_position + Vector2D(-m_radius,0), Vector2D(0.4f,0.7f),m_maxHealth),
 	m_anim(animKey, Vector2D(-100, -100)),
 	m_neighbourCircle(m_position, 400),
-	m_initHeading(direction),
-	m_seperationWeighting(1 - (0.5f * numberDeadPylons / static_cast<float>(GameConstants::NUMBER_PYLONS)))
+	m_seperationWeighting(1 - (0.5f * numberDeadPylons / static_cast<float>(GameConstants::NUMBER_PYLONS))),
+	nodes(_nodes)
 {
 	m_anim.setFramesPerSecond(60);
 	m_anim.SetLooping(true);
 	m_anim.setRadius(m_radius + 80);
+	m_pathSize = nodes.size() -1;
+	m_direction = (nodes[m_pathSize]->getPosition() - spawnPosition).Normalize();
+	m_targetDirection = (nodes[m_pathSize]->getPosition() - spawnPosition).Normalize();
 }
 
 float Enemy::getDamage()
@@ -58,6 +60,12 @@ void Enemy::kill()
 
 void Enemy::update(float dt)
 {
+	if (Vector2D::Distance(m_position, nodes[m_pathSize]->getPosition()) <= 20)
+	{
+		m_pathSize--;
+		m_targetDirection = (nodes[m_pathSize]->getPosition() - m_position).Normalize();
+	}
+	
 	if (m_currentState == ENEMY_STATE::MOVING)
 	{
 		m_position += m_direction * dt * m_speed;
@@ -79,7 +87,7 @@ void Enemy::update(float dt)
 	
 	m_anim.setPosition(m_position);
 
-	m_direction = ((getSeperationHeading() + getAlignmentHeading() + getCohesionHeading()) / 3).Normalize();
+	m_direction = m_targetDirection; /*((getSeperationHeading() + getAlignmentHeading() + getCohesionHeading()) / 3).Normalize();*/
 }
 
 Circle& Enemy::getNeighbourBounds()
@@ -135,7 +143,7 @@ Vector2D Enemy::getSeperationHeading()
 
 Vector2D Enemy::getAlignmentHeading()
 {
-	return (GameConstants::WINDOW_CENTRE - m_position).Normalize();
+	return m_targetDirection;
 }
 
 Vector2D Enemy::getDirection()

@@ -136,7 +136,7 @@ const std::string BULLET_STATS::SHOTGUN_AUDIO_NAME = "zum";
 
 //ENEMY_STATS
 float const ENEMY_STATS::ENEMY1_RADIUS = 5;
-float const ENEMY_STATS::ENEMY1_SPEED = 150;
+float const ENEMY_STATS::ENEMY1_SPEED = 40;
 float const ENEMY_STATS::ENEMY1_DAMAGE_PER_SECOND = 5;
 float const ENEMY_STATS::ENEMY1_HEALTH = 100;
 std::string const ENEMY_STATS::ENEMY1_ANIMATION_KEY = "bugAnimation";
@@ -157,10 +157,10 @@ std::string const ENEMY_STATS::BOSS_ANIMATION_KEY = "boss";
 //WAVE_STATS
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
 // if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
-float const WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL = 1.0f / 5.5f;
+float const WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL = 0;
 float const WAVE_CONSTANTS::WAVE1_ENEMY2_SPAWN_INTERVAL = std::numeric_limits<float>::max();
 float const WAVE_CONSTANTS::WAVE1_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
-float const WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES = 20;
+float const WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES = 60;
 float const WAVE_CONSTANTS::WAVE1_PYLONS_TO_KILL = 2;
 
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)

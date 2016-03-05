@@ -24,3 +24,4 @@ UiSolderAnimation assets/UiSolderAnimation.png assets/UiSolderAnimation.json
 arrows assets/arrows.png assets/arrows.json
 boss assets/boss.png assets/boss.json
 exp assets/exp.png assets/exp.json
+staticAnimation assets/staticAnimation.png assets/staticAnimation.json

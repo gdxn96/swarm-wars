@@ -66,12 +66,12 @@ using namespace std;
 
 void loadAssets()
 {
+
 	AssetLoader::getInstance()->loadAnimations("./loadFiles/loadAnimations.txt");
 	AssetLoader::getInstance()->loadTextures("./loadFiles/loadTextures.txt");
 	AssetLoader::getInstance()->loadSounds("./loadFiles/loadSounds.txt", AudioManager::instance()->FMODsys);
 
 	AssetLoader::getInstance()->loadAssetQueue();
-
 
 	SceneManager::getInstance()->addScene(new GameScene());
 	SceneManager::getInstance()->addScene(new GameOverScene());

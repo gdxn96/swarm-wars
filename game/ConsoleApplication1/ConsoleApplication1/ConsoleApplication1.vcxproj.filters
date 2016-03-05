@@ -48,12 +48,18 @@
     <Filter Include="Animation">
       <UniqueIdentifier>{bc40ca4e-d23e-45a5-9a46-01faf72dea93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AssetLoading">
-      <UniqueIdentifier>{62cc9f6d-70ac-46c0-a1db-4ae6781e2f93}</UniqueIdentifier>
+    <Filter Include="Astar">
+      <UniqueIdentifier>{a19c5264-21fe-4b58-932a-7f60d8edd47e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="QArcs.txt">
+      <Filter>Astar</Filter>
+    </Text>
+    <Text Include="QNodes.txt">
+      <Filter>Astar</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -129,6 +135,9 @@
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetLoader.h">
       <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="AudioMgr.h">
@@ -209,11 +218,20 @@
     <ClInclude Include="WeaponUpgrade.h">
       <Filter>CODE</Filter>
     </ClInclude>
-    <ClInclude Include="AssetLoader.h">
-      <Filter>AssetLoading</Filter>
+    <ClInclude Include="AABB.h">
+      <Filter>Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphArc.h">
+      <Filter>Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphNode.h">
+      <Filter>Astar</Filter>
     </ClInclude>
     <ClInclude Include="Asset.h">
-      <Filter>AssetLoading</Filter>
+      <Filter>Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +305,9 @@
       <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetLoader.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="AudioMgr.cpp">
@@ -370,8 +391,8 @@
     <ClCompile Include="WeaponUpgrade.cpp">
       <Filter>CODE</Filter>
     </ClCompile>
-    <ClCompile Include="AssetLoader.cpp">
-      <Filter>AssetLoading</Filter>
+    <ClCompile Include="AABB.cpp">
+      <Filter>Astar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

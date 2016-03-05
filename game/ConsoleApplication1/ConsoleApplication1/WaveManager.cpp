@@ -2,6 +2,13 @@
 #include "WaveManager.h"
 #include "Enemy.h"
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <string>
+#include <utility>
+#include <vector>
+using namespace std;
 
 WaveManager::WaveManager() : m_waves({
 	new Wave(WAVE_CONSTANTS::WAVE1_ENEMY1_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_ENEMY2_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_BOSS_SPAWN_INTERVAL, WAVE_CONSTANTS::WAVE1_NUMBER_ENEMIES, WAVE_CONSTANTS::WAVE1_PYLONS_TO_KILL, &m_pylonMgr),
@@ -14,10 +21,56 @@ m_gameOver(false),
 m_newWave(true)
 {
 	m_currentWave->init();
+
+	string c = "";
+	float x, y;
+	int i = 0;
+	graph = new Graph<string, int>(30);
+	ifstream myfile;
+
+	myfile.open("nodes.txt");
+	while (myfile >> c >> x >> y) {
+		graph->addNode(c, x, y, i++);
+	}
+	myfile.close();
+	myfile.open("arcs.txt");
+	int from, to, weight;
+	while (myfile >> from >> to >> weight) {
+		//cout << from << " " << to << " " << weight << endl;
+		graph->addArc(from, to, weight);
+		graph->addArc(to, from, weight);
+	}
+	myfile.close();
+	for (auto & p : m_waves)
+	{
+		p->setGraph(graph);
+	}
 }
+
 
 void WaveManager::reset()
 {
+
+	string c = "";
+	float x, y;
+	int i = 0;
+	graph = new Graph<string, int>(30);
+	ifstream myfile;
+
+	myfile.open("nodes.txt");
+	while (myfile >> c >> x >> y) {
+		graph->addNode(c, x, y, i++);
+	}
+	myfile.close();
+	myfile.open("arcs.txt");
+	int from, to, weight;
+	while (myfile >> from >> to >> weight) {
+		//cout << from << " " << to << " " << weight << endl;
+		graph->addArc(from, to, weight);
+		graph->addArc(to, from, weight);
+	}
+	myfile.close();
+
 	m_pylonMgr.reset();
 	m_waves.clear();
 	m_waves = vector<Wave*>({
@@ -32,8 +85,52 @@ void WaveManager::reset()
 	m_newWave = true;
 	m_gameOver = false;
 
-	
+	m_pathRadius = GameConstants::WINDOW_SIZE.y / 3;
+	m_pathAngleIncrement = 2 * GameConstants::PI / 20;//number of points
+	for (int i = 0; i < 20; i++)
+	{
+		m_listOfPathPoints.push_back(Vector2D(m_pathAngleIncrement * i) * m_pathRadius + GameConstants::WINDOW_CENTRE);
+	}
+	/*ofstream outputfile;
+	outputfile.open("output.txt");
+	for (int line = 0; line < 20; line++)
+	{
+		outputfile << numberToString(line) << " " << numberToString(m_listOfPathPoints[line].x) << " " << numberToString(m_listOfPathPoints[line].y) << "\n";
+	}
+	outputfile << numberToString(20) << " " << numberToString(GameConstants::WINDOW_CENTRE.x) << " " << numberToString(GameConstants::WINDOW_CENTRE.y) << "\n";
+	outputfile.close();
+
+	ofstream outputArcs;
+	outputArcs.open("outputArcs.txt");
+	for (int line = 0; line < 20; line++)
+	{
+		if (line == 0)
+		{
+			outputArcs << numberToString(line) << " " << numberToString(line + 1) << " " << numberToString(100) << " \n";
+			outputArcs << numberToString(line) << " " << numberToString(19) << " " << numberToString(100) << " \n";
+		}
+		else if (line == 19)
+		{
+			outputArcs << numberToString(line) << " " << numberToString(0) << " " << numberToString(100) << " \n";
+			outputArcs << numberToString(line) << " " << numberToString(line - 1) << " " << numberToString(100) << " \n";
+		}
+		else
+		{
+			outputArcs << numberToString(line) << " " << numberToString(line + 1) << " " << numberToString(100) << " \n";
+			outputArcs << numberToString(line) << " " << numberToString(line - 1) << " " << numberToString(100) << " \n";
+		}
+	}
+	outputArcs << numberToString(0) << " " << numberToString(20) << " " << numberToString(100) << " \n";
+	outputArcs << numberToString(4) << " " << numberToString(20) << " " << numberToString(100) << " \n";
+	outputArcs << numberToString(9) << " " << numberToString(20) << " " << numberToString(100) << " \n";
+	outputArcs << numberToString(14) << " " << numberToString(20) << " " << numberToString(100) << " \n";
+	outputArcs.close();*/
+	for (auto & p : m_waves)
+	{
+		p->setGraph(graph);
+	}
 }
+
 
 std::vector<Enemy *> WaveManager::getEnemies()
 {
@@ -106,6 +203,14 @@ void WaveManager::draw(sf::RenderWindow & window)
 	}
 	
 	m_pylonMgr.draw(window);
+	//for (int i = 0; i < 20; i++)
+	//{
+	//	sf::CircleShape s;
+	//	s.setFillColor(sf::Color::Red);
+	//	s.setPosition(m_listOfPathPoints[i].toSFMLVector());
+	//	s.setRadius(10);
+	//	//window.draw(s);
+	//}
 }
 
 bool WaveManager::isGameOver()

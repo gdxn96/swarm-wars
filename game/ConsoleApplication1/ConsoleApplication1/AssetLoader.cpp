@@ -237,7 +237,7 @@ vector<pair <string, vector<sf::IntRect>>> AssetLoader::findMetaDateByKey(string
 	}
 	else
 	{
-		printf("error finding value, not in the map, meta error");
+		cout << "key not in map, sound key : " << key << endl;
 	}
 }
 

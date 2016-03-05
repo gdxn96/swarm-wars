@@ -4,11 +4,13 @@
 #include "Circle.h"
 #include "bar.h"
 #include "Animation.h"
+#include "Graph.h"
 enum class ENEMY_STATE {MOVING, ATTACKING};
 class Enemy
 {
 public:
-	Enemy(Vector2D spawnPosition, Vector2D direction, float maxHealth, 
+	typedef GraphNode<string, int> Node;
+	Enemy(Vector2D spawnPosition, std::vector<Node *> nodes, float maxHealth,
 		float damagePerSecond, float speed, float radius, 
 		int numberDeadPylons, std::string animKey);
 
@@ -36,6 +38,8 @@ public:
 private:
 	Vector2D m_position;
 	Vector2D m_direction;
+	
+	std::vector<Node *> nodes;
 	float m_speed;
 	float m_radius;
 	ENEMY_STATE m_currentState;
@@ -50,7 +54,7 @@ private:
 
 	vector<Enemy * > m_neighbours;
 	Circle m_neighbourCircle;
-	Vector2D m_initHeading;
-
+	int m_pathSize;
+	Vector2D m_targetDirection;
 };
 

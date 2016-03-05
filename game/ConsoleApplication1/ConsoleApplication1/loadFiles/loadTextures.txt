@@ -20,4 +20,3 @@ bgMenu assets/bgMenu.png
 help assets/help.png
 buttonClick assets/buttonClick.png
 grenade assets/grenade.png
-hjfjy mhfkujfrkrfkiufik

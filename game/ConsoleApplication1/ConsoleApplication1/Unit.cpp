@@ -13,7 +13,6 @@ m_targetAngle(startAngle),
 m_state(UNIT_STATE::WAITING),
 m_directionAngle(startAngle),
 m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::PISTOL)),
-m_isPlayer(false),
 m_isSelected(false),
 m_previousState(UNIT_STATE::WAITING),
 m_rank(UNIT_RANK::A),
@@ -21,8 +20,9 @@ m_experience(0),
 m_id(id),
 m_anim("walingAssaltAnimation", Vector2D(-100, -100)),
 m_selectAnimation("selectorAnimation", Vector2D(-100, -100)),
-m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100),
-m_weaponUpgradeUI(m_position, Vector2D(100,100))
+m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
+m_weaponUpgradeUI(m_position, Vector2D(100,100)),
+m_light(new Light(m_id, m_position, Vector2D(0.69f, 0.69f), sf::Color(255, 205, 180, 185), Vector2D(0, 0), 0, "bumpLight"))
 {
 	m_anim.setFramesPerSecond(60);
 	m_anim.setRadius(m_radius + 40);
@@ -36,17 +36,18 @@ m_weaponUpgradeUI(m_position, Vector2D(100,100))
 	rankImg.setPosition(Vector2D(m_position + Vector2D(-m_radius + 30, 20)).toSFMLVector());
 	rankImg.setSize(sf::Vector2f(12, 12));
 	rankImg.setTexture(AssetLoader::getInstance()->findTextureByKey("RankA"));
-	LightManager::getInstance()->AddLight(m_id, m_position.toSFMLVector(), sf::Vector2f(0.19f, 0.19f), sf::Color(255,205,180,185),Vector2D(0,0), 0,nullptr, "bumpLight");
+	
+	LightManager::getInstance()->AddLight(m_light);
 }
 
-void Unit::setIsPlayer(bool isPlayer)
+void Unit::setUnitType(UNIT_TYPE isPlayer)
 {
-	m_isPlayer = isPlayer;
+	m_unitType = isPlayer;
 }
 
 bool Unit::isPlayer()
 {
-	return m_isPlayer;
+	return m_unitType == UNIT_TYPE::PLAYER;
 }
 
 bool Unit::getSelected()
@@ -72,9 +73,7 @@ void Unit::update(float dt)
 	m_weaponUpgradeUI.update(dt);
 	m_weaponUpgradeUI.setCurrentWeapon(& m_currentWeapon);
 	m_weaponUpgradeUI.setRank(m_rank);
-
-
-	LightManager::getInstance()->updateLightByID(m_id, m_position, Vector2D(0.19f, 0.19f), sf::Color(255, 205, 180, 185));
+	m_light->setPosition(m_position);
 	m_xpBar.update();
 	m_xpBar.setPosition(m_position + Vector2D(-20, 20));
 	m_anim.update(dt);
@@ -112,7 +111,7 @@ void Unit::update(float dt)
 		fireWeapon();
 	}
 
-	if (m_isPlayer)
+	if (isPlayer())
 	{
 		if (m_state == UNIT_STATE::MOVING)
 		{
@@ -234,7 +233,7 @@ void Unit::update(float dt)
 
 	if (m_experience > 600)
 	{
-		m_xpBar.setColor(sf::Color(255, 215, 0, 255));
+		m_xpBar.setFGColor(sf::Color(60, 179, 113, 255));
 	}
 	
     if (m_rank == UNIT_RANK::A)
@@ -278,15 +277,14 @@ Polygon2D& Unit::getRangeCone()
 
 void Unit::changeState(UNIT_STATE state)
 {
-	if ((m_isPlayer && !m_isSelected && m_state == UNIT_STATE::WAITING))
+	if ((isPlayer() && !m_isSelected && m_state == UNIT_STATE::WAITING))
 	{
 		//return;
 	}
 	if (m_state != state)
 	{
-		if (!m_isSelected || (m_isSelected && !m_isPlayer && m_state == UNIT_STATE::WAITING) || (!m_isPlayer && m_state == UNIT_STATE::FIRING))
+		if (!m_isSelected || (m_isSelected && !isPlayer() && m_state == UNIT_STATE::WAITING) || (!isPlayer() && m_state == UNIT_STATE::FIRING))
 		{
-			//cout << "ijbnisdfnubui" << endl;
 			m_previousState = m_state;
 			m_state = state;
 		}
@@ -343,6 +341,11 @@ void Unit::addExperience(float experience)
 	m_experience += experience;
 }
 
+UNIT_TYPE Unit::getType()
+{
+	return m_unitType;
+}
+
 UNIT_RANK& Unit::getRank()
 {
 	return m_rank;
@@ -382,7 +385,7 @@ void Unit::setTargetAngle(float targetAngle)
 		m_targetAngle = NormalizeAngle(targetAngle);
 		m_state = UNIT_STATE::MOVING;
 	}
-	else if (m_isPlayer && targetAngle != m_targetAngle)
+	else if (isPlayer() && targetAngle != m_targetAngle)
 	{
 		m_targetAngle = m_positionAngle;
 		m_state = UNIT_STATE::WAITING;

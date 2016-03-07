@@ -36,6 +36,7 @@ private:
 	PulsingText UIText, dmg, fireRate, Name;
 	template <class T>
 	std::string numberToString(const T& t);
-
+	sf::Text a;
+	sf::Font f;
 };
 

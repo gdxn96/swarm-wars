@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BreakpointCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Breakpoints>
+    <Breakpoint>
+      <Version>15</Version>
+      <IsEnabled>1</IsEnabled>
+      <IsVisible>1</IsVisible>
+      <IsEmulated>0</IsEmulated>
+      <IsCondition>0</IsCondition>
+      <ConditionType>WhenTrue</ConditionType>
+      <LocationType>AddressLocation</LocationType>
+      <TextPosition>
+        <Version>4</Version>
+        <FileName>.\ConsoleApplication1\Light.cpp</FileName>
+        <startLine>37</startLine>
+        <StartColumn>0</StartColumn>
+        <EndLine>37</EndLine>
+        <EndColumn>20</EndColumn>
+        <MarkerId>40</MarkerId>
+        <IsLineBased>1</IsLineBased>
+        <IsDocumentPathNotFound>0</IsDocumentPathNotFound>
+        <ShouldUpdateTextSpan>1</ShouldUpdateTextSpan>
+        <Checksum>
+          <Version>1</Version>
+          <Algorithm>406ea660-64cf-4c82-b6f0-42d48172a799</Algorithm>
+          <ByteCount>16</ByteCount>
+          <Bytes>06E9C4EC57655111002C8BBF9C10A5AC</Bytes>
+        </Checksum>
+      </TextPosition>
+      <NamedLocationText>Light::setIsAlive(bool)</NamedLocationText>
+      <NamedLocationLine>0</NamedLocationLine>
+      <NamedLocationColumn>0</NamedLocationColumn>
+      <HitCountType>NoHitCount</HitCountType>
+      <HitCountTarget>1</HitCountTarget>
+      <Language>3a12d0b7-c26c-11d0-b442-00a0244a1dd2</Language>
+      <IsMapped>0</IsMapped>
+      <BreakpointType>PendingBreakpoint</BreakpointType>
+      <AddressLocation>
+        <Version>4</Version>
+        <AddressName>0x00C59F69</AddressName>
+        <MarkerId>40</MarkerId>
+        <FunctionName>Light::setIsAlive(bool)</FunctionName>
+        <ModuleName>C:\Users\Lanc3\Desktop\Working Dir\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.exe</ModuleName>
+        <DisplayName>0x00C59F69</DisplayName>
+        <FunctionLine>0</FunctionLine>
+        <FunctionColumn>0</FunctionColumn>
+        <Language>3a12d0b7-c26c-11d0-b442-00a0244a1dd2</Language>
+      </AddressLocation>
+      <DataCount>4</DataCount>
+      <ModuleName>C:\Users\Lanc3\Desktop\Working Dir\swarm-wars\game\ConsoleApplication1\Debug\ConsoleApplication1.exe</ModuleName>
+      <TracepointText>Function: $FUNCTION, Thread: $TID $TNAME , address: $ADDRESS</TracepointText>
+      <IsTracepointActive>1</IsTracepointActive>
+      <IsBreakWhenHit>0</IsBreakWhenHit>
+      <IsRunMacroWhenHit>0</IsRunMacroWhenHit>
+      <UseChecksum>1</UseChecksum>
+      <Labels />
+      <RequestRemapped>0</RequestRemapped>
+      <parentIndex>-1</parentIndex>
+    </Breakpoint>
+  </Breakpoints>
+</BreakpointCollection>

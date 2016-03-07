@@ -7,12 +7,6 @@
 #include <string>
 #include <utility>
 
-PulsingText::PulsingText()
-{
-}
-
-
-
 PulsingText::PulsingText(std::string _text, Vector2D _position, float min, float fluxSpeed, std::string fontFilePath) :
 m_minAlpha(min),
 text(_text),
@@ -72,8 +66,4 @@ void PulsingText::setColor(sf::Color color)
 void PulsingText::setPosition(Vector2D pos)
 {
 	m_position = pos;
-}
-
-PulsingText::~PulsingText()
-{
 }

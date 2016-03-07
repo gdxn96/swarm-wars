@@ -5,7 +5,7 @@
 #include "GameConstants.h"
 #include "Animation.h"
 #include "LightManager.h"
-
+#include "Light.h"
 class Pylon
 {
 private:
@@ -24,4 +24,5 @@ public:
 	bool getAlive();
 	Animation m_anim;
 	void update(float dt);
+	Light * m_light;
 };

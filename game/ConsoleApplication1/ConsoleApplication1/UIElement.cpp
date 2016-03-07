@@ -4,11 +4,6 @@
 #include <sstream>
 
 
-UIElement::UIElement()
-{
-
-}
-
 UIElement::UIElement(UI_TYPE type, Vector2D pos, Vector2D dimensions, string img1, string img2) :
 	m_pos(pos),
 	m_dimensions(dimensions),

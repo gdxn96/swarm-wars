@@ -28,6 +28,8 @@ float const GameConstants::BUNKER_SIZE_INNER = GameConstants::WALK_RADIUS + Game
 float const GameConstants::BUNKER_SIZE_OUTER = GameConstants::BUNKER_SIZE_INNER + GameConstants::BUNKER_SIZE_HEIGHT;
 float const GameConstants::BUNKER_HEALTH = 100;
 
+float const GameConstants::BUNKER_REPAIR_COST = 100;
+
 
 // weapon stuff
 
@@ -139,7 +141,7 @@ float const ENEMY_STATS::ENEMY1_RADIUS = 5;
 float const ENEMY_STATS::ENEMY1_SPEED = 40;
 float const ENEMY_STATS::ENEMY1_DAMAGE_PER_SECOND = 5;
 float const ENEMY_STATS::ENEMY1_HEALTH = 100;
-std::string const ENEMY_STATS::ENEMY1_ANIMATION_KEY = "bugAnimation";
+std::string const ENEMY_STATS::ENEMY1_ANIMATION_KEY = "bigBossAnimation";
 
 float const ENEMY_STATS::ENEMY2_RADIUS = 10;
 float const ENEMY_STATS::ENEMY2_SPEED = 30;

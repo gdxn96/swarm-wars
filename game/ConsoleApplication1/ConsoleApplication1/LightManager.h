@@ -9,11 +9,12 @@ public:
 	static LightManager * getInstance();
 	~LightManager(void);
 	void Update(sf::RenderWindow &,float);
-	void AddLight(std::string, sf::Vector2f position, sf::Vector2f scale, sf::Color color,Vector2D velocity,float rotation,Bullet * _parent,string lightKey);
-	void updateLightByID(std::string name, Vector2D position, Vector2D scale , sf::Color);
+	void AddLight(Light * light);
+
 	void draw(sf::RenderWindow &);
 	std::vector<Light *> lights;
 	void clear();
+	void killDeadLights();
 private:
 	LightManager();
 	static LightManager * instance;

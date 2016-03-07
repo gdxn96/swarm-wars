@@ -31,8 +31,8 @@ public:
     /*The x and y values are public to give easier access for
       outside funtions. Accessors and mutators are not really
       necessary*/
-    float x;
-    float y;
+    float x, &width, &w;
+    float y, &height, &h;
     ~Vector2D(void);
     //Constructor assigns the inputs to x and y.
     Vector2D();
@@ -48,6 +48,7 @@ public:
     Vector2D operator*(const Vector2D&) const;
     Vector2D operator/(const Vector2D&) const;
 	Vector2D operator+=(const Vector2D&) ;
+	Vector2D operator=(const Vector2D & v);
 	// nromalise its self
 	Vector2D Normalize() ;
 	//normalise a value

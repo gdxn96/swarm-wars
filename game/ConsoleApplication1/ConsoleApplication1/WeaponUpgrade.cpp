@@ -2,9 +2,7 @@
 #include "WeaponUpgrade.h"
 
 
-WeaponUpgrade::WeaponUpgrade()
-{
-}
+
 
 WeaponUpgrade::WeaponUpgrade(Vector2D _position, Vector2D _size):
 m_topShape(_size.toSFMLVector()),
@@ -17,12 +15,14 @@ m_offsetWidth(60),
 m_offsetedPosition(_position + Vector2D(m_offsetWidth, -m_offsetHeight)),
 m_weaponNameBottom(">Name<", m_position, 80, 6, "stoNe.tff"),
 m_weaponNameTop(">Name<",m_position,80,6,"stoNe.tff"),
-m_topDMGbar(m_position,Vector2D(0.5f,0.5f),WeaponStats::WEAPON_MAX_DMG),
-m_topRoFBar(m_position,Vector2D(0.5f, 0.5f), WeaponStats::WEAPON_MAX_RoF),
-m_bottomDMGbar(m_position, Vector2D(0.5f, 0.5f), WeaponStats::WEAPON_MAX_DMG),
-m_bottomRoFBar(m_position, Vector2D(0.5f, 0.5f), WeaponStats::WEAPON_MAX_RoF),
+m_topDMGbar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_DMG, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
+m_topRoFBar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_RoF, sf::Color(4, 254, 253, 255),sf::Color(17, 169, 169, 255)),
+m_bottomDMGbar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_DMG, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
+m_bottomRoFBar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_RoF, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 m_topButtonAnimation("YButtonAnimation",m_position),
 m_bottomButtonAnimation("AButtonAnimation",m_position),
+m_topAnimation("AButtonAnimation", m_position),
+m_botomAnimation("AButtonAnimation", m_position),
 m_currentWeapon(nullptr)
 {
 	m_topShape.setPosition(m_offsetedPosition.toSFMLVector());
@@ -62,7 +62,7 @@ void WeaponUpgrade::update(float dt)
 		m_topShape.setPosition(m_offsetedPosition.toSFMLVector());
 		m_bottomShape.setPosition(Vector2D(m_offsetedPosition + Vector2D(0, m_cellHeight)).toSFMLVector());
 		
-		m_weaponNameTop.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth + 10, m_cellWidth - 10)));
+		m_weaponNameTop.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth + 10, m_cellWidth - 50)));
 		m_weaponNameTop.setText(m_currentWeapon->getName());
 		m_weaponNameTop.setColor(sf::Color(135, 206, 250, 255));
 		m_weaponNameTop.update(dt);
@@ -87,8 +87,12 @@ void WeaponUpgrade::update(float dt)
 
 		m_topButtonAnimation.update(dt);
 		m_bottomButtonAnimation.update(dt);
+
+
+	
 	}
 	setWeaponStats();
+
 
 }
 void WeaponUpgrade::updateInput(float dt)
@@ -102,7 +106,26 @@ void WeaponUpgrade::setWeaponStats()
 	{
 		m_topDMGbar.setCurrentAmount(m_currentWeapon->getDamage());
 		m_topRoFBar.setCurrentAmount(m_currentWeapon->getRoF());
+		if (m_topDMGbar.getAmount() > m_bottomDMGbar.getAmount())
+		{
+			m_bottomDMGbar.setFGColor(sf::Color::Red);
+			
+		}
+		else
+		{
+			m_bottomDMGbar.setFGColor(sf::Color::Green);
+		}
+
+		if (m_topRoFBar.getAmount() > m_bottomRoFBar.getAmount())
+		{
+			m_bottomRoFBar.setFGColor(sf::Color::Red);
+		}
+		else
+		{
+			m_bottomRoFBar.setFGColor(sf::Color::Green);
+		}
 	}
+	
 }
 
 void WeaponUpgrade::setRank(UNIT_RANK  _rank)
@@ -188,9 +211,4 @@ void WeaponUpgrade::draw(sf::RenderWindow & window)
 void WeaponUpgrade::setPosition(Vector2D _postion)
 {
 	m_position = _postion;
-}
-
-
-WeaponUpgrade::~WeaponUpgrade()
-{
 }

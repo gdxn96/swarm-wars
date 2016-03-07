@@ -82,7 +82,6 @@ void Wave::draw(sf::RenderWindow& window)
 	{
 		enemy->draw(window);
 	}
-	//graph->draw(window, GameConstants::font);
 }
 
 vector<Enemy*> Wave::getEnemies()
@@ -90,7 +89,6 @@ vector<Enemy*> Wave::getEnemies()
 	return m_enemies;
 }
 void Wave::visit(Node * pNode) {
-	cout << "Visiting: " << pNode->data() << endl;
 	pNode->setColour(sf::Color::Magenta);
 }
 void Wave::spawnEnemy1()

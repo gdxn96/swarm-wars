@@ -88,8 +88,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="QArcs.txt" />
-    <Text Include="QNodes.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +101,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="Bunker.h" />
+    <ClInclude Include="BuyMenuScene.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Enemy.h" />
@@ -124,7 +123,6 @@
     <ClInclude Include="OptionsScene.h" />
     <ClInclude Include="OrderPointer.h" />
     <ClInclude Include="PauseScene.h" />
-    <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="PulsingText.h" />
     <ClInclude Include="Pylon.h" />
@@ -133,7 +131,6 @@
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="SelectColorScene.h" />
     <ClInclude Include="SpawnPoint.h" />
-    <ClInclude Include="SplashScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tower.h" />
@@ -161,6 +158,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletFactory.cpp" />
     <ClCompile Include="Bunker.cpp" />
+    <ClCompile Include="BuyMenuScene.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
@@ -180,7 +178,6 @@
     <ClCompile Include="OptionsScene.cpp" />
     <ClCompile Include="OrderPointer.cpp" />
     <ClCompile Include="PauseScene.cpp" />
-    <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="PulsingText.cpp" />
     <ClCompile Include="Pylon.cpp" />
@@ -189,7 +186,6 @@
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="SelectColorScene.cpp" />
     <ClCompile Include="SpawnPoint.cpp" />
-    <ClCompile Include="SplashScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

@@ -59,7 +59,6 @@ bool InputHandler::isPressed(InputHandler::t_buttonNum button, t_joyNum joyNum)
 {
 	if (!wasPressed(button, joyNum) && isHeld(button, joyNum))
 	{
-		cout << "button pressed" << endl;
 		return true;
 	}
 	else

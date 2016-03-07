@@ -9,39 +9,64 @@ m_nodeRight(right),
 TIME_UNTIL_CHANGE(0.005f)
 {
 	timeUntillChange = TIME_UNTIL_CHANGE;
-	listOfLines = CreateArk(m_nodeLeft->getPosition(), m_nodeRight->getPosition(), thickness);
+	if (m_alive)
+	//listOfLines = CreateArk(m_nodeLeft->getPosition(), m_nodeRight->getPosition(), thickness);
+	alpha = 0;
+	
 }
 
 void Bolt::update(float dt)
 {
 	timeUntillChange -= dt;
-	for (auto & line : listOfLines)
+	if (m_alive)
 	{
-		line.Update();
-	}
-	if (m_nodeLeft->getAlive() && m_nodeRight->getAlive())
-	{
-		
-	}
-	else
-	{
-		kill();
-	}
-	if (timeUntillChange <= 0)
-	{
-		alpha -= 12;
+		if (m_nodeLeft->getAlive() && m_nodeRight->getAlive())
+		{
+
+		}
+		else
+		{
+			kill();
+		}
+
+		if (timeUntillChange <= 0)
+		{
+			alpha -= 12;
+			for (int i = 0; i < listOfLines.size(); i++)
+			{
+				listOfLines[i]->setAlpha(alpha);
+			}
+			timeUntillChange = TIME_UNTIL_CHANGE;
+		}
+		if (alpha <= 0)
+		{
+			alpha = 255;	
+			for (auto & li : listOfLines)
+			{
+				li->setAlive(false);
+			}
+		}
+
+		if (listOfLines.size() == 0)
+		{
+			listOfLines = CreateArk(m_nodeLeft->getPosition(), m_nodeRight->getPosition(), thickness);
+		}
+
 		for (int i = 0; i < listOfLines.size(); i++)
 		{
-			listOfLines[i].setAlpha(alpha);
+			if (listOfLines[i]->getAlive())
+			{
+				listOfLines[i]->Update();
+			}
+			else
+			{
+				delete listOfLines[i];
+				listOfLines[i] = nullptr;
+				listOfLines.erase(listOfLines.begin() + i);
+			}
 		}
-		timeUntillChange = TIME_UNTIL_CHANGE;
 	}
-	if (alpha <= 0)
-	{
-		alpha = 255;
-		listOfLines.clear();
-		listOfLines = CreateArk(m_nodeLeft->getPosition(), m_nodeRight->getPosition(), thickness);
-	}
+	
 }
 
 void Bolt::draw(sf::RenderWindow& window)
@@ -50,7 +75,7 @@ void Bolt::draw(sf::RenderWindow& window)
 	{
 		for (int i = 0; i < listOfLines.size(); i++)
 		{
-			listOfLines[i].Draw(window);
+			listOfLines[i]->Draw(window);
 		}
 	}
 	
@@ -58,9 +83,9 @@ void Bolt::draw(sf::RenderWindow& window)
 bool my_compare(float a, float b){
 	return a < b;
 }
-std::vector<Line> Bolt::CreateArk(Vector2D & start, Vector2D & end, float thickness)
+std::vector<Line *> Bolt::CreateArk(Vector2D & start, Vector2D & end, float thickness)
 {
-	std::vector<Line> results;
+	std::vector<Line *> results;
 	Vector2D tangent = end - start;
 	Vector2D normal = Vector2D::Normalize(Vector2D(tangent.y, -tangent.x));
 	float length = tangent.Magnitude();
@@ -100,17 +125,21 @@ std::vector<Line> Bolt::CreateArk(Vector2D & start, Vector2D & end, float thickn
 		p.x = pos.x;
 		p.y = pos.y;
 
-		results.push_back(Line(previousPoint, p, thickness));
+		results.push_back(new Line(previousPoint, p, thickness));
 
 		previousPoint = p;
 		previousDisplacment = displacment;
 	}
 	
-	results.push_back(Line(previousPoint, end, thickness));
+	results.push_back(new Line(previousPoint, end, thickness));
 	return results;
 }
 
 void Bolt::kill()
 {
 	m_alive = false;
+	for (auto & li : listOfLines)
+	{
+		li->setAlive(m_alive);
+	}
 }

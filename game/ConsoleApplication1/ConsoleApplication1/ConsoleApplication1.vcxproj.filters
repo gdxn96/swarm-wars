@@ -15,9 +15,6 @@
     <Filter Include="CODE\SCENE_STUFF">
       <UniqueIdentifier>{0cf2678f-d612-4123-b960-ee5c4d35f648}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES">
-      <UniqueIdentifier>{eb977295-83fd-4cdf-821d-b6c8d0d8aaa0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CODE\HELPER">
       <UniqueIdentifier>{5576b4d8-f2a2-4157-bef3-0b5d89a8ddae}</UniqueIdentifier>
     </Filter>
@@ -42,24 +39,18 @@
     <Filter Include="CODE\GAME\DEFENSES">
       <UniqueIdentifier>{7952bd64-dbfb-4df7-ba92-04bc76b3cffe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE">
-      <UniqueIdentifier>{b7f0126e-fdda-4c58-b6ab-af8f15b183e8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Animation">
       <UniqueIdentifier>{bc40ca4e-d23e-45a5-9a46-01faf72dea93}</UniqueIdentifier>
     </Filter>
     <Filter Include="Astar">
       <UniqueIdentifier>{a19c5264-21fe-4b58-932a-7f60d8edd47e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CODE\SCENE_STUFF\SCENES">
+      <UniqueIdentifier>{eb977295-83fd-4cdf-821d-b6c8d0d8aaa0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-    <Text Include="QArcs.txt">
-      <Filter>Astar</Filter>
-    </Text>
-    <Text Include="QNodes.txt">
-      <Filter>Astar</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -69,7 +60,7 @@
       <Filter>CODE\DEFAULT</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
       <Filter>CODE\SCENE_STUFF</Filter>
@@ -128,12 +119,6 @@
     <ClInclude Include="InputHandler.h">
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
-    <ClInclude Include="SplashScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsObject.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Animation</Filter>
     </ClInclude>
@@ -150,7 +135,7 @@
       <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="LoadScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="bar.h">
       <Filter>CODE\GAME\UI</Filter>
@@ -177,7 +162,7 @@
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="SpawnPoint.h">
       <Filter>CODE\GAME\ENEMIES</Filter>
@@ -186,22 +171,22 @@
       <Filter>CODE\HELPER</Filter>
     </ClInclude>
     <ClInclude Include="OptionsScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="HelpScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="SelectColorScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="UIElement.h">
       <Filter>CODE\GAME\UI</Filter>
     </ClInclude>
     <ClInclude Include="PauseScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="Wave.h">
       <Filter>CODE</Filter>
@@ -210,10 +195,10 @@
       <Filter>CODE</Filter>
     </ClInclude>
     <ClInclude Include="GameOverScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="GameWinScene.h">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
     <ClInclude Include="WeaponUpgrade.h">
       <Filter>CODE</Filter>
@@ -233,10 +218,13 @@
     <ClInclude Include="Asset.h">
       <Filter>Animation</Filter>
     </ClInclude>
+    <ClInclude Include="BuyMenuScene.h">
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>CODE\DEFAULT</Filter>
@@ -298,12 +286,6 @@
     <ClCompile Include="InputHandler.cpp">
       <Filter>CODE\HELPER</Filter>
     </ClCompile>
-    <ClCompile Include="SplashScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES\SPLASH_SCENE</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
@@ -320,7 +302,7 @@
       <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="LoadScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="bar.cpp">
       <Filter>CODE\GAME\UI</Filter>
@@ -347,7 +329,7 @@
       <Filter>CODE\GAME\DEFENSES</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="SpawnPoint.cpp">
       <Filter>CODE\GAME\ENEMIES</Filter>
@@ -362,37 +344,40 @@
       <Filter>CODE</Filter>
     </ClCompile>
     <ClCompile Include="OptionsScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="HelpScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="SelectColorScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="UIElement.cpp">
       <Filter>CODE\GAME\UI</Filter>
     </ClCompile>
     <ClCompile Include="PauseScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="GameOverScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="GameWinScene.cpp">
-      <Filter>CODE\SCENE_STUFF\OTHER_SCENES</Filter>
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
     <ClCompile Include="WeaponUpgrade.cpp">
       <Filter>CODE</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">
       <Filter>Astar</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyMenuScene.cpp">
+      <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

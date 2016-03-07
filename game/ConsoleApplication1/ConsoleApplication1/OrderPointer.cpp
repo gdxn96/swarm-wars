@@ -55,8 +55,10 @@ void OrderPointer::draw(RenderWindow & window)
 	ptr.setPosition(m_position.toSFMLVector());
 
 	if (m_angle != 2 * GameConstants::PI)
-	window.draw(ptr);
-	m_anim.draw(window); 
+	{
+		window.draw(ptr);
+		m_anim.draw(window);
+	}
 }
 
 // Get methods

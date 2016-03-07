@@ -8,9 +8,11 @@ GameScene::GameScene()
 	m_collisionMgr(&m_unitController),
 	m_creditsScoreText("text", Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 0), 80, 6, "stoNe.ttf"),
 	m_pauseScene([&](){ togglePause(); }),
-	m_drawMode(true)
+	m_drawMode(true),
+	m_anim ("staticAnimation", Vector2D(-100, -100)),
+	m_buyMenu(&m_unitController, [&](){ resetBunkers(); })
 {
-
+	otherMiniMapView.zoom(0.11f);
 }
 
 void GameScene::enter()
@@ -18,8 +20,8 @@ void GameScene::enter()
 	LightManager::getInstance()->clear();
 	m_bulletFactory = new BulletFactory();
 	m_numBunkers = 15;
-	m_anim = Animation("staticAnimation", Vector2D(-100, -100));
-	m_bunkers.clear();
+
+	resetBunkers();
 	m_waveManager.reset();
 	m_currentState = (GAME_STATE::GAME);
 	m_paused = (false);
@@ -33,13 +35,8 @@ void GameScene::enter()
 	m_creditsScoreText.setColor(sf::Color(255, 215, 0, 255));
 	//init must be called to avoid players being created without weapons
 	m_unitController.init();
-	//m_UnitSelector = UnitSelector(m_unitController.getUnits());
 
-	//m_UnitSelector = UnitSelector(m_unitController.getUnits());
-	for (int i = 0; i < m_numBunkers; i++)
-	{
-		m_bunkers.push_back(new Bunker(2 * GameConstants::PI / m_numBunkers * i));
-	}
+	
 
 	floorSprite.setTexture(*AssetLoader::getInstance()->findTextureByKey("floor"));
 	floorSprite.setPosition(Vector2f(0, 0));
@@ -64,23 +61,45 @@ void GameScene::enter()
 
 	// mini-map (upper-right corner)
 	otherMiniMapView.setViewport(sf::FloatRect(0.75f, 0.0f, 0.25f, 0.25f));
-	otherMiniMapView.zoom(0.11f);
+	
 	otherMiniMapView.setCenter(m_unitController.getCurrentUnit()->getPosition().toSFMLVector());
+}
+
+void GameScene::resetBunkers()
+{
+	m_bunkers.clear();
+
+	for (int i = 0; i < m_numBunkers; i++)
+	{
+		m_bunkers.push_back(new Bunker(2 * GameConstants::PI / m_numBunkers * i));
+	}
 }
 
 void GameScene::updateInput()
 {
 	if (!m_paused)
 	{
-		m_unitController.updateInput();
-		if (InputHandler::getInstance()->isPressed(InputHandler::START))
+		if (!m_buyMenu.Active())
 		{
-			togglePause();
+			m_unitController.updateInput();
+			if (InputHandler::getInstance()->isPressed(InputHandler::START))
+			{
+				togglePause();
+			}
+			if (InputHandler::getInstance()->isPressed(InputHandler::BACK))
+			{
+				toggleDrawMode();
+			}
+			if (InputHandler::getInstance()->isPressed(InputHandler::DPAD_LEFT))
+			{
+				m_buyMenu.toggleActive();
+			}
 		}
-		if (InputHandler::getInstance()->isPressed(InputHandler::BACK))
+		else
 		{
-			toggleDrawMode();
+			m_buyMenu.updateInput();
 		}
+		
 	}
 	else
 	{
@@ -101,7 +120,6 @@ void GameScene::update(float dt)
 			m_anim.setSize(GameConstants::WINDOW_SIZE* 3);
 			m_anim.setAlpha(110);
 			m_anim.update(dt);		
-			//m_creditsScoreText.setPosition(m_unitController.getCurrentUnit()->getPosition() + Vector2D(0,(-GameConstants::WINDOW_SIZE.y/2 +100) * zoom));
 			m_creditsScoreText.setPosition(Vector2D(gameView.getCenter().x,gameView.getCenter().y- (gameView.getSize().y/2)));
 			m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
 			m_creditsScoreText.update(dt);
@@ -127,13 +145,18 @@ void GameScene::update(float dt)
 		checkCollisions(dt);
 		checkBunkers();
 
-		if (m_waveManager.isNewWave())
+		/*if (m_waveManager.isNewWave())
 		{
 			AudioManager::instance()->PlayGameSound("warning", false, 1, m_unitController.getCurrentUnit()->getPosition(), 0);
 			m_waveManager.setNewWave(false);
 			m_unitController.checkCanByUnit();
+		}*/
+		for (Bunker* bunker : m_bunkers)
+		{
+			bunker->update(dt);
 		}
-		
+
+		m_buyMenu.update(dt);
 	}
 	else if (m_currentState == GAME_STATE::PAUSED)
 	{
@@ -168,6 +191,7 @@ void GameScene::checkGameState()
 		m_currentState = GAME_STATE::PAUSED;
 	}
 }
+
 template <class T>
 std::string GameScene::numberToString(const T& t) {
 
@@ -215,10 +239,14 @@ void GameScene::draw(sf::RenderWindow &window)
 	{
 		drawWholeView(window);
 	}
+
+	window.setView(View((GameConstants::WINDOW_CENTRE * 1).toSFMLVector(), (GameConstants::WINDOW_SIZE * 1).toSFMLVector()));
+	m_buyMenu.draw(window);
 	
 }
 void GameScene::drawZoomed(sf::RenderWindow & window)
 {
+	
 	if (m_currentState == GAME_STATE::PAUSED)
 	{
 		window.setView(otherGameView);
@@ -263,7 +291,6 @@ void GameScene::drawZoomed(sf::RenderWindow & window)
 		//--------------------------------------------------------------
 
 
-
 		//minimap draw---------------------------------------------
 		window.setView(miniMapView);
 		window.draw(floorSprite);
@@ -285,6 +312,8 @@ void GameScene::drawZoomed(sf::RenderWindow & window)
 		m_anim.draw(window);
 		//---------------------------------------------------------------
 	}
+
+	
 }
 void GameScene::drawWholeView(sf::RenderWindow & window)
 {
@@ -352,6 +381,6 @@ void GameScene::drawWholeView(sf::RenderWindow & window)
 		LightManager::getInstance()->draw(window);
 		sf::RectangleShape cover;
 	}
+
+	
 }
-
-

@@ -81,3 +81,8 @@ bool Bullet::getAlive()
 {
 	return m_alive;
 }
+
+Bullet::~Bullet()
+{
+	//m_light->setIsAlive(false);
+}

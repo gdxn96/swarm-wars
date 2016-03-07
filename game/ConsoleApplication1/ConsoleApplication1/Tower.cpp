@@ -44,9 +44,16 @@ moraleText(">TROOP MORALE<", Vector2D(GameConstants::WINDOW_CENTRE.x-120, 50),25
 	m_anim.SetLooping(true);
 	m_anim.setRadius(GameConstants::TOWER_RADIUS + 60);
 	int amount = 0;
-	
 }
 
+void Tower::setBarPosition(Vector2D pos)
+{
+	barPosition = pos;
+}
+void Tower::setBarScale(Vector2D s)
+{
+	barScale = s;
+}
 void Tower::draw(sf::RenderWindow & window)
 {
 	
@@ -62,6 +69,8 @@ void Tower::update(float dt)
 {
 	m_anim.update(dt);
 	moraleBar.update();
+	moraleBar.setPosition(barPosition);
+	moraleBar.setScale(barScale);
 	moraleText.update(dt);
 	moraleText.setPosition(Vector2D(GameConstants::WINDOW_CENTRE.x-120, 30));
 	m_soundTriggerInterval -= dt;

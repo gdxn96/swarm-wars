@@ -18,7 +18,8 @@ public:
 	void damage(float damage);
 	bool getAlive();
 	void update(float dt);
-
+	void setBarPosition(Vector2D);
+	void setBarScale(Vector2D);
 private:
 	void playMoraleIndicator();
 	Circle m_outerBounds;
@@ -37,6 +38,8 @@ private:
 	bar moraleBar;
 	PulsingText moraleText;
 	Light * m_light1,* m_light2,* m_light3, * m_light4;
+	Vector2D barPosition;
+	Vector2D barScale;
 };
 
 

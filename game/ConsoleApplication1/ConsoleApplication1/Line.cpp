@@ -48,7 +48,9 @@ void Line::Draw(sf::RenderWindow & _window)
 void Line::setAlive(bool _alive)
 {
 	isAlive = _alive;
+	if (m_light != nullptr)
 	m_light->setIsAlive(_alive);
+	m_light = nullptr;
 }
 
 bool Line::getAlive()
@@ -61,3 +63,4 @@ Line::~Line()
 	/*if (m_light != nullptr)
 	m_light->setIsAlive(false);*/
 }
+

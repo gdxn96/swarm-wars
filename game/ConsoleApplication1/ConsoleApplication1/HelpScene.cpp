@@ -51,7 +51,7 @@ void HelpScene::createUIElements()
 {
 	UIElement* element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x, 150), Vector2D(50, 50), ">VOLUME<", "play2");
 
-	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x +200, 780), Vector2D(50, 50), ">BACK<", "exit2");
+	element = new UIElement(UI_TYPE::BUTTON, Vector2D(GameConstants::WINDOW_CENTRE.x + 200, GameConstants::WINDOW_SIZE.y-100), Vector2D(50, 50), ">BACK<", "exit2");
 	element->setFunctionality([&](){ SceneManager::getInstance()->switchTo(Scenes::MAINMENU); });
 	element->setAlpha(0);
 	element->setAppear([element](float dt){ element->changeAlpha(510 * dt); });

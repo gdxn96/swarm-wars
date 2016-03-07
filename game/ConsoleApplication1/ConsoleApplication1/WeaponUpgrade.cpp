@@ -21,13 +21,14 @@ m_bottomDMGbar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_DMG, sf::C
 m_bottomRoFBar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_RoF, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 m_topButtonAnimation("YButtonAnimation",m_position),
 m_bottomButtonAnimation("AButtonAnimation",m_position),
-m_topAnimation("AButtonAnimation", m_position),
-m_botomAnimation("AButtonAnimation", m_position),
+m_topAnimation("blueWeaponAnimation", m_position),
+m_botomAnimation("greenWeaponAnimation", m_position),
 m_currentWeapon(nullptr)
 {
 	m_topShape.setPosition(m_offsetedPosition.toSFMLVector());
+	m_topAnimation.setPosition(m_offsetedPosition);
 	m_bottomShape.setPosition(Vector2D(m_offsetedPosition + Vector2D(0, m_cellHeight)).toSFMLVector());
-
+	m_botomAnimation.setPosition(Vector2D(m_offsetedPosition + Vector2D(0, m_cellHeight)));
 	m_topShape.setFillColor(sf::Color(255, 255, 255, 12));
 	m_topShape.setOutlineColor(sf::Color(135, 206, 250, 255));
 	m_topShape.setOutlineThickness(2);
@@ -45,6 +46,11 @@ m_currentWeapon(nullptr)
 	m_bottomButtonAnimation.setFramesPerSecond(20);
 	m_bottomButtonAnimation.SetLooping(true);
 	m_bottomButtonAnimation.setRadius(m_cellWidth / 3);
+
+	m_topAnimation.setFramesPerSecond(30);
+	m_botomAnimation.setFramesPerSecond(30);
+	m_topAnimation.setSize(_size);
+	m_botomAnimation.setSize(_size);
 }
 void WeaponUpgrade::setCurrentWeapon(Weapon * _weapon)
 {
@@ -55,6 +61,8 @@ void WeaponUpgrade::setCurrentWeapon(Weapon * _weapon)
 void WeaponUpgrade::update(float dt)
 {
 	updateInput(dt);
+	m_botomAnimation.update(dt);
+	m_topAnimation.update(dt);
 	if (m_isActive)
 	{
 		
@@ -84,6 +92,10 @@ void WeaponUpgrade::update(float dt)
 
 		m_topButtonAnimation.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth / 3, -m_cellWidth/3)));
 		m_bottomButtonAnimation.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth / 3, m_cellWidth*2 +m_cellWidth/3)));
+
+
+		m_botomAnimation.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth/2, m_cellHeight/2)));
+		m_topAnimation.setPosition(Vector2D(m_offsetedPosition + Vector2D(m_cellWidth/2, m_cellHeight+m_cellHeight/2)));
 
 		m_topButtonAnimation.update(dt);
 		m_bottomButtonAnimation.update(dt);
@@ -199,7 +211,8 @@ void WeaponUpgrade::draw(sf::RenderWindow & window)
 		m_topRoFBar.draw(window);
 		m_bottomDMGbar.draw(window);
 		m_bottomRoFBar.draw(window);
-		
+		m_botomAnimation.draw(window);
+		m_topAnimation.draw(window);
 
 		m_topButtonAnimation.draw(window);
 		m_bottomButtonAnimation.draw(window);

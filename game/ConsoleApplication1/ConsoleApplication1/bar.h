@@ -8,7 +8,8 @@ public:
 	
 	float width = 100, height = 5;
 	int offset = 3;
-	Vector2D m_position, scale;
+
+	Vector2D m_position;
 	bar(Vector2D _position, Vector2D scale, float startingValue,sf::Color,sf::Color);
 	sf::RectangleShape bgRect,fgRect;
 	sf::CircleShape point;
@@ -18,6 +19,7 @@ public:
 	void setBarAmount(float);
 	void setPercentAmount(float);
 	void setCurrentAmount(float);
+	void setScale(Vector2D);
 	void update();
 	sf::Texture * bgTexture, * fgTexture;
 	void setColor(sf::Color);
@@ -29,5 +31,6 @@ private:
 	sf::Color bgColor;
 	float m_max, m_current, percentAmount;
 	float m_amount = 0;
+	Vector2D scale;
 };
 

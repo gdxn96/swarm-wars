@@ -46,6 +46,15 @@ number(">UNIT<", Vector2D(250, 210), 255, 0, "stoNe.tff")
 	number.setColor(sf::Color(255, 215, 0, 255));
 }
 
+void UnitSelector::setPosition(Vector2D pos)
+{
+	UnitOne.setPosition(Vector2D(pos.x - DisplaySize.x - (UnitSizeSmall.x * 4), pos.y - UnitSizeSmall.y).toSFMLVector());
+	UnitTwo.setPosition(Vector2D(pos.x - DisplaySize.x - (UnitSizeSmall.x * 3), pos.y - UnitSizeSmall.y).toSFMLVector());
+	UnitThree.setPosition(Vector2D(pos.x - DisplaySize.x - (UnitSizeSmall.x * 2), pos.y - UnitSizeSmall.y).toSFMLVector());
+	UnitFour.setPosition(Vector2D(pos.x - DisplaySize.x - (UnitSizeSmall.x), pos.y - UnitSizeSmall.y).toSFMLVector());
+	position = pos;
+
+}
 void UnitSelector::update(float dt)
 {
 	
@@ -57,9 +66,9 @@ void UnitSelector::update(float dt)
 		number.setText(">player<");
 		number.setPosition(Vector2D(UnitOne.getPosition().x, UnitOne.getPosition().y - 40));
 
-		UnitTwo.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 3), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitThree.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 2), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitFour.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
+		UnitTwo.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 3), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitThree.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 2), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitFour.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x), position.y - UnitSizeSmall.y).toSFMLVector());
 
 		UnitTwo.setSize(UnitSizeSmall.toSFMLVector());
 		UnitThree.setSize(UnitSizeSmall.toSFMLVector());
@@ -72,15 +81,15 @@ void UnitSelector::update(float dt)
 	else if (m_currentSelected == 1)
 	{
 		UnitTwo.setSize(UnitSizeLarge.toSFMLVector());
-		UnitTwo.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 3), GameConstants::WINDOW_SIZE.y - UnitSizeLarge.y).toSFMLVector());
+		UnitTwo.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 3), position.y - UnitSizeLarge.y).toSFMLVector());
 		UnitTwo.setOutlineColor(sf::Color(255, 215, 0, 255));
 		number.setText(">unit 1<");
 		number.setPosition(Vector2D(UnitTwo.getPosition().x, UnitTwo.getPosition().y - 40));
 
 
-		UnitOne.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 4), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitThree.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 2), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitFour.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
+		UnitOne.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 4), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitThree.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 2), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitFour.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x), position.y - UnitSizeSmall.y).toSFMLVector());
 		UnitOne.setSize(UnitSizeSmall.toSFMLVector());
 		UnitThree.setSize(UnitSizeSmall.toSFMLVector());
 		UnitFour.setSize(UnitSizeSmall.toSFMLVector());
@@ -92,17 +101,17 @@ void UnitSelector::update(float dt)
 	else if (m_currentSelected == 2)
 	{
 		UnitThree.setSize(UnitSizeLarge.toSFMLVector());
-		UnitThree.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 2), GameConstants::WINDOW_SIZE.y - UnitSizeLarge.y).toSFMLVector());
+		UnitThree.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 2), position.y - UnitSizeLarge.y).toSFMLVector());
 		UnitThree.setOutlineColor(sf::Color(255, 215, 0, 255));
 		number.setText(">unit 2<");
 		number.setPosition(Vector2D(UnitThree.getPosition().x, UnitThree.getPosition().y - 40));
 
 
-		UnitOne.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 4), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitTwo.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 3), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
+		UnitOne.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 4), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitTwo.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 3), position.y - UnitSizeSmall.y).toSFMLVector());
 		
-		UnitFour.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		Display.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x, GameConstants::WINDOW_SIZE.y - DisplaySize.y).toSFMLVector());
+		UnitFour.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x), position.y - UnitSizeSmall.y).toSFMLVector());
+		Display.setPosition(Vector2D(position.x - DisplaySize.x, position.y - DisplaySize.y).toSFMLVector());
 		UnitOne.setSize(UnitSizeSmall.toSFMLVector());
 		UnitTwo.setSize(UnitSizeSmall.toSFMLVector());
 		
@@ -116,17 +125,17 @@ void UnitSelector::update(float dt)
 	else if (m_currentSelected == 3)
 	{
 		UnitFour.setSize(UnitSizeLarge.toSFMLVector());
-		UnitFour.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x), GameConstants::WINDOW_SIZE.y - UnitSizeLarge.y).toSFMLVector());
+		UnitFour.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x), position.y - UnitSizeLarge.y).toSFMLVector());
 		UnitFour.setOutlineColor(sf::Color(255, 215, 0, 255));
 		number.setText(">unit 4<");
 		number.setPosition(Vector2D(UnitFour.getPosition().x, UnitFour.getPosition().y-40));
 
 
 
-		UnitTwo.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 3), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		UnitThree.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x * 2), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
+		UnitTwo.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 3), position.y - UnitSizeSmall.y).toSFMLVector());
+		UnitThree.setPosition(Vector2D(position.x - DisplaySize.x - (UnitSizeSmall.x * 2), position.y - UnitSizeSmall.y).toSFMLVector());
 		//UnitFour.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x - (UnitSizeSmall.x), GameConstants::WINDOW_SIZE.y - UnitSizeSmall.y).toSFMLVector());
-		Display.setPosition(Vector2D(GameConstants::WINDOW_SIZE.x - DisplaySize.x, GameConstants::WINDOW_SIZE.y - DisplaySize.y).toSFMLVector());
+		Display.setPosition(Vector2D(position.x - DisplaySize.x, position.y - DisplaySize.y).toSFMLVector());
 		UnitOne.setSize(UnitSizeSmall.toSFMLVector());
 		UnitTwo.setSize(UnitSizeSmall.toSFMLVector());
 		UnitThree.setSize(UnitSizeSmall.toSFMLVector());

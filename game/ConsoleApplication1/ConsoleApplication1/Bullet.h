@@ -16,6 +16,7 @@ public:
 	void kill();
 	float getDamage();
 	std::string getParentId();
+	~Bullet();
 private:
 	Vector2D m_initPosition;
 	Vector2D m_position;

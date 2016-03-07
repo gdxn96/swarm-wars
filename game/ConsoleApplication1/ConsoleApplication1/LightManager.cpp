@@ -7,9 +7,9 @@ LightManager::LightManager() :
 TIME_UNTIL_CHANGE(0.005f)
 {
 	timeUntillChange = TIME_UNTIL_CHANGE;
-	lightMapTexture.create(1920, 1080); // Make a lightmap that can cover our screen
+	lightMapTexture.create(1920, 1880); // Make a lightmap that can cover our screen
 	lightmap.setTexture(lightMapTexture.getTexture());
-	lightmap.setTextureRect(sf::IntRect(0, 0, 1920, 1080)); // What from the lightmap we will draw
+	lightmap.setTextureRect(sf::IntRect(0, 0, 1920, 1880)); // What from the lightmap we will draw
 	lightmap.setPosition(0, 0);
 	// Make our lightmap sprite use the correct texture
 

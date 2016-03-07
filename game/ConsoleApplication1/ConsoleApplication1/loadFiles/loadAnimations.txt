@@ -25,3 +25,7 @@ arrows assets/arrows.png assets/arrows.json
 boss assets/boss.png assets/boss.json
 exp assets/exp.png assets/exp.json
 staticAnimation assets/staticAnimation.png assets/staticAnimation.json
+pylonExplosion assets/pylonExplosion.png assets/pylonExplosion.json
+bigBossAnimation assets/bigBoss.png assets/bigBoss.json
+tankWalking assets/tankWalking.png assets/tankWalking.json
+tankShooting assets/tankShooting.png assets/tankShooting.json

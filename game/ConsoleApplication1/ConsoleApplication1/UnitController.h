@@ -42,7 +42,6 @@ private:
 	OrderPointer m_orderPointer;
 	WeaponFactory * m_weaponFactory;
 	int max = 100;
-	Animation m_anim;
 	UpgradeManager m_upgradeMgr;
 	int m_totalUnitsCredit;
 

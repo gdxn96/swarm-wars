@@ -16,6 +16,7 @@ public:
 	void draw(sf::RenderWindow &);
 	void toggleSelected();
 	void updateUnits(vector<Unit *> _m_currentUnits);
+	void setPosition(Vector2D);
 private:
 	vector<Unit *> m_currentUnits;
 	sf::RectangleShape UnitOne, UnitTwo, UnitThree, UnitFour, Display;
@@ -23,5 +24,6 @@ private:
 	Vector2D m_position, UnitSizeSmall, UnitSizeLarge, DisplaySize;
 	sf::RectangleShape bg;
 	PulsingText number;
+	Vector2D position;
 };
 

@@ -96,7 +96,7 @@ int main()
 
 	srand(time(NULL));
 	// Create the main window 
-	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars");
+	sf::RenderWindow window(sf::VideoMode(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y, 32), "Swarm-wars"/*,sf::Style::Fullscreen*/);
 	//window.setFramerateLimit(120);
 	//loadAssets();
 	

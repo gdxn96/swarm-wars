@@ -2,10 +2,10 @@
 #include "Line.h"
 #include "LightManager.h"
 
-Line::Line(void)
-{}
-Line::Line(Vector2D & _start, Vector2D & _end, float _thickness)
+Line::Line(Vector2D & _start, Vector2D & _end, float _thickness) :
+TIME_UNTIL_CHANGE(0.005f)
 {
+	timeUntillChange = TIME_UNTIL_CHANGE;
 	alpha = 255;
 	//texture.loadFromFile("line.png");
 	//texture.setSmooth(true);
@@ -19,8 +19,9 @@ Line::Line(Vector2D & _start, Vector2D & _end, float _thickness)
 	line.setRotation(angle);
 	line.setFillColor(sf::Color(255, 0, 255, alpha));
 	//line.setTexture(& texture);
-	LightManager::getInstance()->AddLight("line", start.toSFMLVector(), sf::Vector2f(0.039f, 0.039f), sf::Color(255, 0, 255, alpha), Vector2D(0, 0), 0, nullptr, "spotLight");
-
+	m_light = new Light("line", start, Vector2D(0.049f, 0.049f), sf::Color(255, 0, 255, alpha), Vector2D(0, 0), 0, "spotLight");
+	LightManager::getInstance()->AddLight(m_light);
+	isAlive = true;
 
 }
 void Line::Update()
@@ -31,7 +32,12 @@ void Line::Update()
 	line.setPosition(start.toSFMLVector());
 	line.setRotation(angle);
 	line.setFillColor(sf::Color(255,0,255,alpha));
-	//LightManager::getInstance()->updateLightByID("line", start, Vector2D(0.19f, 0.19f), sf::Color(0, 0, 255, alpha));
+
+	m_light->setAlpha(alpha);
+	if (!isAlive)
+	{
+		m_light->setIsAlive(false);
+	}
 }
 void Line::setAlpha(float & _alpha)
 {
@@ -39,10 +45,17 @@ void Line::setAlpha(float & _alpha)
 }
 void Line::Draw(sf::RenderWindow & _window)
 {
+	if (isAlive)
 	_window.draw(line,sf::BlendAdd);
 }
-
-Line::~Line(void)
+void Line::setAlive(bool _alive)
 {
-
+	isAlive = _alive;
+	m_light->setIsAlive(_alive);
 }
+
+bool Line::getAlive()
+{
+	return isAlive;
+}
+

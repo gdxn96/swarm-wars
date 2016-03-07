@@ -2,7 +2,7 @@
 #include "SelectColorScene.h"
 
 
-SelectColorScene::SelectColorScene() : Scene(Scenes::SELECT), m_anim("red", Vector2D(-1000,-1000))
+SelectColorScene::SelectColorScene() : Scene(Scenes::SELECT), m_anim("red", Vector2D(-11111000,-11111000))
 {
 	m_menu = Menu();
 	createUIElements();

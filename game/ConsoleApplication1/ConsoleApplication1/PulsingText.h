@@ -5,9 +5,7 @@
 class PulsingText
 {
 public:
-	PulsingText();
 	PulsingText(std::string _text, Vector2D _position, float min, float speed,std::string fontFilePath);
-	~PulsingText();
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 	void setText(std::string  text);

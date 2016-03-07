@@ -7,6 +7,7 @@
 #include "AudioMgr.h"
 #include "bar.h"
 #include "PulsingText.h"
+#include "Light.h"
 class Tower
 {
 public:
@@ -17,7 +18,8 @@ public:
 	void damage(float damage);
 	bool getAlive();
 	void update(float dt);
-
+	void setBarPosition(Vector2D);
+	void setBarScale(Vector2D);
 private:
 	void playMoraleIndicator();
 	Circle m_outerBounds;
@@ -29,8 +31,15 @@ private:
 
 	float const SOUND_TRIGGER_INTERVAL;
 	float m_soundTriggerInterval;
+
+	float const FLICKER_TRIGGER_INTERVAL;
+	float m_flickerTriggerInterval;
+	int swapAmount = 1;
 	bar moraleBar;
 	PulsingText moraleText;
+	Light * m_light1,* m_light2,* m_light3, * m_light4;
+	Vector2D barPosition;
+	Vector2D barScale;
 };
 
 

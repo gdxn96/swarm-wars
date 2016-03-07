@@ -5,13 +5,11 @@
 class bar
 {
 public:
-	float m_max,m_current,percentAmount;
-	float width = 100, height = 10;
+	
+	float width = 100, height = 5;
 	int offset = 3;
-	Vector2D m_position, scale;
-	bar();
-	bar(Vector2D _position, Vector2D scale, float startingValue);
-	~bar();
+	Vector2D m_position;
+	bar(Vector2D _position, Vector2D scale, float startingValue,sf::Color,sf::Color);
 	sf::RectangleShape bgRect,fgRect;
 	sf::CircleShape point;
 	void draw(sf::RenderWindow &);
@@ -20,10 +18,18 @@ public:
 	void setBarAmount(float);
 	void setPercentAmount(float);
 	void setCurrentAmount(float);
+	void setScale(Vector2D);
 	void update();
 	sf::Texture * bgTexture, * fgTexture;
 	void setColor(sf::Color);
+	void setFGColor(sf::Color);
+	void setBGColor(sf::Color);
+	float getAmount();
 private:
-	sf::Color color;
+	sf::Color fgColor;
+	sf::Color bgColor;
+	float m_max, m_current, percentAmount;
+	float m_amount = 0;
+	Vector2D scale;
 };
 

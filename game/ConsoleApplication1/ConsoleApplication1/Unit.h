@@ -9,6 +9,7 @@
 #include "AssetLoader.h"
 #include "bar.h"
 #include "WeaponUpgrade.h"
+#include "Light.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
 
@@ -96,5 +97,6 @@ private:
 	std::string m_id;
 	sf::RectangleShape rankImg;
 	int credits;
+	Light * m_light;
 };
 

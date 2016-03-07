@@ -40,10 +40,6 @@ std::vector<std::pair<Vector2D, Vector2D>> const Polygon2D::getEdges()
 
 void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 {
-	if (m_hasBroudPhaseCircle)
-	{
-		//m_broadPhaseCircle.draw(window, sf::Color(0,0,255,128));
-	}
 	sf::ConvexShape polygon;
 	polygon.setPointCount(m_vertices.size());
 	
@@ -54,7 +50,6 @@ void Polygon2D::draw(sf::RenderWindow & window, sf::Color color)
 	polygon.setFillColor(color);
 	polygon.setOutlineColor(sf::Color(135, 206, 250, 255));
 	polygon.setOutlineThickness(2);
-	//polygon.setTexture(AssetLoader::getInstance()->findTextureByKey("bunker"));
 	window.draw(polygon);
 }
 

@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include "PhysicsObject.h"
 #include "AssetLoader.h"
+#include "bar.h"
+#include "PulsingText.h"
 
 class LoadScene : public Scene
 {
@@ -19,4 +21,7 @@ public:
 private:
 	int loadAssets();
 	int amount;
+	AssetLoader* a = AssetLoader::getInstance();
+	sf::RectangleShape bgShape, fgShape;
+	PulsingText text;
 };

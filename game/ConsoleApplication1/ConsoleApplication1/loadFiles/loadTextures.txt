@@ -4,7 +4,7 @@ pointLight assets/spotLight.png
 excludeLight assets/excludeLight.png
 bumpLight assets/bumpLight.png
 floor assets/floor.png
-BGbar assets/BGbar.png
+BGBar assets/BGbar.png
 FGBar assets/FGBar.png
 bunker assets/bunker.png
 UnitControllerUI assets/UnitControllerUI.png

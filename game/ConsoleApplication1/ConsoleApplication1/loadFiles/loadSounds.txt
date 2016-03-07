@@ -41,3 +41,4 @@ Ok4 ./GameSounds/Ok4.wav 0
 select ./GameSounds/select.wav 0
 click ./GameSounds/click.wav 0
 menuSong ./GameSounds/menuSong.wav 1
+pylondestroyed ./GameSounds/pylondestroyed.wav 0

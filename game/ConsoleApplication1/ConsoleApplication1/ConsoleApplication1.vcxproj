@@ -88,8 +88,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="QArcs.txt" />
-    <Text Include="QNodes.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

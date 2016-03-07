@@ -21,6 +21,7 @@ UpgradeElement::UpgradeElement(Unit * unit)
 	dmg.setColor(sf::Color(255, 215, 0, 255));
 	fireRate.setColor(sf::Color(255, 215, 0, 255));
 	Name.setColor(sf::Color(255, 215, 0, 255));
+	f.loadFromFile("stoNe.ttf");
 }
 
 UpgradeElement::UpgradeElement(Unit* unit, WeaponType weapon, string uiElementKey) 
@@ -43,6 +44,7 @@ UpgradeElement::UpgradeElement(Unit* unit, WeaponType weapon, string uiElementKe
 	dmg.setColor(sf::Color(255, 215, 0, 255));
 	fireRate.setColor(sf::Color(255, 215, 0, 255));
 	Name.setColor(sf::Color(255, 215, 0, 255));
+	f.loadFromFile("stoNe.ttf");
 }
 
 void UpgradeElement::animationInit()
@@ -179,9 +181,6 @@ void UpgradeElement::draw(sf::RenderWindow&window)
 		Name.setText(">GUN< : " + m_key);
 	}
 
-	sf::Text a;
-	sf::Font f;
-	f.loadFromFile("stoNe.ttf");
 	a.setFont(f);
 	a.setString(m_key);
 	window.draw(a);

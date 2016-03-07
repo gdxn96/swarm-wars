@@ -36,7 +36,6 @@ m_newWave(true)
 	myfile.open("arcs.txt");
 	int from, to, weight;
 	while (myfile >> from >> to >> weight) {
-		//cout << from << " " << to << " " << weight << endl;
 		graph->addArc(from, to, weight);
 		graph->addArc(to, from, weight);
 	}
@@ -203,14 +202,6 @@ void WaveManager::draw(sf::RenderWindow & window)
 	}
 	
 	m_pylonMgr.draw(window);
-	//for (int i = 0; i < 20; i++)
-	//{
-	//	sf::CircleShape s;
-	//	s.setFillColor(sf::Color::Red);
-	//	s.setPosition(m_listOfPathPoints[i].toSFMLVector());
-	//	s.setRadius(10);
-	//	//window.draw(s);
-	//}
 }
 
 bool WaveManager::isGameOver()

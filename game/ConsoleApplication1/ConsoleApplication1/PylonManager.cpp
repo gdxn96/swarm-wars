@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PylonManager.h"
-
+#include "AudioMgr.h"
 
 PylonManager::PylonManager()
 {
@@ -89,7 +89,9 @@ void PylonManager::killPylon()
 		Pylon* pylon = m_pylons[index];
 		pylon->kill();
 		m_deadPylons.push_back(pylon);
+		
 	}
+	AudioManager::instance()->PlayGameSound("pylondestroyed", false, 0.5f, GameConstants::WINDOW_CENTRE, 0);
 }
 
 void PylonManager::update(float dt)

@@ -3,6 +3,7 @@
 #include "Circle.h"
 #include "Animation.h"
 #include "GameConstants.h"
+#include "Light.h"
 
 class Bullet
 {
@@ -15,7 +16,7 @@ public:
 	void kill();
 	float getDamage();
 	std::string getParentId();
-
+	~Bullet();
 private:
 	Vector2D m_initPosition;
 	Vector2D m_position;
@@ -31,5 +32,7 @@ private:
 	Circle m_bounds;
 	Animation m_anim;
 	std::string m_parentId;
+	Light * m_light;
 
+	
 };

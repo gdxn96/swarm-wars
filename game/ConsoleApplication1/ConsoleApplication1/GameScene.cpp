@@ -8,7 +8,8 @@ GameScene::GameScene()
 	m_collisionMgr(&m_unitController),
 	m_creditsScoreText("text", Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 0), 80, 6, "stoNe.ttf"),
 	m_pauseScene([&](){ togglePause(); }),
-	m_drawMode(true)
+	m_drawMode(true),
+	m_anim ("staticAnimation", Vector2D(-100, -100))
 {
 
 }
@@ -18,7 +19,7 @@ void GameScene::enter()
 	LightManager::getInstance()->clear();
 	m_bulletFactory = new BulletFactory();
 	m_numBunkers = 15;
-	m_anim = Animation("staticAnimation", Vector2D(-100, -100));
+
 	m_bunkers.clear();
 	m_waveManager.reset();
 	m_currentState = (GAME_STATE::GAME);
@@ -60,7 +61,7 @@ void GameScene::enter()
 
 	otherGameView.setCenter(Vector2D(GameConstants::WINDOW_CENTRE).toSFMLVector());
 	otherGameView.setSize(sf::Vector2f(GameConstants::WINDOW_SIZE.x, GameConstants::WINDOW_SIZE.y));
-	AudioManager::instance()->PlayGameSound("track", false, 0.2f, Vector2D(0, 0), 0);
+	
 
 	// mini-map (upper-right corner)
 	otherMiniMapView.setViewport(sf::FloatRect(0.75f, 0.0f, 0.25f, 0.25f));
@@ -96,20 +97,25 @@ void GameScene::update(float dt)
 		{
 			m_tower->update(dt);
 			m_UnitSelector.updateUnits(m_unitController.getUnits());
+			m_tower->setBarPosition(GameConstants::WINDOW_CENTRE- Vector2D(50,0));
+			m_tower->setBarScale(Vector2D(1, 1));
+			//m_UnitSelector.setPosition(Vector2D(gameView.getCenter().x, gameView.getCenter().y));
 			m_UnitSelector.update(dt);
-			m_anim.setPosition(GameConstants::WINDOW_CENTRE);
-			m_anim.setSize(GameConstants::WINDOW_SIZE* 3);
+			m_anim.setPosition(Vector2D(0,0));
+			m_anim.setSize(GameConstants::WINDOW_SIZE* 4);
 			m_anim.setAlpha(110);
 			m_anim.update(dt);		
-			//m_creditsScoreText.setPosition(m_unitController.getCurrentUnit()->getPosition() + Vector2D(0,(-GameConstants::WINDOW_SIZE.y/2 +100) * zoom));
-			m_creditsScoreText.setPosition(Vector2D(gameView.getCenter().x,gameView.getCenter().y- (gameView.getSize().y/2)));
+			m_creditsScoreText.setPosition(Vector2D(gameView.getCenter().x-100,gameView.getCenter().y- (gameView.getSize().y/2)));
 			m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
 			m_creditsScoreText.update(dt);
 		}
 		else
 		{
 			m_tower->update(dt);
+			m_tower->setBarPosition(Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 65));
+			m_tower->setBarScale(Vector2D(2, 2));
 			m_UnitSelector.updateUnits(m_unitController.getUnits());
+			m_UnitSelector.setPosition(GameConstants::WINDOW_SIZE);
 			m_UnitSelector.update(dt);
 			m_anim.setPosition(m_unitController.getCurrentUnit()->getPosition());
 			m_anim.setSize(GameConstants::WINDOW_SIZE * 0.2f);
@@ -129,11 +135,14 @@ void GameScene::update(float dt)
 
 		if (m_waveManager.isNewWave())
 		{
-			AudioManager::instance()->PlayGameSound("warning", false, 1, m_unitController.getCurrentUnit()->getPosition(), 0);
+			AudioManager::instance()->PlayGameSound("warning", false, 0.5f, m_unitController.getCurrentUnit()->getPosition(), 0);
 			m_waveManager.setNewWave(false);
 			m_unitController.checkCanByUnit();
 		}
-		
+		for (Bunker* bunker : m_bunkers)
+		{
+			bunker->update(dt);
+		}
 	}
 	else if (m_currentState == GAME_STATE::PAUSED)
 	{
@@ -254,11 +263,11 @@ void GameScene::drawZoomed(sf::RenderWindow & window)
 		m_waveManager.draw(window);
 		m_unitController.draw(window);
 		m_bulletFactory->drawBullets(window);
-		m_UnitSelector.draw(window);
+		//m_UnitSelector.draw(window);
 		m_unitController.drawUI(window);
 		LightManager::getInstance()->draw(window);
 		sf::RectangleShape cover;
-		m_UnitSelector.draw(window);
+		//m_UnitSelector.draw(window);
 		m_creditsScoreText.draw(window);
 		//--------------------------------------------------------------
 
@@ -353,5 +362,3 @@ void GameScene::drawWholeView(sf::RenderWindow & window)
 		sf::RectangleShape cover;
 	}
 }
-
-

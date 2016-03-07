@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "Bunker.h"
 
-Bunker::Bunker(float angle) : m_maxHealth(GameConstants::BUNKER_HEALTH), m_health(GameConstants::BUNKER_HEALTH), m_alive(true)
+Bunker::Bunker(float angle) : m_maxHealth(GameConstants::BUNKER_HEALTH),
+FLICKER_TRIGGER_INTERVAL(1),
+m_flickerTriggerInterval(0.5f), 
+m_health(GameConstants::BUNKER_HEALTH), m_alive(true)
 {
 	float minAngle = angle - GameConstants::BUNKER_SIZE_WIDTH / 2;
 	float maxAngle = angle + GameConstants::BUNKER_SIZE_WIDTH / 2;
@@ -10,6 +13,8 @@ Bunker::Bunker(float angle) : m_maxHealth(GameConstants::BUNKER_HEALTH), m_healt
 	Vector2D topRight = Vector2D(maxAngle) * GameConstants::BUNKER_SIZE_OUTER;
 	Vector2D bottomRight = Vector2D(maxAngle) * GameConstants::BUNKER_SIZE_INNER;
 	Vector2D bottomLeft = Vector2D(minAngle) * GameConstants::BUNKER_SIZE_INNER;
+
+	Vector2D centerPoint = Vector2D(angle) * GameConstants::BUNKER_SIZE_OUTER;
 	bunker.setSize(Vector2f(GameConstants::BUNKER_SIZE_HEIGHT, 60));
 	bunker.setRotation(angle * 180 / GameConstants::PI);
 	bunker.setPosition((GameConstants::WINDOW_CENTRE + bottomLeft+Vector2D(0,0)).toSFMLVector());
@@ -19,7 +24,8 @@ Bunker::Bunker(float angle) : m_maxHealth(GameConstants::BUNKER_HEALTH), m_healt
 	m_bounds.addPoint(GameConstants::WINDOW_CENTRE + bottomRight);
 	m_bounds.addPoint(GameConstants::WINDOW_CENTRE + bottomLeft);
 	m_bounds.setBroadPhaseCircle(GameConstants::WINDOW_CENTRE, GameConstants::BUNKER_SIZE_OUTER);
-	LightManager::getInstance()->AddLight("j",Vector2D(GameConstants::WINDOW_CENTRE + bottomLeft + Vector2D(0, 0)).toSFMLVector(),	sf::Vector2f(0.1f, 0.1f), sf::Color(255, 165, 0,255), Vector2D(0, 0), 45, nullptr, "bumpLight");
+	m_light = new Light("j", Vector2D(GameConstants::WINDOW_CENTRE + centerPoint + Vector2D(0, 0)), Vector2D(0.1f, 0.3f), sf::Color(127, 255, 0 ,255), Vector2D(0, 0), angle * 180 / GameConstants::PI, "bumpLight");
+	LightManager::getInstance()->AddLight(m_light);
 }
 
 void Bunker::damageBunker(float damage)
@@ -28,6 +34,37 @@ void Bunker::damageBunker(float damage)
 	if (m_health <= 0)
 	{
 		m_alive = false;
+		m_light->setIsAlive(false);
+	}
+	if (m_health <= GameConstants::BUNKER_HEALTH / 1.5f && m_health > GameConstants::BUNKER_HEALTH/2)
+	{
+		m_light->setColor(sf::Color(255, 165, 0, 255));
+	}
+	else if (m_health <= GameConstants::BUNKER_HEALTH / 2 && m_health > GameConstants::BUNKER_HEALTH / 2.5f)
+	{
+		m_light->setColor(sf::Color::Red);
+	}
+}
+
+void Bunker::update(float dt)
+{
+	m_flickerTriggerInterval -= dt;
+	if (m_health <= GameConstants::BUNKER_HEALTH / 2.5f && m_health > 0)
+	{
+		if (m_flickerTriggerInterval <= 0)
+		{
+			if (swapAmount == -1)
+			{
+				swapAmount = 1;
+				m_light->setAlpha(100);
+			}
+			else
+			{
+				swapAmount = -1;
+				m_light->setAlpha(255);
+			}
+			m_flickerTriggerInterval = FLICKER_TRIGGER_INTERVAL;
+		}
 	}
 }
 
@@ -36,13 +73,8 @@ bool Bunker::isAlive()
 	return m_alive;
 }
 
-
-
 void Bunker::draw(sf::RenderWindow & window)
 {
-	//at the moment it draws the collision bounds polygon, change the draw to whatever is appropriate here
-	// not inside polygon class
-	//m_bounds.draw(window, sf::Color(128, 64, 128, 255));
 	window.draw(bunker);
 }
 

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Animation.h"
 #include "AssetLoader.h"
-Animation::Animation(){}
 Animation::Animation(string _animationName, Vector2D _position)
 {
 	texture = AssetLoader::getInstance()->findAnimationByKey(_animationName).first;
@@ -140,7 +139,4 @@ void Animation::setSize(Vector2D size)
 std::string Animation::getName()
 {
 	return name;
-}
-Animation::~Animation()
-{
 }

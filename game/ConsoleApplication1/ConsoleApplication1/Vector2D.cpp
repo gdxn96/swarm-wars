@@ -2,13 +2,13 @@
 #include "Vector2D.h"
 #include <cmath>
 #define M_PI 3.141592654
-Vector2D::Vector2D()
+Vector2D::Vector2D() : width(x), w(x), height(y), h(y)
 {
 	x = 0.0;
 	y = 0.0;
 }
 
-Vector2D::Vector2D(float angle)
+Vector2D::Vector2D(float angle) : width(x), w(x), height(y), h(y)
 {
 	x = std::cos(angle);
 	y = std::sin(angle);
@@ -19,7 +19,7 @@ Vector2D::Vector2D(float angle)
 
 Vector2D::~Vector2D()
 {}
-Vector2D::Vector2D(float sourceX, float sourceY)
+Vector2D::Vector2D(float sourceX, float sourceY) : width(x), w(x), height(y), h(y)
 {
 	x = sourceX;
 	y = sourceY;
@@ -46,7 +46,12 @@ Vector2D Vector2D::operator=(const sf::Vector2f & sfv)
 {
 	x = sfv.x;
 	y = sfv.y;
-
+	return *this;
+}
+Vector2D Vector2D::operator=(const Vector2D & sfv)
+{
+	x = sfv.x;
+	y = sfv.y;
 	return *this;
 }
 Vector2D Vector2D::operator += (const Vector2D& rhs) 

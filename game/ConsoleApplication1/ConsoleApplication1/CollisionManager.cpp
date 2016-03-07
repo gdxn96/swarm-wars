@@ -13,17 +13,17 @@ void CollisionManager::checkEnemyBullets(vector<Enemy*> enemies, vector<Bullet*>
 	{
 		for (Enemy * enemy : enemies)
 		{
-			if (Intersects(bullet->getBounds(), enemy->getBounds()))
-			{
-				bullet->kill();
-				enemy->damage(bullet->getDamage());
-				if (!enemy->getAlive())
-				{
-					m_unitController->getUnitById(bullet->getParentId())->addExperience(GameConstants::EXPERENCE_AMOUNT);
-					m_unitController->getUnitById(bullet->getParentId())->addCredits(GameConstants::CREDIT_AMOUNT);
+				if (Intersects(bullet->getBounds(), enemy->getBounds()))
+				{	
+					enemy->damage(bullet->getDamage());
+					if (!enemy->getAlive())
+					{
+						m_unitController->getUnitById(bullet->getParentId())->addExperience(GameConstants::EXPERENCE_AMOUNT);
+						m_unitController->getUnitById(bullet->getParentId())->addCredits(GameConstants::CREDIT_AMOUNT);
+					}
+					bullet->kill();
+					break;
 				}
-				break;
-			}
 		}
 	}
 }

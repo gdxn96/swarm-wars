@@ -10,9 +10,7 @@
 class WeaponUpgrade
 {
 public:
-	WeaponUpgrade();
 	WeaponUpgrade(Vector2D _position, Vector2D _size);
-	~WeaponUpgrade();
 	void update(float dt);
 	void updateInput(float dt);
 	void draw(sf::RenderWindow & window);

@@ -44,7 +44,6 @@ private:
 public:
 	void setAnimation(string);
 	Animation * getAnimation();
-	UIElement();
 	UIElement(UI_TYPE type, Vector2D pos, Vector2D dimensions, string img1, string img2);
 	void appear(float dt);
 	void disappear(float dt);

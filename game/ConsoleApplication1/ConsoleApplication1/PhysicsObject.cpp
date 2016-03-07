@@ -67,7 +67,7 @@ void PhysicsObject::update(float dt)
 	}
 	c.setPosition(m_pos.toSFMLVector());
 	
-	cout << "speed" << m_direction.x << endl;
+	//cout << "speed" << m_direction.x << endl;
 }
 
 void PhysicsObject::draw(sf::RenderWindow& window)

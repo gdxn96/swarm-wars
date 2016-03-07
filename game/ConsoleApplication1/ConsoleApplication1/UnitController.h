@@ -27,13 +27,13 @@ public:
 
 	void updateRanks();
 	bool checkExperienceRankMatch(UNIT_RANK rank, float experience);
-	void addUnit(float startAngle = 0, bool isPlayer = false);
+	void addUnit(float startAngle, UNIT_TYPE unitType);
 	int getTotalCreditAmount();
 	Unit* getUnitById(string id);
 	void drawUI(RenderWindow &);
 
-	void checkCanByUnit();
-	void buyUnit();
+	bool canBuyUnit(UNIT_TYPE type);
+	void buyUnit(UNIT_TYPE unitType);
 
 	Unit * getCurrentUnit();
 private:
@@ -42,7 +42,6 @@ private:
 	OrderPointer m_orderPointer;
 	WeaponFactory * m_weaponFactory;
 	int max = 100;
-	Animation m_anim;
 	UpgradeManager m_upgradeMgr;
 	int m_totalUnitsCredit;
 

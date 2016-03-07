@@ -9,14 +9,17 @@
 #include "AssetLoader.h"
 #include "bar.h"
 #include "WeaponUpgrade.h"
+#include "Light.h"
 
 enum class UNIT_STATE { MOVING, WAITING, FIRING };
+enum class UNIT_TYPE { PLAYER, SNIPER, CQB, ASSAULT};
 
 class Unit
 {
 public:
 	Unit(float startAngle, std::string id);
 	int playerColorIndex = 0;
+
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 
@@ -34,6 +37,7 @@ public:
 	void setWeapon(Weapon weapon);
 
 	UNIT_RANK& getRank();
+
 	void setRank(UNIT_RANK rank);
 
 	//simple setter
@@ -49,7 +53,7 @@ public:
 
 	bool isPlayer();
 
-	void setIsPlayer(bool isPlayer);
+	void setUnitType(UNIT_TYPE unitType);
 
 	void setSelected(bool isSelected);
 
@@ -73,6 +77,7 @@ public:
 	void addCredits(int);
 	int getCredits();
 	void setWeaponActiveUI(bool _isActive);
+	UNIT_TYPE getType();
 	WeaponUpgrade * getWeaponUpgrade();
 private:
 	WeaponUpgrade m_weaponUpgradeUI;
@@ -85,10 +90,12 @@ private:
 	Animation m_selectAnimation;
 	float m_directionAngle; //radian rotation of player "0 rads == (x1, y0)"
 	Vector2D m_position;
+
 	UNIT_STATE m_state;
 	UNIT_STATE m_previousState;
+
 	Weapon m_currentWeapon;
-	bool m_isPlayer;
+	UNIT_TYPE m_unitType;
 	bool m_isSelected;
 	bar m_xpBar;
 	UNIT_RANK m_rank;
@@ -96,5 +103,6 @@ private:
 	std::string m_id;
 	sf::RectangleShape rankImg;
 	int credits;
+	Light * m_light;
 };
 

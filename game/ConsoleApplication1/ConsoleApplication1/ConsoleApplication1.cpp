@@ -25,7 +25,6 @@
 #include "SceneMgr.h"
 #include "GameScene.h"
 #include "MainMenuScene.h"
-#include "SplashScene.h"
 #include "OptionsScene.h"
 #include "GameConstants.h"
 #include "HelpScene.h"
@@ -76,12 +75,11 @@ void loadAssets()
 	SceneManager::getInstance()->addScene(new GameScene());
 	SceneManager::getInstance()->addScene(new GameOverScene());
 	SceneManager::getInstance()->addScene(new GameWinScene());
-	SceneManager::getInstance()->addScene(new SplashScene());
 	SceneManager::getInstance()->addScene(new OptionsScene());
 	SceneManager::getInstance()->addScene(new HelpScene());
 	SceneManager::getInstance()->addScene(new SelectColorScene());
 	SceneManager::getInstance()->addScene(new MainMenuScene());
-	SceneManager::getInstance()->switchTo(Scenes::SPLASH);
+	SceneManager::getInstance()->switchTo(Scenes::MAINMENU);
 }
 
 

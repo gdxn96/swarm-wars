@@ -10,8 +10,6 @@ using namespace sf;
 class Animation
 {
 public:
-	Animation();
-	~Animation();
 	void update(float dt);
 	void draw(RenderWindow & _window);
 	void setFramesPerSecond(float _framesPerSecond);

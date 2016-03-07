@@ -72,30 +72,29 @@ void UnitController::updateInput()
 void UnitController::init()
 {
 	m_units.clear();
-	addUnit(0, true);
+	addUnit(0, UNIT_TYPE::PLAYER);
 	m_currentUnit = m_units[0];
 	m_currentUnit->setSelected(true);
 }
 
-void UnitController::addUnit(float startAngle, bool isPlayer)
+void UnitController::addUnit(float startAngle, UNIT_TYPE unitType)
 {
 	Unit * newUnit = new Unit(startAngle, std::to_string(m_incrementingId++));
-	newUnit->setIsPlayer(isPlayer);
+	newUnit->setUnitType(unitType);
 	m_units.push_back(newUnit);
 	m_upgradeMgr.NotifyNewUnit(newUnit);
 }
 
-void UnitController::checkCanByUnit()
+bool UnitController::canBuyUnit(UNIT_TYPE type)
 {
-	if (getTotalCreditAmount() > GameConstants::UNIT_COST && m_units.size() < 4)
-	{
-		buyUnit();
-	}
+	/////////////////////////////////////////////////////////////////////
+	return getTotalCreditAmount() > GameConstants::UNIT_COST;
+	/////////////////////////////////////////////////////////////////////
 }
 
-void UnitController::buyUnit()
+void UnitController::buyUnit(UNIT_TYPE unitType)
 {
-	addUnit(); 
+	addUnit(0, unitType);
 	m_units[0]->addCredits(-GameConstants::UNIT_COST);
 	AudioManager::instance()->PlayGameSound("Awesome", false, 1, m_units[0]->getPosition(), 0);
 }
@@ -157,12 +156,14 @@ void UnitController::updateRanks()
 				if (prevRank == unit->getRank())
 				{
 					unit->setRank(rank.first);
-					m_upgradeMgr.NotifyLevelUp(unit);
-					//call upgrade UI draw animation
+					if (m_upgradeMgr.NotifyLevelUp(unit))
+					{
+						//call upgrade UI draw animation
 
-					unit->maxRank = rank.second;
-					unit->setWeaponActiveUI(true);
-					AudioManager::instance()->PlayGameSound("upgrades", false, 0.8f, unit->getPosition(), 0);
+						unit->maxRank = rank.second;
+						unit->setWeaponActiveUI(true);
+						AudioManager::instance()->PlayGameSound("upgrades", false, 0.8f, unit->getPosition(), 0);
+					}
 					break;
 				}
 				prevRank = rank.first;

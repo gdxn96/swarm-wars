@@ -44,12 +44,6 @@ private:
 
 	string pathString;
 	void printPath(vector<Node *> path) {
-		for (int i = 0; i < path.size(); i++)
-		{
-			pathString += ", " + numberToString(path[i]->data());
-			cout << "Path: " << path[i]->data() << endl;
-			path[i]->setColour(sf::Color::Green);
-		}
 	}
 	const float ENEMY1_INTERVAL;
 	const float ENEMY2_INTERVAL;

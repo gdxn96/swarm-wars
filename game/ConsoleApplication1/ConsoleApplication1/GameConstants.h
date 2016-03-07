@@ -84,6 +84,7 @@ public:
 	static float const BUNKER_SIZE_HEIGHT; // defined in GameConstants.cpp
 
 	static float const BUNKER_HEALTH; // defined in GameConstants.cpp
+	static float const GameConstants::BUNKER_REPAIR_COST;
 	
 
 	static float const PI; // defined in GameConstants.cpp	

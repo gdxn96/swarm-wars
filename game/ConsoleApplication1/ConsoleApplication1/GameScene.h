@@ -12,6 +12,7 @@
 #include "Animation.h"
 #include "PulsingText.h"
 #include "PauseScene.h"
+#include "BuyMenuScene.h"
 
 enum class GAME_STATE {PAUSED, GAME, GAME_LOSE, GAME_WIN};
 class GameScene : public Scene
@@ -26,12 +27,15 @@ public:
 	void checkGameState();
 	void togglePause();
 	void toggleDrawMode();
+	void resetBunkers();
 	int i = 0;
 	//can be overrided
 	void enter();
 	//void exit();
 
 private:
+	BuyMenu m_buyMenu;
+
 	UnitController m_unitController;
 	UnitSelector m_UnitSelector;
 	BulletFactory * m_bulletFactory;

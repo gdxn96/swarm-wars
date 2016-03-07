@@ -29,12 +29,17 @@ private:
 	PylonManager m_pylonMgr;
 	std::vector<Wave*> m_waves;
 	Wave* m_currentWave;
-	bool m_newWave;
 	std::vector<Vector2D> m_listOfPathPoints;
 	float m_pathRadius;
 	float m_pathAngleIncrement;
+	const float MAX_BUY_TIME;
+	float m_buyTime;
 	bool m_gameOver;
+
+	bool m_waveOver;
 	Graph<string, int> * graph;
+
+	void incrementWave();
 };
 
 

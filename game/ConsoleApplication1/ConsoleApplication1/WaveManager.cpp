@@ -18,7 +18,9 @@ WaveManager::WaveManager() : m_waves({
 }),
 m_currentWave(m_waves[0]),
 m_gameOver(false),
-m_newWave(true)
+MAX_BUY_TIME(5),
+m_buyTime(MAX_BUY_TIME),
+m_waveOver(false)
 {
 	m_currentWave->init();
 
@@ -36,7 +38,6 @@ m_newWave(true)
 	myfile.open("arcs.txt");
 	int from, to, weight;
 	while (myfile >> from >> to >> weight) {
-		//cout << from << " " << to << " " << weight << endl;
 		graph->addArc(from, to, weight);
 		graph->addArc(to, from, weight);
 	}
@@ -50,7 +51,7 @@ m_newWave(true)
 
 void WaveManager::reset()
 {
-
+	m_waveOver = false;
 	string c = "";
 	float x, y;
 	int i = 0;
@@ -82,7 +83,6 @@ void WaveManager::reset()
 
 	m_currentWave = m_waves[0];
 	m_currentWave->init();
-	m_newWave = true;
 	m_gameOver = false;
 
 	m_pathRadius = GameConstants::WINDOW_SIZE.y / 3;
@@ -124,13 +124,43 @@ void WaveManager::reset()
 	outputArcs << numberToString(4) << " " << numberToString(20) << " " << numberToString(100) << " \n";
 	outputArcs << numberToString(9) << " " << numberToString(20) << " " << numberToString(100) << " \n";
 	outputArcs << numberToString(14) << " " << numberToString(20) << " " << numberToString(100) << " \n";
-	outputArcs.close();*/
+	outputArcs.close();*/// graph stuff
 	for (auto & p : m_waves)
 	{
 		p->setGraph(graph);
 	}
 }
 
+void WaveManager::incrementWave()
+{
+	for (int i = 0; i < m_waves.size(); i++)
+	{
+		if (m_currentWave == m_waves[i])
+		{
+			//cleanup dead wave
+			delete m_currentWave;
+
+			//increment wave or activate gameOver
+			if (i + 1 < m_waves.size())
+			{
+				m_currentWave = m_waves[i + 1];
+				m_currentWave->init();
+				m_waveOver = false;
+			}
+			else
+			{
+				//gameOver
+				m_gameOver = true;
+				m_currentWave = nullptr;
+			}
+
+			//cleanup dead wave
+			m_waves.erase(m_waves.begin() + i);
+			break;
+
+		}
+	}
+}
 
 std::vector<Enemy *> WaveManager::getEnemies()
 {
@@ -154,45 +184,16 @@ void WaveManager::update(float dt)
 	}
 	else
 	{
-		for (int i = 0; i < m_waves.size(); i++)
+		m_buyTime -= dt;
+		m_waveOver = true;
+
+		if (m_buyTime < 0)
 		{
-			if (m_currentWave == m_waves[i])
-			{
-				//cleanup dead wave
-				delete m_currentWave;
-
-				//increment wave or activate gameOver
-				if (i + 1 < m_waves.size())
-				{
-					m_currentWave = m_waves[i + 1];
-					m_newWave = true;
-					m_currentWave->init();
-				}
-				else
-				{
-					//gameOver
-					m_gameOver = true;
-					m_currentWave = nullptr;
-				}
-
-				//cleanup dead wave
-				m_waves.erase(m_waves.begin() + i);
-				break;
-				
-			}
+			m_buyTime = MAX_BUY_TIME;
+			incrementWave();
 		}
 	}
 	
-}
-
-bool WaveManager::isNewWave()
-{
-	return m_newWave;
-}
-
-void WaveManager::setNewWave(bool newWave)
-{
-	m_newWave = newWave;
 }
 
 void WaveManager::draw(sf::RenderWindow & window)
@@ -203,14 +204,6 @@ void WaveManager::draw(sf::RenderWindow & window)
 	}
 	
 	m_pylonMgr.draw(window);
-	//for (int i = 0; i < 20; i++)
-	//{
-	//	sf::CircleShape s;
-	//	s.setFillColor(sf::Color::Red);
-	//	s.setPosition(m_listOfPathPoints[i].toSFMLVector());
-	//	s.setRadius(10);
-	//	//window.draw(s);
-	//}
 }
 
 bool WaveManager::isGameOver()

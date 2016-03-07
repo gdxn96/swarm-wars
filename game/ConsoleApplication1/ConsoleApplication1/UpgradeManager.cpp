@@ -2,8 +2,26 @@
 #include "UpgradeManager.h"
 
 UpgradeManager::UpgradeManager() : 
-m_weaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
-{
+	m_PLAYER_WeaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
+	{
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::PISTOL),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::PLASMA),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::C, WeaponType::LMG),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::D, WeaponType::AK),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::E, WeaponType::SHOTGUN),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::F, WeaponType::SMG),
+		std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::G, WeaponType::SNIPER)
+	})),
+	m_SNIPER_WeaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
+	{
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::PISTOL),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::PLASMA),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::E, WeaponType::SHOTGUN),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::F, WeaponType::SMG),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::G, WeaponType::SNIPER)
+	})),
+	m_CQB_WeaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
+	{
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::PISTOL),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::PLASMA),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::C, WeaponType::LMG),
@@ -11,9 +29,15 @@ m_weaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::E, WeaponType::SHOTGUN),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::F, WeaponType::SMG),
 	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::G, WeaponType::SNIPER)
-})),
-m_weaponTextures(vector<std::pair<WeaponType, std::string>>(
-{
+	})),
+	m_ASSAULT_WeaponRanks(vector<std::pair<UNIT_RANK, WeaponType>>(
+	{
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::A, WeaponType::PISTOL),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::B, WeaponType::PLASMA),
+	std::pair<UNIT_RANK, WeaponType>(UNIT_RANK::C, WeaponType::SNIPER)
+	})),
+	m_weaponTextures(vector<std::pair<WeaponType, std::string>>(
+	{
 	std::pair<WeaponType, std::string>(WeaponType::PLASMA, "plasma"),
 	std::pair<WeaponType, std::string>(WeaponType::AK, "ak"),
 	std::pair<WeaponType, std::string>(WeaponType::LMG, "lmg"),
@@ -21,8 +45,7 @@ m_weaponTextures(vector<std::pair<WeaponType, std::string>>(
 	std::pair<WeaponType, std::string>(WeaponType::SHOTGUN, "shotgun"),
 	std::pair<WeaponType, std::string>(WeaponType::SMG, "smg"),
 	std::pair<WeaponType, std::string>(WeaponType::SNIPER, "sniper")
-}
-))
+	}))
 {
 }
 
@@ -32,7 +55,7 @@ void UpgradeManager::updateInput()
 }
 
 
-std::string& UpgradeManager::getWeaponKey(WeaponType weapon)
+const std::string& UpgradeManager::getWeaponKey(WeaponType weapon)
 {
 	for (auto& weaponTexture : m_weaponTextures)
 	{
@@ -43,12 +66,40 @@ std::string& UpgradeManager::getWeaponKey(WeaponType weapon)
 	}
 }
 
-void UpgradeManager::NotifyLevelUp(Unit* unit)
+bool UpgradeManager::NotifyLevelUp(Unit* unit)
 {
+	bool newWeapon = false;
 	removeDuplicateUpgrades(unit);
-	WeaponType type = getWeaponType(unit->getRank());
-	std::string uiKey = getWeaponKey(type);
-	m_upgrades.push_back(new UpgradeElement(unit, type, uiKey));
+	UNIT_RANK rank = unit->getRank();
+	UNIT_TYPE type = unit->getType();
+	WeaponType weaponType = WeaponType::NULL_WEAPON;
+
+	switch (type)
+	{
+	case UNIT_TYPE::ASSAULT:
+		weaponType = getWeaponType(rank, m_ASSAULT_WeaponRanks);
+		break;
+	case UNIT_TYPE::SNIPER:
+		weaponType = getWeaponType(rank, m_SNIPER_WeaponRanks);
+		break;
+	case UNIT_TYPE::CQB:
+		weaponType = getWeaponType(rank, m_CQB_WeaponRanks);
+		break;
+	case UNIT_TYPE::PLAYER:
+		weaponType = getWeaponType(rank, m_PLAYER_WeaponRanks);
+		break;
+
+	}
+	
+	
+
+	if (weaponType != WeaponType::NULL_WEAPON)
+	{
+		std::string uiKey = getWeaponKey(weaponType);
+		m_upgrades.push_back(new UpgradeElement(unit, weaponType, uiKey));
+		newWeapon = true;
+	}
+	return newWeapon;
 }
 
 void UpgradeManager::removeDuplicateUpgrades(Unit* unit)
@@ -121,13 +172,17 @@ void UpgradeManager::draw(sf::RenderWindow &window)
 	m_currentUpgrade->draw(window);
 }
 
-WeaponType& UpgradeManager::getWeaponType(UNIT_RANK rank)
+WeaponType& UpgradeManager::getWeaponType(UNIT_RANK rank, std::vector<std::pair<UNIT_RANK, WeaponType>> weaponRanks)
 {
-	for (auto& weaponRank : m_weaponRanks)
+	WeaponType returnValue = WeaponType::NULL_WEAPON;
+	for (auto& weaponRank : weaponRanks)
 	{
 		if (weaponRank.first == rank)
 		{
-			return weaponRank.second;
+			returnValue = weaponRank.second;
+			break;
 		}
 	}
+
+	return returnValue;
 }

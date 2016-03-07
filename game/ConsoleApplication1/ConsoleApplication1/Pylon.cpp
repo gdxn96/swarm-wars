@@ -10,12 +10,11 @@ m_anim("pylonAnimation", Vector2D(-1110, -1110))
 {
 	m_anim.setFramesPerSecond(60);
 	m_anim.SetLooping(true);
-	m_anim.setRadius(105);
+	m_anim.setSize(110/1.1f, 90/1.1f);
 	m_anim.setPosition(m_position); 
 	m_anim.setRotation(anglePosition * 180 / GameConstants::PI);
-	LightManager::getInstance()->AddLight("j",
-		Vector2D(m_position).toSFMLVector(),
-		sf::Vector2f(0.65f, 0.65f), sf::Color::White, Vector2D(0, 0), anglePosition * 180 / GameConstants::PI +90, nullptr, "spotLight");
+	m_light = new Light("j", m_position, Vector2D(0.7f, 0.7f), sf::Color(219, 112, 147, 100), Vector2D(0, 0), anglePosition * 180 / GameConstants::PI + 90, "spotLight");
+	LightManager::getInstance()->AddLight(m_light);
 	
 }
 
@@ -31,6 +30,11 @@ bool Pylon::getAlive()
 void Pylon::update(float dt)
 {
 	m_anim.update(dt);
+	if (!m_alive)
+	{
+		m_anim.setFramesPerSecond(120);
+		m_anim.changeAnimation("pylonExplosion");
+	}
 }
 
 void Pylon::draw(sf::RenderWindow& window)
@@ -51,6 +55,8 @@ void Pylon::draw(sf::RenderWindow& window)
 void Pylon::kill()
 {
 	m_alive = false;
+	m_light->setColor(sf::Color(0, 191, 255, 255));
+	m_light->setScale(Vector2D(1.5f,1.5f));
 }
 
 void Pylon::addSpawnPoint(SpawnPoint* spawn)

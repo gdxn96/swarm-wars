@@ -13,15 +13,15 @@ Enemy::Enemy(Vector2D spawnPosition, std::vector<Node *> _nodes, float maxHealth
 	m_health(maxHealth),
 	m_maxHealth(maxHealth),
 	m_damagePerSecond(damagePerSecond),
-	m_healthBar(m_position + Vector2D(-m_radius,0), Vector2D(0.4f,0.7f),m_maxHealth),
+	m_healthBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), m_maxHealth, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 	m_anim(animKey, Vector2D(-100, -100)),
 	m_neighbourCircle(m_position, 400),
 	m_seperationWeighting(1 - (0.5f * numberDeadPylons / static_cast<float>(GameConstants::NUMBER_PYLONS))),
 	nodes(_nodes)
 {
-	m_anim.setFramesPerSecond(60);
+	m_anim.setFramesPerSecond(220);
 	m_anim.SetLooping(true);
-	m_anim.setRadius(m_radius + 80);
+	m_anim.setSize(100/2, 150/2);
 	m_pathSize = nodes.size() -1;
 	m_direction = (nodes[m_pathSize]->getPosition() - spawnPosition).Normalize();
 	m_targetDirection = (nodes[m_pathSize]->getPosition() - spawnPosition).Normalize();
@@ -60,11 +60,13 @@ void Enemy::kill()
 
 void Enemy::update(float dt)
 {
-	if (Vector2D::Distance(m_position, nodes[m_pathSize]->getPosition()) <= 20)
+	if (Vector2D::Distance(m_position, nodes[m_pathSize]->getPosition()) <= 50)
 	{
+		if (m_pathSize != 0)
 		m_pathSize--;
-		m_targetDirection = (nodes[m_pathSize]->getPosition() - m_position).Normalize();
+		
 	}
+	m_targetDirection = (nodes[m_pathSize]->getPosition() - m_position).Normalize();
 	
 	if (m_currentState == ENEMY_STATE::MOVING)
 	{
@@ -82,12 +84,12 @@ void Enemy::update(float dt)
 	}
 	else
 	{
-		m_anim.setRotation(90 + (std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+		m_anim.setRotation((std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
 	}
 	
 	m_anim.setPosition(m_position);
 
-	m_direction = m_targetDirection; /*((getSeperationHeading() + getAlignmentHeading() + getCohesionHeading()) / 3).Normalize();*/
+	m_direction = ((getSeperationHeading() + getAlignmentHeading() + getCohesionHeading()) / 3).Normalize();
 }
 
 Circle& Enemy::getNeighbourBounds()
@@ -108,25 +110,6 @@ void Enemy::resetNeighbours()
 Vector2D Enemy::getSeperationHeading()
 {
 	Vector2D seperationHeading = m_direction;
-	/*float shortest = std::numeric_limits<float>::max();
-	Enemy * closestEnemy = nullptr;
-	for (auto& enemy : m_neighbours)
-	{
-		float distSq = Vector2D::DistanceSq(m_position, enemy->getBounds().getCentre());
-
-		if (distSq < shortest)
-		{
-			shortest = distSq;
-			closestEnemy = enemy;
-		}
-	}
-
-	if (closestEnemy != nullptr)
-	{
-		seperationHeading = (closestEnemy->getBounds().getCentre() - m_position).Normalize();
-		Vector2D seperationHeadingRight = Vector2D(seperationHeading.y, -seperationHeading.x);
-		Vector2D seperationHeadingLeft = Vector2D(-seperationHeading.y, seperationHeading.x);
-	}*/
 	Vector2D neighbourDirections;
 	for (auto& enemy : m_neighbours)
 	{

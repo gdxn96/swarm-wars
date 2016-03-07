@@ -117,7 +117,7 @@ void AssetLoader::addTextureToCache(string name, string _textureFilePath)
 	if (!temp->loadFromFile(_textureFilePath))
 	{
 		
-		printf("error, failed to load image: %f \n", _textureFilePath);
+		//printf("error, failed to load image: %f \n", _textureFilePath);
 	}
 	imageCache[name] = temp;
 	std::cout << "Loading Texture : " << name << endl;
@@ -164,7 +164,6 @@ void AssetLoader::addToImageCache(string name, string _textureFilePath)
 	if (!temp->loadFromFile(_textureFilePath))
 	{
 		throw(LoadException("Texture " + name + " could not be loaded from " + _textureFilePath));
-		printf("error, failed to load image: %f \n", _textureFilePath);
 	}
 	imageCache[name] = temp;
 }
@@ -224,7 +223,7 @@ Texture * AssetLoader::findTextureByKey(string key)
 	}
 	else
 	{
-		printf("error finding value, not in the map");
+		cout << " key not in texture map : " << key << endl;
 	}
 	
 }

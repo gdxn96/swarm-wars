@@ -221,6 +221,7 @@
     <ClInclude Include="BuyMenuScene.h">
       <Filter>CODE\SCENE_STUFF\SCENES</Filter>
     </ClInclude>
+    <ClInclude Include="MenuItem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenuScene.cpp">
@@ -378,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="BuyMenuScene.cpp">
       <Filter>CODE\SCENE_STUFF\SCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>CODE</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -29,3 +29,7 @@ pylonExplosion assets/pylonExplosion.png assets/pylonExplosion.json
 bigBossAnimation assets/bigBoss.png assets/bigBoss.json
 tankWalking assets/tankWalking.png assets/tankWalking.json
 tankShooting assets/tankShooting.png assets/tankShooting.json
+scoutWalking assets/scoutWalking.png assets/scoutWalking.json
+scoutShooting assets/scoutShooting.png assets/scoutShooting.json
+sniperWalking assets/sniperWalking.png assets/sniperWalking.json
+sniperShooting assets/sniperShooting.png assets/sniperShooting.json

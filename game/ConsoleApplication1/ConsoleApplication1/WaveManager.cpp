@@ -22,7 +22,7 @@ MAX_BUY_TIME(5),
 m_buyTime(MAX_BUY_TIME),
 m_waveOver(false)
 {
-	m_currentWave->init();
+	/*m_currentWave->init();
 
 	string c = "";
 	float x, y;
@@ -45,7 +45,7 @@ m_waveOver(false)
 	for (auto & p : m_waves)
 	{
 		p->setGraph(graph);
-	}
+	}*/
 }
 
 

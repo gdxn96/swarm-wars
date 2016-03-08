@@ -8,7 +8,7 @@
 #include <functional>
 using namespace std;
 
-enum { SNIPER_UNIT = 0, CQB_UNIT = 1, ASSAULT_UNIT = 2, BUNKER_REPAIR = 3 };
+enum { SNIPER_UNIT = 2, CQB_UNIT = 1, ASSAULT_UNIT = 0, BUNKER_REPAIR = 3 };
 
 class MenuItem
 {

@@ -76,3 +76,8 @@ void bar::draw(sf::RenderWindow & window)
 	window.draw(fgRect);
 }
 
+void bar::setAlpha(float _alpha)
+{
+	alpha = _alpha;
+}
+

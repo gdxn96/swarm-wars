@@ -3,16 +3,15 @@
 #include <vector>
 #include "Bullet.h"
 
-enum class BulletType{ PLASMA, AK,SNIPER,LMG,SMG,PISTOL,SHOTGUN };
+enum class BulletType{ PLASMA, PLASMA1, PLASMA2, PLASMA3, AK, AK1, AK2, AK3, SNIPER, SNIPER1, SNIPER2, SNIPER3, LMG, SMG, PISTOL, SHOTGUN };
 
 
 
 class BulletFactory
 {
 public:
-	BulletFactory(){};
 
-	
+	BulletFactory(){};
 	//updates all the bullets in the list
 	void UpdateBullets(float dt);
 
@@ -26,6 +25,8 @@ public:
 
 private:
 	std::vector<Bullet *> m_bulletList;
+
+	
 };
 
 

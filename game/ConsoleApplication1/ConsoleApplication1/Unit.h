@@ -3,7 +3,6 @@
 #include "SFML/OpenGL.hpp" 
 #include "Vector2D.h"
 #include "GameConstants.h"
-#include "VisionCone.h"
 #include "WeaponFactory.h"
 #include "Animation.h"
 #include "AssetLoader.h"

@@ -42,8 +42,6 @@ float Bullet::getDamage()
 	return m_damage;
 }
 
-
-
 void Bullet::Update(float dt)
 {
 	m_velocity = m_direction * m_speed * dt;
@@ -80,9 +78,4 @@ void Bullet::Draw(sf::RenderWindow &window)
 bool Bullet::getAlive()
 {
 	return m_alive;
-}
-
-Bullet::~Bullet()
-{
-	//m_light->setIsAlive(false);
 }

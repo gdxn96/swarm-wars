@@ -165,11 +165,11 @@ void UnitSelector::toggleSelected()
 
 void UnitSelector::draw(sf::RenderWindow & window)
 {
-	window.draw(UnitOne);
+	/*window.draw(UnitOne);
 	window.draw(UnitTwo);
 	window.draw(UnitThree);
 	window.draw(UnitFour);
-	number.draw(window);
+	number.draw(window);*/
 }
 
 UnitSelector::~UnitSelector()

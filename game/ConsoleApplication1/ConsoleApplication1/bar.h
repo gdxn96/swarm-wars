@@ -26,11 +26,13 @@ public:
 	void setFGColor(sf::Color);
 	void setBGColor(sf::Color);
 	float getAmount();
+	void setAlpha(float _alpha);
 private:
 	sf::Color fgColor;
 	sf::Color bgColor;
 	float m_max, m_current, percentAmount;
 	float m_amount = 0;
 	Vector2D scale;
+	float alpha;
 };
 

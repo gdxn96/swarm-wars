@@ -120,6 +120,7 @@
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuItem.h" />
     <ClInclude Include="OptionsScene.h" />
     <ClInclude Include="OrderPointer.h" />
     <ClInclude Include="PauseScene.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="LoadScene.cpp" />
     <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="OptionsScene.cpp" />
     <ClCompile Include="OrderPointer.cpp" />
     <ClCompile Include="PauseScene.cpp" />

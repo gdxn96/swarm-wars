@@ -43,10 +43,23 @@ int const GameConstants::CREDIT_AMOUNT = 15;
 //AK Stuff
 float const WeaponStats::AK_DMG = 50;
 float const WeaponStats::AK_RANGE = 500;
-float const WeaponStats::AK_FOV = GameConstants::PI / 10;
+float const WeaponStats::AK_FOV = GameConstants::PI / 12;
 float const WeaponStats::AK_FIRE_RATE = 20;
 
+float const WeaponStats::AK1_DMG = 25;
+float const WeaponStats::AK1_RANGE = 430;
+float const WeaponStats::AK1_FOV = GameConstants::PI / 12;
+float const WeaponStats::AK1_FIRE_RATE = 17;
 
+float const WeaponStats::AK2_DMG = 40;
+float const WeaponStats::AK2_RANGE = 500;
+float const WeaponStats::AK2_FOV = GameConstants::PI / 12;
+float const WeaponStats::AK2_FIRE_RATE = 20;
+
+float const WeaponStats::AK3_DMG = 60;
+float const WeaponStats::AK3_RANGE = 530;
+float const WeaponStats::AK3_FOV = GameConstants::PI / 12;
+float const WeaponStats::AK3_FIRE_RATE = 25;
 
 //Plasma gun stuff
 float const WeaponStats::PLASMA_DMG = 90;
@@ -54,11 +67,41 @@ float const WeaponStats::PLASMA_RANGE = 300;
 float const WeaponStats::PLASMA_FOV = GameConstants::PI / 8;
 float const WeaponStats::PLASMA_FIRE_RATE = 15;
 
+float const WeaponStats::PLASMA1_DMG = 50;
+float const WeaponStats::PLASMA1_RANGE = 200;
+float const WeaponStats::PLASMA1_FOV = GameConstants::PI / 8;
+float const WeaponStats::PLASMA1_FIRE_RATE = 7;
+
+float const WeaponStats::PLASMA2_DMG = 70;
+float const WeaponStats::PLASMA2_RANGE = 300;
+float const WeaponStats::PLASMA2_FOV = GameConstants::PI / 8;
+float const WeaponStats::PLASMA2_FIRE_RATE = 12;
+
+float const WeaponStats::PLASMA3_DMG = 95;
+float const WeaponStats::PLASMA3_RANGE = 380;
+float const WeaponStats::PLASMA3_FOV = GameConstants::PI / 8;
+float const WeaponStats::PLASMA3_FIRE_RATE = 17;
+
 //sniper
 float const WeaponStats::SNIPER_DMG = 300;
 float const WeaponStats::SNIPER_RANGE = 600;
 float const WeaponStats::SNIPER_FOV = GameConstants::PI / 62;
 float const WeaponStats::SNIPER_FIRE_RATE = 3;
+
+float const WeaponStats::SNIPER1_DMG = 100;
+float const WeaponStats::SNIPER1_RANGE = 300;
+float const WeaponStats::SNIPER1_FOV = GameConstants::PI / 62;
+float const WeaponStats::SNIPER1_FIRE_RATE = 1;
+
+float const WeaponStats::SNIPER2_DMG = 200;
+float const WeaponStats::SNIPER2_RANGE = 450;
+float const WeaponStats::SNIPER2_FOV = GameConstants::PI / 62;
+float const WeaponStats::SNIPER2_FIRE_RATE = 2;
+
+float const WeaponStats::SNIPER3_DMG = 300;
+float const WeaponStats::SNIPER3_RANGE = 600;
+float const WeaponStats::SNIPER3_FOV = GameConstants::PI / 62;
+float const WeaponStats::SNIPER3_FIRE_RATE = 4;
 
 //shotgun
 float const WeaponStats::SHOTGUN_DMG = 300;
@@ -94,6 +137,27 @@ float const BULLET_STATS::SIMPLE_ANIMATION_SPEED = 20;//
 float const BULLET_STATS::SIMPLE_RADIUS = 10;// 
 sf::Color const BULLET_STATS::SIMPLE_COLOR = sf::Color(255, 215, 0, 205);
 const std::string BULLET_STATS::SIMPLE_AUDIO_NAME = "zum";
+
+float const BULLET_STATS::SIMPLE1_SPEED = 250;// 	
+std::string const BULLET_STATS::SIMPLE1_ANIMATION_KEY = "bulletAnimation";// 	
+float const BULLET_STATS::SIMPLE1_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::SIMPLE1_RADIUS = 10;// 
+sf::Color const BULLET_STATS::SIMPLE1_COLOR = sf::Color(255, 215, 0, 205);
+const std::string BULLET_STATS::SIMPLE1_AUDIO_NAME = "zum";
+
+float const BULLET_STATS::SIMPLE2_SPEED = 250;// 	
+std::string const BULLET_STATS::SIMPLE2_ANIMATION_KEY = "bulletAnimation";// 	
+float const BULLET_STATS::SIMPLE2_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::SIMPLE2_RADIUS = 10;// 
+sf::Color const BULLET_STATS::SIMPLE2_COLOR = sf::Color(255, 215, 0, 205);
+const std::string BULLET_STATS::SIMPLE2_AUDIO_NAME = "zum";
+
+float const BULLET_STATS::SIMPLE3_SPEED = 250;// 	
+std::string const BULLET_STATS::SIMPLE3_ANIMATION_KEY = "bulletAnimation";// 	
+float const BULLET_STATS::SIMPLE3_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::SIMPLE3_RADIUS = 10;// 
+sf::Color const BULLET_STATS::SIMPLE3_COLOR = sf::Color(255, 215, 0, 205);
+const std::string BULLET_STATS::SIMPLE3_AUDIO_NAME = "zum";
 				   
 //PLASMA		   
 float const BULLET_STATS::PLASMA_SPEED = 150;// 	
@@ -103,6 +167,27 @@ float const BULLET_STATS::PLASMA_RADIUS = 15;//
 sf::Color const BULLET_STATS::PLASMA_COLOR = sf::Color(238, 130, 238, 205);
 const std::string BULLET_STATS::PLASMA_AUDIO_NAME = "plasma";
 
+float const BULLET_STATS::PLASMA1_SPEED = 150;// 	
+std::string const BULLET_STATS::PLASMA1_ANIMATION_KEY = "plasmaAnimation";// 	
+float const BULLET_STATS::PLASMA1_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::PLASMA1_RADIUS = 15;// 
+sf::Color const BULLET_STATS::PLASMA1_COLOR = sf::Color(238, 130, 238, 205);
+const std::string BULLET_STATS::PLASMA1_AUDIO_NAME = "plasma";
+
+float const BULLET_STATS::PLASMA2_SPEED = 150;// 	
+std::string const BULLET_STATS::PLASMA2_ANIMATION_KEY = "plasmaAnimation";// 	
+float const BULLET_STATS::PLASMA2_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::PLASMA2_RADIUS = 15;// 
+sf::Color const BULLET_STATS::PLASMA2_COLOR = sf::Color(238, 130, 238, 205);
+const std::string BULLET_STATS::PLASMA2_AUDIO_NAME = "plasma";
+
+float const BULLET_STATS::PLASMA3_SPEED = 150;// 	
+std::string const BULLET_STATS::PLASMA3_ANIMATION_KEY = "plasmaAnimation";// 	
+float const BULLET_STATS::PLASMA3_ANIMATION_SPEED = 20;// 
+float const BULLET_STATS::PLASMA3_RADIUS = 15;// 
+sf::Color const BULLET_STATS::PLASMA3_COLOR = sf::Color(238, 130, 238, 205);
+const std::string BULLET_STATS::PLASMA3_AUDIO_NAME = "plasma";
+
 //sniper
 float const BULLET_STATS::SNIPER_SPEED = 450;
 std::string const BULLET_STATS::SNIPER_ANIMATION_KEY = "plasmaAnimation";
@@ -110,6 +195,27 @@ float const BULLET_STATS::SNIPER_ANIMATION_SPEED = 20;
 float const BULLET_STATS::SNIPER_RADIUS = 15;
 const sf::Color BULLET_STATS::SNIPER_COLOR = sf::Color(255, 0, 0, 205);
 const std::string BULLET_STATS::SNIPER_AUDIO_NAME = "sniper";
+
+float const BULLET_STATS::SNIPER1_SPEED = 450;
+std::string const BULLET_STATS::SNIPER1_ANIMATION_KEY = "plasmaAnimation";
+float const BULLET_STATS::SNIPER1_ANIMATION_SPEED = 20;
+float const BULLET_STATS::SNIPER1_RADIUS = 15;
+const sf::Color BULLET_STATS::SNIPER1_COLOR = sf::Color(255, 0, 0, 205);
+const std::string BULLET_STATS::SNIPER1_AUDIO_NAME = "sniper";
+
+float const BULLET_STATS::SNIPER2_SPEED = 450;
+std::string const BULLET_STATS::SNIPER2_ANIMATION_KEY = "plasmaAnimation";
+float const BULLET_STATS::SNIPER2_ANIMATION_SPEED = 20;
+float const BULLET_STATS::SNIPER2_RADIUS = 15;
+const sf::Color BULLET_STATS::SNIPER2_COLOR = sf::Color(255, 0, 0, 205);
+const std::string BULLET_STATS::SNIPER2_AUDIO_NAME = "sniper";
+
+float const BULLET_STATS::SNIPER3_SPEED = 450;
+std::string const BULLET_STATS::SNIPER3_ANIMATION_KEY = "plasmaAnimation";
+float const BULLET_STATS::SNIPER3_ANIMATION_SPEED = 20;
+float const BULLET_STATS::SNIPER3_RADIUS = 15;
+const sf::Color BULLET_STATS::SNIPER3_COLOR = sf::Color(255, 0, 0, 205);
+const std::string BULLET_STATS::SNIPER3_AUDIO_NAME = "sniper";
 
 //lmg
 float const BULLET_STATS::LMG_SPEED = 300;

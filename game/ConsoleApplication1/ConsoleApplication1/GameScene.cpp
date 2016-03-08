@@ -351,14 +351,16 @@ void GameScene::drawWholeView(sf::RenderWindow & window)
 
 		}
 
-		m_tower->draw(window);
+		
 
 		m_waveManager.draw(window);
+		m_tower->draw(window);
 		m_unitController.draw(window);
 		m_bulletFactory->drawBullets(window);
 		m_UnitSelector.draw(window);
 		
 		m_unitController.drawUI(window);
+		m_creditsScoreText.draw(window);
 		
 		miniMapView.setCenter(m_unitController.getCurrentUnit()->getPosition().toSFMLVector());
 		LightManager::getInstance()->draw(window);

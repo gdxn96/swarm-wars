@@ -109,6 +109,22 @@ public:
 	static float const AK_FOV;// defined in GameConstants.cpp	
 	static float const AK_FIRE_RATE;// defined in GameConstants.cpp
 
+	static float const AK1_DMG;// defined in GameConstants.cpp	
+	static float const AK1_RANGE;// defined in GameConstants.cpp	
+	static float const AK1_FOV;// defined in GameConstants.cpp	
+	static float const AK1_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const AK2_DMG;// defined in GameConstants.cpp	
+	static float const AK2_RANGE;// defined in GameConstants.cpp	
+	static float const AK2_FOV;// defined in GameConstants.cpp	
+	static float const AK2_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const AK3_DMG;// defined in GameConstants.cpp	
+	static float const AK3_RANGE;// defined in GameConstants.cpp	
+	static float const AK3_FOV;// defined in GameConstants.cpp	
+	static float const AK3_FIRE_RATE;// defined in GameConstants.cpp
+
+
 
 	//Plasma gun stuff
 	static float const PLASMA_DMG;// defined in GameConstants.cpp	
@@ -116,11 +132,41 @@ public:
 	static float const PLASMA_FOV;// defined in GameConstants.cpp	
 	static float const PLASMA_FIRE_RATE;// defined in GameConstants.cpp
 
+	static float const PLASMA1_DMG;// defined in GameConstants.cpp	
+	static float const PLASMA1_RANGE;// defined in GameConstants.cpp	
+	static float const PLASMA1_FOV;// defined in GameConstants.cpp	
+	static float const PLASMA1_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const PLASMA2_DMG;// defined in GameConstants.cpp	
+	static float const PLASMA2_RANGE;// defined in GameConstants.cpp	
+	static float const PLASMA2_FOV;// defined in GameConstants.cpp	
+	static float const PLASMA2_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const PLASMA3_DMG;// defined in GameConstants.cpp	
+	static float const PLASMA3_RANGE;// defined in GameConstants.cpp	
+	static float const PLASMA3_FOV;// defined in GameConstants.cpp	
+	static float const PLASMA3_FIRE_RATE;// defined in GameConstants.cpp
+
 	//sniper
 	static float const SNIPER_DMG;// defined in GameConstants.cpp	
 	static float const SNIPER_RANGE;// defined in GameConstants.cpp	
 	static float const SNIPER_FOV;// defined in GameConstants.cpp	
 	static float const SNIPER_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const SNIPER1_DMG;// defined in GameConstants.cpp	
+	static float const SNIPER1_RANGE;// defined in GameConstants.cpp	
+	static float const SNIPER1_FOV;// defined in GameConstants.cpp	
+	static float const SNIPER1_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const SNIPER2_DMG;// defined in GameConstants.cpp	
+	static float const SNIPER2_RANGE;// defined in GameConstants.cpp	
+	static float const SNIPER2_FOV;// defined in GameConstants.cpp	
+	static float const SNIPER2_FIRE_RATE;// defined in GameConstants.cpp
+
+	static float const SNIPER3_DMG;// defined in GameConstants.cpp	
+	static float const SNIPER3_RANGE;// defined in GameConstants.cpp	
+	static float const SNIPER3_FOV;// defined in GameConstants.cpp	
+	static float const SNIPER3_FIRE_RATE;// defined in GameConstants.cpp
 
 	//shotgun
 	static float const SHOTGUN_DMG;// defined in GameConstants.cpp	
@@ -161,6 +207,27 @@ public:
 	static const sf::Color SIMPLE_COLOR;// defined in GameConstants.cpp
 	static const std::string SIMPLE_AUDIO_NAME;// defined in GameConstants.cpp
 
+	static float const SIMPLE1_SPEED;// defined in GameConstants.cpp	
+	static std::string const SIMPLE1_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SIMPLE1_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SIMPLE1_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SIMPLE1_COLOR;// defined in GameConstants.cpp
+	static const std::string SIMPLE1_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const SIMPLE2_SPEED;// defined in GameConstants.cpp	
+	static std::string const SIMPLE2_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SIMPLE2_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SIMPLE2_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SIMPLE2_COLOR;// defined in GameConstants.cpp
+	static const std::string SIMPLE2_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const SIMPLE3_SPEED;// defined in GameConstants.cpp	
+	static std::string const SIMPLE3_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SIMPLE3_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SIMPLE3_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SIMPLE3_COLOR;// defined in GameConstants.cpp
+	static const std::string SIMPLE3_AUDIO_NAME;// defined in GameConstants.cpp
+
 	//PLASMA
 	static float const PLASMA_SPEED;// defined in GameConstants.cpp	
 	static std::string const PLASMA_ANIMATION_KEY;// defined in GameConstants.cpp	
@@ -169,6 +236,27 @@ public:
 	static const sf::Color PLASMA_COLOR;// defined in GameConstants.cpp
 	static const std::string PLASMA_AUDIO_NAME;// defined in GameConstants.cpp
 
+	static float const PLASMA1_SPEED;// defined in GameConstants.cpp	
+	static std::string const PLASMA1_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const PLASMA1_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const PLASMA1_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color PLASMA1_COLOR;// defined in GameConstants.cpp
+	static const std::string PLASMA1_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const PLASMA2_SPEED;// defined in GameConstants.cpp	
+	static std::string const PLASMA2_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const PLASMA2_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const PLASMA2_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color PLASMA2_COLOR;// defined in GameConstants.cpp
+	static const std::string PLASMA2_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const PLASMA3_SPEED;// defined in GameConstants.cpp	
+	static std::string const PLASMA3_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const PLASMA3_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const PLASMA3_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color PLASMA3_COLOR;// defined in GameConstants.cpp
+	static const std::string PLASMA3_AUDIO_NAME;// defined in GameConstants.cpp
+
 	//sniper
 	static float const SNIPER_SPEED;// defined in GameConstants.cpp	
 	static std::string const SNIPER_ANIMATION_KEY;// defined in GameConstants.cpp	
@@ -176,6 +264,27 @@ public:
 	static float const SNIPER_RADIUS;// defined in GameConstants.cpp
 	static const sf::Color SNIPER_COLOR;// defined in GameConstants.cpp
 	static const std::string SNIPER_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const SNIPER1_SPEED;// defined in GameConstants.cpp	
+	static std::string const SNIPER1_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SNIPER1_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SNIPER1_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SNIPER1_COLOR;// defined in GameConstants.cpp
+	static const std::string SNIPER1_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const SNIPER2_SPEED;// defined in GameConstants.cpp	
+	static std::string const SNIPER2_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SNIPER2_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SNIPER2_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SNIPER2_COLOR;// defined in GameConstants.cpp
+	static const std::string SNIPER2_AUDIO_NAME;// defined in GameConstants.cpp
+
+	static float const SNIPER3_SPEED;// defined in GameConstants.cpp	
+	static std::string const SNIPER3_ANIMATION_KEY;// defined in GameConstants.cpp	
+	static float const SNIPER3_ANIMATION_SPEED;// defined in GameConstants.cpp
+	static float const SNIPER3_RADIUS;// defined in GameConstants.cpp
+	static const sf::Color SNIPER3_COLOR;// defined in GameConstants.cpp
+	static const std::string SNIPER3_AUDIO_NAME;// defined in GameConstants.cpp
 
 	//lmg
 	static float const LMG_SPEED;// defined in GameConstants.cpp	

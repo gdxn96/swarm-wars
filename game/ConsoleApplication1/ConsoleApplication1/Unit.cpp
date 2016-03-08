@@ -22,10 +22,10 @@ m_anim("walingAssaltAnimation", Vector2D(-100, -100)),
 m_selectAnimation("selectorAnimation", Vector2D(-100, -100)),
 m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 m_weaponUpgradeUI(m_position, Vector2D(100,100)),
-m_light(new Light(m_id, m_position, Vector2D(0.69f, 0.69f), sf::Color(255, 205, 180, 185), Vector2D(0, 0), 0, "bumpLight"))
+m_light(new Light(m_id, m_position, Vector2D(0.39f, 0.39f), sf::Color(255, 205, 180, 185), Vector2D(0, 0), 0, "bumpLight"))
 {
 	m_anim.setFramesPerSecond(60);
-	m_anim.setRadius(m_radius + 40);
+	m_anim.setRadius(m_radius + 80);
 	m_anim.SetLooping(false);
 	m_selectAnimation.setFramesPerSecond(60);
 	m_selectAnimation.setRadius(m_radius + 90);
@@ -47,16 +47,20 @@ void Unit::setUnitType(UNIT_TYPE type)
 	switch (type)
 	{
 	case UNIT_TYPE::ASSAULT:
-		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK1));
+		m_light->setColor(sf::Color::Yellow);
 		break;
 	case UNIT_TYPE::CQB:
-		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::PLASMA1));
+		m_light->setColor(sf::Color::Magenta);
 		break;
 	case UNIT_TYPE::SNIPER:
-		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::SNIPER1));
+		m_light->setColor(sf::Color::Red);
 		break;
 	case UNIT_TYPE::PLAYER:
-		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::PISTOL));
+		m_light->setColor(sf::Color::White);
 		break;
 
 	}
@@ -217,21 +221,69 @@ void Unit::update(float dt)
 	{
 		if (m_state == UNIT_STATE::MOVING)
 		{
-			m_anim.setFramesPerSecond(120);
-			m_anim.changeAnimation("walingAssaltAnimation");
-			m_anim.SetLooping(true);
+			switch (m_unitType)
+			{
+			case UNIT_TYPE::ASSAULT:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("scoutWalking");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::CQB:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("tankWalking");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::SNIPER:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("sniperWalking");
+				m_anim.SetLooping(true);
+				break;
+			}
+			
 		}
 		else if (m_state == UNIT_STATE::WAITING)
 		{
-			m_anim.changeAnimation("walingAssaltAnimation");
-			m_anim.SetLooping(false);
+			switch (m_unitType)
+			{
+			case UNIT_TYPE::ASSAULT:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("scoutWalking");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::CQB:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("tankWalking");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::SNIPER:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("sniperWalking");
+				m_anim.setPosition(m_position + Vector2D(10, 0));
+				m_anim.SetLooping(true);
+				break;
+			}
 
 		}
 		else if (m_state == UNIT_STATE::FIRING)
 		{
-			m_anim.SetLooping(true);
-			m_anim.setFramesPerSecond(1000);
-			m_anim.changeAnimation("shootingAssaltAnimation");
+			switch (m_unitType)
+			{
+			case UNIT_TYPE::ASSAULT:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("scoutShooting");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::CQB:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("tankShooting");
+				m_anim.SetLooping(true);
+				break;
+			case UNIT_TYPE::SNIPER:
+				m_anim.setFramesPerSecond(120);
+				m_anim.changeAnimation("sniperShooting");
+				m_anim.SetLooping(true);
+				break;
+			}
 		}
 	}
 
@@ -328,12 +380,10 @@ void Unit::setWeapon(Weapon weapon)
 void Unit::draw(sf::RenderWindow & window)
 {
 	//draw weapon
-	m_currentWeapon.draw(window);
-	sf::CircleShape target = sf::CircleShape(m_radius);
-	target.setFillColor(sf::Color::Cyan);
-	target.setOrigin(m_radius, m_radius);
-	target.setPosition(getPositionByAngle(m_targetAngle).toSFMLVector());
-	window.draw(target);
+	if (m_isSelected)
+	{
+		m_currentWeapon.draw(window);
+	}
 	m_selectAnimation.draw(window);
 	m_anim.draw(window);
 	m_xpBar.draw(window);

@@ -22,6 +22,7 @@ MAX_BUY_TIME(5),
 m_buyTime(MAX_BUY_TIME),
 m_waveOver(false)
 {
+
 }
 
 

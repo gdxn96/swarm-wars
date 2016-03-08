@@ -34,7 +34,11 @@ void Bunker::damageBunker(float damage)
 	if (m_health <= 0)
 	{
 		m_alive = false;
-		m_light->setIsAlive(false);
+		if (m_light != nullptr)
+		{
+			m_light->setIsAlive(false);
+		}
+		m_light = nullptr;
 	}
 	if (m_health <= GameConstants::BUNKER_HEALTH / 1.5f && m_health > GameConstants::BUNKER_HEALTH/2)
 	{
@@ -81,4 +85,13 @@ void Bunker::draw(sf::RenderWindow & window)
 Polygon2D& Bunker::getBounds()
 {
 	return m_bounds;
+}
+
+Bunker::~Bunker()
+{
+	if (m_light != nullptr)
+	{
+		m_light->setIsAlive(false);
+	}
+	m_light = nullptr;
 }

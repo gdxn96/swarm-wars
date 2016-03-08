@@ -22,6 +22,27 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		animName = BULLET_STATS::PLASMA_ANIMATION_KEY;
 		audioName = BULLET_STATS::PLASMA_AUDIO_NAME;
 		break;
+	case BulletType::PLASMA1:
+		bulletSpeed = BULLET_STATS::PLASMA1_SPEED;
+		radius = BULLET_STATS::PLASMA1_RADIUS;
+		color = BULLET_STATS::PLASMA1_COLOR;
+		animName = BULLET_STATS::PLASMA1_ANIMATION_KEY;
+		audioName = BULLET_STATS::PLASMA1_AUDIO_NAME;
+		break;
+	case BulletType::PLASMA2:
+		bulletSpeed = BULLET_STATS::PLASMA2_SPEED;
+		radius = BULLET_STATS::PLASMA2_RADIUS;
+		color = BULLET_STATS::PLASMA2_COLOR;
+		animName = BULLET_STATS::PLASMA2_ANIMATION_KEY;
+		audioName = BULLET_STATS::PLASMA2_AUDIO_NAME;
+		break;
+	case BulletType::PLASMA3:
+		bulletSpeed = BULLET_STATS::PLASMA3_SPEED;
+		radius = BULLET_STATS::PLASMA3_RADIUS;
+		color = BULLET_STATS::PLASMA3_COLOR;
+		animName = BULLET_STATS::PLASMA3_ANIMATION_KEY;
+		audioName = BULLET_STATS::PLASMA3_AUDIO_NAME;
+		break;
 
 	case BulletType::AK:
 		bulletSpeed = BULLET_STATS::SIMPLE_SPEED;
@@ -29,6 +50,27 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		color = BULLET_STATS::SIMPLE_COLOR;
 		animName = BULLET_STATS::SIMPLE_ANIMATION_KEY;
 		audioName = BULLET_STATS::SIMPLE_AUDIO_NAME;
+		break;
+	case BulletType::AK1:
+		bulletSpeed = BULLET_STATS::SIMPLE1_SPEED;
+		radius = BULLET_STATS::SIMPLE1_RADIUS;
+		color = BULLET_STATS::SIMPLE1_COLOR;
+		animName = BULLET_STATS::SIMPLE1_ANIMATION_KEY;
+		audioName = BULLET_STATS::SIMPLE1_AUDIO_NAME;
+		break;
+	case BulletType::AK2:
+		bulletSpeed = BULLET_STATS::SIMPLE2_SPEED;
+		radius = BULLET_STATS::SIMPLE2_RADIUS;
+		color = BULLET_STATS::SIMPLE2_COLOR;
+		animName = BULLET_STATS::SIMPLE2_ANIMATION_KEY;
+		audioName = BULLET_STATS::SIMPLE2_AUDIO_NAME;
+		break;
+	case BulletType::AK3:
+		bulletSpeed = BULLET_STATS::SIMPLE3_SPEED;
+		radius = BULLET_STATS::SIMPLE3_RADIUS;
+		color = BULLET_STATS::SIMPLE3_COLOR;
+		animName = BULLET_STATS::SIMPLE3_ANIMATION_KEY;
+		audioName = BULLET_STATS::SIMPLE3_AUDIO_NAME;
 		break;
 
 	case BulletType::LMG:
@@ -53,6 +95,30 @@ void BulletFactory::addBullet(std::string parentId, BulletType bullet, Vector2D 
 		color = BULLET_STATS::SNIPER_COLOR;
 		animName = BULLET_STATS::SNIPER_ANIMATION_KEY;
 		audioName = BULLET_STATS::SNIPER_AUDIO_NAME;
+		break;
+
+	case BulletType::SNIPER1:
+		bulletSpeed = BULLET_STATS::SNIPER1_SPEED;
+		radius = BULLET_STATS::SNIPER1_RADIUS;
+		color = BULLET_STATS::SNIPER1_COLOR;
+		animName = BULLET_STATS::SNIPER1_ANIMATION_KEY;
+		audioName = BULLET_STATS::SNIPER1_AUDIO_NAME;
+		break;
+
+	case BulletType::SNIPER2:
+		bulletSpeed = BULLET_STATS::SNIPER2_SPEED;
+		radius = BULLET_STATS::SNIPER2_RADIUS;
+		color = BULLET_STATS::SNIPER2_COLOR;
+		animName = BULLET_STATS::SNIPER2_ANIMATION_KEY;
+		audioName = BULLET_STATS::SNIPER2_AUDIO_NAME;
+		break;
+
+	case BulletType::SNIPER3:
+		bulletSpeed = BULLET_STATS::SNIPER3_SPEED;
+		radius = BULLET_STATS::SNIPER3_RADIUS;
+		color = BULLET_STATS::SNIPER3_COLOR;
+		animName = BULLET_STATS::SNIPER3_ANIMATION_KEY;
+		audioName = BULLET_STATS::SNIPER3_AUDIO_NAME;
 		break;
 
 	case BulletType::PISTOL:

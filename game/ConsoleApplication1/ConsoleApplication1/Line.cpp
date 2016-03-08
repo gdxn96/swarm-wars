@@ -57,10 +57,3 @@ bool Line::getAlive()
 {
 	return isAlive;
 }
-
-Line::~Line()
-{
-	/*if (m_light != nullptr)
-	m_light->setIsAlive(false);*/
-}
-

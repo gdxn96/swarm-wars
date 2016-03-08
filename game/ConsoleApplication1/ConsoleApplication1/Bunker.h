@@ -13,7 +13,7 @@ public:
 	Polygon2D& getBounds();
 	bool isAlive();
 	void update(float dt);
-
+	~Bunker();
 private:
 	float m_health;
 	float m_alive;

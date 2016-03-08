@@ -13,7 +13,7 @@ Enemy::Enemy(Vector2D spawnPosition, std::vector<Node *> _nodes, float maxHealth
 	m_health(maxHealth),
 	m_maxHealth(maxHealth),
 	m_damagePerSecond(damagePerSecond),
-	m_healthBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), m_maxHealth, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
+	m_healthBar(m_position + Vector2D(-m_radius, m_radius), Vector2D(0.4f, 0.7f), m_maxHealth, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 	m_anim(animKey, Vector2D(-100, -100)),
 	m_neighbourCircle(m_position, 400),
 	m_seperationWeighting(1 - (0.5f * numberDeadPylons / static_cast<float>(GameConstants::NUMBER_PYLONS))),

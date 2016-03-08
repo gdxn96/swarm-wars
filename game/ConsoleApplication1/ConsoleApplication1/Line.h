@@ -6,7 +6,6 @@ class Line
 {
 public:
 	Line(Vector2D & start,Vector2D & end,float thickness);
-	~Line();
 	void Update();
 	void Draw(sf::RenderWindow & _window);
 	void setAlpha(float &);

@@ -32,7 +32,7 @@ void LightManager::clear()
 
 void LightManager::Update(sf::RenderWindow & window,float dt)
 {
-	lightMapTexture.clear(sf::Color(80, 80, 80));
+	lightMapTexture.clear(sf::Color(128, 128, 128));
 	killDeadLights();
 	for (int i = 0; i < lights.size(); ++i)
 	{

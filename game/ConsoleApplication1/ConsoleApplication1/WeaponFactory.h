@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-enum class WeaponType {PLASMA, AK,SNIPER, SHOTGUN, LMG, SMG, PISTOL, NULL_WEAPON};
+enum class WeaponType { PLASMA, AK, AK1, AK2, AK3, SNIPER, SNIPER1, SNIPER2, SNIPER3, SHOTGUN, PLASMA1, PLASMA2, PLASMA3, LMG, SMG, PISTOL, NULL_WEAPON };
 
 class WeaponFactory
 {

@@ -7,7 +7,7 @@
 #include <string>
 #include <utility>
 
-PulsingText::PulsingText(std::string _text, Vector2D _position, float min, float fluxSpeed, std::string fontFilePath) :
+PulsingText::PulsingText(std::string _text, Vector2D _position, float min, float fluxSpeed) :
 m_minAlpha(min),
 text(_text),
 m_position(_position),
@@ -15,7 +15,7 @@ m_maxAlpha(255),
 m_fluxSpeed(fluxSpeed),
 m_currentAlpha(255)
 {
-	font.loadFromFile("stoNe.ttf");
+	font = GameConstants::COOL_FONT;
 	m_text.setFont(font);
 	m_text.setString(_text);
 	m_text.setPosition(_position.toSFMLVector());

@@ -40,9 +40,26 @@ m_light(new Light(m_id, m_position, Vector2D(0.69f, 0.69f), sf::Color(255, 205, 
 	LightManager::getInstance()->AddLight(m_light);
 }
 
-void Unit::setUnitType(UNIT_TYPE isPlayer)
+void Unit::setUnitType(UNIT_TYPE type)
 {
-	m_unitType = isPlayer;
+	m_unitType = type;
+
+	switch (type)
+	{
+	case UNIT_TYPE::ASSAULT:
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		break;
+	case UNIT_TYPE::CQB:
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		break;
+	case UNIT_TYPE::SNIPER:
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		break;
+	case UNIT_TYPE::PLAYER:
+		setWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::AK));
+		break;
+
+	}
 }
 
 bool Unit::isPlayer()

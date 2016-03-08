@@ -62,10 +62,13 @@ public:
 class GameConstants {
 public:
 	static sf::Font font;
+	static sf::Font COOL_FONT;
 	static float const EXPERENCE_AMOUNT;
 	static int const CREDIT_AMOUNT;
 
-	static int const UNIT_COST;
+	static int const CQB_UNIT_COST;
+	static int const ASSAULT_UNIT_COST;
+	static int const SNIPER_UNIT_COST;
 
 	//radius in which players can walk about the centre of the map
 	static float const TOWER_RADIUS; // defined in GameConstants.cpp	

@@ -19,7 +19,7 @@ m_soundTriggerInterval(SOUND_TRIGGER_INTERVAL),
 FLICKER_TRIGGER_INTERVAL(1),
 m_flickerTriggerInterval(0.5f),
 moraleBar(Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 65), Vector2D(2, 2), GameConstants::TOWER_HEALTH, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
-moraleText(">TROOP MORALE<", Vector2D(GameConstants::WINDOW_CENTRE.x-120, 50),255,0,"stoNe.tff")
+moraleText(">TROOP MORALE<", Vector2D(GameConstants::WINDOW_CENTRE.x-120, 50),255,0)
 {
 	int temp = 90;
 	m_anim.setPosition(GameConstants::WINDOW_CENTRE + Vector2D(5, 0));

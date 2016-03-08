@@ -11,7 +11,7 @@ UnitTwo(UnitSizeSmall.toSFMLVector()),
 UnitThree(UnitSizeSmall.toSFMLVector()),
 UnitFour(UnitSizeSmall.toSFMLVector()),
 Display(DisplaySize.toSFMLVector()),
-number(">UNIT<", Vector2D(250, 210), 255, 0, "stoNe.tff")
+number(">UNIT<", Vector2D(250, 210), 255, 0)
 {
 	/*f::RectangleShape UnitOne, UnitTwo, UnitThree, UnitFour, Display;
 	int m_currentSelected;

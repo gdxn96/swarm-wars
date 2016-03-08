@@ -6,10 +6,10 @@ UpgradeElement::UpgradeElement(Unit * unit)
 		m_alive(true),
 		m_anim("staticAnimation", Vector2D(-100,-100)),
 		m_bgAnim("staticAnimation", Vector2D(-100, -100)),
-		UIText(">UPGRADE<", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 210)), 50, 6, "stoNe.tff"),
-		dmg(">DMG< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 100)), 255, 0, "stoNe.tff"),
-		fireRate(">Fire Rate< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 70)), 255, 0, "stoNe.tff"),
-		Name(">Weapon< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 40)), 255, 0, "stoNe.tff")
+		UIText(">UPGRADE<", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 210)), 50, 6),
+		dmg(">DMG< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 100)), 255, 0),
+		fireRate(">Fire Rate< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 70)), 255, 0),
+		Name(">Weapon< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 40)), 255, 0)
 {
 	string uiElementKey = "default";
 	m_key = uiElementKey;
@@ -31,10 +31,10 @@ UpgradeElement::UpgradeElement(Unit* unit, WeaponType weapon, string uiElementKe
 		m_key(uiElementKey),
 		m_anim("staticAnimation", Vector2D(-100, -100)),
 		m_bgAnim("staticAnimation", Vector2D(-100, -100)),
-		UIText(">UPGRADE<", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 210)), 50, 6, "stoNe.tff"),
-		dmg(">DMG< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 100)), 255, 0, "stoNe.tff"),
-		fireRate(">Fire Rate< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 70)), 255, 0, "stoNe.tff"),
-		Name(">Weapon< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 40)), 255,0, "stoNe.tff")
+		UIText(">UPGRADE<", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 210)), 50, 6),
+		dmg(">DMG< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 100)), 255, 0),
+		fireRate(">Fire Rate< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 70)), 255, 0),
+		Name(">Weapon< : ", Vector2D(GameConstants::WINDOW_SIZE - Vector2D(250, 40)), 255,0)
 {
 	m_icon.addPoint(GameConstants::WINDOW_CENTRE);
 	m_icon.addPoint(GameConstants::WINDOW_CENTRE + Vector2D(GameConstants::WINDOW_CENTRE.x, 0));

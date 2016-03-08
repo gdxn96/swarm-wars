@@ -88,14 +88,42 @@ void UnitController::addUnit(float startAngle, UNIT_TYPE unitType)
 bool UnitController::canBuyUnit(UNIT_TYPE type)
 {
 	/////////////////////////////////////////////////////////////////////
-	return getTotalCreditAmount() > GameConstants::UNIT_COST;
+	bool canAfford = false;
+
+	switch (type)
+	{
+	case UNIT_TYPE::ASSAULT:
+		canAfford = getTotalCreditAmount() > GameConstants::ASSAULT_UNIT_COST;
+		break;
+	case UNIT_TYPE::SNIPER:
+		canAfford = getTotalCreditAmount() > GameConstants::SNIPER_UNIT_COST;
+		break;
+	case UNIT_TYPE::CQB:
+		canAfford = getTotalCreditAmount() > GameConstants::CQB_UNIT_COST;
+		break;
+	}
+
+	return canAfford;
 	/////////////////////////////////////////////////////////////////////
 }
 
 void UnitController::buyUnit(UNIT_TYPE unitType)
 {
 	addUnit(0, unitType);
-	m_units[0]->addCredits(-GameConstants::UNIT_COST);
+	
+	switch (unitType)
+	{
+	case UNIT_TYPE::ASSAULT:
+		m_units[0]->addCredits(-GameConstants::ASSAULT_UNIT_COST);
+		break;
+	case UNIT_TYPE::SNIPER:
+		m_units[0]->addCredits(-GameConstants::SNIPER_UNIT_COST);
+		break;
+	case UNIT_TYPE::CQB:
+		m_units[0]->addCredits(-GameConstants::CQB_UNIT_COST);
+		break;
+	}
+
 	AudioManager::instance()->PlayGameSound("Awesome", false, 1, m_units[0]->getPosition(), 0);
 }
 

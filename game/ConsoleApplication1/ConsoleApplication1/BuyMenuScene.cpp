@@ -31,10 +31,21 @@ void BuyMenu::createMenuItems()
 	m_currentItem = &m_menuItems.front();
 	m_currentItem->setSelected(true);
 
-	m_menuItems[SNIPER_UNIT];
-	m_menuItems[BUNKER_REPAIR];
-	m_menuItems[CQB_UNIT];
-	m_menuItems[ASSAULT_UNIT];
+	m_menuItems[SNIPER_UNIT].setAnimKey("yellow");
+	m_menuItems[SNIPER_UNIT].setCost(GameConstants::SNIPER_UNIT_COST);
+	m_menuItems[SNIPER_UNIT].setTextField("BUY SNIPER UNIT");
+
+	m_menuItems[BUNKER_REPAIR].setAnimKey("yellow");
+	m_menuItems[BUNKER_REPAIR].setCost(GameConstants::BUNKER_REPAIR_COST);
+	m_menuItems[BUNKER_REPAIR].setTextField("FIX BUNKERS");
+
+	m_menuItems[CQB_UNIT].setAnimKey("yellow");
+	m_menuItems[CQB_UNIT].setCost(GameConstants::CQB_UNIT_COST);
+	m_menuItems[CQB_UNIT].setTextField("BUY CQB UNIT");
+
+	m_menuItems[ASSAULT_UNIT].setAnimKey("yellow");
+	m_menuItems[ASSAULT_UNIT].setCost(GameConstants::ASSAULT_UNIT_COST);
+	m_menuItems[ASSAULT_UNIT].setTextField("BUY ASSAULT UNIT");
 }
 
 bool BuyMenu::Active()
@@ -108,6 +119,7 @@ void BuyMenu::buyItem()
 		// reset bunkers
 		if (m_unitController->getTotalCreditAmount() > GameConstants::BUNKER_REPAIR_COST)
 		{
+			m_unitController->getCurrentUnit()->addCredits(-GameConstants::BUNKER_REPAIR_COST);
 			fn_repairBunkers();
 		}
 		break;
@@ -170,7 +182,10 @@ void BuyMenu::update(float dt)
 {
 	if (m_active)
 	{
-
+		for (auto& item : m_menuItems)
+		{
+			item.update(dt);
+		}
 	}
 }
 

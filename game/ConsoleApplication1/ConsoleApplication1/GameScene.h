@@ -61,7 +61,5 @@ private:
 
 	PulsingText m_creditsScoreText;
 
-	template <class T>
-	std::string numberToString(const T& t);
 
 };

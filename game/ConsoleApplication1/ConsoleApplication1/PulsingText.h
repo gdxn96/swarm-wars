@@ -13,7 +13,7 @@ public:
 	void setColor(sf::Color color);
 	void setPosition(Vector2D pos);
 private:
-	sf::Font font;
+	sf::Font * font;
 	sf::Text m_text;
 	Vector2D m_position;
 	float m_currentAlpha,m_maxAlpha,m_minAlpha,m_fluxSpeed;

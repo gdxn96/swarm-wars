@@ -67,8 +67,6 @@ public:
 	void setAlpha(float val);
 	void setVolume(float, float ,string);
 	void toggleColor(std::string);
-	template <class T>
-	std::string numberToString(const T& t);
 
 	void setFunctionality(std::function<void()> function);
 	void setAppear(std::function<void(float dt)> function);

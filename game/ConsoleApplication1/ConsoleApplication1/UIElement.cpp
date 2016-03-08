@@ -243,13 +243,6 @@ void UIElement::toggleColor(string text)
 	}
 }
 
-template <class T>
-std::string UIElement::numberToString(const T& t) {
-
-	std::stringstream ss;
-	ss << t;
-	return ss.str();
-}
 
 // APPEAR/DISAPPEAR SEQUENCES
 //--------------------------

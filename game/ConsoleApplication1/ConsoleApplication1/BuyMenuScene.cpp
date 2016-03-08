@@ -13,6 +13,16 @@ m_unitController(unitController)
 	createMenuItems();
 }
 
+void BuyMenu::open()
+{
+	m_active = true;
+}
+
+void BuyMenu::close()
+{
+	m_active = false;
+}
+
 void BuyMenu::createMenuItems()
 {
 	for (int i = 0; i < 4; i++)
@@ -55,10 +65,12 @@ bool BuyMenu::Active()
 
 void BuyMenu::updateInput()
 {
+	/////////////////////////////////temp/////////////////////////////////////////
 	if (InputHandler::getInstance()->isPressed(InputHandler::DPAD_LEFT))
 	{
 		this->toggleActive();
 	}
+	//////////////////////////////////////////////////////////////////////////////
 	if (InputHandler::getInstance()->isPressed(InputHandler::DPAD_DOWN))
 	{
 		down();
@@ -70,6 +82,10 @@ void BuyMenu::updateInput()
 	if (InputHandler::getInstance()->isPressed(InputHandler::A))
 	{
 		buyItem();
+	}
+	if (InputHandler::getInstance()->isPressed(InputHandler::B))
+	{
+		close();
 	}
 }
 

@@ -18,11 +18,12 @@ public:
 		m_size(size), 
 		m_selected(false), 
 		m_anim("yellow", m_position + Vector2D(m_size.w / 4 * 1, m_size.y / 2)),
-		m_costText("", m_position + Vector2D(m_size.w / 4 * 3, m_size.y / 2), 80, 6),
-		m_descText("", m_position + Vector2D(m_size.w / 4 * 2, m_size.y / 2), 80, 6)
+		m_costText("fdn", m_position + Vector2D(m_size.w / 4 * 3, m_size.y / 2), 80, 6),
+		m_descText("dfn", m_position + Vector2D(m_size.w / 4 * 2, m_size.y / 2), 80, 6)
 
 	{
-
+		m_costText.setColor(sf::Color::Yellow);
+		m_costText.setText("dkvjbe");
 	}
 
 	void setSelected(bool selected)
@@ -40,6 +41,7 @@ public:
 		m_descText.update(dt);
 		m_anim.update(dt);
 	}
+
 	void draw(sf::RenderWindow& window)
 	{
 		sf::RectangleShape bounds;
@@ -54,8 +56,9 @@ public:
 
 		window.draw(bounds);
 		m_anim.draw(window);
-		//m_costText.draw(window);
-	//	m_descText.draw(window);
+
+		m_costText.draw(window);
+		m_descText.draw(window);
 
 	}
 
@@ -105,6 +108,9 @@ public:
 
 	void buyItem();
 	void createMenuItems();
+
+	void open();
+	void close();
 
 	//can be overrided
 	//void exit();

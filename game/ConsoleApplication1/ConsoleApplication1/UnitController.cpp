@@ -188,10 +188,11 @@ void UnitController::updateRanks()
 					{
 						//call upgrade UI draw animation
 
-						unit->maxRank = rank.second;
+						
 						unit->setWeaponActiveUI(true);
 						AudioManager::instance()->PlayGameSound("upgrades", false, 0.8f, unit->getPosition(), 0);
 					}
+					unit->maxRank = rank.second;
 					break;
 				}
 				prevRank = rank.first;

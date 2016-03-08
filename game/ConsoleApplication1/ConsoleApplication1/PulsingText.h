@@ -1,11 +1,12 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Vector2D.h"
+#include "GameConstants.h"
 
 class PulsingText
 {
 public:
-	PulsingText(std::string _text, Vector2D _position, float min, float speed,std::string fontFilePath);
+	PulsingText(std::string _text, Vector2D _position, float min, float speed);
 	void update(float dt);
 	void draw(sf::RenderWindow & window);
 	void setText(std::string  text);

@@ -5,7 +5,7 @@
 
 LoadScene::LoadScene() :
 Scene(Scenes::LOAD),
-text("name", Vector2D(GameConstants::WINDOW_CENTRE.x - 125, GameConstants::WINDOW_CENTRE.y + 15), 85, 3, "")
+text("name", Vector2D(GameConstants::WINDOW_CENTRE.x - 125, GameConstants::WINDOW_CENTRE.y + 15), 85, 3)
 {
 	bgShape.setSize(sf::Vector2f(250, 30));
 	fgShape.setSize(sf::Vector2f(250, 30));

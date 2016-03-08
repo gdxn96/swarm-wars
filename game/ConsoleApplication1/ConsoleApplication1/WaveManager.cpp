@@ -22,30 +22,6 @@ MAX_BUY_TIME(5),
 m_buyTime(MAX_BUY_TIME),
 m_waveOver(false)
 {
-	m_currentWave->init();
-
-	string c = "";
-	float x, y;
-	int i = 0;
-	graph = new Graph<string, int>(30);
-	ifstream myfile;
-
-	myfile.open("nodes.txt");
-	while (myfile >> c >> x >> y) {
-		graph->addNode(c, x, y, i++);
-	}
-	myfile.close();
-	myfile.open("arcs.txt");
-	int from, to, weight;
-	while (myfile >> from >> to >> weight) {
-		graph->addArc(from, to, weight);
-		graph->addArc(to, from, weight);
-	}
-	myfile.close();
-	for (auto & p : m_waves)
-	{
-		p->setGraph(graph);
-	}
 }
 
 

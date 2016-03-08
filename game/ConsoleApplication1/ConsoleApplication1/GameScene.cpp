@@ -6,13 +6,15 @@ GameScene::GameScene()
 	:
 	Scene(Scenes::GAME),
 	m_collisionMgr(&m_unitController),
-	m_creditsScoreText("text", Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 0), 80, 6, "stoNe.ttf"),
+	m_creditsScoreText("text", Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 0), 80, 6),
 	m_pauseScene([&](){ togglePause(); }),
 	m_drawMode(true),
 	m_anim ("staticAnimation", Vector2D(-100, -100)),
 	m_buyMenu(&m_unitController, [&](){ resetBunkers(); })
 {
 	otherMiniMapView.zoom(0.11f);
+	m_creditsScoreText.setPosition(Vector2D(GameConstants::WINDOW_CENTRE.x - 100, GameConstants::WINDOW_CENTRE.y - (GameConstants::WINDOW_SIZE.h / 2)));
+
 }
 
 void GameScene::enter()
@@ -121,10 +123,7 @@ void GameScene::update(float dt)
 			m_anim.setPosition(Vector2D(0,0));
 			m_anim.setSize(GameConstants::WINDOW_SIZE* 4);
 			m_anim.setAlpha(110);
-			m_anim.update(dt);		
-			m_creditsScoreText.setPosition(Vector2D(gameView.getCenter().x-100,gameView.getCenter().y- (gameView.getSize().y/2)));
-			m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
-			m_creditsScoreText.update(dt);
+			m_anim.update(dt);	
 		}
 		else
 		{
@@ -138,10 +137,11 @@ void GameScene::update(float dt)
 			m_anim.setSize(GameConstants::WINDOW_SIZE * 0.2f);
 			m_anim.setAlpha(190);
 			m_anim.update(dt);
-			m_creditsScoreText.setPosition(Vector2D(GameConstants::WINDOW_CENTRE.x - 100, 0));
-			m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
-			m_creditsScoreText.update(dt);
 		}
+
+		m_creditsScoreText.setText(">CREDITS< : " + std::to_string(m_unitController.getTotalCreditAmount()));
+		m_creditsScoreText.update(dt);
+
 		m_waveManager.update(dt);
 		m_unitController.update(dt);
 		m_bulletFactory->UpdateBullets(dt);
@@ -247,6 +247,7 @@ void GameScene::draw(sf::RenderWindow &window)
 
 	window.setView(View((GameConstants::WINDOW_CENTRE * 1).toSFMLVector(), (GameConstants::WINDOW_SIZE * 1).toSFMLVector()));
 	m_buyMenu.draw(window);
+	m_creditsScoreText.draw(window);
 	
 }
 void GameScene::drawZoomed(sf::RenderWindow & window)
@@ -291,8 +292,6 @@ void GameScene::drawZoomed(sf::RenderWindow & window)
 		m_unitController.drawUI(window);
 		LightManager::getInstance()->draw(window);
 		sf::RectangleShape cover;
-		//m_UnitSelector.draw(window);
-		m_creditsScoreText.draw(window);
 		//--------------------------------------------------------------
 
 
@@ -360,7 +359,7 @@ void GameScene::drawWholeView(sf::RenderWindow & window)
 		m_UnitSelector.draw(window);
 		
 		m_unitController.drawUI(window);
-		m_creditsScoreText.draw(window);
+		
 		miniMapView.setCenter(m_unitController.getCurrentUnit()->getPosition().toSFMLVector());
 		LightManager::getInstance()->draw(window);
 		//----------------------------------------------------------

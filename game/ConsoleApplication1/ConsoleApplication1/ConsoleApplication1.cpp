@@ -87,7 +87,7 @@ void loadAssets()
 int main()
 {
 	
-	if (!GameConstants::font.loadFromFile("arial.ttf"))
+	if (!GameConstants::font.loadFromFile("arial.ttf") || !GameConstants::COOL_FONT.loadFromFile("stoNe.ttf"))
 	{
 		cout << "err loading font" << endl;
 	}

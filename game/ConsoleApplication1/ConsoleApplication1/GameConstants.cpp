@@ -9,9 +9,7 @@ float const GameConstants::PLAYER_RADIUS = 4;
 float const GameConstants::WALK_RADIUS = GameConstants::TOWER_RADIUS + GameConstants::PLAYER_RADIUS + 25;
 float const GameConstants::PLAYER_SPEED = 0.55f; // rads / second
 
-float const GameConstants::EXPERENCE_AMOUNT = 10;
-int const GameConstants::CREDIT_AMOUNT = 15;
-int const GameConstants::UNIT_COST = 100;
+
 
 float const GameConstants::PI = std::acos(-1);
 
@@ -29,6 +27,15 @@ float const GameConstants::BUNKER_SIZE_OUTER = GameConstants::BUNKER_SIZE_INNER 
 float const GameConstants::BUNKER_HEALTH = 100;
 
 float const GameConstants::BUNKER_REPAIR_COST = 100;
+int const GameConstants::CQB_UNIT_COST = 100;
+int const GameConstants::ASSAULT_UNIT_COST = 100;
+int const GameConstants::SNIPER_UNIT_COST = 100;
+
+float const GameConstants::EXPERENCE_AMOUNT = 10;
+int const GameConstants::CREDIT_AMOUNT = 15;
+
+
+
 
 
 // weapon stuff
@@ -190,3 +197,4 @@ float const WAVE_CONSTANTS::WAVE4_NUMBER_ENEMIES = 1;
 float const WAVE_CONSTANTS::WAVE4_PYLONS_TO_KILL = 3;
 
 sf::Font GameConstants::font = sf::Font();
+sf::Font GameConstants::COOL_FONT = sf::Font();

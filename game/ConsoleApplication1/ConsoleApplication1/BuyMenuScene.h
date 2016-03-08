@@ -13,7 +13,14 @@ enum { SNIPER_UNIT = 0, CQB_UNIT = 1, ASSAULT_UNIT = 2, BUNKER_REPAIR = 3 };
 class MenuItem
 {
 public:
-	MenuItem(Vector2D pos, Vector2D size) : m_position(pos), m_size(size), m_selected(false)
+	MenuItem(Vector2D pos, Vector2D size) : 
+		m_position(pos), 
+		m_size(size), 
+		m_selected(false), 
+		m_anim("yellow", m_position + Vector2D(m_size.w / 4 * 1, m_size.y / 2)),
+		m_costText("", m_position + Vector2D(m_size.w / 4 * 3, m_size.y / 2), 80, 6),
+		m_descText("", m_position + Vector2D(m_size.w / 4 * 2, m_size.y / 2), 80, 6)
+
 	{
 
 	}
@@ -26,6 +33,12 @@ public:
 	bool getSelected()
 	{
 		return m_selected;
+	}
+	void update(float dt)
+	{
+		m_costText.update(dt);
+		m_descText.update(dt);
+		m_anim.update(dt);
 	}
 	void draw(sf::RenderWindow& window)
 	{
@@ -40,7 +53,25 @@ public:
 		}
 
 		window.draw(bounds);
+		m_anim.draw(window);
+		//m_costText.draw(window);
+	//	m_descText.draw(window);
 
+	}
+
+	void setCost(int cost)
+	{
+		m_costText.setText("Cost : " + to_string(cost));
+	}
+
+	void setAnimKey(string animKey)
+	{
+		m_anim.changeAnimation(animKey);
+	}
+
+	void setTextField(string text)
+	{
+		m_descText.setText(text);
 	}
 
 
@@ -50,6 +81,9 @@ private:
 	string m_itemName;
 	int m_cost;
 	bool m_selected;
+	Animation m_anim;
+	PulsingText m_costText, m_descText;
+
 
 };
 

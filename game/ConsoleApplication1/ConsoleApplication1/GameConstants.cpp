@@ -284,7 +284,7 @@ float const WAVE_CONSTANTS::WAVE2_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
 float const WAVE_CONSTANTS::WAVE2_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
 float const WAVE_CONSTANTS::WAVE2_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
 float const WAVE_CONSTANTS::WAVE2_NUMBER_ENEMIES = 60;
-float const WAVE_CONSTANTS::WAVE2_PYLONS_TO_KILL = 5;
+float const WAVE_CONSTANTS::WAVE2_PYLONS_TO_KILL = 2;
 
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
 // if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
@@ -292,7 +292,7 @@ float const WAVE_CONSTANTS::WAVE3_ENEMY1_SPAWN_INTERVAL = 1.0f / 5.5f;
 float const WAVE_CONSTANTS::WAVE3_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
 float const WAVE_CONSTANTS::WAVE3_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
 float const WAVE_CONSTANTS::WAVE3_NUMBER_ENEMIES = 90;
-float const WAVE_CONSTANTS::WAVE3_PYLONS_TO_KILL = 10;
+float const WAVE_CONSTANTS::WAVE3_PYLONS_TO_KILL = 2;
 
 // spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
 // if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
@@ -300,7 +300,55 @@ float const WAVE_CONSTANTS::WAVE4_ENEMY1_SPAWN_INTERVAL = std::numeric_limits<fl
 float const WAVE_CONSTANTS::WAVE4_ENEMY2_SPAWN_INTERVAL = std::numeric_limits<float>::max();
 float const WAVE_CONSTANTS::WAVE4_BOSS_SPAWN_INTERVAL = 0;
 float const WAVE_CONSTANTS::WAVE4_NUMBER_ENEMIES = 1;
-float const WAVE_CONSTANTS::WAVE4_PYLONS_TO_KILL = 3;
+float const WAVE_CONSTANTS::WAVE4_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE5_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE5_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE5_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
+float const WAVE_CONSTANTS::WAVE5_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE5_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE6_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE6_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE6_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
+float const WAVE_CONSTANTS::WAVE6_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE6_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE7_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE7_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE7_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
+float const WAVE_CONSTANTS::WAVE7_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE7_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE8_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE8_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE8_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
+float const WAVE_CONSTANTS::WAVE8_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE8_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE9_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE9_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE9_BOSS_SPAWN_INTERVAL = std::numeric_limits<float>::max();
+float const WAVE_CONSTANTS::WAVE9_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE9_PYLONS_TO_KILL = 2;
+
+// spawn interval = 1 / enemiesPerSecond (WATCH OUT FOR INTEGER DIVISION)
+// if you want none of an enemy type to appear set it = std::numeric_limits<float>::max()
+float const WAVE_CONSTANTS::WAVE10_ENEMY1_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE10_ENEMY2_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE10_BOSS_SPAWN_INTERVAL = 1.0f / 2.0f;
+float const WAVE_CONSTANTS::WAVE10_NUMBER_ENEMIES = 50;
+float const WAVE_CONSTANTS::WAVE10_PYLONS_TO_KILL = 2;
 
 sf::Font GameConstants::font = sf::Font();
 sf::Font GameConstants::COOL_FONT = sf::Font();

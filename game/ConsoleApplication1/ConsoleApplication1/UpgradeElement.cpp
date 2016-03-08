@@ -200,10 +200,3 @@ void UpgradeElement::changeUI(string name, Vector2D position, Vector2D size)
 	m_anim.changeAnimation(name);
 }
 
-template <class T>
-std::string UpgradeElement::numberToString(const T& t) {
-
-	std::stringstream ss;
-	ss << t;
-	return ss.str();
-}

@@ -35,6 +35,42 @@ public :
 	static float const WAVE4_BOSS_SPAWN_INTERVAL;
 	static float const WAVE4_NUMBER_ENEMIES;
 	static float const WAVE4_PYLONS_TO_KILL;
+
+	static float const WAVE5_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE5_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE5_BOSS_SPAWN_INTERVAL;
+	static float const WAVE5_NUMBER_ENEMIES;
+	static float const WAVE5_PYLONS_TO_KILL;
+
+	static float const WAVE6_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE6_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE6_BOSS_SPAWN_INTERVAL;
+	static float const WAVE6_NUMBER_ENEMIES;
+	static float const WAVE6_PYLONS_TO_KILL;
+
+	static float const WAVE7_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE7_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE7_BOSS_SPAWN_INTERVAL;
+	static float const WAVE7_NUMBER_ENEMIES;
+	static float const WAVE7_PYLONS_TO_KILL;
+
+	static float const WAVE8_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE8_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE8_BOSS_SPAWN_INTERVAL;
+	static float const WAVE8_NUMBER_ENEMIES;
+	static float const WAVE8_PYLONS_TO_KILL;
+
+	static float const WAVE9_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE9_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE9_BOSS_SPAWN_INTERVAL;
+	static float const WAVE9_NUMBER_ENEMIES;
+	static float const WAVE9_PYLONS_TO_KILL;
+
+	static float const WAVE10_ENEMY1_SPAWN_INTERVAL;
+	static float const WAVE10_ENEMY2_SPAWN_INTERVAL;
+	static float const WAVE10_BOSS_SPAWN_INTERVAL;
+	static float const WAVE10_NUMBER_ENEMIES;
+	static float const WAVE10_PYLONS_TO_KILL;
 };
 
 class ENEMY_STATS

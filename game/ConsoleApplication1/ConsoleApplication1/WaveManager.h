@@ -3,6 +3,7 @@
 #include "PylonManager.h"
 #include "Wave.h"
 #include "Graph.h"
+#include "AudioMgr.h"
 
 class WaveManager
 {
@@ -14,17 +15,16 @@ public:
 	bool isGameOver();
 	void reset();
 
-	bool isNewWave();
-	void setNewWave(bool newWave);
-	template <class T>
-	std::string numberToString(const T& t) {
+	bool waveJustFinished();
+	void setWaveJustFinished(bool waveFinished);
 
-		std::stringstream ss;
-		ss << t;
+	bool waveJustStarted();
+	void setWaveJustStarted(bool waveStarted);
 
-		return ss.str();
+	bool isWaveOver();
 
-	}
+	float getTimeLeft();
+
 private:
 	PylonManager m_pylonMgr;
 	std::vector<Wave*> m_waves;
@@ -37,6 +37,8 @@ private:
 	bool m_gameOver;
 
 	bool m_waveOver;
+	bool m_waveJustFinished;
+	bool m_waveJustStarted;
 	Graph<string, int> * graph;
 
 	void incrementWave();

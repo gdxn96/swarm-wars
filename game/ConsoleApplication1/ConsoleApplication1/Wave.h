@@ -21,15 +21,7 @@ public:
 	bool getAlive();
 	void setGraph(Graph<string, int> * _graph);
 private:
-	template <class T>
-	std::string numberToString(const T& t) {
-
-		std::stringstream ss;
-		ss << t;
-
-		return ss.str();
-
-	}
+	
 	
 	PylonManager * m_pylonMgr;
 	std::vector<Enemy *> m_enemies;

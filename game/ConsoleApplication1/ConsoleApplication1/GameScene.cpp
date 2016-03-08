@@ -91,10 +91,12 @@ void GameScene::updateInput()
 			{
 				toggleDrawMode();
 			}
+			/////////////////////////////////temp/////////////////////////////////////////
 			if (InputHandler::getInstance()->isPressed(InputHandler::DPAD_LEFT))
 			{
 				m_buyMenu.toggleActive();
 			}
+			/////////////////////////////////temp/////////////////////////////////////////
 		}
 		else
 		{
@@ -150,12 +152,18 @@ void GameScene::update(float dt)
 		checkCollisions(dt);
 		checkBunkers();
 
-		/*if (m_waveManager.isNewWave())
+		if (m_waveManager.waveJustFinished())
 		{
-			AudioManager::instance()->PlayGameSound("warning", false, 0.5f, m_unitController.getCurrentUnit()->getPosition(), 0);
-			m_waveManager.setNewWave(false);
-			m_unitController.checkCanByUnit();
-		}*/
+			m_waveManager.setWaveJustFinished(false);
+			m_buyMenu.open();
+		}
+		if (m_waveManager.waveJustStarted())
+		{
+			m_waveManager.setWaveJustStarted(false);
+			AudioManager::instance()->PlayGameSound("warning", false, 0.5f, Vector2D(), 0);
+			m_buyMenu.close();
+		}
+
 		for (Bunker* bunker : m_bunkers)
 		{
 			bunker->update(dt);
@@ -191,18 +199,13 @@ void GameScene::checkGameState()
 	{
 		m_currentState = GAME_STATE::GAME_LOSE;
 	}
+
 	if (m_paused)
 	{
 		m_currentState = GAME_STATE::PAUSED;
 	}
-}
 
-template <class T>
-std::string GameScene::numberToString(const T& t) {
-
-	std::stringstream ss;
-	ss << t;
-	return ss.str();
+	
 }
 
 void GameScene::checkBunkers()
@@ -248,8 +251,18 @@ void GameScene::draw(sf::RenderWindow &window)
 	window.setView(View((GameConstants::WINDOW_CENTRE * 1).toSFMLVector(), (GameConstants::WINDOW_SIZE * 1).toSFMLVector()));
 	m_buyMenu.draw(window);
 	m_creditsScoreText.draw(window);
+
+	if (m_waveManager.isWaveOver())
+	{
+		//draw wave timer
+		PulsingText waveTime("New Wave in: " + to_string_with_precision(m_waveManager.getTimeLeft(), 2) + "s", Vector2D(), 60, 80);
+		waveTime.draw(window);
+	}
 	
 }
+
+
+
 void GameScene::drawZoomed(sf::RenderWindow & window)
 {
 	

@@ -15,8 +15,8 @@ m_maxAlpha(255),
 m_fluxSpeed(fluxSpeed),
 m_currentAlpha(255)
 {
-	font = GameConstants::COOL_FONT;
-	m_text.setFont(font);
+	font = &GameConstants::COOL_FONT;
+	m_text.setFont(*font);
 	m_text.setString(_text);
 	m_text.setPosition(_position.toSFMLVector());
 	c.r = 135;

@@ -91,7 +91,6 @@ void PylonManager::killPylon()
 		m_deadPylons.push_back(pylon);
 		
 	}
-	AudioManager::instance()->PlayGameSound("pylondestroyed", false, 0.5f, GameConstants::WINDOW_CENTRE, 0);
 }
 
 void PylonManager::update(float dt)

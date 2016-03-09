@@ -9,9 +9,12 @@ m_menuSize(GameConstants::WINDOW_SIZE * 0.9f),
 m_menuPosition(Vector2D() + GameConstants::WINDOW_SIZE * 0.05f),
 m_unitController(unitController),
 back(m_menuSize.toSFMLVector()),
-texture(AssetLoader::getInstance()->findTextureByKey("hex"))
+texture(AssetLoader::getInstance()->findTextureByKey("hex")),
+m_anim("BButtonAnimation", m_menuPosition + m_menuSize - (Vector2D(m_menuSize.x/2,50))),
+closeB(">CLOSE<", m_menuPosition + m_menuSize - (Vector2D(m_menuSize.x / 2 + 80, 20)),80,6)
 {
-	
+	m_anim.setFramesPerSecond(30);
+	m_anim.setSize(Vector2D(80, 80));
 	createMenuItems();
 }
 
@@ -228,6 +231,9 @@ void BuyMenu::update(float dt)
 			item.update(dt);
 		}
 	}
+
+	m_anim.update(dt);
+	closeB.update(dt);
 }
 
 void BuyMenu::toggleActive()
@@ -282,7 +288,8 @@ void BuyMenu::draw(sf::RenderWindow &window)
 		back.setOutlineThickness(3);
 		back.setTexture(texture);
 		window.draw(back);
-
+		m_anim.draw(window);
+		closeB.draw(window);
 		for (auto& menuItem : m_menuItems)
 		{
 			menuItem.draw(window);

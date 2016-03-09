@@ -55,7 +55,14 @@ void UnitController::updateInput()
 		if (rightTriggerAmount > 0.5f && m_currentUnit->isPlayer())
 		{
 			m_currentUnit->fireWeapon();
+			InputHandler::getInstance()->setVibration(0.2f, 0.0f);
 		}
+		else
+		{
+			InputHandler::getInstance()->setVibration(0.0f, 0.0f);
+		}
+		
+
 	}
 	if (InputHandler::getInstance()->isPressed(InputHandler::Y))
 	{

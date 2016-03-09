@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Tower.h"
 #include "LightManager.h"
+#include "InputHandler.h"
 Tower::Tower() 
 :	m_innerBounds(Circle(GameConstants::WINDOW_CENTRE, GameConstants::TOWER_RADIUS / 2)),
 	m_outerBounds(Circle(GameConstants::WINDOW_CENTRE, GameConstants::TOWER_RADIUS)),
@@ -95,6 +96,7 @@ void Tower::update(float dt)
 		}
 		m_flickerTriggerInterval = FLICKER_TRIGGER_INTERVAL;
 	}
+	InputHandler::getInstance()->setVibration(0.0f, 0.0f);
 }
 
 void Tower::playMoraleIndicator()
@@ -113,6 +115,8 @@ void Tower::damage(float damage)
 {
 	m_health -= damage;
 	moraleBar.setBarAmount(damage);
+	InputHandler::getInstance()->setVibration(0.4f, 0.0f);
+
 }
 
 bool Tower::getAlive()

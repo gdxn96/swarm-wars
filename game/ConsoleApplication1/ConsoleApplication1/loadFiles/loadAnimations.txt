@@ -1,5 +1,7 @@
 YButtonAnimation assets/YButtonAnimation.png assets/YButtonAnimation.json
 AButtonAnimation assets/AButtonAnimation.png assets/AButtonAnimation.json
+XButtonAnimation assets/XButtonAnimation.png assets/XButtonAnimation.json
+BButtonAnimation assets/BButtonAnimation.png assets/BButtonAnimation.json
 red assets/red.png assets/red.json
 yellow assets/yellow.png assets/yellow.json
 white assets/white.png assets/white.json

@@ -82,10 +82,15 @@ void Enemy::update(float dt)
 	{
 		m_anim.setRotation((std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
 	}
+	else if (m_maxHealth == ENEMY_STATS::ENEMY2_HEALTH)
+	{
+		m_anim.setRotation(90 +(std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
+	}
 	else
 	{
 		m_anim.setRotation((std::atan2(m_direction.y, m_direction.x) - GameConstants::PI) * 180 / GameConstants::PI);
 	}
+
 	
 	m_anim.setPosition(m_position);
 

@@ -155,12 +155,14 @@ void GameScene::update(float dt)
 		if (m_waveManager.waveJustFinished())
 		{
 			m_waveManager.setWaveJustFinished(false);
+			AudioManager::instance()->PlayGameSound("wavecleared", false, 0.2f, Vector2D(), 0);
 			m_buyMenu.open();
 		}
 		if (m_waveManager.waveJustStarted())
 		{
+			AudioManager::instance()->PlayGameSound("newwave", false, 0.8f, Vector2D(), 0);
 			m_waveManager.setWaveJustStarted(false);
-			AudioManager::instance()->PlayGameSound("warning", false, 0.5f, Vector2D(), 0);
+			AudioManager::instance()->PlayGameSound("warning", false, 0.2f, Vector2D(), 0);
 			m_buyMenu.close();
 		}
 

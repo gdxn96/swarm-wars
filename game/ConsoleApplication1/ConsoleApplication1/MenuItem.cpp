@@ -11,7 +11,7 @@ m_descText("text", m_position + Vector2D(m_size.w / 4 * 2, m_size.y / 2), 80, 6)
 m_button("AButtonAnimation", m_position + Vector2D(m_size.w , m_size.y / 2))
 {
 	m_anim.setSize(Vector2D(m_size.h, m_size.h));
-	m_button.setSize(Vector2D(m_size.h, m_size.h));
+	m_button.setSize(Vector2D(80, 80));
 	m_costText.setText("hi");
 	m_descText.setText("hi");
 }

@@ -8,6 +8,7 @@
 #include <functional>
 #include "MenuItem.h"
 #include "AudioMgr.h"
+#include "Animation.h"
 using namespace std;
 
 class BuyMenu : public Scene
@@ -48,7 +49,8 @@ private:
 	sf::RectangleShape back;
 	std::function<void()> fn_repairBunkers;
 	sf::Texture * texture;
-
+	Animation m_anim;
+	PulsingText closeB;
 
 
 };

@@ -43,3 +43,5 @@ click ./GameSounds/click.wav 0
 menuSong ./GameSounds/menuSong.wav 1
 pylondestroyed ./GameSounds/pylondestroyed.wav 0
 denied ./GameSounds/denied.wav 0
+newwave ./GameSounds/newwave.wav 0
+wavecleared ./GameSounds/wavecleared.wav 0

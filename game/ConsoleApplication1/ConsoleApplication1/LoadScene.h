@@ -24,4 +24,6 @@ private:
 	AssetLoader* a = AssetLoader::getInstance();
 	sf::RectangleShape bgShape, fgShape;
 	PulsingText text;
+	sf::RectangleShape back;
+	sf::Texture t,t2,t3;
 };

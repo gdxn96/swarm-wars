@@ -21,3 +21,4 @@ help assets/help.png
 buttonClick assets/buttonClick.png
 grenade assets/grenade.png
 hex assets/hex.png
+pulse assets/pulse.png

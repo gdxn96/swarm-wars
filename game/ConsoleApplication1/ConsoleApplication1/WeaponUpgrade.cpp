@@ -20,7 +20,7 @@ m_topRoFBar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_RoF, sf::Colo
 m_bottomDMGbar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_DMG, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 m_bottomRoFBar(m_position, Vector2D(0.5f, 2), WeaponStats::WEAPON_MAX_RoF, sf::Color(4, 254, 253, 255), sf::Color(17, 169, 169, 255)),
 m_topButtonAnimation("YButtonAnimation",m_position),
-m_bottomButtonAnimation("AButtonAnimation",m_position),
+m_bottomButtonAnimation("XButtonAnimation",m_position),
 m_topAnimation("blueWeaponAnimation", m_position),
 m_botomAnimation("greenWeaponAnimation", m_position),
 m_currentWeapon(nullptr)

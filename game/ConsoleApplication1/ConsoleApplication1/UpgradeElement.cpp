@@ -119,7 +119,7 @@ void UpgradeElement::draw(sf::RenderWindow&window)
 	if (m_key == "default")
 	{
 		changeUI("UiSolderAnimation", Vector2D(190, 155), Vector2D(100, 85));
-		UIText.setText(">WEAPON STATS<");
+		UIText.setText(">STATS<");
 		dmg.setText("");
 		fireRate.setText("");
 		Name.setText("" );

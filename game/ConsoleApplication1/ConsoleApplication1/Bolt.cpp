@@ -142,4 +142,17 @@ void Bolt::kill()
 	{
 		li->setAlive(m_alive);
 	}
+
+	for (int i = 0; i < listOfLines.size(); i++)
+	{
+
+			delete listOfLines[i];
+			listOfLines[i] = nullptr;
+			listOfLines.erase(listOfLines.begin() + i);
+	}
+}
+
+bool Bolt::containsPylon(Pylon * node)
+{
+	return m_nodeLeft == node || m_nodeRight == node;
 }

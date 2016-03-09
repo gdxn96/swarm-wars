@@ -14,6 +14,11 @@ std::vector<Pylon *> PylonManager::getOpenSpawnPoints()
 
 void PylonManager::reset()
 {
+	for (auto& pylon : m_pylons)
+		delete pylon;
+
+	for (auto& bolt : m_bolts)
+		delete bolt;
 	m_pylons.clear();
 	m_deadPylons.clear();
 	m_bolts.clear();
@@ -89,6 +94,14 @@ void PylonManager::killPylon()
 		Pylon* pylon = m_pylons[index];
 		pylon->kill();
 		m_deadPylons.push_back(pylon);
+
+		for (auto& bolt : m_bolts)
+		{
+			if (bolt->containsPylon(pylon))
+			{
+				bolt->kill();
+			}
+		}
 		
 	}
 	AudioManager::instance()->PlayGameSound("pylondestroyed", false, 0.5f, GameConstants::WINDOW_CENTRE, 0);

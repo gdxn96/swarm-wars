@@ -31,4 +31,6 @@ std::string numberToString(const T& t) {
 
 }
 
+float RandomFloat(float min, float max);
+
 // TODO: reference additional headers your program requires here

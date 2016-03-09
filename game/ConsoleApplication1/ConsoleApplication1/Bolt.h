@@ -8,6 +8,8 @@ public:
 	Bolt(Pylon* left, Pylon* right);
 	void update(float dt);
 	void draw(sf::RenderWindow& window);
+
+	bool containsPylon(Pylon * node);
 	void kill();
 private:
 	bool m_alive;

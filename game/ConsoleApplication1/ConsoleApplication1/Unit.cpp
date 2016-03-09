@@ -4,14 +4,14 @@
 #include "SceneMgr.h"
 
 
-Unit::Unit(float startAngle, string id)
+Unit::Unit(string id)
 : PI(GameConstants::PI),
 m_speed(GameConstants::PLAYER_SPEED),
 m_radius(GameConstants::PLAYER_RADIUS),
-m_positionAngle(startAngle),
-m_targetAngle(startAngle),
+m_positionAngle(RandomFloat(0, 2 * PI)),
+m_targetAngle(m_positionAngle),
 m_state(UNIT_STATE::WAITING),
-m_directionAngle(startAngle),
+m_directionAngle(m_positionAngle),
 m_currentWeapon(WeaponFactory::getInstance()->getNewWeapon(WeaponType::PISTOL)),
 m_isSelected(false),
 m_previousState(UNIT_STATE::WAITING),
@@ -24,6 +24,10 @@ m_xpBar(m_position + Vector2D(-m_radius, 0), Vector2D(0.4f, 0.7f), 100, sf::Colo
 m_weaponUpgradeUI(m_position, Vector2D(100,100)),
 m_light(new Light(m_id, m_position, Vector2D(0.19f, 0.19f), sf::Color(255, 205, 180, 185), Vector2D(0, 0), 0, "starLight"))
 {
+	m_positionAngle = RandomFloat(0, 2 * PI);
+	m_directionAngle = m_positionAngle;
+	m_targetAngle = m_positionAngle;
+
 	m_anim.setFramesPerSecond(60);
 	m_anim.setRadius(m_radius + 50);
 	m_anim.SetLooping(false);

@@ -16,7 +16,7 @@ enum class UNIT_TYPE { PLAYER, SNIPER, CQB, ASSAULT};
 class Unit
 {
 public:
-	Unit(float startAngle, std::string id);
+	Unit(std::string id);
 	int playerColorIndex = 0;
 
 	void update(float dt);

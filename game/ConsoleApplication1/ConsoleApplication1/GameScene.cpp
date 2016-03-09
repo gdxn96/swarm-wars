@@ -68,6 +68,7 @@ void GameScene::enter()
 
 void GameScene::resetBunkers()
 {
+	for (auto&bunker : m_bunkers){ delete bunker; }
 	m_bunkers.clear();
 
 	for (int i = 0; i < m_numBunkers; i++)

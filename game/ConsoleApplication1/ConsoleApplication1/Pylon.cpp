@@ -57,6 +57,8 @@ void Pylon::kill()
 	m_alive = false;
 	m_light->setColor(sf::Color(0, 191, 255, 255));
 	m_light->setScale(Vector2D(1.5f,1.5f));
+
+	
 }
 
 void Pylon::addSpawnPoint(SpawnPoint* spawn)

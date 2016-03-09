@@ -79,7 +79,7 @@ void UnitController::init()
 
 void UnitController::addUnit(float startAngle, UNIT_TYPE unitType)
 {
-	Unit * newUnit = new Unit(startAngle, std::to_string(m_incrementingId++));
+	Unit * newUnit = new Unit(std::to_string(m_incrementingId++));
 	newUnit->setUnitType(unitType);
 	m_units.push_back(newUnit);
 	m_upgradeMgr.NotifyNewUnit(newUnit);

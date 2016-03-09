@@ -11,7 +11,6 @@ public:
 	void draw(sf::RenderWindow & window);
 	void update(Vector2D position, float dir, float dt);
 	void fire();
-	float RandomFloat(float min, float max);
 	Polygon2D& getRange();
 	float getRoF();
 	float getDamage();
